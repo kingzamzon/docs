@@ -46,7 +46,7 @@ const config = {
         title: "Lit Protocol Developer Docs",
         logo: {
           alt: "Lit Protocol",
-          src: "img/logo.png",
+          src: "img/logo.svg",
         },
         items: [
           {
