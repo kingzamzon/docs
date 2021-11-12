@@ -97,7 +97,7 @@ const config = {
             items: [
               {
                 label: "Blog",
-                to: "/blog",
+                to: "https://blog.litprotocol.com/",
               },
               {
                 label: "GitHub",
