@@ -8,7 +8,7 @@ The Lit JS SDK is a javascript SDK and can be found here: https://github.com/LIT
 
 ## Lit for Encrypted Content
 
-Configure Lit to grant blockchain users a systemic encryption key when they meet certain conditions on blockchains (e.g owning an NFT, being a member of a DAO) so they can decrypt content that is stored on decentralized or centralized storage.
+Configure Lit to grant blockchain users a symmetric encryption key when they meet certain conditions on blockchains (e.g owning an NFT, being a member of a DAO) so they can decrypt content that is stored on decentralized or centralized storage.
 
 https://github.com/LIT-Protocol/lit-js-sdk#static-content---encrypting--locking
 

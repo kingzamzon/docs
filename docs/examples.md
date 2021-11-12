@@ -4,13 +4,13 @@ sidebar_position: 4
 
 # Examples
 
-# Gated React app
+## Gated React app
 
 This example code shows how to lock an entire react app behind a Lit JWT.
 
 https://github.com/LIT-Protocol/lit-locked-react-app-minimal-example
 
-# Minimal JWT verification example
+## Minimal JWT verification example
 
 This repo is a minimal example to:
 
@@ -21,6 +21,6 @@ This repo is a minimal example to:
 
 https://github.com/LIT-Protocol/lit-minimal-jwt-example
 
-# Minting HTML NFTs
+## Minting HTML NFTs
 
 https://github.com/LIT-Protocol/MintLIT
