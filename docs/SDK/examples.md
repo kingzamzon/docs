@@ -1,16 +1,16 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Examples
 
-## Gated React app
+## Gating dynamic and interactive content inside a React app
 
-This example code shows how to lock an entire react app behind a Lit JWT.
+This example code shows how to lock an entire React app behind a Lit JWT.
 
 https://github.com/LIT-Protocol/lit-locked-react-app-minimal-example
 
-## Minimal JWT verification example
+## Minimal JWT verification example to gate dynamic content on a server
 
 This repo is a minimal example to:
 
@@ -22,5 +22,7 @@ This repo is a minimal example to:
 https://github.com/LIT-Protocol/lit-minimal-jwt-example
 
 ## Minting HTML NFTs
+
+An example that showcases the ability to mint an HTML NFT with locked content that only the NFT owner can decrypt or see.
 
 https://github.com/LIT-Protocol/MintLIT

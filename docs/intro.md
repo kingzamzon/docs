@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Lit Protocol Developer Docs
+# Intro - Start Here
 
 Lit (Lockable Interactive Token) Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
 

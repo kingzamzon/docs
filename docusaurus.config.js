@@ -53,7 +53,13 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Tutorial",
+            label: "Get Started",
+          },
+          {
+            type: "doc",
+            docId: "SDK/intro",
+            position: "left",
+            label: "JS SDK",
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -70,8 +76,12 @@ const config = {
             title: "Docs",
             items: [
               {
-                label: "Tutorial",
+                label: "Get Started",
                 to: "/docs/intro",
+              },
+              {
+                label: "JS SDK",
+                to: "/docs/SDK/intro",
               },
             ],
           },
