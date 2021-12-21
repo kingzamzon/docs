@@ -1,8 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
 ---
 
-# Lit Oauth Integrations
+# Oauth Integrations
 
 We've created oauth integrations with Zoom and Google Drive to provide the ability to protect Zoom meetings or Google Drive files using the Lit Protocol.
 
