@@ -10,11 +10,15 @@ Use yarn or npm to add the lit-js-sdk to your product:
 yarn add lit-js-sdk
 ```
 
-You can then import it like so:
+## Importing
+
+### For the browser, imported
 
 ```
 import LitJsSdk from 'lit-js-sdk'
 ```
+
+### For the browser, as a script tag
 
 We also provide a web-ready package with all dependencies included at build/index.web.js. You can import this into your HTML webpage using a script tag:
 
@@ -23,6 +27,12 @@ We also provide a web-ready package with all dependencies included at build/inde
 ```
 
 You can then use all the sdk functions via LitJsSdk for example `LitJsSdk.toggleLock()`
+
+### For the server side (NodeJS), imported
+
+```
+import LitJsSdk from 'lit-js-sdk/build/index.node.js'
+```
 
 ## Connection to the Lit Network
 
