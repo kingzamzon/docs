@@ -72,7 +72,7 @@ const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 To obtain the decrypted symmetric key, use the code below:
 
 ```
-const symmKey = window.litNodeClient.getEncryptionKey({
+const symmKey = await window.litNodeClient.getEncryptionKey({
   accessControlConditions,
   toDecrypt: encryptedSymmetricKey,
   chain,
