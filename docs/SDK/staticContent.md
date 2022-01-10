@@ -74,7 +74,8 @@ To obtain the decrypted symmetric key, use the code below:
 ```
 const symmKey = await window.litNodeClient.getEncryptionKey({
   accessControlConditions,
-  toDecrypt: encryptedSymmetricKey,
+  // Note, below we convert the encryptedSymmetricKey from a UInt8Array to a hex string.  This is because we obtained the encryptedSymmetricKey from "saveEncryptionKey" which returns a UInt8Array.  But the getEncryptionKey method expects a hex string.
+  toDecrypt: LitJsSdk.uint8arrayToString(encryptedSymmetricKey, "base16"),
   chain,
   authSig
 })
