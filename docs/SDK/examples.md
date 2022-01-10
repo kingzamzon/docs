@@ -26,3 +26,9 @@ https://github.com/LIT-Protocol/lit-minimal-jwt-example
 An example that showcases the ability to mint an HTML NFT with locked content that only the NFT owner can decrypt or see.
 
 https://github.com/LIT-Protocol/MintLIT
+
+## Using the Lit JS SDK entirely serverside
+
+This shows how to use the Lit JS SDK to provision access to a resource, and then request access to it, entirely on the server side.
+
+https://github.com/LIT-Protocol/lit-only-serverside-sdk-example
