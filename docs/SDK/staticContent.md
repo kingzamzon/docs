@@ -14,10 +14,12 @@ First, obtain an authSig from the user. This will ask their metamask to sign a m
 const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 ```
 
-Next, pass the thing you want to encrypt. To encrypt a string, use the code below.
+Next, pass the thing you want to encrypt. To encrypt a string, use the code below. The SDK also supports zipping and encrypting files via the `zipAndEncryptFiles` function.
 
 ```
-const { encryptedZip, symmetricKey } = await LitJsSdk.zipAndEncryptString(aStringThatYouWishToEncrypt);
+const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
+  "this is a secret message"
+);
 ```
 
 Next, define the access control conditions where a user will be allowed to decrypt.
@@ -53,15 +55,15 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 
 ```
 
-You now need to save the `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedZip`. You will present the `accessControlConditions` and `encryptedSymmetricKey` to obtain the decrypted symmetric key, which you can then use to decrypt the zip.
+You now need to save the `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedString`. You will present the `accessControlConditions` and `encryptedSymmetricKey` to obtain the decrypted symmetric key, which you can then use to decrypt the `encryptedString`.
 
 ## Decrypting any static content
 
-If you followed the instructions above for "Storing any static content and manually storing the metadata" then you should follow these instructions to decrypt the data you stored.
+If you followed the instructions above for "Storing any static content and manually storing the metadata" above then you should follow these instructions to decrypt the data you stored.
 
-Make sure you have `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedZip` variables you created when you stored the content.
+Make sure you have `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedString` variables you created when you stored the content.
 
-There are 2 steps - you must obtain the decrypted symmetric key from the Lit protocol, and then you must decrypt the zip file using it.
+There are 2 steps - you must obtain the decrypted symmetric key from the Lit protocol, and then you must decrypt the string using it.
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own their crypto address. Pass the chain you're using.
 
@@ -81,11 +83,13 @@ const symmetricKey = await window.litNodeClient.getEncryptionKey({
 })
 ```
 
-Now, decrypt the zip:
+Now, decrypt the string:
 
 ```
-const decryptedFiles = await decryptZip(encryptedZipBlob, symmetricKey);
-const decryptedString = await decryptedFiles["string.txt"].async("text");
+const decryptedString = await LitJsSdk.decryptString(
+  encryptedString,
+  symmetricKey
+);
 ```
 
 Now, your cleartext is located in the `decryptedString` variable.
