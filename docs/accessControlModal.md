@@ -15,3 +15,7 @@ https://github.com/LIT-Protocol/lit-access-control-conditions-modal
 To use this library without React, you can use the following package, which wraps the react library up in vanilla JS.
 
 https://github.com/LIT-Protocol/lit-access-control-conditions-modal-vanilla-js
+
+## Example
+
+You can find an example implementation of this modal here: https://github.com/LIT-Protocol/lit-access-control-conditions-modal-example
