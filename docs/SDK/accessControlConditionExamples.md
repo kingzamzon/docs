@@ -248,7 +248,7 @@ const accessControlConditions = [
 
 ## Proof of Humanity
 
-Here, we are checking that the user is registered with (Proof Of Humanity)[https://www.proofofhumanity.id/]
+Here, we are checking that the user is registered with Proof Of Humanity https://www.proofofhumanity.id/
 
 ```
 const accessControlConditions = [
