@@ -246,6 +246,26 @@ const accessControlConditions = [
 ]
 ```
 
+## Proof of Humanity
+
+Here, we are checking that the user is registered with (Proof Of Humanity)[https://www.proofofhumanity.id/]
+
+```
+const accessControlConditions = [
+  {
+    contractAddress: "0xC5E9dDebb09Cd64DfaCab4011A0D5cEDaf7c9BDb",
+    standardContractType: "ProofOfHumanity",
+    chain: "ethereum",
+    method: "isRegistered",
+    parameters: [":userAddress"],
+    returnValueTest: {
+      comparator: "=",
+      value: "true"
+    }
+  }
+]
+```
+
 ## Boolean logic
 
 The Lit protocol supports boolean logic when checking conditions. Use an object with the "operator" property set to "and" or "or" to combine conditions.
