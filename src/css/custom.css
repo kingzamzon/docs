@@ -15,6 +15,7 @@
   --ifm-color-primary-lightest: #bfa1ff;
   --ifm-code-font-size: 95%;
   --ifm-navbar-item-padding-horizontal: 24px;
+  --ifm-heading-font-weight: 300;
 }
 
 html[data-theme="dark"] {
@@ -35,4 +36,12 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .footer {
   --ifm-footer-color: rgba(235, 237, 240, 0.5);
+}
+
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2rem;
+}
+
+.markdown > h2 {
+  --ifm-h2-font-size: 1.5rem;
 }

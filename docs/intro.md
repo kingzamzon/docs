@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Intro - Start Here
 
-Lit (Lockable Interactive Token) Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
+Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
 
 The network acts as a decentralized access control list (ACL) which leverages on-chain data to grant users access to content, software, and other decentralized networks.
 

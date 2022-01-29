@@ -116,7 +116,6 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} WorkGraph, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
