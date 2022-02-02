@@ -5,6 +5,8 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+console.log("Updating chains via updateChains.js");
+
 let md = `# Supported Blockchains\n\n`;
 
 md +=
