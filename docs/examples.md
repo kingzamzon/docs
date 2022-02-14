@@ -17,3 +17,5 @@ To see examples that utilize the Lit JS SDK, please visit the [JS SDK examples p
 - Lit protocol integration with Ceramic to store encrypted data on Ceramic: https://github.com/LIT-Protocol/CeramicIntegration and a corresponding example implementation of that integration: https://github.com/LIT-Protocol/CeramicIntegrationExample
 
 - An example of how to use the Access Control Conditions Modal: https://github.com/LIT-Protocol/lit-access-control-conditions-modal-example
+
+- An example of how to create a Lit AuthSig (aka a wallet signature) on the server side, where you don't have access to metamask: https://github.com/LIT-Protocol/hotwallet-signing-example
