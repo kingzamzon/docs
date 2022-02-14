@@ -8,9 +8,9 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Lit Protocol Developer Docs",
   tagline: "Blockchain based access control for the web",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://developer.litprotocol.com",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.png",
   organizationName: "lit-protocol", // Usually your GitHub org/user name.
@@ -122,6 +122,25 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  // plugins: [
+  //   [ // This plugin does NOT work.  I am using netlify redirects instead.
+  //     "@docusaurus/plugin-client-redirects",
+  //     {
+  //       redirects: [
+  //         // /docs/oldDoc -> /docs/newDoc
+  //         {
+  //           to: "/docs/accessControlConditionExamples",
+  //           from: "/docs/SDK/accessControlConditionExamples",
+  //         },
+  //         // Redirect from multiple old paths to the new path
+  //         // {
+  //         //   to: '/docs/newDoc2',
+  //         //   from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
+  //         // },
+  //       ],
+  //     },
+  //   ],
+  // ],
 };
 
 module.exports = config;

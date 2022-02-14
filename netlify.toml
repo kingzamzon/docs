@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/docs/SDK/accessControlConditionExamples"
+  to = "/docs/accessControlConditionExamples"
+  status = 302
+  force = false
