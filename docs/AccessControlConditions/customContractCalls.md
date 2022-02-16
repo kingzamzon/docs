@@ -62,3 +62,45 @@ const evmContractConditions = [
   },
 ];
 ```
+
+## Must posess at least one ERC1155 token with a given token id
+
+```
+var evmContractConditions = [
+  {
+    contractAddress: "0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88",
+    functionName: "balanceOf",
+    functionParams: [":userAddress", "8"],
+    functionAbi: {
+      type: "function",
+      stateMutability: "view",
+      outputs: [
+        {
+          type: "uint256",
+          name: "",
+          internalType: "uint256",
+        },
+      ],
+      name: "balanceOf",
+      inputs: [
+        {
+          type: "address",
+          name: "account",
+          internalType: "address",
+        },
+        {
+          type: "uint256",
+          name: "id",
+          internalType: "uint256",
+        },
+      ],
+    },
+    chain,
+    returnValueTest: {
+      key: "",
+      comparator: ">",
+      value: "0",
+    },
+  },
+];
+```
