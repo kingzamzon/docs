@@ -1,8 +1,12 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
-# Examples of access control conditions
+# Basic Examples
+
+This page defines some basic access control conditions (referred to as `accessControlConditions` in the code) based on standard contract types like ERC20, ERC721, and ERC1155. Also included are some conditions like wallet address ownership, proof of humanity, and POAP posession. You may set you conditions, and define the `returnValueTest` under which access should be granted.
+
+If you would like to use a contract call for a contract type that is not here, refer to the [custom contract calls](/docs/accessControlConditions/customContractCalls) page, which will let you pass a function ABI and call any smart contract function. These are referred to as `evmContractConditions` in the code.
 
 ## Must posess at least one ERC1155 token with a given token id
 
@@ -263,101 +267,5 @@ const accessControlConditions = [
       value: "true"
     }
   }
-]
-```
-
-## Boolean logic
-
-The Lit protocol supports boolean logic when checking conditions. Use an object with the "operator" property set to "and" or "or" to combine conditions.
-
-For example, if you wanted to check that the user is a member of a DAO or that they hold more than 0.00001 ETH, you could use the following:
-
-```
-const accessControlConditions = [
-  {
-    contractAddress: '0x50D8EB685a9F262B13F28958aBc9670F06F819d9',
-    standardContractType: 'MolochDAOv2.1',
-    chain,
-    method: 'members',
-    parameters: [
-      ':userAddress',
-    ],
-    returnValueTest: {
-      comparator: '=',
-      value: 'true'
-    }
-  },
-  {"operator": "or"},
-  {
-    contractAddress: '',
-    standardContractType: '',
-    chain,
-    method: 'eth_getBalance',
-    parameters: [
-      ':userAddress',
-      'latest'
-    ],
-    returnValueTest: {
-      comparator: '>=',
-      value: '10000000000000'
-    }
-  }
-]
-```
-
-## Boolean nesting
-
-You can also nest boolean conditions. For example, if you wanted to check that the user is a member of a DAO and that they either hold more than 0.00001 ETH or 10 of an ERC20 token, you could use the following:
-
-```
-const accessControlConditions = [
-  {
-    "contractAddress":"0x50D8EB685a9F262B13F28958aBc9670F06F819d9",
-    "standardContractType":"MolochDAOv2.1",
-    "chain",
-    "method":"members",
-    "parameters":[
-      ":userAddress"
-    ],
-    "returnValueTest":{
-      "comparator":"=",
-      "value":"true"
-    }
-  },
-  {
-    "operator":"and"
-  },
-  [
-    {
-      "contractAddress":"",
-      "standardContractType":"",
-      "chain",
-      "method":"eth_getBalance",
-      "parameters":[
-        ":userAddress",
-        "latest"
-      ],
-      "returnValueTest":{
-        "comparator":">=",
-        "value":"10000000000000"
-      }
-    },
-    {
-      "operator":"or"
-    },
-    {
-      "contractAddress":"0xc0ad7861fe8848002a3d9530999dd29f6b6cae75",
-      "standardContractType":"ERC20",
-      "chain",
-      "method":"balanceOf",
-      "parameters":[
-        ":userAddress"
-      ],
-      "returnValueTest":{
-        "comparator":">",
-        "value":"10"
-      }
-    }
-  ]
 ]
 ```
