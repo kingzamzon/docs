@@ -10,6 +10,7 @@ Don't see a blockchain you want?  Email support@litprotocol.com to request that 
 - Xdai
 - Bsc
 - Arbitrum
+- Avalanche
 - Harmony
 - Kovan
 - Mumbai
