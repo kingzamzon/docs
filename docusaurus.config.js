@@ -49,18 +49,18 @@ const config = {
           src: "img/logo.svg",
         },
         items: [
-          {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Get Started",
-          },
-          {
-            type: "doc",
-            docId: "SDK/intro",
-            position: "left",
-            label: "JS SDK",
-          },
+          // {
+          //   type: "doc",
+          //   docId: "intro",
+          //   position: "left",
+          //   label: "Get Started",
+          // },
+          // {
+          //   type: "doc",
+          //   docId: "SDK/intro",
+          //   position: "left",
+          //   label: "JS SDK",
+          // },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: "https://github.com/LIT-Protocol/lit-js-sdk",
