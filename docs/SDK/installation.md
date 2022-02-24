@@ -23,7 +23,7 @@ import LitJsSdk from 'lit-js-sdk'
 We also provide a web-ready package with all dependencies included at build/index.web.js. You can import this into your HTML webpage using a script tag:
 
 ```
-<script onload='litJsSdkLoaded()' src="https://jscdn.litgateway.com/index.web.js"></script>
+<script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
 ```
 
 You can then use all the sdk functions via LitJsSdk for example `LitJsSdk.toggleLock()`
