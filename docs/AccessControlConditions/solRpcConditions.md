@@ -63,7 +63,7 @@ var solRpcConditions = [
         encoding: "jsonParsed",
       },
     ],
-    chain,
+    chain: 'solana',
     returnValueTest: {
       key: '$[?(@.account.data.parsed.info.mint == "29G6GSKNGP8K6ATy65QrNZk4rNgsZX1sttvb5iLXWDcE")].account.data.parsed.info.tokenAmount.amount',
       comparator: ">",
@@ -82,7 +82,7 @@ var solRpcConditions = [
   {
     method: "getTokenAccountBalance",
     params: ["E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH"],
-    chain,
+    chain: 'solana',
     returnValueTest: {
       key: "amount",
       comparator: ">",
