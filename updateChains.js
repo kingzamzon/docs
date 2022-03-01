@@ -1,4 +1,4 @@
-const { LIT_CHAINS } = require("lit-js-sdk");
+const { ALL_LIT_CHAINS } = require("lit-js-sdk");
 const fs = require("fs");
 
 function capitalizeFirstLetter(string) {
@@ -12,7 +12,7 @@ let md = `# Supported Blockchains\n\n`;
 md +=
   "We currently support most EVM chains.\n\nDon't see a blockchain you want?  Email support@litprotocol.com to request that we add one.\n\n";
 
-md += Object.keys(LIT_CHAINS)
+md += Object.keys(ALL_LIT_CHAINS)
   .map((c) => `- ${capitalizeFirstLetter(c)}\n`)
   .join("");
 

@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Custom Contract Calls
+# EVM Custom Contract Calls
 
-This page defines how to create access control conditions (referred to as `evmContractConditions` in the code) based on any smart contract call on an EVM compatible network. You may pass any function ABI, and define the `returnValueTest` under which access should be granted.
+This page defines how to create access control conditions (referred to as `evmContractConditions` in the code) based on any smart contract call on an EVM (Ethereum) compatible network. You may pass any function ABI, and define the `returnValueTest` under which access should be granted.
 
 ## Must have at least 1 share in a given MolochDAOv2.1 DAO
 
