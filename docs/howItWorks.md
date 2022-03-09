@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Static Content - Encrypting / locking
 
-This SDK will encrypt your content, and upload your conditions for decryption to each Lit Protocol node. When someone wants to access the content, the SDK will request a message signature from the user's wallet that proves that they own the NFT associated with the content to each Lit Protocol node. The Lit Protocol nodes will then send down the decryption shares and the SDK will combine them and decrypt the content.
+This SDK will encrypt your content, and upload your conditions for decryption to each Lit Protocol node. You should then store the encrypted content in a place of your choosing (IPFS, Arweave, or even somewhere centralized). When someone wants to access the content, the SDK will request a message signature from the user's wallet that proves that they own the NFT associated with the content to each Lit Protocol node. The Lit Protocol nodes will then send down the decryption shares and the SDK will combine them and decrypt the content.
 
 ## Dynamic Content - Authorizing access to a resource via JWT
 

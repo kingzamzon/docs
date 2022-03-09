@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## Storing any static content and manually storing the metadata
 
-You can use Lit to encrypt and store any static content. You have to store the content yourself, but Lit will store who is allowed to decrypt it and enforce this.
+You can use Lit to encrypt and store any static content. You have to store the content yourself (on IPFS, Arweave, or even somewhere centralized), but Lit will store who is allowed to decrypt it and enforce this.
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own their crypto address. Pass the chain you're using.
 
