@@ -63,6 +63,11 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 - errorCode: invalid_auth_sig
 - Reason: The auth_sig passed to the nodes is invalid or could not be verified. make sure that you are passing the correct auth_sig.
 
+### Lit Node Client Not Ready Error
+
+- errorCode: lit_node_client_not_ready
+- Reason: The Lit node client is not ready. This means that the Lit node client is not connected to the Lit network. You should run `await litNodeClient.connect()` before calling any other methods that use the Lit Node Client.
+
 ### Unknown error
 
 - errorCode: unknown_error
