@@ -2,7 +2,7 @@
 sidebar_position: 11
 ---
 
-# Tests
+# Testing
 
 Currently we have manual tests that you can run in the browser in manual_tests.html. To run these, set up a HTTP server in the build folder. We use python for this with the built in SimpleHTTPServer module by running "python2 -m SimpleHTTPServer" and then going to "http://localhost:8000/manual_tests.html" in a browser.
 

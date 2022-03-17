@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Dynamic Content (Content loaded from a server)
+# Dynamic Content (content loaded from a server)
 
 ## Verifying a JWT that was signed by the Lit network
 
@@ -33,7 +33,7 @@ Use dynamic content provisoning to put some dynamic content behind an on chain c
 
 The "saveSigningCondition" function of the LitNodeClient is what you want to use for this, which is documented here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclientsavesigningcondition
 
-Note that you need an active connection to the Lit Protocol nodes to use this function. This connection can be made with the following code:
+Note that you need an active connection to Lit Protocol nodes to use this function. This connection can be made with the following code:
 
 ```
 const litNodeClient = new LitJsSdk.LitNodeClient()
@@ -93,7 +93,7 @@ Obtaining a signed JWT from the Lit network can be done via the getSignedToken f
 
 **Important** You must call `litNodeClient.saveSigningCondition` to save a signing condition before you can request a signature and access a resource via a JWT. See the docs above for "Dynamic Content - Provisoning access to a resource" to learn how to do this.
 
-Note that you need an active connection to the Lit Protocol nodes to use this function. This connection can be made with the following code:
+Note that you need an active connection to Lit Protocol nodes to use this function. This connection can be made with the following code:
 
 ```
 const litNodeClient = new LitJsSdk.LitNodeClient()

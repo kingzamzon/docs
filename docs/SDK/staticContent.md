@@ -43,7 +43,7 @@ const accessControlConditions = [
 ]
 ```
 
-Now, you can save the encryption key with the access control condition, which tells the Lit protocol that users that meet this access control condition should be able to decrypt.
+Now, you can save the encryption key with the access control condition, which tells Lit Protocol that users that meet this access control condition should be able to decrypt.
 
 ```
 const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
@@ -63,7 +63,7 @@ If you followed the instructions above for "Storing any static content and manua
 
 Make sure you have `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedString` variables you created when you stored the content.
 
-There are 2 steps - you must obtain the decrypted symmetric key from the Lit protocol, and then you must decrypt the string using it.
+There are 2 steps - you must obtain the decrypted symmetric key from Lit Protocol, and then you must decrypt the string using it.
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own their crypto address. Pass the chain you're using.
 

@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+slug: /
 ---
 
-# Intro - Start Here
+# Introduction
 
 Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
 
