@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Boolean Logic
 
-The Lit protocol supports boolean logic when checking conditions. Use an object with the "operator" property set to "and" or "or" to combine conditions.
+Lit Protocol supports boolean logic when checking conditions. Use an object with the "operator" property set to "and" or "or" to combine conditions.
 
 For example, if you wanted to check that the user is a member of a DAO or that they hold more than 0.00001 ETH, you could use the following:
 

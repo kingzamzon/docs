@@ -23,6 +23,15 @@ html[data-theme="dark"] {
   --ifm-background-color: #190741;
 }
 
+.navbar {
+  border-bottom: 1px solid rgba(204, 204, 204, 0.5)
+;
+}
+
+/*.menu {*/
+/*  border-right: 1px solid #222;*/
+/*}*/
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
@@ -44,4 +53,8 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .markdown > h2 {
   --ifm-h2-font-size: 1.5rem;
+}
+
+.theme-edit-this-page {
+  display: none;
 }

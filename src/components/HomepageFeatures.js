@@ -27,7 +27,7 @@ const FeatureList = [
     Svg: require("../../static/img/undraw_travel_together_re_kjf2.svg").default,
     description: (
       <>
-        The Lit protocol is the only decentralized access control network. Other
+        Lit Protocol is the only decentralized access control network. Other
         solutions involve a centralized provider to gate access to locked
         content.
       </>
