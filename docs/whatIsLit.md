@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # What is the Lit Protocol?
 
-The Lit Protocol is a decentralized access control protocol running on top of Ethereum and other EVM chains. With LIT, you can harness on-chain access control conditions to do 4 main things:
+The Lit Protocol is a decentralized access control protocol running on top of EVM chains and Solana. With Lit, you can harness on-chain access control conditions to do 4 main things:
 
 - Encrypt and lock static content (images, videos, music, etc) behind an on chain condition (for example, posession of an NFT)
 - Decrypt static content that was locked behind an on chain condition
@@ -15,7 +15,7 @@ With this functionality, the Lit protocol enables the creation of locked NFTs th
 
 ## Features
 
-- Supports many EVM chains. Full list here: https://github.com/LIT-Protocol/lit-js-sdk/blob/main/src/lib/constants.js#L14
+- Supports many EVM chains and Solana. Full list here: https://developer.litprotocol.com/supportedChains
 - Supports many standard contracts, with plans to support any RPC call soon. If you need to interact with a contract that we don't support yet, ask us, and we will implement it
 - Boolean conditions. "And" or "Or" are currently supported.
 - Updateable conditions. Only the creator can update the condition.

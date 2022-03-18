@@ -1,5 +1,5 @@
 [[redirects]]
   from = "/docs/SDK/accessControlConditionExamples"
-  to = "/docs/AccessControlConditions/evmBasicExamples"
+  to = "/AccessControlConditions/evmBasicExamples"
   status = 302
   force = false
