@@ -22,6 +22,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl: "https://github.com/LIT-Protocol/docs/edit/main/website/",
@@ -54,41 +55,27 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
-            position: "left",
-            label: "Get Started",
+            href: "https://lit-protocol.github.io/lit-js-sdk/api_docs_html/",
+            label: "API",
+            position: "right",
           },
-          {
-            type: "doc",
-            docId: "SDK/intro",
-            position: "left",
-            label: "JS SDK",
-          },
-          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: "https://github.com/LIT-Protocol/lit-js-sdk",
             label: "GitHub",
             position: "right",
           },
+          // {
+          //   type: "doc",
+          //   docId: "SDK/intro",
+          //   position: "left",
+          //   label: "JS SDK",
+          // },
+          // {to: '/blog', label: 'Blog', position: 'left'},
         ],
       },
       footer: {
         style: "dark",
         links: [
-          {
-            title: "Docs",
-            items: [
-              {
-                label: "Get Started",
-                to: "/docs/intro",
-              },
-              {
-                label: "JS SDK",
-                to: "/docs/SDK/intro",
-              },
-            ],
-          },
           {
             title: "Community",
             items: [
@@ -119,12 +106,31 @@ const config = {
               },
             ],
           },
+          {
+            title: "Contact",
+            items: [
+              {
+                label: "Support",
+                to: "/support",
+              },
+              // {
+              //   label: "JS SDK",
+              //   to: "/docs/SDK/intro",
+              // },
+            ],
+          },
         ],
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      algolia: {
+        appId: 'YWUCE5ITYO',
+        apiKey: '1fe09d38a47e88b82145913baa9aaceb',
+        indexName: 'litDeveloperDocs',
+
+      }
     }),
   // plugins: [
   //   [ // This plugin does NOT work.  I am using netlify redirects instead.

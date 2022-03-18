@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Updateable Conditions
 
-The Lit Protocol supports updating conditions by the creator of those conditions. This works for static and dynamic content.
+Lit Protocol supports updating conditions by the creator of those conditions. This works for static and dynamic content.
 
 To create an updateable condition, pass `permanant: false` when storing conditions in Lit:
 
@@ -29,7 +29,7 @@ The main idea here is that you just store the new condition in the same way you 
 
 ### Static Content
 
-To update the conditions of some static content, simply pass in the `encryptedSymmetricKey` instead of a `symmetricKey`. The `encryptedSymmetricKey` is hashed to create the "primary key" in the Lit protocol DB that represents the condition, so therefore you must pass it so that the Protocol knows which condition to update.
+To update the conditions of some static content, simply pass in the `encryptedSymmetricKey` instead of a `symmetricKey`. The `encryptedSymmetricKey` is hashed to create the "primary key" in Lit Protocol DB that represents the condition, so therefore you must pass it so that the Protocol knows which condition to update.
 
 For example:
 
