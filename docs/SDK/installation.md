@@ -30,7 +30,8 @@ You can then use all the sdk functions via LitJsSdk for example `LitJsSdk.toggle
 
 ### For the server side (NodeJS), imported
 
-Note: You should use at least Node v15.
+Note: You should use at least Node v16 because of the need for the webcrypto library.  
+You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
 
 ```
 import LitJsSdk from 'lit-js-sdk/build/index.node.js'
