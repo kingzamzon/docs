@@ -4,4 +4,11 @@
   status = 302
   force = false
 
+[[redirects]]
+  from = "docs/accessControlModal"
+  to = "/docs/shareModal"
+  status = 302
+  force = false
+
+
 
