@@ -1,0 +1,112 @@
+---
+sidebar_position: 4
+---
+
+# Unified Access Control Conditions
+
+You can mix and match EVM Basic Conditions, EVM Custom Contract Conditions, and Solana RPC Conditions in the same array. Use the `unifiedAccessControlConditions` parameter to specify the conditions on any of the LitNodeClient methods.
+
+For each condition, you must add a `conditionType` field that specifies the type of condition. The `conditionType` field can be one of the following:
+
+- For EVM Basic Conditions, also known as classic "Access Control Conditions", use the string `evmBasic`
+- For EVM Custom Contract Conditions, use the string `evmContract`
+- For Solana RPC Conditions, use the string `solRpc`
+
+## Passing Wallet AuthSigs for unified access control conditions
+
+All requests to the LitNodeClient API require an AuthSig to be present. The AuthSig is a signature of a message signed by the user's wallet, used to authenticate the request. In the case of unified access control conditions, you may pass an AuthSig for each chain ecosystem that you are using. Meaning, you can pass an EVM wallet signature and a Solana wallet signature at the same time. You can do this by passing an object as the `authSig` parameter with keys of `ethereum` for all EVM chains and `solana` for all Solana chains, an example of which you can see below:
+
+```
+// first, obtain auth sigs from both chains
+var solAuthSig = await LitJsSdk.checkAndSignAuthMessage({
+  chain: "solana",
+});
+
+var ethAuthSig = await LitJsSdk.checkAndSignAuthMessage({
+  chain: "ethereum",
+});
+
+// now, when you want to use the auth sigs, pass them as an object, with the key being the chain name.
+await litNodeClient.saveSigningCondition({
+  unifiedAccessControlConditions,
+  authSig: {
+    solana: solAuthSig,
+    ethereum: ethAuthSig, // note that the key here is "ethereum" for any and all EVM chains.  If you're using Polygon, for example, you should still have "ethereum" here.
+  },
+  resourceId,
+});
+```
+
+## Combining all 3 types of conditions
+
+In this example, we use the `unifiedAccessControlConditions` parameter to combine all 3 types of conditions with "or" operators. The user must meet at least one of the conditions:
+
+- Posess at least 0.1 SOL on Solana
+- Posess at least 0.00001 ETH on Ethereum
+- Posess at least 1 ERC1155 token with id 8 and at contract 0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88 on Polygon
+
+```
+var unifiedAccessControlConditions = [
+  {
+    conditionType: "solRpc",
+    method: "getBalance",
+    params: [":userAddress"],
+    chain: "solana",
+    returnValueTest: {
+      key: "",
+      comparator: ">=",
+      value: "100000000", // equals 0.1 SOL
+    },
+  },
+  { operator: "or" },
+  {
+    conditionType: "evmBasic",
+    contractAddress: "",
+    standardContractType: "",
+    chain: "ethereum",
+    method: "eth_getBalance",
+    parameters: [":userAddress", "latest"],
+    returnValueTest: {
+      comparator: ">=",
+      value: "10000000000000", // equals 0.00001 ETH
+    },
+  },
+  { operator: "or" },
+  {
+    conditionType: "evmContract",
+    contractAddress: "0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88",
+    functionName: "balanceOf",
+    functionParams: [":userAddress", "8"],
+    functionAbi: {
+      type: "function",
+      stateMutability: "view",
+      outputs: [
+        {
+          type: "uint256",
+          name: "",
+          internalType: "uint256",
+        },
+      ],
+      name: "balanceOf",
+      inputs: [
+        {
+          type: "address",
+          name: "account",
+          internalType: "address",
+        },
+        {
+          type: "uint256",
+          name: "id",
+          internalType: "uint256",
+        },
+      ],
+    },
+    chain: "polygon",
+    returnValueTest: {
+      key: "",
+      comparator: ">",
+      value: "0",
+    },
+  },
+];
+```
