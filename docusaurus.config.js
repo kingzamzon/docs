@@ -35,7 +35,7 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-        googleAnalytics: {
+        gtag: {
           trackingID: "G-XK6E9ZB77S",
           anonymizeIP: false,
         },
@@ -125,11 +125,10 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        appId: 'YWUCE5ITYO',
-        apiKey: '1fe09d38a47e88b82145913baa9aaceb',
-        indexName: 'litDeveloperDocs',
-
-      }
+        appId: "YWUCE5ITYO",
+        apiKey: "1fe09d38a47e88b82145913baa9aaceb",
+        indexName: "litDeveloperDocs",
+      },
     }),
   // plugins: [
   //   [ // This plugin does NOT work.  I am using netlify redirects instead.
