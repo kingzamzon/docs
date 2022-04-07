@@ -103,6 +103,10 @@ const config = {
                 label: "GitHub",
                 href: "https://github.com/LIT-Protocol/lit-js-sdk",
               },
+              {
+                label: "API",
+                href: "https://lit-protocol.github.io/lit-js-sdk/api_docs_html/",
+              },
             ],
           },
           {
