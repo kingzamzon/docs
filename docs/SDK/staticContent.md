@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Static Content (images, videos, music, docs, etc)
+# Encrypting Static Content (images, videos, music, docs, etc)
 
 ## Storing any static content and manually storing the metadata
 
