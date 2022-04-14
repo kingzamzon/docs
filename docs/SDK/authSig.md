@@ -29,3 +29,7 @@ If you want to clear the authSig stored in the browser local storage, you can us
 ```
 LitJsSdk.disconnectWeb3()
 ```
+
+## EIP 4361
+
+We currently don't use EIP 4361 but are going to replace our signature system with one based on EIP4361 soon.

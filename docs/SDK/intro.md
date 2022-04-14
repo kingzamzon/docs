@@ -19,3 +19,7 @@ Configure Lit to grant users a network signed JWT when they meet blockchain base
 ## Create Interactive HTML NFTs
 
 Create HTML NFTs that contain embedded HTML/JS/CSS that’s only accessible to the owner of the NFT
+
+## API Docs
+
+You can find API documentation at https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html
