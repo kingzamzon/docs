@@ -6,7 +6,7 @@ sidebar_position: 14
 
 ## Does the SDK work with Typescript?
 
-Yes, although types are not yet available, you can still import the SDK for your project. If the error ‘Cannot find module 'lit-js-sdk' or its corresponding type declarations’ appears on your IDE, create a .d.ts file that has ‘declare module 'lit-js-sdk’’ in it.
+Yes, although types are not yet available, you can still import the SDK for your project. If the error ‘Cannot find module 'lit-js-sdk' or its corresponding type declarations’ appears on your IDE, create a .d.ts file that has ‘declare module 'lit-js-sdk’’ in it. If you'd like to see an example of a typescript project that imports the lit-js-sdk, check out the [Ceramic Integration](https://github.com/LIT-Protocol/CeramicIntegration).
 
 ## Why do I need to call saveSigningCondition() before getSignedToken()? Shouldn’t the former just return a JWT?
 
