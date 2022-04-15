@@ -22,7 +22,7 @@ If the resourceId is exactly the same, the nodes will not hold a second copy. Ho
 
 ## If I already have a connect/sign mechanism in place, can I just create my own authSig object and pass it to saveSigningCondition() instead of using checkAndSignAuthMessage()?
 
-Yes, you most certainly can. The following link provides an example of how this can be done: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.js. One important callout, however, is that the message to sign should include a timestamp (following the EIP4361 standard is recommended). Also note that we are going to replace this with an EIP4361 implementation soon.
+Yes, you most certainly can. The following link provides an example of how this can be done: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.js. You MUST use an EIP 4361 compliant signature (aka Sign in with Ethereum)
 
 ## Can more than one condition be added for access control?
 

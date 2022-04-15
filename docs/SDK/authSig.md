@@ -4,7 +4,7 @@ sidebar_position: 6
 
 # Wallet Signatures
 
-To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation.
+To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation. You can use any EIP 4361 compliant signature (Sign in with Ethereum) for the authSig. You do not need to use the Lit JS SDK to obtain the signature as long as it's EIP 4361 compliant.
 
 ## Obtaining the authSig
 
@@ -29,7 +29,3 @@ If you want to clear the authSig stored in the browser local storage, you can us
 ```
 LitJsSdk.disconnectWeb3()
 ```
-
-## EIP 4361
-
-We currently don't use EIP 4361 but are going to replace our signature system with one based on EIP4361 soon.
