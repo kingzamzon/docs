@@ -19,6 +19,7 @@ Don't see a blockchain you want?  Email support@litprotocol.com to request that 
 - Rinkeby
 - Cronos
 - Optimism
+- Celo
 - Solana
 - SolanaDevnet
 - SolanaTestnet
