@@ -23,3 +23,5 @@ Don't see a blockchain you want?  Email support@litprotocol.com to request that 
 - Solana
 - SolanaDevnet
 - SolanaTestnet
+- Cosmos
+- Kyve
