@@ -4,13 +4,14 @@ sidebar_position: 4
 
 # Unified Access Control Conditions
 
-You can mix and match EVM Basic Conditions, EVM Custom Contract Conditions, and Solana RPC Conditions in the same array. Use the `unifiedAccessControlConditions` parameter to specify the conditions on any of the LitNodeClient methods.
+You can mix and match EVM Basic Conditions, EVM Custom Contract Conditions, Solana RPC Conditions, and Cosmos Conditions in the same array. Use the `unifiedAccessControlConditions` parameter to specify the conditions on any of the LitNodeClient methods.
 
 For each condition, you must add a `conditionType` field that specifies the type of condition. The `conditionType` field can be one of the following:
 
 - For EVM Basic Conditions, also known as classic "Access Control Conditions", use the string `evmBasic`
 - For EVM Custom Contract Conditions, use the string `evmContract`
 - For Solana RPC Conditions, use the string `solRpc`
+- For Cosmos Conditions, use the string `cosmos`
 
 ## Passing Wallet AuthSigs for unified access control conditions
 
@@ -26,10 +27,15 @@ var ethAuthSig = await LitJsSdk.checkAndSignAuthMessage({
   chain: "ethereum",
 });
 
+var cosmosAuthSig = await LitJsSdk.checkAndSignAuthMessage({
+  chain: "cosmos",
+});
+
 // now, when you want to use the auth sigs, pass them as an object, with the key being the chain name.
 await litNodeClient.saveSigningCondition({
   unifiedAccessControlConditions,
   authSig: {
+    cosmos: cosmosAuthSig,
     solana: solAuthSig,
     ethereum: ethAuthSig, // note that the key here is "ethereum" for any and all EVM chains.  If you're using Polygon, for example, you should still have "ethereum" here.
   },
