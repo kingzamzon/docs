@@ -35,7 +35,6 @@ This shows how to use the Lit JS SDK to provision access to a resource, and then
 
 https://github.com/LIT-Protocol/lit-only-serverside-sdk-example
 
-
 To see examples that utilize the Lit JS SDK, please visit the [JS SDK examples page](/docs/SDK/examples).
 
 ## Other Examples
@@ -49,3 +48,5 @@ To see examples that utilize the Lit JS SDK, please visit the [JS SDK examples p
 - An example of how to use the Access Control Conditions Modal: https://github.com/LIT-Protocol/lit-access-control-conditions-modal-example
 
 - An example of how to create a Lit AuthSig (aka a wallet signature) on the server side, where you don't have access to metamask: https://github.com/LIT-Protocol/hotwallet-signing-example
+
+- AN example of an ACL smart contract that you could easily use with Lit's EVM Custom Contract Conditions to create a flexible and powerful authorization system: https://github.com/masaun/ACL-smart-contract
