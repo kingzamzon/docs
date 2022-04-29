@@ -28,6 +28,8 @@ const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
 );
 ```
 
+Note: `encryptedString` will be a Blob and `symmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
+
 Next, define the access control conditions where a user will be allowed to decrypt. In this example, the user must hold 0.00001 ETH.
 
 ```
@@ -60,6 +62,8 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 });
 
 ```
+
+Note: `encryptedSymmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
 
 You now need to save the `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedString`. You will present the `accessControlConditions` and `encryptedSymmetricKey` to obtain the decrypted symmetric key, which you can then use to decrypt the `encryptedString`.
 
@@ -89,6 +93,8 @@ const symmetricKey = await window.litNodeClient.getEncryptionKey({
 })
 ```
 
+Note: `symmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
+
 Now, decrypt the content. In the example, we used `encryptString()` so we will use `decryptString()` to decrypt. Note that if you used something else to encrypt the content, you will need to use the appropriate decrypt method.
 
 ```
@@ -113,6 +119,8 @@ Next, encrypt the content.
 ```
 const { encryptedFile, symmetricKey } = await LitJsSdk.encryptFile({file});
 ```
+
+Note: `encryptedFile` will be a Blob and `symmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
 
 Next, define the access control conditions where a user will be allowed to decrypt. In this example, the user must hold 0.00001 ETH.
 
@@ -147,6 +155,8 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 
 ```
 
+Note: `encryptedSymmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
+
 You now need to save the `accessControlConditions`, `encryptedSymmetricKey`, and the `encryptedFile`. You will present the `accessControlConditions` and `encryptedSymmetricKey` to obtain the decrypted symmetric key, which you can then use to decrypt the `encryptedFile`.
 
 ## Decrypting a file with "decryptFile()"
@@ -175,6 +185,8 @@ const symmetricKey = await window.litNodeClient.getEncryptionKey({
 })
 ```
 
+Note: `symmetricKey` will be a Uint8Array. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
+
 Now, decrypt the content. In the example, we used `encryptFile()` so we will use `decryptFile()` to decrypt.
 
 ```
@@ -183,6 +195,8 @@ const decryptedFile = await LitJsSdk.decryptFile({
   symmetricKey: retrievedSymmKey,
 });
 ```
+
+Note: `decryptedFile` will be an ArrayBuffer. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
 
 Now, your cleartext file is located in the `decryptedFile` variable.
 
@@ -235,6 +249,8 @@ const { zipBlob } = await LitJsSdk.encryptFileAndZipWithMetadata({
 });
 ```
 
+Note: `zipBlob` will be a Blob. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
+
 Now, all you need to save is the `zipBlob`.
 
 ## Decrypting a zip file with all metadata included with "decryptZipFileWithMetadata()"
@@ -263,5 +279,7 @@ const { decryptedFile } = await LitJsSdk.decryptZipFileWithMetadata({
   file: zipBlob,
 });
 ```
+
+Note: `decryptedFile` will be an ArrayBuffer. API docs with detailed type info are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
 
 Now, your cleartext file is located in the `decryptedFile` variable which is an ArrayBuffer.
