@@ -104,7 +104,7 @@ This is an integration with https://poap.xyz
 
 It checks that a user holds a specific POAP. Enter the POAP name in the final returnValueTest value. In this example the POAP is "Burning Man 2021".
 
-This actually performs two checks, so there are two access control conditions tested. The first checks that the name of any of the user's POAPs is a match to the returnValueTest value and uses the xDai chain. The second does the same but with ethereum.  Since POAPs live on both xDai and Ethereum chains both need to be checked, separated by an 'or' operator.  **Both conditions should be identical other than the chain.**
+This actually performs two checks, so there are two access control conditions tested. The first checks that the name of any of the user's POAPs is a match to the returnValueTest value and uses the xDai chain. The second does the same but with ethereum. Since POAPs live on both xDai and Ethereum chains both need to be checked, separated by an 'or' operator. **Both conditions should be identical other than the chain.**
 
 You may use "contains" or "=" for the final returnValueTest comparator. For example, if there are POAPs issued every year for Burning Man, with names in the format of "Burning Man 2021" and "Burning Man 2022" but you just want to check that the user holds any Burning Man POAP, you could use "contains" "Burning Man" and all Burning Man POAPs would pass the test. If you wanted to check for a specific year like 2021, you could use "=" "Burning Man 2021"
 
@@ -265,4 +265,24 @@ const accessControlConditions = [
     }
   }
 ]
+```
+
+## Timelock (Time-based Access Control)
+
+This will get the latest block from your blockchain of choice, and compare it to the unix timestamp that was specified in the `returnValueTest`. In this example, the user will be able to unlock after unix timestamp `1651276942`. Make sure to pass the unix timestamp as a string.
+
+```
+var accessControlConditions = [
+  {
+    contractAddress: "",
+    standardContractType: "timestamp",
+    chain: "ethereum",
+    method: "eth_getBlockByNumber",
+    parameters: ["latest"],
+    returnValueTest: {
+      comparator: ">=",
+      value: "1651276942"
+    },
+  },
+];
 ```
