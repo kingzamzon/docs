@@ -7627,10 +7627,10 @@ lit-connect-modal@^0.1.8:
   dependencies:
     micromodal "^0.4.10"
 
-lit-js-sdk@^1.1.167:
-  version "1.1.167"
-  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.167.tgz#80351db46b0fb4e5fed55da09bc0cff92e6a6056"
-  integrity sha512-TFwOdY5YmJ8dnqF2Qt0TD+Lq1YyN04vAKAFWzg/5/WAyQwepqDj4QAyFzHCqo7m7u+AG5gJQ6nLbIYGcbCgAkg==
+lit-js-sdk@^1.1.175:
+  version "1.1.175"
+  resolved "https://registry.yarnpkg.com/lit-js-sdk/-/lit-js-sdk-1.1.175.tgz#f5514729127dfd6a765764152e3ccf7f7e5b79d8"
+  integrity sha512-7pU5Z9VSLywDASttqKSwr874P9wDzPAR5oo8BNwGo9nUrl93JPQuMjXzC2Nb28YDmLHeiC3Og+Cxseqku+rn4A==
   dependencies:
     "@cosmjs/amino" "^0.28.4"
     "@cosmjs/launchpad" "^0.27.1"

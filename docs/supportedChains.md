@@ -11,6 +11,7 @@ Don't see a blockchain you want?  Email support@litprotocol.com to request that 
 - Bsc
 - Arbitrum
 - Avalanche
+- Fuji
 - Harmony
 - Kovan
 - Mumbai
