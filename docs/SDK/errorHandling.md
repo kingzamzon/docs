@@ -73,6 +73,11 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 - errorCode: invalid_unified_condition_type
 - Reason: In a unified access control condition, you passed an invalid `conditionType`. Check the docs to see what valid types are: https://developer.litprotocol.com/docs/accesscontrolconditions/unifiedaccesscontrolconditions/
 
+### RPC Error
+
+- errorCode: rpc_error
+- Reason: The Lit Node(s) could not complete the RPC call. This could be because the RPC servers are down, or because the RPC call is making an incorrect smart contract call that reverts.
+
 ### Unknown error
 
 - errorCode: unknown_error
