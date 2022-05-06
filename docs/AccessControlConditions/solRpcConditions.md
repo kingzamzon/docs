@@ -8,6 +8,25 @@ Solana Access Control conditions work a little different than EVM access control
 
 Note that you can use Solana RPC Conditions in the same way you would use EVM conditions, but you should pass a `solRpcConditions` array instead of a `accessControlConditions` or `evmContractConditions` array.
 
+## Must posess an NFT in a Metaplex collection
+
+In this example, we are checking if the user owns one or more NFTs in the Metaplex collection with address FfyafED6kiJUFwEhogyTRQHiL6NguqNg9xcdeoyyJs33. The collection must be verified. Note that "balanceOfMetaplexCollection" is not a real Solana RPC call. It is a custom RPC call that is specific to Lit Protocol.
+
+```
+var solRpcConditions = [
+  {
+    method: "balanceOfMetaplexCollection",
+    params: ["FfyafED6kiJUFwEhogyTRQHiL6NguqNg9xcdeoyyJs33"],
+    chain,
+    returnValueTest: {
+      key: "",
+      comparator: ">",
+      value: "0",
+    },
+  },
+];
+```
+
 ## Must posess at least 0.1 SOL
 
 In this example, we are checking if the user's wallet contains more than 0.1 SOL. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
