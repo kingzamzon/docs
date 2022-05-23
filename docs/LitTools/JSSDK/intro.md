@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Intro
+# Intro to JS SDK
 
 The Lit JS SDK is a javascript SDK and can be found here: https://github.com/LIT-Protocol/lit-js-sdk
 
