@@ -10,6 +10,10 @@ The network acts as a decentralized access control list (ACL) which leverages on
 
 Explore our guides and examples to integrate Lit and learn more by reading [What is Decentralized Access Control](https://blog.litprotocol.com/?p=what-is-decentralized-access-control)
 
-## Support
+## Join the community
 
-If you need help, join our discord: https://litgateway.com/discord
+Join the [Discord](https://litgateway.com/discord) to ask questions and engage with the community.
+
+Follow us on [Twitter](https://twitter.com/LitProtocol) for updates.
+
+Read the [blog](https://blog.litprotocol.com/) for news and announcements on the state of decentralized access control.
