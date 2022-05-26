@@ -5,8 +5,14 @@
   force = false
 
 [[redirects]]
-  from = "docs/accessControlModal"
-  to = "/docs/shareModal"
+  from = "/docs/accessControlModal"
+  to = "/docs/LitTools/shareModal"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/docs/jwtVerifier"
+  to = "/docs/LitTools/jwtVerifier"
   status = 302
   force = false
 
@@ -16,3 +22,63 @@
   status = 302
   force = false
 
+[[redirects]]
+  from = "/docs/oauth"
+  to = "/docs/LitTools/oauth"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ceramicIntegration"
+  to = "/docs/LitTools/ceramicIntegration"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/intro"
+  to = "/docs/LitTools/JSSDK/intro"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/installation"
+  to = "/docs/LitTools/JSSDK/installation"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/staticContent"
+  to = "/docs/LitTools/JSSDK/staticContent"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/dynamicContent"
+  to = "/docs/LitTools/JSSDK/dynamicContent"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/HTMLNfts"
+  to = "/docs/LitTools/JSSDK/HTMLNfts"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/authSig"
+  to = "/docs/LitTools/JSSDK/authSig"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/errorHandling"
+  to = "/docs/LitTools/JSSDK/errorHandling"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/SDK/tests"
+  to = "/docs/LitTools/JSSDK/tests"
+  status = 302
+  force = false
+  
