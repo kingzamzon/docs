@@ -10,5 +10,9 @@
   status = 302
   force = false
 
-
+[[redirects]]
+  from = "/docs/examples"
+  to = "/docs/ExamplesAndGuides/examples"
+  status = 302
+  force = false
 
