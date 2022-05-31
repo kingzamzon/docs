@@ -1,8 +1,15 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
-# Installation
+# Ceramic Integration Intro
+
+We are going to build simple web application encrypting and decrypting a string using Lit's Ceramic SDK. Check out the complete project [here](https://github.com/LIT-Protocol/CeramicIntegrationExample).
+
+The guide currently covers how to use Lit once you have set up a front end. Feel free to use the code from the complete project or create your own.
+
+
+## Installation
 
 Create a new yarn project:
 

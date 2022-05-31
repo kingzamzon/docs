@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Encrypting
@@ -34,4 +34,3 @@ const response = litCeramicIntegration
 This uses an example streamID and prints the secret value to the console.
 
 Save the streamID, you'll need it to decrypt the message.
-

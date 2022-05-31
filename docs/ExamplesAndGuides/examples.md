@@ -1,8 +1,8 @@
 ---
-sidebar_position: 8
+sidebar_position: 1
 ---
 
-# Example Code
+# Examples
 
 ## JS SDK Examples
 
