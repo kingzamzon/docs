@@ -72,7 +72,7 @@ This example checks if the user owns at least 1 token with address 29G6GSKNGP8K6
 ```
 var solRpcConditions = [
   {
-    method: "GetTokenAccountsByOwner",
+    method: "getTokenAccountsByOwner",
     params: [
       ":userAddress",
       {
