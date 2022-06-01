@@ -22,6 +22,6 @@ With this functionality, Lit Protocol enables the creation of locked NFTs that c
 - Permanant conditions. When a condition is stored as permanant, it becomes impossible to update it, forever.
 - Use your favorite storage solution including IPFS/Filecoin, Arweave, Sia, Storj, or even use centralized storage.
 
-## State of the network today - AlphaNet
+## State of the network today - Jalapeno Mainnet
 
-Right now, Lit Protocol is in an alpha state (the "AlphaNet") and the Lit Protocol creators are running all the nodes. It is unaudited and the nodes are not distributed yet. There are various security improvements to be made, and cryptoeconomic guarantees as a result of staking are not in place yet. Data is persistent and we plan to support this network in perpetuity. We are in the active process of decentralizing and working towards a Mainnet release.
+Right now, Lit Protocol is in an alpha state (the "Jalapeno Mainnet") and the Lit Protocol creators are running all the nodes. It is unaudited and the nodes are not distributed yet. There are various security improvements to be made, and cryptoeconomic guarantees as a result of staking are not in place yet. Data is persistent and we plan to support this network in perpetuity. We are in the active process of decentralizing and working towards a decentralized mainnet release.
