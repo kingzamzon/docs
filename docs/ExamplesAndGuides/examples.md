@@ -12,6 +12,12 @@ This example code shows how to lock an entire React app behind a Lit JWT.
 
 https://github.com/LIT-Protocol/lit-locked-react-app-minimal-example
 
+### Client side encryption / decryption of static content
+
+This file contains a working implementation of the functions needed to use Lit for encrypting / decrypting static content
+
+https://github.com/crypto-mandala/lens-mandala/blob/main/lib/lit.ts
+
 ### Minimal JWT verification example to gate dynamic content on a server
 
 This repo is a minimal example to:
