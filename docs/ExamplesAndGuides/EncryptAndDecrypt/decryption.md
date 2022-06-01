@@ -21,7 +21,7 @@ In order to decrypt the string, we need the encryptedSymmetricKey and the encryp
       })
 
       const decryptedString = await LitJsSdk.decryptString(
-        new Blob([hexStringToArrayBuffer(encryptedString)]),
+        new Blob([encryptedString]),
         symmetricKey
       );
   

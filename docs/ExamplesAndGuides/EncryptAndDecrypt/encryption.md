@@ -21,10 +21,10 @@ const accessControlConditions = [
   ]
 ```
 
-Within your Lit class, create an encrypt function that takes in a message and a token address. 
+Within your Lit class, create an encrypt function that takes in a message. 
 
 ```
-async encrypt(message: string, tokenAddress: string) {
+async encrypt(message: string) {
     if (!this.litNodeClient) {
       await this.connect()
     }
