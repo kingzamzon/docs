@@ -53,6 +53,11 @@ html[data-theme="dark"] .docusaurus-highlight-code-line {
 
 .markdown > h2 {
   --ifm-h2-font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: 1.25rem;
 }
 
 .theme-edit-this-page {
