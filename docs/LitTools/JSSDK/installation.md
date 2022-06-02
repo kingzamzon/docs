@@ -93,6 +93,7 @@ await app.locals.litNodeClient.connect()
 **Note** that client.connect() will return a promise that resolves when you are connected to the Lit Network.
 
 ### SDK installed via yarn / NPM (client side usage)
+Within a file (we like to call ours `lit.js`), set up your Lit object.
 
 ```
 const client = new LitJsSdk.LitNodeClient()
