@@ -32,6 +32,14 @@ This functionality is essentially trustlessly trading a private key, which has b
 
 ## What can I use Lit Actions for?
 
+Lit Actions are essentially decentralized serverless functions. You can use Lit Actions to sign and decrypt data with PKPs.
+
+## Why is any of this useful?
+
+Because Lit Actions + PKPs + web3 storage can be a replacement for a traditional web2 backend. Imagine a web3 Twitter clone that stores the data on Ceramic. You could create a PKP that owns a Ceramic stream, and then grant access to sign with that PKP to a group of Lit Actions for things like `createPost()` and `likePost()`. Your Lit Actions can work just like a web2 backend, with business logic to ensure that only correct data is written to your Ceramic Stream. For example, the `likePost()` function could check that a user has not already liked a post, and only write the like to the stream if they have not already liked it.
+
+In web2, your backend has "god mode" access to the DB. Using Lit and Web3 storage, you can create Lit Actions that have "god mode" over a Ceramic stream, because the Lit Action has been granted the ability to sign with a PKP that owns the Ceramic stream. However, the Lit Action will only write to the stream according to the logic of the code inside it. This makes moving from a centralized web2 paradigm to a decentralized web3 paradigm much easier.
+
 ## State of the network today - Serrano Testnet
 
 The Lit Actions and PKP network is in a testnet state. In this state, we have not implemented the ability to generate a new PKP, and a single PKP is shared by all Serrano Testnet users. We will soon lift this limitation and provide the ability to generate a new non-shared PKP. The data on the Serrano Testnet is not persistent and may be erased at any time. Therefore, we do not recommend storing anything of value on the Serrano Testnet.
