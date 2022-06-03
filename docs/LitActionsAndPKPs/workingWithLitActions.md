@@ -13,7 +13,7 @@ You'll also need some client side JS to collect the responses from the Lit Nodes
 
 ## Hello World
 
-First, install the Lit JS SDK `ecdsa` branch:
+First, install the Lit JS SDK `actions` branch:
 
 ```
 yarn add git+https://github.com/LIT-Protocol/lit-js-sdk.git#actions
