@@ -92,20 +92,16 @@ This is useful if you already know the token account address and want to check t
 ```
 
 var solRpcConditions = [
-{
-method: "getTokenAccountBalance",
-params: ["E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH"],
-chain: 'solana',
-returnValueTest: {
-key: "amount",
-comparator: ">",
-value: "0",
-},
-},
+  {
+    method: "getTokenAccountBalance",
+    params: ["E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH"],
+    chain: 'solana',
+    returnValueTest: {
+      key: "amount",
+      comparator: ">",
+      value: "0",
+    },
+  },
 ];
-
-```
-
-```
 
 ```
