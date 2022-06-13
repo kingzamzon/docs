@@ -10,6 +10,8 @@ Use this UI library to allow users to setup custom blockchain based access contr
 
 https://github.com/LIT-Protocol/lit-share-modal-v3
 
+A playground for experimenting with the modal is available here: https://lit-share-modal-v3-playground.netlify.app/
+
 ## Usage in Vanilla JS (No React)
 
 A version of this library without React will be available soon.
