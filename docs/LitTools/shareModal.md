@@ -23,5 +23,5 @@ A version of this library without React will be available soon.
 
 ## Usage in Next.js
 
-If you are using NextJS, the CSS injection will not work. Set the `injectCSS` prop to false, and import the CSS file directly from `node_modules/lit-share-modal/dist/ShareModal.css` in `_app.tsx` or `_app.jsx`.
+If you are using NextJS, the CSS injection will not work. Set the `injectCSS` prop to false, and import the CSS file directly from `node_modules/lit-share-modal-v3/dist/ShareModal.css` in `_app.tsx` or `_app.jsx`.
 More information is available in the docs.  https://github.com/LIT-Protocol/lit-share-modal-v3
