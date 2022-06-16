@@ -1,11 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 ---
 
-# Examples
-
-## JS SDK Examples
-
+# Example Projects
 ### Gating dynamic and interactive content inside a React app
 
 This example code shows how to lock an entire React app behind a Lit JWT.
@@ -16,7 +13,7 @@ https://github.com/LIT-Protocol/lit-locked-react-app-minimal-example
 
 This file contains a working implementation of the functions needed to use Lit for encrypting / decrypting static content
 
-https://github.com/crypto-mandala/lens-mandala/blob/main/lib/lit.ts
+https://github.com/debbly/IPFS-lit/blob/main/src/lib/lit.js
 
 ### Minimal JWT verification example to gate dynamic content on a server
 
