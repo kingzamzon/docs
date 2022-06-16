@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
 ---
 
 # Authing Dynamic Content via JWT (content loaded from a server)
