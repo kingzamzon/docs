@@ -14,3 +14,6 @@ With Lit Protocol, you can set on-chain conditions like "user must hold an NFT" 
 * The result of any smart contract function call
 * User owns a specific wallet address
 * Using boolean operations (AND + OR) for any of the above
+
+## Tools for Access Control Condition
+The [Lit Share Modal v3](https://github.com/LIT-Protocol/lit-share-modal-v3) is a tool for creating access control conditions for securing content with Lit Protocol. 

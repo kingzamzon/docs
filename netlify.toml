@@ -105,3 +105,15 @@ force = false
   to = "/docs/Introduction/whatIsLitProtocol"
   status = 302
   force = false
+
+[[redirects]]
+  from = "/docs/AccessControlConditions/evmBasicExamples"
+  to = "/docs/AccessControlConditions/EVM/basicExamples"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/AccessControlConditions/evmCustomContractCalls"
+  to = "/docs/AccessControlConditions/EVM/customContractCalls"
+  status = 302
+  force = false
