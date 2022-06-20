@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# EVM Custom Contract Calls
+# Custom Contract Calls
 
 This page defines how to create access control conditions (referred to as `evmContractConditions` in the code) based on any smart contract call on an EVM (Ethereum) compatible network. You may pass any function ABI, and define the `returnValueTest` under which access should be granted.
 
