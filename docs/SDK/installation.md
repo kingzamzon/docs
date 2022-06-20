@@ -125,3 +125,9 @@ document.addEventListener('lit-ready', function (e) {
   setNetworkLoading(false) // replace this line with your own code that tells your app the network is ready
 }, false)
 ```
+
+## Debug Logging and Lit Node Client configuration
+
+The LitNodeClient object has a number of config params you can pass, documented here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient
+
+For example, to turn off logging in the JS SDK, you could set debug to false like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`
