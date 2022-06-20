@@ -47,6 +47,72 @@ import LitJsSdk from 'lit-js-sdk/build/index.node.js'
 **Note**: You should use at least Node v16 because of the need for the webcrypto library.  
 You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
 
+### For React
+
+First, add `lit-js-sdk` to your react app
+
+```
+yarn add lit-js-sdk
+```
+
+If you are using `create-react-app ≥ 5` you may be see this error:
+
+```jsx
+BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
+This is no longer the case. Verify if you need this module and configure a polyfill for it.
+```
+
+This is because NodeJS polyfills are no longer included in the node modules.
+
+You will need to install this NPM package to rewrite your app
+
+```jsx
+yarn add react-app-rewired --dev
+```
+
+and the following for polyfills:
+
+```jsx
+yarn add --dev react-app-rewired process crypto-browserify stream-browserify stream-http buffer path-browserify
+```
+
+Then, in the root of your project, create `config-overrides.js` with the following content:
+
+```jsx
+const webpack = require('webpack');
+
+module.exports = function override(config) {
+    const fallback = config.resolve.fallback || {};
+    Object.assign(fallback, {
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "http": require.resolve("stream-http"),
+        "path": require.resolve("path-browserify")
+    })
+    config.resolve.fallback = fallback;
+    config.plugins = (config.plugins || []).concat([
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
+            Buffer: ['buffer', 'Buffer']
+        })
+    ])
+    return config;
+}
+```
+
+Finally, you will need to change your `react-scripts` to `react-app-rewired` in your `package.json`
+
+```jsx
+"scripts": {
+	"start": "react-app-rewired start",
+	"build": "react-app-rewired build",
+	"test": "react-app-rewired test",
+	"eject": "react-app-rewired eject"
+},
+```
+
+The missing modules are now included, your app should be working with `import LitJsSdk from 'lit-js-sdk';`
+
 ## Connection to the Lit Network
 
 The SDK requires an active connection to the LIT nodes to perform most functions (notably, a connection to the LIT nodes is not required if you are just verifying a JWT). In web apps, this is typically done on first page load and can be shared between all your pages. In NodeJS apps, this is done when when the server starts.
