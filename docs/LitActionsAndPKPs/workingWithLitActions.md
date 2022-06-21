@@ -13,10 +13,10 @@ You'll also need some client side JS to collect the responses from the Lit Nodes
 
 ## Hello World
 
-First, install the Lit JS SDK `actions` branch:
+First, install the Lit JS SDK `beta` tag:
 
 ```
-yarn add git+https://github.com/LIT-Protocol/lit-js-sdk.git#actions
+yarn add lit-js-sdk@beta
 ```
 
 Then, write some Javascript code that will request a signature from the Lit Nodes. This Lit Action will sign the string "Hello World" with the shared testnet ECDSA key and return the signature.
@@ -71,7 +71,7 @@ const go = async () => {
   const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
 
   const litNodeClient = new LitJsSdk.LitNodeClient();
-  await litNodeClient.connect();
+  await litNodeClient.connect({ litNetwork: "serrano" });
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
@@ -113,7 +113,7 @@ const authSig = {
 
 const go = async () => {
   const litNodeClient = new LitJsSdk.LitNodeClient();
-  await litNodeClient.connect();
+  await litNodeClient.connect({ litNetwork: "serrano" });
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
