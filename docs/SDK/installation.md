@@ -47,7 +47,7 @@ import LitJsSdk from 'lit-js-sdk/build/index.node.js'
 **Note**: You should use at least Node v16 because of the need for the webcrypto library.  
 You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
 
-### For React
+<!-- ### For React
 
 First, add `lit-js-sdk` to your react app
 
@@ -111,7 +111,7 @@ Finally, you will need to change your `react-scripts` to `react-app-rewired` in 
 },
 ```
 
-The missing modules are now included, your app should be working with `import LitJsSdk from 'lit-js-sdk';`
+The missing modules are now included, your app should be working with `import LitJsSdk from 'lit-js-sdk';` -->
 
 ## Connection to the Lit Network
 
