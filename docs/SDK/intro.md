@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # Intro to the Lit SDK
-## With the JS SDK you can interact with the Lit network by:
+## With the Lit SDK you can interact with the Lit network by:
 
 ### Encrypting Static Content (images, videos, music, documents, etc)
 
