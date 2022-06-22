@@ -11,6 +11,8 @@ Use yarn or npm to add the lit-js-sdk to your product:
 
 ```
 yarn add lit-js-sdk
+# or
+npm install lit-js-sdk
 ```
 
 ## Importing
