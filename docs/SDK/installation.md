@@ -26,7 +26,7 @@ values={[
 <TabItem value="imported">
 
 ```html
-    import LitJsSdk from 'lit-js-sdk'
+import LitJsSdk from 'lit-js-sdk'
 ```
 	
 </TabItem>
@@ -34,7 +34,7 @@ values={[
 <TabItem value="script-tag">
 
 ```html
-    <script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
+<script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
 ```
 
 If you decide to import the SDK with the script tag, we provide a web-ready package with all dependencies included at build/index.web.js.
