@@ -70,8 +70,8 @@ const go = async () => {
   // this will get it from metamask or any browser wallet
   const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
 
-  const litNodeClient = new LitJsSdk.LitNodeClient();
-  await litNodeClient.connect({ litNetwork: "serrano" });
+  const litNodeClient = new LitJsSdk.LitNodeClient({ litNetwork: "serrano" });
+  await litNodeClient.connect();
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
@@ -112,8 +112,8 @@ const authSig = {
 };
 
 const go = async () => {
-  const litNodeClient = new LitJsSdk.LitNodeClient();
-  await litNodeClient.connect({ litNetwork: "serrano" });
+  const litNodeClient = new LitJsSdk.LitNodeClient({ litNetwork: "serrano" });
+  await litNodeClient.connect();
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
