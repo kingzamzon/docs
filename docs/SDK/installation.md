@@ -11,11 +11,11 @@ Use yarn or npm to add the lit-js-sdk to your product:
 
 ```
 yarn add lit-js-sdk
+# or
+npm install lit-js-sdk
 ```
 
 ## Importing
-
-### For the browser
 
 <Tabs
 defaultValue="imported"
@@ -25,18 +25,24 @@ values={[
 ]}>
 <TabItem value="imported">
 
-    import LitJsSdk from 'lit-js-sdk'
-
+```html
+import LitJsSdk from 'lit-js-sdk'
+```
+	
 </TabItem>
+	
 <TabItem value="script-tag">
 
-    <script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
-
-</TabItem>
-</Tabs>
+```html
+<script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
+```
 
 If you decide to import the SDK with the script tag, we provide a web-ready package with all dependencies included at build/index.web.js.
 You can use all the SDK functions via LitJsSdk, for example `LitJsSdk.encryptString()`
+	
+</TabItem>
+</Tabs>
+
 
 ### For the server side (NodeJS), imported
 
@@ -44,8 +50,12 @@ You can use all the SDK functions via LitJsSdk, for example `LitJsSdk.encryptStr
 import LitJsSdk from 'lit-js-sdk/build/index.node.js'
 ```
 
-**Note**: You should use at least Node v16 because of the need for the webcrypto library.  
+:::note
+
+You should use at least Node v16 because of the need for the webcrypto library.  
 You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
+
+:::
 
 <!-- ### For React
 
@@ -127,29 +137,36 @@ values={[
 ]}>
 <TabItem value="yarn">
 
-    const client = new LitJsSdk.LitNodeClient()
-    await client.connect()
-    window.litNodeClient = client
-
-</TabItem>
-<TabItem value="script">
-
-    function litJsSdkLoaded(){
-      var litNodeClient = new LitJsSdk.LitNodeClient()
-      litNodeClient.connect()
-      window.litNodeClient = litNodeClient
-    }
-
-</TabItem>
-</Tabs>
+```html
+const client = new LitJsSdk.LitNodeClient()
+await client.connect()
+window.litNodeClient = client
+```	
 
 In the **yarn / NPM** example:
 
 Note that client.connect() will return a promise that resolves when you are connected to the Lit Network. You may also listen for the `lit-ready` event. In the code below, we make the litNodeClient available as a global variable so that it can be used throughout the web app.
 
+</TabItem>
+<TabItem value="script">
+
+```html
+function litJsSdkLoaded(){
+    var litNodeClient = new LitJsSdk.LitNodeClient()
+    litNodeClient.connect()
+    window.litNodeClient = litNodeClient
+}
+```
+	
 In the **script tag** example:
 
 If you're using the script tag with `onload='LitJsSdk.litJsSdkLoadedInALIT()'` then the SDK will connect to the Lit Network and put a connected LitNodeClient into `window.litNodeClient` for you. Alternatively, you can put your own connection code in the `litJsSdkLoaded()` function and call it yourself with `onload=litJsSdkLoaded()`.
+
+</TabItem>
+</Tabs>
+
+
+
 
 ### SDK installed via yarn / NPM (NodeJS / serverside usage)
 
