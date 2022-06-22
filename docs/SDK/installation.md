@@ -17,8 +17,6 @@ npm install lit-js-sdk
 
 ## Importing
 
-### For the browser
-
 <Tabs
 defaultValue="imported"
 values={[
@@ -27,18 +25,24 @@ values={[
 ]}>
 <TabItem value="imported">
 
+```html
     import LitJsSdk from 'lit-js-sdk'
-
+```
+	
 </TabItem>
+	
 <TabItem value="script-tag">
 
+```html
     <script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
-
-</TabItem>
-</Tabs>
+```
 
 If you decide to import the SDK with the script tag, we provide a web-ready package with all dependencies included at build/index.web.js.
 You can use all the SDK functions via LitJsSdk, for example `LitJsSdk.encryptString()`
+	
+</TabItem>
+</Tabs>
+
 
 ### For the server side (NodeJS), imported
 
