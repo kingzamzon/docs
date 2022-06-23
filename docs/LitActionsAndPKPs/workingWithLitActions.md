@@ -13,10 +13,10 @@ You'll also need some client side JS to collect the responses from the Lit Nodes
 
 ## Hello World
 
-First, install the Lit JS SDK `beta` tag:
+First, install the Lit JS SDK `serrano` tag:
 
 ```
-yarn add lit-js-sdk@beta
+yarn add lit-js-sdk@serrano
 ```
 
 Then, write some Javascript code that will request a signature from the Lit Nodes. This Lit Action will sign the string "Hello World" with the shared testnet ECDSA key and return the signature.
