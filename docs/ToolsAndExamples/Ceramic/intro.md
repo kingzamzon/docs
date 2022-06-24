@@ -1,8 +1,11 @@
 ---
-sidebar_position: 9
+sidebar_position: 1
 ---
 
-# Ceramic Integration
+# Intro
+## Ceramic Integration
+
+We are going to build simple web application encrypting and decrypting a string using Lit's Ceramic SDK. Check out the complete project [here](https://github.com/LIT-Protocol/CeramicIntegrationExample).
 
 <iframe
   width="560"
@@ -26,7 +29,3 @@ The goal of this project is to provide a decentralized fully serverless database
 ## Code
 
 You can find the NPM module with more extensive documentation here: https://github.com/LIT-Protocol/CeramicIntegration
-
-## Ceramic Integration Guide
-
-Build a simple web application encrypting and decrypting a string using Lit's Ceramic SDK. Check out the complete project [here](https://github.com/LIT-Protocol/CeramicIntegrationExample).

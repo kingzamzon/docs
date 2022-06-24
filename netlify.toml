@@ -6,31 +6,61 @@
 
 [[redirects]]
   from = "/docs/accessControlModal"
-  to = "/docs/LitTools/shareModal"
+  to = "docs/ToolsAndExamples/shareModal"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/docs/LitTools/shareModal"
+  to = "/docs/ToolsAndExamples/shareModal"
   status = 302
   force = true
 
 [[redirects]]
   from = "/docs/jwtVerifier"
-  to = "/docs/LitTools/jwtVerifier"
+  to = "/docs/ToolsAndExamples/additionalIntegrations#js-jwt-verifier"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/LitTools/jwtVerifier"
+  to = "/docs/ToolsAndExamples/additionalIntegrations#js-jwt-verifier"
   status = 302
   force = false
 
 [[redirects]]
   from = "/docs/examples"
-  to = "/docs/ExamplesAndGuides/examples"
+  to = "/docs/ToolsAndExamples/SDKExamples/EncryptAndDecrypt/installation"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/examples"
+  to = "/docs/ToolsAndExamples/SDKExamples/EncryptAndDecrypt/installation"
   status = 302
   force = false
 
 [[redirects]]
   from = "/docs/oauth"
-  to = "/docs/LitTools/oauth"
+  to = "/docs/ToolsAndExamples/additionalIntegrations#oauth-integrations"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/LitTools/oauth"
+  to = "/docs/ToolsAndExamples/additionalIntegrations#oauth-integrations"
   status = 302
   force = false
 
 [[redirects]]
   from = "/docs/ceramicIntegration"
-  to = "/docs/LitTools/ceramicIntegration"
+  to = "/docs/ToolsAndExamples/Ceramic/intro"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/LitTools/ceramicIntegration"
+  to = "/docs/ToolsAndExamples/Ceramic/intro"
   status = 302
   force = false
 
@@ -48,19 +78,37 @@
 
 [[redirects]]
   from = "/docs/LitTools/JSSDK/staticContent"
-  to = "/docs/ExamplesAndGuides/SDKExamples/EncryptAndDecrypt/installation"
+  to = "/docs/ToolsAndExamples/SDKExamples/EncryptAndDecrypt/installation"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/SDKExamples/EncryptAndDecrypt/installation"
+  to = "/docs/ToolsAndExamples/SDKExamples/EncryptAndDecrypt/installation"
   status = 302
   force = false
 
 [[redirects]]
   from = "/docs/LitTools/JSSDK/dynamicContent"
-  to = "/docs/ExamplesAndGuides/SDKExamples/dynamicContent"
+  to = "/docs/ToolsAndExamples/SDKExamples/dynamicContent"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/SDKExamples/dynamicContent"
+  to = "/docs/ToolsAndExamples/SDKExamples/dynamicContent"
   status = 302
   force = false
 
 [[redirects]]
   from = "/docs/LitTools/JSSDK/HTMLNfts"
-  to = "/docs/ExamplesAndGuides/SDKExamples/HTMLNfts"
+  to = "/docs/ToolsAndExamples/SDKExamples/HTMLNfts"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/SDKExamples/HTMLNfts"
+  to = "/docs/ToolsAndExamples/SDKExamples/HTMLNfts"
   status = 302
   force = false
 
@@ -115,5 +163,29 @@ force = false
 [[redirects]]
   from = "/docs/AccessControlConditions/evmCustomContractCalls"
   to = "/docs/AccessControlConditions/EVM/customContractCalls"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/Ceramic/installation"
+  to = "/docs/ToolsAndExamples/Ceramic/installation"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/Ceramic/encryption"
+  to = "/docs/ToolsAndExamples/Ceramic/encryption"
+  status = 302
+  force = false
+
+[[redirects]]
+  from = "/docs/ExamplesAndGuides/Ceramic/decryption"
+  to = "/docs/ToolsAndExamples/Ceramic/decryption"
+  status = 302
+  force = false
+
+  [[redirects]]
+  from = "/docs/ExamplesAndGuides/bundlrxarweave"
+  to = "/docs/ToolsAndExamples/bundlrxarweave"
   status = 302
   force = false
