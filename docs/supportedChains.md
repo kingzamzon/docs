@@ -22,6 +22,8 @@ Don't see a blockchain you want?  Email support@litprotocol.com to request that 
 - Optimism
 - Celo
 - Aurora
+- Eluvio
+- Alfajores
 - Solana
 - SolanaDevnet
 - SolanaTestnet
