@@ -10,7 +10,7 @@ console.log("Updating chains via updateChains.js");
 let md = `# Supported Blockchains\n\n`;
 
 md +=
-  "We currently support most EVM chains.\n\nDon't see a blockchain you want?  Email support@litprotocol.com to request that we add one.\n\n";
+  "We currently support most EVM chains.\n\nDon't see a blockchain you want?  Fill out this form for EVM chains and we'll add it: https://forms.gle/YQV5R7WoRyPk32xc7\n\n";
 
 md += Object.keys(ALL_LIT_CHAINS)
   .map((c) => `- ${capitalizeFirstLetter(c)}\n`)
