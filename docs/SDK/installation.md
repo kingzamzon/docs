@@ -8,12 +8,27 @@ import TabItem from '@theme/TabItem';
 # Installation
 
 Use yarn or npm to add the lit-js-sdk to your product:
+<Tabs
+defaultValue="yarn"
+values={[
+{label: 'yarn', value: 'yarn'},
+{label: 'npm', value: 'npm'},
+]}>
+<TabItem value="yarn">
 
 ```
 yarn add lit-js-sdk
-# or
+```
+	
+</TabItem>
+	
+<TabItem value="npm">
+
+```
 npm install lit-js-sdk
 ```
+</TabItem>
+</Tabs>
 
 ## Importing
 
@@ -145,7 +160,13 @@ window.litNodeClient = client
 
 In the **yarn / NPM** example:
 
-Note that client.connect() will return a promise that resolves when you are connected to the Lit Network. You may also listen for the `lit-ready` event. In the code below, we make the litNodeClient available as a global variable so that it can be used throughout the web app.
+:::note
+
+client.connect() will return a promise that resolves when you are connected to the Lit Network. You may also listen for the `lit-ready` event.
+
+In the code examples we make the litNodeClient available as a global variable so that it can be used throughout the web app.
+
+:::
 
 </TabItem>
 <TabItem value="script">
