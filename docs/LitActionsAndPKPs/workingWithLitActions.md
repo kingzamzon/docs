@@ -54,18 +54,17 @@ import LitJsSdk from "lit-js-sdk";
 
 // this code will be run on the node
 const litActionCode = `
-const go = async () => {
-  // this is the string "Hello World" for testing
-  const toSign = [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
+const go = async () => {  
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId: 1, sigName: "sig1" });
+  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, keyId , sigName });
 };
 
 go();
 `;
 
-const go = async () => {
+const runLitAction = async () => {
   // you need an AuthSig to auth with the nodes
   // this will get it from metamask or any browser wallet
   const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
@@ -75,11 +74,18 @@ const go = async () => {
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
+    // all jsParams can be used anywhere in your litActionCode
+    jsParams: {
+      // this is the string "Hello World" for testing
+      toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
+      keyId: 1,
+      sigName: "sig1",
+    },
   });
   console.log("signatures: ", signatures);
 };
 
-go();
+runLitAction();
 ```
 
 </TabItem>
@@ -90,12 +96,11 @@ import LitJsSdk from "lit-js-sdk/build/index.node.js";
 
 // this code will be run on the node
 const litActionCode = `
-const go = async () => {
-  // this is the string "Hello World" for testing
-  const toSign = [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
+const go = async () => {  
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId: 1, sigName: "sig1" });
+  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, keyId , sigName });
 };
 
 go();
@@ -111,18 +116,112 @@ const authSig = {
   address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
 };
 
-const go = async () => {
+const runLitAction = async () => {
   const litNodeClient = new LitJsSdk.LitNodeClient({ litNetwork: "serrano" });
   await litNodeClient.connect();
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
     authSig,
+    // all jsParams can be used anywhere in your litActionCode
+    jsParams: {
+      // this is the string "Hello World" for testing
+      toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
+      keyId: 1,
+      sigName: "sig1",
+    },
   });
   console.log("signatures: ", signatures);
 };
 
-go();
+runLitAction();
 ```
 
 </TabItem>
 </Tabs>
+
+## Conditional Signing
+
+Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. You can easily check any on-chain condition inside a Lit Action. For example, the below Lit Action will check if the user has at least 1 Wei on Ethereum, and only sign if they do.
+
+```js
+import LitJsSdk from "lit-js-sdk/build/index.node.js";
+
+// this code will be run on the node
+const litActionCode = `
+const go = async () => {
+  // test an access control condition
+  const testResult = await LitActions.checkConditions({conditions, authSig, chain})
+
+  console.log('testResult', testResult)
+
+  // only sign if the access condition is true
+  if (!testResult){
+    return;
+  }
+
+  // this is the string "Hello World" for testing
+  const toSign = [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
+  // this requests a signature share from the Lit Node
+  // the signature share will be automatically returned in the HTTP response from the node
+  const sigShare = await LitActions.signEcdsa({ toSign, keyId: 1, sigName: "sig1" });
+};
+
+
+
+go();
+`;
+
+// you need an AuthSig to auth with the nodes
+// normally you would obtain an AuthSig by calling LitJsSdk.checkAndSignAuthMessage({chain})
+const authSig = {
+  sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
+  derivedVia: "web3.eth.personal.sign",
+  signedMessage:
+    "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
+  address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
+};
+
+const runLitAction = async () => {
+  const litNodeClient = new LitJsSdk.LitNodeClient({
+    litNetwork: "serrano",
+  });
+  await litNodeClient.connect();
+  const signatures = await litNodeClient.executeJs({
+    code: litActionCode,
+    authSig,
+    jsParams: {
+      conditions: [
+        {
+          conditionType: "evmBasic",
+          contractAddress: "",
+          standardContractType: "",
+          chain: "ethereum",
+          method: "eth_getBalance",
+          parameters: [":userAddress", "latest"],
+          returnValueTest: {
+            comparator: ">=",
+            value: "1",
+          },
+        },
+      ],
+      authSig: {
+        sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
+        derivedVia: "web3.eth.personal.sign",
+        signedMessage:
+          "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
+        address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
+      },
+      chain: "ethereum",
+    },
+  });
+  console.log("signatures: ", signatures);
+};
+
+runLitAction();
+```
+
+## More Examples
+
+We have a library of examples here: https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests
+
+Reach out to us on [Discord](https://litgateway.com/discord) if you need help or have questions!
