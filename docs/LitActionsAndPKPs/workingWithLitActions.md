@@ -220,6 +220,55 @@ const runLitAction = async () => {
 runLitAction();
 ```
 
+## Passing JS to be run by the Lit Nodes
+
+There are 2 ways to pass JS run by the Lit Nodes. You may pass the raw JS in the `code` param, or you may pass the IPFS ID of a file that contains the JS in the `ipfsId` param. The following two examples are equivalent:
+
+### Using the code param
+
+```js
+const litActionCode = `
+const go = async () => {
+  // this requests a signature share from the Lit Node
+  // the signature share will be automatically returned in the HTTP response from the node
+  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, keyId, sigName });
+};
+
+go();
+`;
+
+const signatures = await litNodeClient.executeJs({
+  code: litActionCode,
+  authSig,
+  // all jsParams can be used anywhere in your litActionCode
+  jsParams: {
+    // this is the string "Hello World" for testing
+    toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
+    keyId: 1,
+    sigName: "sig1",
+  },
+});
+```
+
+### Using the ipfsId param
+
+```js
+// note that ipfs ID QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV contains the same code as the "litActionCode" variable above.
+// You can see this at https://ipfs.litgateway.com/ipfs/QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV
+const signatures = await litNodeClient.executeJs({
+  ipfsId: "QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV",
+  authSig,
+  // all jsParams can be used anywhere in your Lit Action Code
+  jsParams: {
+    // this is the string "Hello World" for testing
+    toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
+    keyId: 1,
+    sigName: "sig1",
+  },
+});
+```
+
 ## More Examples
 
 We have a library of examples here: https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests

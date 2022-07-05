@@ -24,6 +24,9 @@ Don't see a blockchain you want?  Fill out this form for EVM chains and we'll ad
 - Aurora
 - Eluvio
 - Alfajores
+- Xdc
+- Evmos
+- EvmosTestnet
 - Solana
 - SolanaDevnet
 - SolanaTestnet
