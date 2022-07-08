@@ -8,7 +8,7 @@ Lit Protocol is an open source, decentralized utility that uses encryption to pr
 
 Lit Protocol's main feature is a decentralized access control protocol running on top of EVM chains and Solana. With Lit, you can harness on-chain access control conditions to do 4 main things:
 
-- Encrypt and lock static content (images, videos, music, etc) behind an on chain condition (for example, posession of an NFT).
+- Encrypt and lock static content (images, videos, music, etc) behind an on chain condition (for example, possession of an NFT).
 - Decrypt static content that was locked behind an on chain condition.
 - Authorize network signatures that provide access to dynamic content (for example, a server or network resource) behind an on chain condition.
 - Request a network signed JWT that provisions access and authorization to dynamic content behind an on chain condition.
