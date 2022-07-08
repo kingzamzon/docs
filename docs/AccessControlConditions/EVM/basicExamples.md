@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Basic Examples
 
-This page defines some basic access control conditions (referred to as `accessControlConditions` in the code) based on standard contract types like ERC20, ERC721, and ERC1155 for EVM (Ethereum) chains. Also included are some conditions like wallet address ownership, proof of humanity, and POAP posession. You may set you conditions, and define the `returnValueTest` under which access should be granted.
+This page defines some basic access control conditions (referred to as `accessControlConditions` in the code) based on standard contract types like ERC20, ERC721, and ERC1155 for EVM (Ethereum) chains. Also included are some conditions like wallet address ownership, proof of humanity, and POAP possession. You may set your conditions, and define the `returnValueTest` under which access should be granted.
 
 If you would like to use a contract call for a contract type that is not here, refer to the [custom contract calls](/docs/accessControlConditions/evmCustomContractCalls) page, which will let you pass a function ABI and call any smart contract function. These are referred to as `evmContractConditions` in the code.
 
@@ -56,17 +56,17 @@ const accessControlConditions = [
 
 ## Must posess a specific ERC721 token (NFT)
 
-In this example, the token contract's address is 0x319ba3aab86e04a37053e984bd411b2c63bf229e and the token id we are checking for is 9541.
+In this example, the token contract's address is 0x89b597199dAc806Ceecfc091e56044D34E59985c and the token id we are checking for is 3112.
 
 ```
 const accessControlConditions = [
   {
-    contractAddress: '0x319ba3aab86e04a37053e984bd411b2c63bf229e',
+    contractAddress: '0x89b597199dAc806Ceecfc091e56044D34E59985c',
     standardContractType: 'ERC721',
     chain,
     method: 'ownerOf',
     parameters: [
-      '5954'
+      '3112'
     ],
     returnValueTest: {
       comparator: '=',
@@ -78,12 +78,12 @@ const accessControlConditions = [
 
 ## Must posess any token in an ERC721 collection (NFT Collection)
 
-In this example, the token contract's address is 0x319ba3aab86e04a37053e984bd411b2c63bf229e.
+In this example, the token contract's address is 0xA80617371A5f511Bf4c1dDf822E6040acaa63e71.
 
 ```
 const accessControlConditions = [
   {
-    contractAddress: '0x319ba3aab86e04a37053e984bd411b2c63bf229e',
+    contractAddress: '0xA80617371A5f511Bf4c1dDf822E6040acaa63e71',
     standardContractType: 'ERC721',
     chain,
     method: 'balanceOf',
@@ -100,12 +100,12 @@ const accessControlConditions = [
 
 ## Must posess at least one ERC20 token
 
-In this example, the token contract's address is 0x3110c39b428221012934A7F617913b095BC1078C.
+In this example, the token contract's address is for Maker: 0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2.
 
 ```
 const accessControlConditions = [
   {
-    contractAddress: '0xc0ad7861fe8848002a3d9530999dd29f6b6cae75',
+    contractAddress: '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2',
     standardContractType: 'ERC20',
     chain,
     method: 'balanceOf',
