@@ -506,6 +506,30 @@ const signatures = await litNodeClient.executeJs({
 });
 ```
 
+## Logging inside a Lit Action
+
+You can log normally using console.log() or console.error() and the results will be returned to you as the "logs" key. Note that your Lit Action is being run on multiple nodes that may provide different logs. Therefore, the most common log message will be the one that is returned. Pass the `debug: true` flag to executeJs to see all logs from all nodes.
+
+```js
+const results = await litNodeClient.executeJs({
+  code: "console.log('hello')",
+  authSig,
+});
+console.log("logs: ", results.logs);
+```
+
+## Returning a response
+
+You can return a JSON response from your Lit Action and it will be returned to you as the "response" key. Note that your Lit Action is being run on multiple nodes that may provide different responses. Therefore, the most common response will be the one that is returned. Pass the `debug: true` flag to executeJs to see all logs from all nodes.
+
+```js
+const results = await litNodeClient.executeJs({
+  code: "LitActions.setResponse({response: JSON.stringify({hello: 'world'})})",
+  authSig,
+});
+console.log("response: ", results.response);
+```
+
 ## More Examples
 
 We have a library of examples here: https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests
