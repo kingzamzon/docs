@@ -19,7 +19,7 @@ Learn more by reading [What is Decentralized Access Control](https://blog.litpro
 
 ## Features
 
-- Supports many EVM chains and Solana. Full list here: https://developer.litprotocol.com/supportedChains
+- Supports many EVM chains and Solana. Full list here: https://developer.litprotocol.com/docs/supportedChains
 - Supports many standard contracts, with plans to support any RPC call soon. If you need to interact with a contract that we don't support yet, ask us, and we will implement it
 - Boolean conditions. "And" or "Or" are currently supported.
 - Updateable conditions. Only the creator can update the condition.
