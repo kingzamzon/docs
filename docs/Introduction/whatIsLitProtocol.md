@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # What is Lit Protocol?
 
-Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences. 
+Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
 
 Lit Protocol's main feature is a decentralized access control protocol running on top of EVM chains and Solana. With Lit, you can harness on-chain access control conditions to do 4 main things:
 
@@ -23,7 +23,7 @@ Learn more by reading [What is Decentralized Access Control](https://blog.litpro
 - Supports many standard contracts, with plans to support any RPC call soon. If you need to interact with a contract that we don't support yet, ask us, and we will implement it
 - Boolean conditions. "And" or "Or" are currently supported.
 - Updateable conditions. Only the creator can update the condition.
-- Permanant conditions. When a condition is stored as permanant, it becomes impossible to update it, forever.
+- Permanent conditions. When a condition is stored as permanent, it becomes impossible to update it, forever.
 - Use your favorite storage solution including IPFS/Filecoin, Arweave, Sia, Storj, or even use centralized storage.
 
 ## Join the community
@@ -33,4 +33,3 @@ Join the [Discord](https://litgateway.com/discord) to ask questions and engage w
 Follow us on [Twitter](https://twitter.com/LitProtocol) for updates.
 
 Read the [blog](https://blog.litprotocol.com/) for news and announcements on the state of decentralized access control.
-
