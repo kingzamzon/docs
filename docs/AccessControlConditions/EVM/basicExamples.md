@@ -238,7 +238,7 @@ Parameters to the `getActiveSubscriptionCount` method are the users address (rep
 the provider address that is registered in the Cask Protocol, and the Cask Plan ID in which the user must have an 
 active subscription.
 
-If you are not using the [Lit Share Modal](https://github.com/CaskProtocol/lit-share-modal-v3), you will need the contract
+If you are not using the [Lit Share Modal](https://github.com/LIT-Protocol/lit-share-modal-v3), you will need the contract
 address of the Cask Protocol `CaskSubscriptions` contract, which can be found in the Cask Documentation at 
 https://docs.cask.fi/protocol-deployments/production
 
