@@ -4,8 +4,22 @@ sidebar_position: 2
 
 # What is Lit Protocol?
 
-Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences.
+## Decentralized Encryption
 
+Lit Protocol decentralizes public key cryptography using threshold cryptography, and makes it easy for you to decentralize it, too.
+
+**What does that mean?**
+
+Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences. 
+
+### Why is encryption important?
+[Encryption](https://www.cloudflare.com/learning/ssl/what-is-encryption/) is the process of encoding data so that it remains hidden from or inaccessible to unauthorized users.
+
+We believe that privacy and ownership are basic rights, two ideas central to encryption and decentralization.
+
+## Main Functionality
+
+### Access Control
 Lit Protocol's main feature is a decentralized access control protocol running on top of EVM chains and Solana. With Lit, you can harness on-chain access control conditions to do 4 main things:
 
 - Encrypt and lock static content (images, videos, music, etc) behind an on chain condition (for example, possession of an NFT).
@@ -17,14 +31,13 @@ With this functionality, Lit Protocol enables the creation of locked NFTs that c
 
 Learn more by reading [What is Decentralized Access Control](https://blog.litprotocol.com/?p=what-is-decentralized-access-control).
 
-## Features
+We support many EVM chains and Solana. Full list here: https://developer.litprotocol.com/docs/supportedChains. If you need to interact with a contract that we don't support yet, ask us, and we will implement it.
 
-- Supports many EVM chains and Solana. Full list here: https://developer.litprotocol.com/docs/supportedChains
-- Supports many standard contracts, with plans to support any RPC call soon. If you need to interact with a contract that we don't support yet, ask us, and we will implement it
-- Boolean conditions. "And" or "Or" are currently supported.
-- Updateable conditions. Only the creator can update the condition.
-- Permanent conditions. When a condition is stored as permanent, it becomes impossible to update it, forever.
-- Use your favorite storage solution including IPFS/Filecoin, Arweave, Sia, Storj, or even use centralized storage.
+### Encryption
+Store private data on the open web and use Lit to provision decentralized keys to users based on on-chain data, like the assets they hold in their wallet.
+
+### Programmable + Distributed Cloud Wallets
+Use Lit as a decentralized serverless function platform to create applications that write data to public state machines like blockchains and storage networks. Create automated agents for user funds and data.
 
 ## Join the community
 
@@ -32,4 +45,6 @@ Join the [Discord](https://litgateway.com/discord) to ask questions and engage w
 
 Follow us on [Twitter](https://twitter.com/LitProtocol) for updates.
 
-Read the [blog](https://blog.litprotocol.com/) for news and announcements on the state of decentralized access control.
+Read the [blog](https://blog.litprotocol.com/) and [substack](https://litproject.substack.com/) for news and announcements on the state of decentralized access control.
+
+Subscribe to our [community calendar](https://calendar.google.com/calendar/u/5?cid=Y19hMnVxZDNjaHVqZ2Q0a3FqbGlvcDdxY2JhMEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t) for events, hackathons, and other ways to meet the Lit team.
