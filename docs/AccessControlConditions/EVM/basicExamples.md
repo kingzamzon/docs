@@ -228,3 +228,50 @@ const accessControlConditions = [
   }
 ]
 ```
+
+## Cask Protocol
+
+In this example, we are checking that the user is either the provider or an active subscriber to one of the service provider
+plans, as powered by the Cask Protocol https://www.cask.fi/
+
+Parameters to the `getActiveSubscriptionCount` method are the users address (represented in the Lit Protocol as :userAddress), 
+the provider address that is registered in the Cask Protocol, and the Cask Plan ID in which the user must have an 
+active subscription.
+
+If you are not using the [Lit Share Modal](https://github.com/CaskProtocol/lit-share-modal-v3), you will need the contract
+address of the Cask Protocol `CaskSubscriptions` contract, which can be found in the Cask Documentation at 
+https://docs.cask.fi/protocol-deployments/production
+
+```
+const accessControlConditions = [
+  {
+    conditionType: "evmBasic",
+    contractAddress: "",
+    standardContractType: "",
+    chain: "polygon",
+    method: "",
+    parameters: [":userAddress"],
+    returnValueTest: {
+        comparator: "=",
+        value: '0xCdcE8CD89e4B29193874Acc677D5ae6624524bFd',
+    },
+  },
+  {operator: "or"},
+  {
+    conditionType: "evmBasic",
+    contractAddress: "0x4A6f232552E0fd76787006Bb688bFBCB931cc3d0",
+    standardContractType: "CASK",
+    chain: "polygon",
+    method: 'getActiveSubscriptionCount',
+    parameters: [
+        ':userAddress',
+        '0xCdcE8CD89e4B29193874Acc677D5ae6624524bFd',
+        '100'
+    ],
+    returnValueTest: {
+        comparator: '>',
+        value: '0'
+    }
+  }
+]
+```
