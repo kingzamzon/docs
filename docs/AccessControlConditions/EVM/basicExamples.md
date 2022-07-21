@@ -229,7 +229,7 @@ const accessControlConditions = [
 ]
 ```
 
-## Cask Protocol
+## Must be an active subscriber (using Cask Protocol)
 
 In this example, we are checking that the user is either the provider or an active subscriber to one of the service provider
 plans, as powered by the Cask Protocol https://www.cask.fi/
