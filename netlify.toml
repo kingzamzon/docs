@@ -138,7 +138,7 @@ force = false
 
 [[redirects]]
   from = "/docs/whatislit/whatislitprotocol/"
-  to = "/docs/Introduction/whatIsLitProtocol"
+  to = "/"
   status = 302
   force = false
 
@@ -187,5 +187,13 @@ force = false
   [[redirects]]
   from = "/docs/ExamplesAndGuides/bundlrxarweave"
   to = "/docs/ToolsAndExamples/bundlrxarweave"
+  status = 302
+  force = false
+
+# 7/21/22 - dating for deprecation purposes
+
+[[redirects]]
+  from = "/docs/Introduction/whatIsLitProtocol"
+  to = "/"
   status = 302
   force = false
