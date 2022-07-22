@@ -197,3 +197,9 @@ force = false
   to = "/"
   status = 302
   force = false
+
+[[redirects]]
+  from = "/docs/*"
+  to = "/:splat"
+  status = 302
+  force = false
