@@ -6,7 +6,7 @@ sidebar_position: 7
 
 Lit Protocol supports updating conditions by the creator of those conditions. This works for static and dynamic content.
 
-To create an updateable condition, pass `permanant: false` when storing conditions in Lit:
+To create an updateable condition, pass `permanent: false` when storing conditions in Lit:
 
 ```
 const encryptedSymmetricKey = await litNodeClient.saveEncryptionKey({
@@ -14,14 +14,14 @@ const encryptedSymmetricKey = await litNodeClient.saveEncryptionKey({
   symmetricKey,
   authSig,
   chain,
-  permanant: false,
+  permanent: false,
 });
 
 ```
 
-## Permanant Conditions
+## Permanent Conditions
 
-By default, conditions are permanant. You can either omit the `permanant` property when saving a condition or set it to `true`.
+By default, conditions are permanent. You can either omit the `permanent` property when saving a condition or set it to `true`.
 
 ## How to update a condition
 
@@ -54,7 +54,7 @@ const newEncryptedSymmetricKey =
     encryptedSymmetricKey,
     authSig,
     chain,
-    permanant: false,
+    permanent: false,
   });
 ```
 

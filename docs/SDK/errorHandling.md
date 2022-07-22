@@ -31,7 +31,7 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 ### Storage error
 
 - errorCode: storage_error
-- Reason: An error occurred storing the condition. This usually means that you tried to update a permanant condition, or you tried to update a non-permanant condition from the wrong account. Only the creator of a condition can update it, and only if \"permanant\": false was originally passed in when storing the condition.
+- Reason: An error occurred storing the condition. This usually means that you tried to update a permanent condition, or you tried to update a non-permanent condition from the wrong account. Only the creator of a condition can update it, and only if \"permanent\": false was originally passed in when storing the condition.
 
 ### Resource ID not found
 

@@ -13,7 +13,7 @@ md +=
   "We currently support most EVM chains.\n\nDon't see a blockchain you want?  Fill out this form for EVM chains and we'll add it: https://forms.gle/YQV5R7WoRyPk32xc7\n\n";
 
 md += Object.keys(ALL_LIT_CHAINS)
-  .map((c) => `- ${capitalizeFirstLetter(c)}\n`)
+  .map((c) => `- ${c}\n`)
   .join("");
 
 fs.writeFileSync("docs/supportedChains.md", md);
