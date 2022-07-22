@@ -17,7 +17,7 @@ For each condition, you must add a `conditionType` field that specifies the type
 
 All requests to the LitNodeClient API require an AuthSig to be present. The AuthSig is a signature of a message signed by the user's wallet, used to authenticate the request. In the case of unified access control conditions, you may pass an AuthSig for each chain ecosystem that you are using. Meaning, you can pass an EVM wallet signature and a Solana wallet signature at the same time. You can do this by passing an object as the `authSig` parameter with keys of `ethereum` for all EVM chains and `solana` for all Solana chains, an example of which you can see below:
 
-```
+```js
 // first, obtain auth sigs from both chains
 var solAuthSig = await LitJsSdk.checkAndSignAuthMessage({
   chain: "solana",
@@ -57,7 +57,7 @@ In this example, we use the `unifiedAccessControlConditions` parameter to combin
 - Posess at least 1 ERC1155 token with id 8 and at contract 0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88 on Polygon
 - Posess at least 1 ATOM on Cosmos
 
-```
+```js
 var unifiedAccessControlConditions = [
   {
     conditionType: "solRpc",

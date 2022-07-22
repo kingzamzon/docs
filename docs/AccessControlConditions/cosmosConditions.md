@@ -4,15 +4,14 @@ sidebar_position: 5
 
 # Cosmos Examples
 
-Cosmos Access Control conditions work a little different than EVM access control conditions. Cosmos conditions let you make a Cosmos or KYVE RPC call, and then filter and parse the response. This is useful for things like checking the balance of an account, checking the owner of an account, or checking the number of tokens a user has.
+Cosmos Access Control conditions work a little different than EVM access control conditions. Cosmos conditions let you make a Cosmos or KYVE RPC call, and then filter and parse the response. This is useful for checking the balance of an account, checking the owner of an account, or checking the number of tokens a user has.
 
 Note that Cosmos Conditions can only be used via the `unifiedAccessControlConditions` parameter.
 
 ## Must posess at least 1 ATOM
 
 In this example, we are checking if the user's wallet contains more than 1 ATOM. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
-
-```
+```js
 var unifiedAccessControlConditions = [
   {
     conditionType: "cosmos",
@@ -29,9 +28,9 @@ var unifiedAccessControlConditions = [
 
 ## A specific wallet address
 
-In this example, we are checking that the user is in posession of a specific wallet address cosmos1vn6zl0924yj86jrp330wcwjclzdharljq03a8h. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
+In this example, we are checking that the user is in posession of a specific wallet address `cosmos1vn6zl0924yj86jrp330wcwjclzdharljq03a8h`. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
 
-```
+```js
 var unifiedAccessControlConditions = [
   {
     conditionType: "cosmos",
@@ -56,7 +55,7 @@ Want to use a Cosmos chain that you don't see on the list already? Ask us in Dis
 
 This example checks if the user is a current KYVE funder. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet. Pay special attention to the "key" in the returnValueTest. The key is a JSONPath that pulls out all the funder addresses.
 
-```
+```js
 var unifiedAccessControlConditions = [
   {
     conditionType: "cosmos",

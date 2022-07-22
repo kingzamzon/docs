@@ -10,9 +10,9 @@ Note that you can use Solana RPC Conditions in the same way you would use EVM co
 
 ## Must posess an NFT in a Metaplex collection
 
-In this example, we are checking if the user owns one or more NFTs in the Metaplex collection with address FfyafED6kiJUFwEhogyTRQHiL6NguqNg9xcdeoyyJs33. The collection must be verified. Note that "balanceOfMetaplexCollection" is not a real Solana RPC call. It is a custom RPC call that is specific to Lit Protocol.
+In this example, we are checking if the user owns one or more NFTs in the Metaplex collection with address `FfyafED6kiJUFwEhogyTRQHiL6NguqNg9xcdeoyyJs33`. The collection must be verified. Note that "balanceOfMetaplexCollection" is not a real Solana RPC call. It is a custom RPC call that is specific to Lit Protocol.
 
-```
+```js
 var solRpcConditions = [
   {
     method: "balanceOfMetaplexCollection",
@@ -31,7 +31,7 @@ var solRpcConditions = [
 
 In this example, we are checking if the user's wallet contains more than 0.1 SOL. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
 
-```
+```js
 var solRpcConditions = [
   {
     method: "getBalance",
@@ -48,9 +48,9 @@ var solRpcConditions = [
 
 ## A specific wallet address
 
-In this example, we are checking that the user is in posession of a specific wallet address 88PoAjLoSqrTjH2cdRWq4JEezhSdDBw3g7Qa6qKQurxA. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
+In this example, we are checking that the user is in posession of a specific wallet address `88PoAjLoSqrTjH2cdRWq4JEezhSdDBw3g7Qa6qKQurxA`. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
 
-```
+```js
 var solRpcConditions = [
   {
     method: "",
@@ -67,9 +67,9 @@ var solRpcConditions = [
 
 ## Must posess a balance of a specific token (Fungible or NFT)
 
-This example checks if the user owns at least 1 token with address FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT. This is done by deriving the user's token account address for the token contract with the user's wallet address, validated via the message signed by the user's wallet. Then, `getTokenAccountBalance` is run on the user's token account address and the result is checked against the `returnValueTest`. Note that "balanceOfToken" is not a real Solana RPC call. It is a custom RPC call that is specific to Lit Protocol.
+This example checks if the user owns at least 1 token with address `FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT`. This is done by deriving the user's token account address for the token contract with the user's wallet address, validated via the message signed by the user's wallet. Then, `getTokenAccountBalance` is run on the user's token account address and the result is checked against the `returnValueTest`. Note that "balanceOfToken" is not a real Solana RPC call. It is a custom RPC call that is specific to Lit Protocol.
 
-```
+```js
 var solRpcConditions = [
   {
     method: "balanceOfToken",
@@ -87,10 +87,9 @@ var solRpcConditions = [
 
 ## A specific token account balance
 
-This is useful if you already know the token account address and want to check the balance of that account. Note that putting the user's wallet address in here will NOT work, because the user's wallet owns the token account, which is a separate on-chain account that owns the token itself. In this example, we re checking the token account E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH.
+This is useful if you already know the token account address and want to check the balance of that account. Note that putting the user's wallet address in here will NOT work, because the user's wallet owns the token account, which is a separate on-chain account that owns the token itself. In this example, we re checking the token account `E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH`.
 
-```
-
+```js
 var solRpcConditions = [
   {
     method: "getTokenAccountBalance",

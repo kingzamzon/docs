@@ -10,7 +10,7 @@ A EIP-4631 compliant Sign in with Ethereum message is signed by the user's walle
 
 This will check the domain of the Sign in with Ethereum message and compare it to the domain specified in the `returnValueTest`. In this case, the domain must match "localhost:3050". This condition is useful to prevent signature reuse across domains. You can use the "AND" operator with Boolean Logic to add this condition to any other condition which will prevent using signatures from other domains.
 
-```
+```js
 const accessControlConditions = [
   {
     contractAddress: "",
@@ -28,9 +28,9 @@ const accessControlConditions = [
 
 ## Resources
 
-This will check the Resources field of the Sign in with Ethereum message and compare it to the resource specified in the `returnValueTest`. In this case, the resources array must contain "ipfs://someTestId".
+This will check the resources field of the Sign in with Ethereum message and compare it to the resource specified in the `returnValueTest`. In this case, the resources array must contain `ipfs://someTestId`.
 
-```
+```js
 const accessControlConditions = [
   {
     contractAddress: "",

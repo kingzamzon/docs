@@ -6,9 +6,9 @@ sidebar_position: 6
 
 Lit Protocol supports boolean logic when checking conditions. Use an object with the "operator" property set to "and" or "or" to combine conditions.
 
-For example, if you wanted to check that the user is a member of a DAO or that they hold more than 0.00001 ETH, you could use the following:
+If you wanted to check that the user is a member of a DAO or that they hold more than 0.00001 ETH, you could use the following:
 
-```
+```js
 const accessControlConditions = [
   {
     contractAddress: '0x50D8EB685a9F262B13F28958aBc9670F06F819d9',
@@ -43,9 +43,9 @@ const accessControlConditions = [
 
 ## Boolean nesting
 
-You can also nest boolean conditions. For example, if you wanted to check that the user is a member of a DAO and that they either hold more than 0.00001 ETH or 10 of an ERC20 token, you could use the following:
+You can also nest boolean conditions. For example, if you want to check that the user is a member of a DAO and that they either hold more than 0.00001 ETH or 10 of an ERC20 token, you can use the following:
 
-```
+```js
 const accessControlConditions = [
   {
     "contractAddress":"0x50D8EB685a9F262B13F28958aBc9670F06F819d9",

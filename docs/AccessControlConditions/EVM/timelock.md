@@ -8,7 +8,7 @@ sidebar_position: 4
 
 This will get the latest block from your blockchain of choice, and compare it to the unix timestamp that was specified in the `returnValueTest`. In this example, the user will be able to unlock after unix timestamp `1651276942`. Make sure to pass the unix timestamp as a string.
 
-```
+```js
 var accessControlConditions = [
   {
     contractAddress: "",

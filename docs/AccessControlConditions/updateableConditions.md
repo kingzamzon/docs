@@ -8,7 +8,7 @@ Lit Protocol supports updating conditions by the creator of those conditions. Th
 
 To create an updateable condition, pass `permanent: false` when storing conditions in Lit:
 
-```
+```js
 const encryptedSymmetricKey = await litNodeClient.saveEncryptionKey({
   accessControlConditions,
   symmetricKey,
@@ -33,7 +33,7 @@ To update the conditions of some static content, simply pass in the `encryptedSy
 
 For example:
 
-```
+```js
 const newAccessControlConditions = [
   {
     contractAddress: "",
@@ -64,7 +64,7 @@ Note that in the above example, you may throw away `newEncryptedSymmetricKey` be
 
 For dynamic content, there is nothing special you have to do or pass in. Simply store the signing condition again and the protocol will update it for you. Make sure you pass in the identical `resourceId` as you did when you stored the condition.
 
-```
+```js
 const newAccessControlConditions = [
   {
     contractAddress: "",

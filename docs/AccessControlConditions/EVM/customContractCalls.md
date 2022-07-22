@@ -8,7 +8,7 @@ This page defines how to create access control conditions (referred to as `evmCo
 
 ## Must have at least 1 share in a given MolochDAOv2.1 DAO
 
-```
+```js
 const evmContractConditions = [
   {
     contractAddress: "0xb71a679cfff330591d556c4b9f21c7739ca9590c",
@@ -65,7 +65,7 @@ const evmContractConditions = [
 
 ## Must posess at least one ERC1155 token with a given token id
 
-```
+```js
 var evmContractConditions = [
   {
     contractAddress: "0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88",
