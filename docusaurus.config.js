@@ -133,26 +133,7 @@ const config = {
         apiKey: "1fe09d38a47e88b82145913baa9aaceb",
         indexName: "litDeveloperDocs",
       },
-    }),
-  // plugins: [
-  //   [ // This plugin does NOT work.  I am using netlify redirects instead.
-  //     "@docusaurus/plugin-client-redirects",
-  //     {
-  //       redirects: [
-  //         // /docs/oldDoc -> /docs/newDoc
-  //         {
-  //           to: "/docs/accessControlConditionExamples",
-  //           from: "/docs/SDK/accessControlConditionExamples",
-  //         },
-  //         // Redirect from multiple old paths to the new path
-  //         // {
-  //         //   to: '/docs/newDoc2',
-  //         //   from: ['/docs/oldDocFrom2019', '/docs/legacyDocFrom2016'],
-  //         // },
-  //       ],
-  //     },
-  //   ],
-  // ],
+    })
 };
 
 module.exports = config;

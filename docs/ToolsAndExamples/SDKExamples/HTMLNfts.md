@@ -14,13 +14,13 @@ To mint a token using our pre-deployed contracts, you can use the mintLIT functi
 
 For example:
 
-```
+```js
 const { tokenId, tokenAddress, mintingAddress, txHash, errorCode, authSig } = await LitJsSdk.mintLIT({ chain, quantity })
 ```
 
 Once your have your NFT, you can lock and associate content with it on the LIT network. In our implementation in MintLIT, we render the locked content as an HTML string, embedding any media such as pictures or videos as data urls. You can do this, or you can encrypt files directly without rendering them into a HTML string. To encrypt a string, use the following function documented here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#zipandencryptstring
 
-```
+```js
 const { symmetricKey, encryptedZip } = await LitJsSdk.zipAndEncryptString(lockedFileMediaGridHtml)
 ```
 
@@ -28,7 +28,7 @@ Now you need to encrypt the symmetric key, and save it to the LIT nodes. `litNod
 
 You must also define your access control conditions (the conditions under which someone can decrypt the content). In the example below, we define a condition that requires the user holds at least 1 ERC1155 token with Token ID 9541 from the 0x3110c39b428221012934A7F617913b095BC1078C contract.
 
-```
+```js
 const accessControlConditions = [
   {
     contractAddress: '0x3110c39b428221012934A7F617913b095BC1078C',
@@ -56,7 +56,7 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 
 We then pass that encrypted content to a function that creates an HTML webpage with an embedded unlock button.
 
-```
+```js
 const htmlString = LitJsSdk.createHtmlLIT({
     title,
     htmlBody,
@@ -70,7 +70,7 @@ const htmlString = LitJsSdk.createHtmlLIT({
 
 You'll need to store your HTML NFT somewhere, and we use IPFS via Pinata for this purpose.
 
-```
+```js
 const litHtmlBlob = new Blob(
   [htmlString],
   { type: 'text/html' }
@@ -98,7 +98,7 @@ Your HTML NFT is now accessible at the fileUrl variable.
 
 Finally, you should store your token metadata somewhere, so that your HTML NFT is backwards compatible with existing NFT websites. We use Firebase for this on MintLIT and if you are using our NFT contracts, you are welcome to use our Firebase instance to store your metadata as well. You can find this createTokenMetadata function in this repo: https://github.com/LIT-Protocol/MintLIT
 
-```
+```js
 await createTokenMetadata({
   chain,
   tokenAddress,
@@ -122,13 +122,13 @@ To unlock a HTML NFT, you must retrieve the encryption key shares from the nodes
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own the crypto address that presumably owns the NFT. Pass the chain you're using.
 
-```
+```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'polygon'})
 ```
 
 Next, obtain the symmetric key from the LIT network. It's important that you have a connected LitNodeClient accessible at window.litNodeClient for this to work.
 
-```
+```js
 const symmetricKey = await window.litNodeClient.getEncryptionKey({
   accessControlConditions: window.accessControlConditions,
   toDecrypt: window.encryptedSymmetricKey,
@@ -139,7 +139,7 @@ const symmetricKey = await window.litNodeClient.getEncryptionKey({
 
 Finally, decrypt the content and inject it into the webpage. We provide a convenience function to unlock the LIT once you have the symmetric encryption key that does the same thing as the code below, located here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#unlocklitwithkey
 
-```
+```js
 // convert data url to blob
 const encryptedZipBlob = await (await fetch(window.encryptedZipDataUrl)).blob()
 // decrypt the zip

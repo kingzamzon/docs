@@ -12,7 +12,7 @@ This will perform a smart contract function RPC call, sign the response, and the
 
 To call a function, you need the smart contract ABI. For this example, we will use the Chainlink price oracle smart contract.
 
-```
+```js
 const aggregatorV3InterfaceABI = [
   {
     inputs: [],
@@ -76,13 +76,13 @@ const aggregatorV3InterfaceABI = [
 
 Next, you'll need the smart contract address
 
-```
+```js
 const addr = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
 ```
 
 Encode the call data using the `encodeCallData` function
 
-```
+```js
 const callData = LitJsSdk.encodeCallData({
   abi: aggregatorV3InterfaceABI,
   functionName: "latestRoundData",
@@ -92,7 +92,7 @@ const callData = LitJsSdk.encodeCallData({
 
 Request the signed chain data token from the Lit Network. Note that this requires a connected LitNodeClient.
 
-```
+```js
 const jwt = await litNodeClient.getSignedChainDataToken({
   callRequests,
   chain: 'ethereum',
@@ -101,7 +101,7 @@ const jwt = await litNodeClient.getSignedChainDataToken({
 
 You can then extract the various parts of the JWT, and verify the signature, using the `verifyJwt` function.
 
-```
+```js
 const { verified, header, payload, signature } = LitJsSdk.verifyJwt({
   jwt,
 });
@@ -109,7 +109,7 @@ const { verified, header, payload, signature } = LitJsSdk.verifyJwt({
 
 The responses to the function calls live in the `payload.callResponses` array. You can decode them using the `decodeCallResult` function.
 
-```
+```js
 const decoded = LitJsSdk.decodeCallResult({
   abi: aggregatorV3InterfaceABI,
   functionName: "latestRoundData",

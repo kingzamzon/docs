@@ -8,7 +8,7 @@ API docs with detailed info on functions are here: https://lit-protocol.github.i
 
 ## Access Control
 In this example, we will set the accessControlConditions on if a wallet has at least 0.000001 ETH:
-```
+```js
 const accessControlConditions = [
     {
       contractAddress: '',
@@ -27,7 +27,7 @@ const accessControlConditions = [
 ## AuthSig
 First, obtain an authSig. This will ask metamask to sign a message proving the holder owns the crypto address.
 
-```
+```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 ```
 
@@ -41,7 +41,7 @@ const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 
 In the example, we are using `encryptString()`. All encryption methods will output the encrypted data and a symmetric key, which can be used to decrypt the data.
 
-```
+```js
 const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
   "this is a secret message"
 );
@@ -52,7 +52,7 @@ const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
 ### **Saving the Encrypted Content to the Lit Nodes**
 Now, we can save the encryption key with the access control condition, which tells Lit Protocol that users that meet this access control condition should be able to decrypt.
 
-```
+```js
 const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
   accessControlConditions,
   symmetricKey,
@@ -69,7 +69,7 @@ We now need to save the `accessControlConditions`, `encryptedSymmetricKey`, and 
 ## Putting it all together
 
 The encryption function should look like:
-```
+```js
 async encrypt(message: string) {
     if (!this.litNodeClient) {
       await this.connect()

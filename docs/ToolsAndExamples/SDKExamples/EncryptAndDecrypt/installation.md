@@ -11,7 +11,7 @@ This example will show you how to encrypt and decrypt data using Lit Protocol's 
 ## Import the SDK
 
 Within your Typescript file (for example, `lit.ts`)
-```
+```ts
 import LitJsSdk from 'lit-js-sdk'
 ```
 
@@ -19,7 +19,7 @@ import LitJsSdk from 'lit-js-sdk'
 
 At the top of your file, instantiate your Lit Node client like so:
 
-```
+```js
 const client = new LitJsSdk.LitNodeClient()
 const chain = 'ethereum'
 const standardContractType = 'ERC721'
@@ -27,7 +27,7 @@ const standardContractType = 'ERC721'
 
 Create a Lit class and set the litNodeClient.
 
-```
+```js
 class Lit {
   private litNodeClient
 

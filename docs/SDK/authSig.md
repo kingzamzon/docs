@@ -12,7 +12,7 @@ The AuthSig should match this format: https://lit-protocol.github.io/lit-js-sdk/
 
 An example AuthSig:
 
-```
+```js
 {
 	"sig": "0x18720b54cf0d29d618a90793d5e76f4838f04b559b02f1f01568d8e81c26ae9536e11bb90ad311b79a5bc56149b14103038e5e03fee83931a146d93d150eb0f61c",
 	"derivedVia": "web3.eth.personal.sign",
@@ -25,7 +25,7 @@ An example AuthSig:
 
 You can use the built in `checkAndSignAuthMessage()` function to obtain the authSig. For example:
 
-```
+```js
 var authSig = await LitJsSdk.checkAndSignAuthMessage({
   chain: "ethereum",
 });
@@ -41,6 +41,6 @@ This function will also check the currently selected chain in the user's wallet,
 
 If you want to clear the authSig stored in the browser local storage, you can use the `disconnectWeb3()` function:
 
-```
+```js
 LitJsSdk.disconnectWeb3()
 ```

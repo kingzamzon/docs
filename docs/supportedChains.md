@@ -21,6 +21,12 @@ Don't see a blockchain you want?  Fill out this form for EVM chains and we'll ad
 - cronos
 - optimism
 - celo
+- aurora
+- eluvio
+- alfajores
+- xdc
+- evmos
+- evmosTestnet
 - solana
 - solanaDevnet
 - solanaTestnet

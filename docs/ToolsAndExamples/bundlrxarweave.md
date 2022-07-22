@@ -76,7 +76,7 @@ Now that we have all 4 information, we can pass it to the `litNodeClient.saveEnc
 
 The code should look like:
 
-```
+```js
 const chain = 'ethereum';
 
 const authSig = await LitJsSdk.checkAndSignAuthMessage({chain})
@@ -101,7 +101,7 @@ console.log("encryptedString:", encryptedString);
 
 The data we are going to store on Arweave will not only be the encrypted image data itself, but we will also include the `encryptedSymmetricKey` and `accessControlConditions` (remember the 4 pieces of information we need to encrypt the original symmetric key? we will need the same 4 information to decrypt as well) and package it as a single JSON data, and convert it to a string.
 
-```
+```js
 const packagedData = JSON.stringify({
   encryptedData,
   encryptedSymmetricKey,
@@ -115,7 +115,7 @@ We will then need to create a Bundlr instance by providing:
 - Change a currency
 - …more info here
 
-```
+```js
 import Bundlr from '@bundlr-network/client';
 const bundlr = new Bundlr("<http://node1.bundlr.network>", "currencyName", "privateKey");
 ```
@@ -135,7 +135,7 @@ const transactionId = tx.id;
 Then we will sign it, and upload the transaction:
 
 
-```
+```js
 // sign the transaction
 await tx.sign()
 
@@ -164,7 +164,7 @@ Then, we will read the data back as text and parse it to JSON format, as it was 
 
 `const dataOnArweave = JSON.parse(await data.text());`
 
-```
+```js
 // return
 {
 	'encryptedData': ...,
@@ -176,7 +176,7 @@ Then, we will read the data back as text and parse it to JSON format, as it was 
 
 Remember the 4 variables we need to get the `symmetricKey`? Two of them are already in the fetched data `encryptedSymmetricKey` and `accessControlConditions` so all we need now is the `authSig` and the correct chain.
 
-```
+```js
 // The 4 information we need 
 const chain = 'ethereum';
 
@@ -191,7 +191,7 @@ const encryptedSymmetricKey = LitJsSdk.uint8arrayToString(dataOnArweave.encrypte
 
 We can now get the original symmetric key:
 
-```
+```js
 const symmetricKey = await litNodeClient.getEncryptionKey({
 	accessControlConditions,
 	toDecrypt: encryptedSymmetricKey,
@@ -203,7 +203,7 @@ const symmetricKey = await litNodeClient.getEncryptionKey({
 
 Now that we have the symmetric key, we can finally use it to decrypt the encrypted data.
 
-```
+```js
 const decryptString = await LitJsSdk.decryptString(
 	dataURItoBlob(dataOnArweave.encryptedData),
 	symmetricKey

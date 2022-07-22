@@ -15,7 +15,7 @@ There are 2 steps:
 ## AuthSig
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own their crypto address. The chain used here is ethereum.
 
-```
+```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 ```
 
@@ -23,7 +23,7 @@ const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'ethereum'})
 ### **Obtaining the Decrypted Symmetric Key**
 In order to obtain the decrypted symmetric key we need to pass in `authSig`, `accessControlConditions`, `encryptedSymmetricKey`, and `chain`.
 
-```
+```js
 const symmetricKey = await this.litNodeClient.getEncryptionKey({
   accessControlConditions,
   toDecrypt: encryptedSymmetricKey,
@@ -36,7 +36,7 @@ const symmetricKey = await this.litNodeClient.getEncryptionKey({
 ### **Obtaining the Decrypted Data**
 Now, decrypt the content. In the example, we used `encryptString()` so we will use `decryptString()` to decrypt. Note that if you used something else to encrypt the content, you will need to use the appropriate decrypt method.
 
-```
+```js
 const decryptedString = await LitJsSdk.decryptString(
   encryptedString,
   symmetricKey
@@ -46,7 +46,7 @@ const decryptedString = await LitJsSdk.decryptString(
 ## Putting it all together
 The full decryption process should look like:
 
-```
+```js
   async decrypt(encryptedString: string, encryptedSymmetricKey: string) {
     if (!this.litNodeClient) {
       await this.connect()
