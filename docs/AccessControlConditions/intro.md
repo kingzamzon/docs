@@ -24,8 +24,8 @@ With Lit Protocol, you can set on-chain conditions like "user must hold an NFT" 
 - Permanent conditions. When a condition is stored as permanent, it becomes impossible to update it, forever.
 - Use your favorite storage solution including IPFS/Filecoin, Arweave, Sia, Storj, or even use centralized storage.
 
-## Tool for Access Control Condition
+## Tools for Access Control Condition
 
 - The [Lit Share Modal v3](https://github.com/LIT-Protocol/lit-share-modal-v3) is a tool for creating access control conditions for securing content with Lit Protocol. 
 
-- The [Access Control Conditions Debugger](https://lit-accs-debugger.vercel.app/) is a tool to verify if the given access control conditions follows the following [schemas](https://github.com/LIT-Protocol/lit-accs-validator-sdk/tree/main/src/schemas)
+- The [Access Control Conditions Debugger](https://lit-accs-debugger.vercel.app/) is a tool to verify if the given access control conditions follow the correct [schemas](https://github.com/LIT-Protocol/lit-accs-validator-sdk/tree/main/src/schemas). 
