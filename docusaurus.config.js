@@ -132,7 +132,7 @@ const config = {
       algolia: {
         appId: "LBGPAMG3FY",
         apiKey: "041874d52ec424d091674d198d792313",
-        indexName: "litDeveloperDocs",
+        indexName: "developer-litprotocol",
       },
     }),
 };
