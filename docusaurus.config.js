@@ -130,11 +130,11 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       algolia: {
-        appId: "YWUCE5ITYO",
-        apiKey: "1fe09d38a47e88b82145913baa9aaceb",
+        appId: "LBGPAMG3FY",
+        apiKey: "041874d52ec424d091674d198d792313",
         indexName: "litDeveloperDocs",
       },
-    })
+    }),
 };
 
 module.exports = config;
