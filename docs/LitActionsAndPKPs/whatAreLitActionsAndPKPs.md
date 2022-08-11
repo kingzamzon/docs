@@ -6,6 +6,8 @@ sidebar_position: 2
 
 **Heads Up** Lit Actions and PKPs are still heavily in development and things may change.
 
+**PKP Minting is live!** Mint one here: https://explorer.litprotocol.com/mint-pkp
+
 Smart contracts are powerful but generally isolated to the blockchain ecosystem on which they reside. Things like oracles and bridges help but must be set up on a case-by-case basis and are unwieldy to use. But what if a smart contract could have it's own public and private keypair, just like any other wallet? And what if that smart contract had the ability to make arbitrary HTTP requests and use the data in it's computation? Imagine smart contracts that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system. We're building this at Lit: The smart contracts are Lit Actions and the keypairs they can use are PKPs.
 
 ## What are PKPs?
@@ -24,7 +26,7 @@ A user may generate a new PKP, and may grant a Lit Action the right to sign usin
 
 ## How do I create a PKP?
 
-You can mint an NFT from our PKP contract on Celo here: https://lit-explorer.vercel.app/mint-pkp. This is an ERC721 NFT and the owner of it is the root owner of the PKP. The NFT owner can grant the ability to use the PKP to sign and decrypt data to both other users (via their wallet address) and also to Lit Actions.
+You can mint an NFT from our PKP contract on Celo here: https://explorer.litprotocol.com/mint-pkp. This is an ERC721 NFT and the owner of it is the root owner of the PKP. The NFT owner can grant the ability to use the PKP to sign and decrypt data to both other users (via their wallet address) and also to Lit Actions.
 
 ## What can I use PKPs for?
 
