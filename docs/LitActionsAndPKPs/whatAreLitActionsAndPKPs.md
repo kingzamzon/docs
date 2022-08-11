@@ -24,7 +24,7 @@ A user may generate a new PKP, and may grant a Lit Action the right to sign usin
 
 ## How do I create a PKP?
 
-You mint an NFT from our PKP contract. This is an ERC721 NFT and the owner of it is the root owner of the PKP. The NFT owner can grant the ability to use the PKP to sign and decrypt data to both other users (via their wallet address) and also to Lit Actions.
+You can mint an NFT from our PKP contract on Celo here: https://lit-explorer.vercel.app/mint-pkp. This is an ERC721 NFT and the owner of it is the root owner of the PKP. The NFT owner can grant the ability to use the PKP to sign and decrypt data to both other users (via their wallet address) and also to Lit Actions.
 
 ## What can I use PKPs for?
 
@@ -48,4 +48,4 @@ Because our nodes each hold a private key share, and we require 2/3 of them to s
 
 ## State of the network today - Serrano Testnet
 
-The Lit Actions and PKP network is in a testnet state. In this state, we have not implemented the ability to generate a new PKP, and a single PKP is shared by all Serrano Testnet users. We will soon lift this limitation and provide the ability to generate a new non-shared PKP. The data on the Serrano Testnet is not persistent and may be erased at any time. Therefore, we do not recommend storing anything of value on the Serrano Testnet.
+The Lit Actions and PKP network is in a testnet state. In this state, we have only implemented the ability to generate a new PKP for ECDSA signatures. A single BLS PKP is shared by all Serrano Testnet users. The data on the Serrano Testnet is not persistent and may be erased at any time. Therefore, we do not recommend storing anything of value on the Serrano Testnet.
