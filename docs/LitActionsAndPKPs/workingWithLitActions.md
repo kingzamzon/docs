@@ -31,7 +31,8 @@ const go = async () => {
   // the signature share will be automatically returned in the HTTP response from the node
   const sigShare = await LitActions.signEcdsa({
     toSign,
-    keyId: "1",
+    publicKey:
+      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
     sigName: "sig1",
   });
 };
@@ -57,8 +58,8 @@ const litActionCode = `
 const go = async () => {  
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId , sigName });
+  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, publicKey , sigName });
 };
 
 go();
@@ -78,7 +79,8 @@ const runLitAction = async () => {
     jsParams: {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-      keyId: "1",
+      publicKey:
+        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
       sigName: "sig1",
     },
   });
@@ -99,8 +101,8 @@ const litActionCode = `
 const go = async () => {  
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId , sigName });
+  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, publicKey , sigName });
 };
 
 go();
@@ -126,7 +128,8 @@ const runLitAction = async () => {
     jsParams: {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-      keyId: "1",
+      publicKey:
+        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
       sigName: "sig1",
     },
   });
@@ -163,7 +166,7 @@ const go = async () => {
   const toSign = [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId: "1", sigName: "sig1" });
+  const sigShare = await LitActions.signEcdsa({ toSign, publicKey: "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64", sigName: "sig1" });
 };
 
 
@@ -241,8 +244,8 @@ const go = async () => {
   
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId , sigName });
+  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, publicKey , sigName });
 };
 
 go();
@@ -272,7 +275,8 @@ const runLitAction = async () => {
     jsParams: {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-      keyId: "1",
+      publicKey:
+        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
       sigName: "sig1",
     },
   });
@@ -284,7 +288,7 @@ runLitAction();
 
 ## Using EIP191 eth_personal_sign to sign a message (instead of a transaction or raw signature)
 
-You can use `LitActions.ethPersonalSignMessageEcdsa({ message, keyId , sigName });` to sign a message. It will prepend "\\x19Ethereum Signed Message:\\n" to the message and then hash and sign it according to https://eips.ethereum.org/EIPS/eip-191
+You can use `LitActions.ethPersonalSignMessageEcdsa({ message, publicKey , sigName });` to sign a message. It will prepend "\\x19Ethereum Signed Message:\\n" to the message and then hash and sign it according to https://eips.ethereum.org/EIPS/eip-191
 
 ```js
 import LitJsSdk from "lit-js-sdk/build/index.node.js";
@@ -304,8 +308,8 @@ const litActionCode = `
 const go = async () => {
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.ethPersonalSignMessageEcdsa({ message, keyId , sigName });
+  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.ethPersonalSignMessageEcdsa({ message, publicKey , sigName });
 };
 
 go();
@@ -344,8 +348,8 @@ const go = async () => {
     jsParams: {
       // this is the string "Hello World" for testing
       message,
-      keyId:
-        "0215fac2ee502b4b9354c83f4e57dca7d58acf52dbd1201adb00f464fe613963a2",
+      publicKey:
+        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
       sigName: "sig1",
     },
     authSig,
@@ -391,7 +395,7 @@ const litActionCode = `
 const go = async () => {  
   // this requests a decryption share from the Lit Node
   // the decryption share will be automatically returned in the HTTP response from the node
-  const decryptionShare = await LitActions.decryptBls({ toDecrypt, keyId, decryptionName });
+  const decryptionShare = await LitActions.decryptBls({ toDecrypt, publicKey, decryptionName });
 };
 
 go();
@@ -437,7 +441,7 @@ const runLitAction = async () => {
     authSig,
     jsParams: {
       toDecrypt: Array.from(encryptedSymmetricKey),
-      keyId: "1",
+      publicKey: "1",
       decryptionName: "decryption1",
     },
   });
@@ -468,8 +472,8 @@ const litActionCode = `
 const go = async () => {
   // this requests a signature share from the Lit Node
   // the signature share will be automatically returned in the HTTP response from the node
-  // all the params (toSign, keyId, sigName) are passed in from the LitJsSdk.executeJs() function
-  const sigShare = await LitActions.signEcdsa({ toSign, keyId, sigName });
+  // all the params (toSign, publicKey, sigName) are passed in from the LitJsSdk.executeJs() function
+  const sigShare = await LitActions.signEcdsa({ toSign, publicKey, sigName });
 };
 
 go();
@@ -482,7 +486,8 @@ const signatures = await litNodeClient.executeJs({
   jsParams: {
     // this is the string "Hello World" for testing
     toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-    keyId: "1",
+    publicKey:
+      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
     sigName: "sig1",
   },
 });
@@ -500,7 +505,8 @@ const signatures = await litNodeClient.executeJs({
   jsParams: {
     // this is the string "Hello World" for testing
     toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-    keyId: "1",
+    publicKey:
+      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
     sigName: "sig1",
   },
 });
@@ -546,12 +552,12 @@ const litActionCode = `
 const signEcdsa = async () => {
   // this Lit Action simply requests an ECDSA signature share from the Lit Node
   const resp = await LitActions.call({
-    ipfsId: "Qmb2sJtVLXiNNXnerWB7zjSpAhoM8AxJF2uZsU2iednTtT",
+    ipfsId: "QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm",
     params: {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
-      keyId:
-        "037c9a4097a27573bcda94c2824e92b06204e9a94dbed32fd6506b75d55b4e3c7d",
+      publicKey:
+        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
       sigName: "childSig",
     },
   });
