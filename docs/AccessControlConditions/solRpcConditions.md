@@ -17,6 +17,9 @@ var solRpcConditions = [
   {
     method: "balanceOfMetaplexCollection",
     params: ["FfyafED6kiJUFwEhogyTRQHiL6NguqNg9xcdeoyyJs33"],
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
     chain,
     returnValueTest: {
       key: "",
@@ -36,7 +39,10 @@ var solRpcConditions = [
   {
     method: "getBalance",
     params: [":userAddress"],
-    chain: 'solana',
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
+    chain: "solana",
     returnValueTest: {
       key: "",
       comparator: ">=",
@@ -55,7 +61,10 @@ var solRpcConditions = [
   {
     method: "",
     params: [":userAddress"],
-    chain: 'solana',
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
+    chain: "solana",
     returnValueTest: {
       key: "",
       comparator: "=",
@@ -74,6 +83,9 @@ var solRpcConditions = [
   {
     method: "balanceOfToken",
     params: ["FrYwrqLcGfmXrgJKcZfrzoWsZ3pqQB9pjjUC9PxSq3xT"],
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
     chain,
     returnValueTest: {
       key: "$.amount",
@@ -82,7 +94,6 @@ var solRpcConditions = [
     },
   },
 ];
-
 ```
 
 ## A specific token account balance
@@ -94,7 +105,10 @@ var solRpcConditions = [
   {
     method: "getTokenAccountBalance",
     params: ["E7aAccig7X3X4pSWjf1eqqUJkV3EbzG6DrtyM2gbuuhH"],
-    chain: 'solana',
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
+    chain: "solana",
     returnValueTest: {
       key: "amount",
       comparator: ">",
@@ -102,5 +116,30 @@ var solRpcConditions = [
     },
   },
 ];
+```
 
+## Get a Program Derived Address (PDA) and use that as a parameter in a RPC call
+
+The condition below will derive a PDA using pdaParams and pdaInterface. The PDA is then used as a parameter in the getBalance RPC call.
+
+```js
+[
+  {
+    method: "getBalance(getPDA)",
+    params: [],
+    pdaParams: [
+      "chatGL6yNgZT2Z3BeMYGcgdMpcBKdmxko4C5UhEX4To",
+      "delegate-wallet",
+      ":userAddress",
+    ],
+    pdaInterface: { offset: 8, fields: { owner_wallet: 32 } },
+    pdaKey: "owner_wallet",
+    chain: "solana",
+    returnValueTest: {
+      key: "",
+      comparator: ">=",
+      value: "100000000", // equals 0.1 SOL
+    },
+  },
+];
 ```
