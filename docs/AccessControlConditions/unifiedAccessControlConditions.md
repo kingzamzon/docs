@@ -8,8 +8,8 @@ You can mix and match EVM Basic Conditions, EVM Custom Contract Conditions, Sola
 
 For each condition, you must add a `conditionType` field that specifies the type of condition. The `conditionType` field can be one of the following:
 
-- For [EVM Basic Conditions](/AccessControlConditions/evmBasicExamples), also known as classic "Access Control Conditions", use the string `evmBasic`
-- For [EVM Custom Contract Conditions](/AccessControlConditions/evmCustomContractCalls), use the string `evmContract`
+- For [EVM Basic Conditions](/AccessControlConditions/EVM/basicExamples), also known as classic "Access Control Conditions", use the string `evmBasic`
+- For [EVM Custom Contract Conditions](/AccessControlConditions/EVM/customContractCalls), use the string `evmContract`
 - For [Solana RPC Conditions](/AccessControlConditions/solRpcConditions), use the string `solRpc`
 - For [Cosmos or Kyve Conditions](/AccessControlConditions/cosmosConditions), use the string `cosmos`
 
