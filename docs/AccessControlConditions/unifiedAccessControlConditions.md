@@ -64,6 +64,9 @@ var unifiedAccessControlConditions = [
     method: "getBalance",
     params: [":userAddress"],
     chain: "solana",
+    pdaParams: [],
+    pdaInterface: { offset: 0, fields: {} },
+    pdaKey: "",
     returnValueTest: {
       key: "",
       comparator: ">=",
@@ -120,7 +123,7 @@ var unifiedAccessControlConditions = [
       value: "0",
     },
   },
-  { "operator": "or" },
+  { operator: "or" },
   {
     conditionType: "cosmos",
     path: "/cosmos/bank/v1beta1/balances/:userAddress",

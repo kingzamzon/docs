@@ -120,7 +120,7 @@ var solRpcConditions = [
 
 ## Get a Program Derived Address (PDA) and use that as a parameter in a RPC call
 
-The condition below will derive a PDA using pdaParams and pdaInterface. The PDA is then used as a parameter in the getBalance RPC call.
+The condition below will derive a PDA using pdaParams, pdaInterface, and pdaKey. The PDA is then used as a parameter in the getBalance RPC call.
 
 ```js
 [
