@@ -11,21 +11,28 @@ Verifying a JWT would typically be done on the server side (nodejs), but should 
 First, import the SDK:
 
 ```js
- const LitJsSdk = require('lit-js-sdk')
+import LitJsSdk from "@lit-protocol/sdk-nodejs";
 ```
 
 Now, you must have a JWT to verify. Usually this comes from the user who is trying to access the resource. You can try the JWT harcoded in the example below, which may be expired but should at least return a proper header and payload. In the real world, you should use a JWT presented by the user.
 
 ```js
-const jwt = "eyJhbGciOiJCTFMxMi0zODEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJMSVQiLCJzdWIiOiIweGRiZDM2MGYzMDA5N2ZiNmQ5MzhkY2M4YjdiNjI4NTRiMzYxNjBiNDUiLCJjaGFpbiI6ImZhbnRvbSIsImlhdCI6MTYyODAzMTM1OCwiZXhwIjoxNjI4MDc0NTU4LCJiYXNlVXJsIjoiaHR0cHM6Ly9teS1keW5hbWljLWNvbnRlbnQtc2VydmVyLmNvbSIsInBhdGgiOiIvYV9wYXRoLmh0bWwiLCJvcmdJZCI6IiJ9.lX_aBSgGVYWd2FL6elRHoPJ2nab0IkmmX600cwZPCyK_SazZ-pzBUGDDQ0clthPVAtoS7roHg14xpEJlcSJUZBA7VTlPiDCOrkie_Hmulj765qS44t3kxAYduLhNQ-VN"
-const { verified, header, payload } = LitJsSdk.verifyJwt({jwt})
-if (payload.baseUrl !== "this-website.com" || payload.path !== "/path-you-expected" || payload.orgId !== "" || payload.role !== "" || payload.extraData !== "") {
+const jwt =
+  "eyJhbGciOiJCTFMxMi0zODEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJMSVQiLCJzdWIiOiIweGRiZDM2MGYzMDA5N2ZiNmQ5MzhkY2M4YjdiNjI4NTRiMzYxNjBiNDUiLCJjaGFpbiI6ImZhbnRvbSIsImlhdCI6MTYyODAzMTM1OCwiZXhwIjoxNjI4MDc0NTU4LCJiYXNlVXJsIjoiaHR0cHM6Ly9teS1keW5hbWljLWNvbnRlbnQtc2VydmVyLmNvbSIsInBhdGgiOiIvYV9wYXRoLmh0bWwiLCJvcmdJZCI6IiJ9.lX_aBSgGVYWd2FL6elRHoPJ2nab0IkmmX600cwZPCyK_SazZ-pzBUGDDQ0clthPVAtoS7roHg14xpEJlcSJUZBA7VTlPiDCOrkie_Hmulj765qS44t3kxAYduLhNQ-VN";
+const { verified, header, payload } = LitJsSdk.verifyJwt({ jwt });
+if (
+  payload.baseUrl !== "this-website.com" ||
+  payload.path !== "/path-you-expected" ||
+  payload.orgId !== "" ||
+  payload.role !== "" ||
+  payload.extraData !== ""
+) {
   // Reject this request!
-  return false
+  return false;
 }
 ```
 
-The "verified" variable is a boolean that indicates whether or not the signature verified properly. 
+The "verified" variable is a boolean that indicates whether or not the signature verified properly.
 
 :::note
 
@@ -45,8 +52,8 @@ An active connection to the Lit Protocol nodes is needed to use this function.
 This connection can be made with the following code:
 
 ```js
-const litNodeClient = new LitJsSdk.LitNodeClient()
-litNodeClient.connect()
+const litNodeClient = new LitJsSdk.LitNodeClient();
+litNodeClient.connect();
 ```
 
 Now, you should define you access control conditions. In the example below, we define a condition that requires the user holds at least 1 ERC1155 token with Token ID 9541 from the `0x3110c39b428221012934A7F617913b095BC1078C` contract.
@@ -54,44 +61,46 @@ Now, you should define you access control conditions. In the example below, we d
 ```js
 const accessControlConditions = [
   {
-    contractAddress: '0x3110c39b428221012934A7F617913b095BC1078C',
-    standardContractType: 'ERC1155',
+    contractAddress: "0x3110c39b428221012934A7F617913b095BC1078C",
+    standardContractType: "ERC1155",
     chain,
-    method: 'balanceOf',
-    parameters: [
-      ':userAddress',
-      '9541'
-    ],
+    method: "balanceOf",
+    parameters: [":userAddress", "9541"],
     returnValueTest: {
-      comparator: '>',
-      value: '0'
-    }
-  }
-]
+      comparator: ">",
+      value: "0",
+    },
+  },
+];
 ```
 
 Next, obtain an authSig from the user. This will ask their metamask to sign a message proving they own the crypto address in their wallet. Remember to pass the chain you're using.
 
 ```js
-const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'polygon'})
+const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "polygon" });
 ```
 
 Next, define the Resource ID of the resource you are granting access to. This is typically a URL.
 
 ```js
 const resourceId = {
-  baseUrl: 'my-dynamic-content-server.com',
-  path: '/a_path.html',
+  baseUrl: "my-dynamic-content-server.com",
+  path: "/a_path.html",
   orgId: "",
   role: "",
-  extraData: ""
-}
+  extraData: "",
+};
 ```
 
 Finally, you can save all this to the Lit nodes, and then users will be able to request a JWT that grants access to the resource.
 
 ```js
-await litNodeClient.saveSigningCondition({ accessControlConditions, chain, authSig, resourceId })
+await litNodeClient.saveSigningCondition({
+  accessControlConditions,
+  chain,
+  authSig,
+  resourceId,
+});
 ```
 
 Make sure that you save the `accessControlConditions` and `resourceId`, because the user will have to present them when requesting a JWT that would grant them access. You will typically want to store them wherever you authorize the user, typically where the "log in" or "authorize" button lives.
@@ -111,22 +120,26 @@ An active connection to the Lit Protocol nodes is needed to use this function.
 
 This connection can be made with the following code:
 
-
 ```js
-const litNodeClient = new LitJsSdk.LitNodeClient()
-litNodeClient.connect()
+const litNodeClient = new LitJsSdk.LitNodeClient();
+litNodeClient.connect();
 ```
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own the crypto address in their wallet. Remember to pass the chain you're using!
 
 ```js
-const authSig = await LitJsSdk.checkAndSignAuthMessage({chain: 'polygon'})
+const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "polygon" });
 ```
 
 Now, using the accessControlConditions and resourceId you defined when provisoning access to the resource, you can use the getSignedToken function to get the token:
 
 ```js
-const jwt = await litNodeClient.getSignedToken({ accessControlConditions, chain, authSig, resourceId })
+const jwt = await litNodeClient.getSignedToken({
+  accessControlConditions,
+  chain,
+  authSig,
+  resourceId,
+});
 ```
 
 You can then present this JWT to a server, which can verify it using the [verifyJwt function](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#verifyjwt).
@@ -151,7 +164,6 @@ This repo is a minimal example to:
 https://github.com/LIT-Protocol/lit-minimal-jwt-example
 
 ### NextJS: Token Gate a URL Page
-
 
 This is a minimal example of how to token-gate a Next.js page within the `getServerSideProps`. This example was created by [Nader Dabit](https://twitter.com/dabit3).
 

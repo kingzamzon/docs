@@ -7,64 +7,55 @@ import TabItem from '@theme/TabItem';
 
 # Installation
 
-Use yarn or npm to add the lit-js-sdk to your product:
-<Tabs
-defaultValue="yarn"
-values={[
-{label: 'yarn', value: 'yarn'},
-{label: 'npm', value: 'npm'},
-]}>
-<TabItem value="yarn">
-
-```js
-yarn add lit-js-sdk
-```
-	
-</TabItem>
-	
-<TabItem value="npm">
-
-```js
-npm install lit-js-sdk
-```
-</TabItem>
-</Tabs>
-
-## Importing
+## Installing and Importing
 
 <Tabs
-defaultValue="imported"
+defaultValue="browser"
 values={[
-{label: 'imported', value: 'imported'},
-{label: 'script tag', value: 'script-tag'},
-{label: 'server side', value: 'server-side'},
+{label: 'browser', value: 'browser'},
+{label: 'script tag with all dependencies included', value: 'script-tag'},
+{label: 'server side with nodejs', value: 'server-side'},
 ]}>
-<TabItem value="imported">
+<TabItem value="browser">
+Install the SDK:
+
+```sh
+yarn add @lit-protocol/sdk-browser
+```
+
+Use the SDK:
 
 ```js
-import LitJsSdk from 'lit-js-sdk'
+import LitJsSdk from "@lit-protocol/sdk-browser";
 ```
-	
+
 </TabItem>
 	
 <TabItem value="script-tag">
 
 ```js
-<script onload='LitJsSdk.litJsSdkLoadedInALIT()' src="https://jscdn.litgateway.com/index.web.js"></script>
+<script
+  onload="LitJsSdk.litJsSdkLoadedInALIT()"
+  src="https://jscdn.litgateway.com/index.web.js"
+></script>
 ```
 
 If you decide to import the SDK with the script tag, we provide a web-ready package with all dependencies included at build/index.web.js.
 You can use all the SDK functions via LitJsSdk, for example `LitJsSdk.encryptString()`
-	
 </TabItem>
 <TabItem value="server-side">
 
-```js
-import LitJsSdk from 'lit-js-sdk/build/index.node.js'
+Install the SDK:
+
+```sh
+yarn add @lit-protocol/sdk-nodejs
 ```
-	
-</TabItem>
-</Tabs>
+
+Use the SDK:
+
+```js
+import LitJsSdk from "@lit-protocol/sdk-nodejs";
+```
 
 :::note
 
@@ -72,6 +63,9 @@ You should use at least Node v16 because of the need for the webcrypto library.
 You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
 
 :::
+
+</TabItem>
+</Tabs>
 
 <!-- ### For React
 
@@ -154,10 +148,10 @@ values={[
 <TabItem value="yarn">
 
 ```js
-const client = new LitJsSdk.LitNodeClient()
-await client.connect()
-window.litNodeClient = client
-```	
+const client = new LitJsSdk.LitNodeClient();
+await client.connect();
+window.litNodeClient = client;
+```
 
 In the **yarn / NPM** example:
 
@@ -173,22 +167,19 @@ In the code examples we make the litNodeClient available as a global variable so
 <TabItem value="script">
 
 ```js
-function litJsSdkLoaded(){
-    var litNodeClient = new LitJsSdk.LitNodeClient()
-    litNodeClient.connect()
-    window.litNodeClient = litNodeClient
+function litJsSdkLoaded() {
+  var litNodeClient = new LitJsSdk.LitNodeClient();
+  litNodeClient.connect();
+  window.litNodeClient = litNodeClient;
 }
 ```
-	
+
 In the **script tag** example:
 
 If you're using the script tag with `onload='LitJsSdk.litJsSdkLoadedInALIT()'` then the SDK will connect to the Lit Network and put a connected LitNodeClient into `window.litNodeClient` for you. Alternatively, you can put your own connection code in the `litJsSdkLoaded()` function and call it yourself with `onload=litJsSdkLoaded()`.
 
 </TabItem>
 </Tabs>
-
-
-
 
 ### SDK installed via yarn / NPM (NodeJS / serverside usage)
 
@@ -197,8 +188,8 @@ In this example, we store the litNodeClient in a global variable `app.locals.lit
 ```js
 app.locals.litNodeClient = new LitJsSdk.LitNodeClient({
   alertWhenUnauthorized: false,
-})
-await app.locals.litNodeClient.connect()
+});
+await app.locals.litNodeClient.connect();
 ```
 
 :::note
@@ -227,10 +218,14 @@ export default new Lit()
 To listen for the "lit-ready" event which is fired when the network is fully connected:
 
 ```js
-document.addEventListener('lit-ready', function (e) {
-  console.log('LIT network is ready')
-  setNetworkLoading(false) // replace this line with your own code that tells your app the network is ready
-}, false)
+document.addEventListener(
+  "lit-ready",
+  function (e) {
+    console.log("LIT network is ready");
+    setNetworkLoading(false); // replace this line with your own code that tells your app the network is ready
+  },
+  false
+);
 ```
 
 ## Debug Logging and Lit Node Client configuration
