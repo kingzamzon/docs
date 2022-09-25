@@ -6,11 +6,11 @@ sidebar_position: 3
 
 :::note
 
-Session Keys and Signatures are still heavily in development and things may change. You can currently only use them with the Serrano branch of the lit-js-sdk on the Serrano testnet.
+Session Keys and Signatures are a replacement for Wallet Signatures / Auth Sigs and are still heavily in development and things may change. You can currently only use them with the Serrano branch of the lit-js-sdk on the Serrano testnet.
 
 :::
 
-With Lit Protocol, the user needs to prove ownership of their wallet, and this is typically done via a wallet signature. However, to protect against replay attacks, and to let users scope their wallet signatures to specific resources, we've implemented a system of session keys.
+With Lit Protocol, the user needs to prove ownership of their wallet, and this is typically done via a wallet signature, sometimes referred to as "auth sigs" in the Lit docs. However, to protect against replay attacks, and to let users scope their wallet signatures to specific resources, we've implemented a system of session keys.
 
 It works by generating a new random ed25519 keypair in the browser, and storing it in local storage. Then, the user signs a SIWE message with their wallet which contains the session public key. This signature is stored in local storage as well. The session keypair is used to sign all requests to the Lit Protocol API, and the user's wallet signature is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
 
