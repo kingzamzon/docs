@@ -20,7 +20,7 @@ Create HTML NFTs that contain embedded HTML/JS/CSS that’s only accessible to t
 
 ## Examples
 
-You can find reference implementations of the above examples [here](https://developer.litprotocol.com/docs/ExamplesAndGuides/SDKExamples/EncryptAndDecrypt/installation).
+You can find reference implementations of the above examples [here](https://developer.litprotocol.com/toolsandexamples/sdkexamples/examples/).
 
 ## Resources
 
