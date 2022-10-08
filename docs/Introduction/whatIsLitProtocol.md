@@ -1,11 +1,10 @@
 ---
-slug: /
 sidebar_position: 2
 ---
 
-# What is Lit Protocol?
+# Introduction
 
-## Decentralized Encryption
+## Decentralized Cryptography
 
 Lit Protocol decentralizes public key cryptography using threshold cryptography, and makes it easy for you to decentralize it, too.
 
@@ -14,7 +13,7 @@ Lit Protocol decentralizes public key cryptography using threshold cryptography,
 Lit Protocol is an open source, decentralized utility that uses encryption to provide blockchain users access to digital and real world experiences. 
 
 ### Why is encryption important?
-[Encryption](https://www.cloudflare.com/learning/ssl/what-is-encryption/) is the process of encoding data so that it remains hidden from or inaccessible to unauthorized users.
+[Encryption](https://www.cloudflare.com/learning/ssl/what-is-encryption/) is the process of encoding data so that it remains hidden from or inaccessible to unauthorized parties.
 
 We believe that privacy and ownership are basic rights, two ideas central to encryption and decentralization.
 
