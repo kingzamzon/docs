@@ -7,6 +7,17 @@ import TabItem from '@theme/TabItem';
 
 # Working with Lit Actions
 
+:::note
+
+Lit Actions and PKPs are still heavily in development and things may change.
+
+Need some Celo to mint a PKP? Fill out this form: https://forms.gle/hcvh7VbS83DokBSE9
+
+:::
+
+**PKP Minting is live!**
+Mint one here: https://explorer.litprotocol.com/mint-pkp
+
 To create a Lit Action, you need to write some Javascript code that will accomplish your goals. The Lit Protocol provides JS function bindings to do things like request a signature or a decryption.
 
 You'll also need some client side JS to collect the responses from the Lit Nodes and combine them above the threshold into a signature or decrypted data.

@@ -8,6 +8,8 @@ sidebar_position: 2
 
 Lit Actions and PKPs are still heavily in development and things may change.
 
+Need some Celo to mint a PKP? Fill out this form: https://forms.gle/hcvh7VbS83DokBSE9
+
 :::
 
 **PKP Minting is live!**
