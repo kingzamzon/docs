@@ -496,10 +496,10 @@ const signatures = await litNodeClient.executeJs({
 ### Using the ipfsId param
 
 ```js
-// note that ipfs ID QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV contains the same code as the "litActionCode" variable above.
-// You can see this at https://ipfs.litgateway.com/ipfs/QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV
+// note that ipfs ID QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm contains the same code as the "litActionCode" variable above.
+// You can see this at https://ipfs.litgateway.com/ipfs/QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm
 const signatures = await litNodeClient.executeJs({
-  ipfsId: "QmeYcfZ1NF8NjESE2q4TEgCpvDtf9UdVcAPjaqnVU5C4pV",
+  ipfsId: "QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm",
   authSig,
   // all jsParams can be used anywhere in your Lit Action Code
   jsParams: {
