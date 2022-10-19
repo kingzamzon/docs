@@ -9,28 +9,28 @@ export default function LearnCodeSection({ title, className }) {
     <Section title={title} className={className}>
       <Card
         title="🧶 Arweave / Bundlr Guide"
-        description="Encrypt data using Lit and upload it to Arweave using Bundlr"
-        to="/ToolsAndExamples/bundlrxarweave"
+        description="Encrypt data using Lit and upload it to Arweave using Bundlr."
+        to="/toolsAndExamples/integrations/bundlrxarweave"
       />
       <Card
         title="🪴 Ceramic x Lit SDK"
-        description="Build a simple encryption and decryption application with Lit and Ceramic"
-        to="/ToolsAndExamples/Ceramic/intro"
+        description="Build a simple encryption and decryption application with Lit and Ceramic."
+        to="/toolsAndExamples/integrations/Ceramic/intro"
       />
       <Card
         title="👐 Open Source Examples"
-        description="Browse projects building with Lit"
-        to="/ToolsAndExamples/SDKExamples/examples"
+        description="Browse projects building with Lit."
+        to="/ecosystem/projects"
       />
       <Card
         title="📖 API Documentation"
-        description="Discover all the functions available in the SDK"
+        description="Discover all the functions available in the SDK."
         to="https://lit-protocol.github.io/lit-js-sdk/api_docs_html/"
       />
       <Card
-        title="🛠 Tools & Integrations"
-        description="Additional tools and integrations to ease into building with Lit"
-        to="/ToolsAndExamples/SDKExamples/EncryptAndDecrypt/setup" //linked to Tools section, second pass to include Tools and Integrations broken out
+        title="🛠 Tools"
+        description="Additional tools to help build with Lit."
+        to="/toolsAndExamples/tools/shareModal" 
       />
     </Section>
   );
