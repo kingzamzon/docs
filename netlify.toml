@@ -361,3 +361,10 @@ force = false
   to = "/support/supportedChains"
   status = 302
   force = false
+
+[[redirects]]
+  from = "/litactionsandpkps/whatarelitactionsandpkps/*"
+  to = "/coreConcepts/LitActionsAndPKPs/intro"
+  status = 302
+  force = false
+  

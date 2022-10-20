@@ -43,12 +43,7 @@ Using [HTML NFTs](https://developer.litprotocol.com/ToolsAndExamples/SDKExamples
 Here’s an [example](https://twitter.com/LitProtocol/status/1504630741849853954) using our Lit Genesis Canvas NFT. Only holders can access the private canvas site linked within!
 
 ## Programmable Key Pairs
-
-What if a smart contract could have it's own public and private keypair, just like any other wallet? And what if that smart contract had the ability to make arbitrary HTTP requests and use the data in its computation? Imagine smart contracts that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system.
-
-We're building this at Lit: The smart contracts are Lit Actions and the keypairs they can use are PKPs.
-
-You can read more about PKPs and Lit Actions in our [docs](https://developer.litprotocol.com/LitActionsAndPKPs/whatAreLitActionsAndPKPs#what-are-programmable-key-pairs-pkps), or check out our latest [announcement](https://twitter.com/LitProtocol/status/1572981766536790018?s=20&t=4lEfj2jDwUG8dzBjgT__GQ).
+You can read about PKPs and Lit Actions in our [docs](/coreConcepts/LitActionsAndPKPs/intro), or check out our latest [announcement](https://twitter.com/LitProtocol/status/1572981766536790018?s=20&t=4lEfj2jDwUG8dzBjgT__GQ).
 
 Below you will find some examples of projects that have been built using PKPs, as well as some other potential ideas and use cases. You can check out even more examples [here](https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests).
 
