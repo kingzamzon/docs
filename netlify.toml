@@ -373,4 +373,10 @@ force = false
   to = "/coreConcepts/LitActionsAndPKPs/intro"
   status = 302
   force = false
+
+[[redirects]]
+  from = "/accesscontrolconditions/*"
+  to = "/coreConcepts/accessControl/intro"
+  status = 302
+  force = false
   
