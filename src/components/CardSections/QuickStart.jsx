@@ -15,7 +15,7 @@ export default function QuickStartSection({ title, className }) {
       <Card
         title="⌨️ Encrypt and Decrypt Static Content"
         description="Create your first Lit enabled application."
-        to="/SDK/Explanation/EncryptionCategory/setup"
+        to="/SDK/Explanation/encryption"
       />
       <Card
         title="📁 Encrypting On-Chain Metadata (Polygon)"
