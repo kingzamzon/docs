@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Authing Dynamic Content via JWT (content loaded from a server)
+# JWT Auth (content loaded from a server)
 
 ## Verifying a JWT that was signed by the Lit network
 
