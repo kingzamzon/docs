@@ -9,9 +9,9 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
-Lit Actions and PKPs are still heavily in development and things may change.
+Lit Actions and PKPs are still heavily in development and things may change. The Lit JS SDK to use is on the lit-js-sdk `@serrano` branch. For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome).
 
-Need some Celo to mint a PKP? Fill out this form: https://forms.gle/hcvh7VbS83DokBSE9
+Need some Celo to mint a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9).
 
 :::
 
