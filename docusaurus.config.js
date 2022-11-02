@@ -135,6 +135,13 @@ const config = {
         indexName: "developer-litprotocol",
       },
     }),
+  scripts: [
+    {
+      src: "https://plausible.io/js/script.js",
+      defer: true,
+      "data-domain": "developer.litprotocol.com",
+    },
+  ],
 };
 
 module.exports = config;
