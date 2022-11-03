@@ -7,16 +7,19 @@ import TabItem from '@theme/TabItem';
 
 # Lit Actions
 
+**PKP Minting is live!**
+Mint one here: https://explorer.litprotocol.com/mint-pkp
+
 :::note
 
-Lit Actions and PKPs are still heavily in development and things may change. The Lit JS SDK to use is on the lit-js-sdk `@serrano` branch. For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome).
+Lit Actions and PKPs are still heavily in development and things may change. The correct Lit JS SDK to use is on the lit-js-sdk `@serrano` branch. 
+
+**SDK DOCUMENTATION** 
+For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome). For references to the Lit Actions functions, check out the [Lit Actions](http://actions-docs.litprotocol.com/) docs.
 
 Need some Polygon Mumbai Tokens to mint a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9).
 
 :::
-
-**PKP Minting is live!**
-Mint one here: https://explorer.litprotocol.com/mint-pkp
 
 To create a Lit Action, you need to write some Javascript code that will accomplish your goals. The Lit Protocol provides JS function bindings to do things like request a signature or a decryption.
 
