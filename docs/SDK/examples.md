@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Example Projects
 
-## IPFS x Lit
+## [IPFS x Lit](https://github.com/debbly/IPFS-lit)
 
 This is a guide that walks through an application that stores an image on IPFS and encrypts/decrypts that image url using Lit.
 
