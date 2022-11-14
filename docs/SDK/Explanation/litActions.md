@@ -12,9 +12,9 @@ Mint one here: https://explorer.litprotocol.com/mint-pkp
 
 :::note
 
-Lit Actions and PKPs are still heavily in development and things may change. The correct Lit JS SDK to use is on the lit-js-sdk `@serrano` branch. 
+Lit Actions and PKPs are still heavily in development and things may change. The correct Lit JS SDK to use is on the lit-js-sdk `@serrano` branch.
 
-**SDK DOCUMENTATION** 
+**SDK DOCUMENTATION**
 For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome). For references to the Lit Actions functions, check out the [Lit Actions](http://actions-docs.litprotocol.com/) docs.
 
 Need some Polygon Mumbai Tokens to mint a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9).
@@ -401,6 +401,7 @@ const go = async () => {
 go();
 ```
 
+<!--
 ## Encrypting and decrypting messages
 
 The Lit Access control product supports encrypting and decrypting content, files, and messages, and so does the Lit Actions product. This works by generating a symmetric encryption key on the client side, encrypting the content with that key, and then encrypting the key with a PKP Public Key to produce an encrypted symmetric key. Then, you can ask the Lit Nodes to use the Private Key Share to decrypt the encrypted symmetric key. The nodes provide their decryption shares to the client, and the client uses the decryption shares to decrypt the encrypted symmetric key. The client then decrypts the content with the symmetric key. This is probably most useful if you put conditions, like an `if` statement, in your litActionCode to determine whether to permit decryption.
@@ -410,7 +411,7 @@ import LitJsSdk from "lit-js-sdk/build/index.node.js";
 
 // this code will be run on the node
 const litActionCode = `
-const go = async () => {  
+const go = async () => {
   // this requests a decryption share from the Lit Node
   // the decryption share will be automatically returned in the HTTP response from the node
   const decryptionShare = await LitActions.decryptBls({ toDecrypt, publicKey, decryptionName });
@@ -478,6 +479,7 @@ const runLitAction = async () => {
 
 runLitAction();
 ```
+-->
 
 ## Passing JS to be run by the Lit Nodes
 
