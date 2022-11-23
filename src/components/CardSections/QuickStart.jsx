@@ -27,6 +27,11 @@ export default function QuickStartSection({ title, className }) {
         description="Learn how to encrypt data for private storage on the open web."
         to="/SDK/Explanation/encryption"
       />
+      <Card
+        title="🔑 Provisioning access with a JSON Web Token (JWT)"
+        description="NextJS Project: Token gate a page using a JWT."
+        to="/SDK/examples#nextjs-minimal-jwt-example"
+      />
     </Section>
   );
 }

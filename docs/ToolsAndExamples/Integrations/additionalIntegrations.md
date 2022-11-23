@@ -19,8 +19,6 @@ Private data [Workshop](https://www.youtube.com/watch?v=9h-n3_T8Exk) at Zora's M
 
 [Cask x Lit Protocol](https://medium.com/@caskprotocol/cask-protocol-integrates-with-lit-protocol-to-attach-private-data-to-nfts-token-gate-content-496b2c5bb995): Attach Private Data to NFT Subscriptions.
 
-Token Gate a Next.js page by [Nader Dabit](https://github.com/dabit3/nextjs-lit-token-gating).
-
 [Control a Tesla with an NFT](https://www.youtube.com/watch?v=2EZiWT-7Xkk).
 
 [Lit Protocol x Cloudflare](https://github.com/LIT-Protocol/lit-cloudflare-frontend): Gate a video or livestream using Lit and Cloudflare.

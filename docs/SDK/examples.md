@@ -39,6 +39,22 @@ This repo is a minimal example to:
 
 https://github.com/LIT-Protocol/lit-minimal-jwt-example
 
+## NextJS Minimal JWT Example
+
+This repo is a minimal example to:
+
+- Provision access to a resource (a web url) behind ownership of that NFT (client side)
+- Request a signed JWT from the Lit network to access that resource (client side)
+- Verify the signature on that JWT (server side)
+
+
+Below is a [Replit project](
+https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js).
+
+<iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js"></iframe>
+
+
+
 ## Minting HTML NFTs
 
 An example that showcases the ability to mint an HTML NFT with locked content that only the NFT owner can decrypt or see.
