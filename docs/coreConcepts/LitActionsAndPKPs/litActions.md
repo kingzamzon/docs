@@ -48,10 +48,13 @@ Right now, you could use something like [Tenderly Web3 Actions](https://docs.ten
 
 ## Do I need a PKP to run a Lit Action? 
 
-No, but without it, Lit Actions lose their "magic" capabilities of signing and decryption. An Action without a PKP is essentially just a serverless function that **can’t sign** or decrypt arbitrary data. 
+No, but without it, Lit Actions lose their "magic" capabilities of signing and decryption. An Action without a PKP is essentially just a serverless function that **can’t sign** or decrypt arbitrary data.  
+
+## Test your knowledge of Lit Actions on 101.xyz
+Go through this [Lit Actions](https://101.xyz/course/claift8fc415408l116dbsqpl) course on 101.xyz and receive an NFT credential to show your proof of knowledge. 
 
 ## Getting started with Lit Actions
 
 Get started with Lit Actions [here](/SDK/Explanation/litActions.md).
 
-More [examples](/coreConcepts/usecases#programmatic-signing-lit-actions-and-pkps). 
+More [examples](/coreConcepts/usecases#programmatic-signing-lit-actions-and-pkps).
