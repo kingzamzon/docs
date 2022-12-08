@@ -33,6 +33,11 @@ export default function LitActionsSection({ title, className }) {
         to="/SDK/Explanation/litActions#using-eip191-eth_personal_sign-to-sign-a-message-instead-of-a-transaction-or-raw-signature"
       />
       <Card
+        title="Lit Contracts SDK (Typescript)"
+        description="ContractsSDK is a bundled package that allows you to make calls to Lit smart contracts."
+        to="/SDK/Explanation/litActions#lit-protocol-contracts-sdk-typescript"
+      />
+      <Card
         title="Additional Examples"
         description="View more examples on our Github."
         to="https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests"

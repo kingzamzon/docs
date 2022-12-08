@@ -631,6 +631,11 @@ Inside of your Lit Actions, there is an object called `Lit.Auth` that will be pr
 - authSigAddress: A verified wallet address, if one was passed in. This is the address that was used to sign the AuthSig.
 - authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found here: https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L25
 
+## Lit Contracts SDK (Typescript)
+ContractsSDK is a bundled package that allows you to make calls to Lit Protocol smart contracts. Some contracts come with additional abstracted functions that can be accessed by appending Util to the contract variable name, for example, pkpNftContract becomes pkpNftContractUtil.
+
+Demo: https://demo-contracts-sdk-react.vercel.app/
+
 ## More Examples
 
 We have a library of examples here: https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/js-sdkTests
