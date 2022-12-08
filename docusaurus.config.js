@@ -141,6 +141,7 @@ const config = {
       defer: true,
       "data-domain": "developer.litprotocol.com",
     },
+    { src: "/onLoad.js" },
   ],
 };
 

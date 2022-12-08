@@ -243,7 +243,7 @@ runLitAction();
 
 Unlike traditional smart contract ecosystems, Lit Actions can natively talk to the external world. This is useful for things like fetching data from the web, or sending API requests to other services. The example below will get the current temperature from a weather API, and only sign a txn if the temperature is forecast to be above 60 degrees F. Since you can put this HTTP request and logic that uses the response directly in your Lit Action, you don't have to worry about using an oracle to pull data in. The HTTP request will be sent out by all the Lit Nodes, and consensus is based on at least 2/3 of the nodes getting the same response. If less than 2/3 nodes get the same response, then the user can not collect the signature shares above the threshold and therefore cannot produce the final signature.
 
-<iframe frameborder="100px" width="100%" height="500px" src="https://replit.com/@lit/Lit-Actions-Return-signed-API-reponse/#lit-actions_sign_api_response/src/App.js"></iframe>
+<iframe frameborder="100px" width="100%" height="500px" className="repls" style={{display: "none"}} src="https://replit.com/@lit/Lit-Actions-Return-signed-API-reponse/#lit-actions_sign_api_response/src/App.js"></iframe>
 
 ```js
 import LitJsSdk from "lit-js-sdk/build/index.node.js";
@@ -632,6 +632,7 @@ Inside of your Lit Actions, there is an object called `Lit.Auth` that will be pr
 - authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found here: https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L25
 
 ## Lit Contracts SDK (Typescript)
+
 ContractsSDK is a bundled package that allows you to make calls to Lit Protocol smart contracts. Some contracts come with additional abstracted functions that can be accessed by appending Util to the contract variable name, for example, pkpNftContract becomes pkpNftContractUtil.
 
 Demo: https://demo-contracts-sdk-react.vercel.app/

@@ -9,11 +9,13 @@ sidebar_position: 5
 This is a guide that walks through an application that stores an image on IPFS and encrypts/decrypts that image url using Lit.
 
 ## Cloudflare x Lit
+
 - Use a Cloudflare worker to protect any URL with Lit Protocol: https://github.com/LIT-Protocol/cloudflare-litgate-js
 
 - Use Lit Protocol to gate a video or livestream with Cloudflare: https://github.com/LIT-Protocol/lit-cloudflare-frontend and a corresponding tool to deploy a working cloudflare worker to your own cloudflare account: https://litgateway.com/apps/cloudflare
 
 ## Ceramic x Lit
+
 - Lit protocol integration with Ceramic to store encrypted data on Ceramic: https://github.com/LIT-Protocol/CeramicIntegration and a corresponding example implementation of that integration: https://github.com/LIT-Protocol/CeramicIntegrationExample
 
 https://github.com/debbly/IPFS-lit
@@ -47,13 +49,9 @@ This repo is a minimal example to:
 - Request a signed JWT from the Lit network to access that resource (client side)
 - Verify the signature on that JWT (server side)
 
+Below is a [Replit project](https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js).
 
-Below is a [Replit project](
-https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js).
-
-<iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js"></iframe>
-
-
+<iframe frameborder="0" width="100%" height="500px" className="repls" style={{display: "none"}} src="https://replit.com/@lit/NextJS-x-Lit-Token-Gating#pages/index.js"></iframe>
 
 ## Minting HTML NFTs
 
@@ -68,10 +66,13 @@ This shows how to use the Lit JS SDK to provision access to a resource, and then
 https://github.com/LIT-Protocol/lit-only-serverside-sdk-example
 
 ## Access Control Conditions Modal Example
+
 - An example of how to use the Access Control Conditions Modal: https://github.com/LIT-Protocol/lit-access-control-conditions-modal-example
 
 ## Lit AuthSig - server side, no access to MetaMask
+
 - An example of how to create a Lit AuthSig (aka a wallet signature) on the server side, where you don't have access to Metamask: https://github.com/LIT-Protocol/hotwallet-signing-example
 
 ## Access Control List Smart Contract to create an authorization system
+
 - An example of an ACL smart contract that you could easily use with Lit's EVM Custom Contract Conditions to create a flexible and powerful authorization system: https://github.com/masaun/ACL-smart-contract

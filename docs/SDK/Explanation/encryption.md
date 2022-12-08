@@ -8,7 +8,7 @@ You can use Lit to encrypt and store any static content. This could be a file, a
 
 The below Replit is a full-fledged **React** application that encrypts & decrypt a **file** using Lit SDK. For best experience please open the web app in a new tab.
 
-<iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@lit/Encrypt-and-Decrypt-a-File/#encrypt_and_decrypt_file/src/App.js"></iframe>
+<iframe frameborder="0" width="100%" height="500px" className="repls" style={{display: "none"}} src="https://replit.com/@lit/Encrypt-and-Decrypt-a-File/#encrypt_and_decrypt_file/src/App.js"></iframe>
 
 This example will show you how to encrypt and decrypt static data using Lit Protocol's JS SDK on the client side.
 
@@ -35,7 +35,6 @@ class Lit {
 
 export default new Lit()
 ```
-
 
 ## Encrypting
 
