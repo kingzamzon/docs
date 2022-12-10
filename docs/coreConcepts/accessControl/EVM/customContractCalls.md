@@ -104,3 +104,58 @@ var evmContractConditions = [
   },
 ];
 ```
+
+## Using SIWE params in Custom Contract Calls
+
+You can use a SIWE resource parameter in an access control condition. Below is an example of using a SIWE param "litParam:tokenId:8" in a custom contract call. This means that anywhere that ":litParam:tokenId" appears in the functionParams, it will be substituted with the number "8" from the SIWE resource parameter.
+
+Creating the AuthSig with the SIWE param:
+
+```
+const authSig = await LitJsSdk.checkAndSignAuthMessage({
+  chain,
+  resources: ["litParam:tokenId:8"],
+});
+```
+
+Creating the evmContractCondition:
+
+```
+var evmContractConditions = [
+  {
+    contractAddress: "0x7C7757a9675f06F3BE4618bB68732c4aB25D2e88",
+    functionName: "balanceOf",
+    functionParams: [":userAddress", ":litParam:tokenId"],
+    functionAbi: {
+      type: "function",
+      stateMutability: "view",
+      outputs: [
+        {
+          type: "uint256",
+          name: "",
+          internalType: "uint256",
+        },
+      ],
+      name: "balanceOf",
+      inputs: [
+        {
+          type: "address",
+          name: "account",
+          internalType: "address",
+        },
+        {
+          type: "uint256",
+          name: "id",
+          internalType: "uint256",
+        },
+      ],
+    },
+    chain,
+    returnValueTest: {
+      key: "",
+      comparator: ">",
+      value: "0",
+    },
+  },
+];
+```
