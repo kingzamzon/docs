@@ -42,3 +42,9 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 The Lit nodes call the `isValidSignature(bytes32 _hash, bytes memory _signature)` function for the contract at the `authSig.address` on the chain passed in the function. Where `bytes32 _hash` is the bytes32 representation of the `authSig.signedMessage` & `authSig.sig` is passed as the `bytes _signature` arguement. And validates the authSig based on the returned result of the contract's `isValidSignature` function.
 
 Please read the [EIP1271](https://eips.ethereum.org/EIPS/eip-1271) to understand more about the `isValidSignature` function.
+
+## See it in action!
+
+Below is the complete [**React** project](https://replit.com/@lit/Smart-Contract-Authsig-EIP1271#smart-contract-authsig/src/App.js).
+
+<iframe frameborder="0" width="100%" height="500px" className="repls" style={{display: "none"}} src="https://replit.com/@lit/Smart-Contract-Authsig-EIP1271#smart-contract-authsig/src/App.js"></iframe>
