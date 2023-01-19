@@ -165,3 +165,28 @@ var evmContractConditions = [
   },
 ];
 ```
+
+## Encoding arrays in functionParams
+
+The following condition uses a function that accepts an array of bytes32 objects. To pass these objects, you should remove the 0x prefix from the hex string. You can view the function being called for reference here: https://gnosisscan.io/address/0xc7BA08FB2546cA2198F6C69e5c4B15252D90A347#code
+
+```js
+var evmContractConditions = [
+  {
+    contractAddress: "0xc7BA08FB2546cA2198F6C69e5c4B15252D90A347",
+    functionName: "sumBytes32",
+    functionParams: [
+      "[0000000000000000000000000000000000000000000000000000000000000002,0000000000000000000000000000000000000000000000000000000000000003]",
+    ],
+    functionAbi: {
+      name: "sumBytes32",
+      inputs: [{ internalType: "bytes32[]", name: "vals", type: "bytes32[]" }],
+      outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+      constant: true,
+      stateMutability: "view",
+    },
+    chain: "xdai",
+    returnValueTest: { key: "", comparator: "=", value: "5" },
+  },
+];
+```
