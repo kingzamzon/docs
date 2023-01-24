@@ -4,11 +4,11 @@ sidebar_position: 5
 
 # Smart Contract Authsig (EIP1271)
 
-Currently on EOA can interface with Lit via [Authsig](/SDK/Explanation/WalletSigs/authSig) & smart contracts can't since they don't have a private key. This tutotial is for generating an Authsig for smart contracts using [EIP1271](https://eips.ethereum.org/EIPS/eip-1271) which is a standard way to verify a signature when the account is a smart contract.
+Currently on Externally-owned account (EOA) can interface with Lit via an [authsig](/SDK/Explanation/WalletSigs/authSig). With this paradigm, smart contracts can't since they don't have a private key. However, this tutorial will show you how to generate an authSig for smart contracts using [EIP1271](https://eips.ethereum.org/EIPS/eip-1271), EIP-1271 is a standard to verify a signature when the account is a smart contract.
 
 ## How to structure the Authsig
 
-The format of the Authsig remains the same: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authsig. 
+The format of the authSig remains the same: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authsig. 
 
 * **sig** is the actual hex-encoded signature.
 * **derivedVia** should be "EIP1271" to tell the nodes that the authSig is for smart contracts
@@ -39,9 +39,9 @@ const encryptedSymmetricKey = await window.litNodeClient.saveEncryptionKey({
 
 ## How it works
 
-The Lit nodes call the `isValidSignature(bytes32 _hash, bytes memory _signature)` function for the contract at the `authSig.address` on the chain passed in the function. Where `bytes32 _hash` is the bytes32 representation of the `authSig.signedMessage` & `authSig.sig` is passed as the `bytes _signature` arguement. And validates the authSig based on the returned result of the contract's `isValidSignature` function.
+The Lit nodes call the `isValidSignature(bytes32 _hash, bytes memory _signature)` function for the contract at the `authSig.address`. Where `bytes32 _hash` is the bytes32 representation of the `authSig.signedMessage` and `authSig.sig` is passed as the `bytes _signature` argument. The authSig is validated based on the returned result of the contract's `isValidSignature` function.
 
-Please read the [EIP1271](https://eips.ethereum.org/EIPS/eip-1271) to understand more about the `isValidSignature` function.
+Please read the [EIP1271](https://eips.ethereum.org/EIPS/eip-1271) docs to understand the `isValidSignature` function.
 
 ## See it in action!
 
