@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Smart Contract Authsig (EIP1271)
 
-Currently on Externally-owned account (EOA) can interface with Lit via an [authsig](/SDK/Explanation/WalletSigs/authSig). With this paradigm, smart contracts can't since they don't have a private key. However, this tutorial will show you how to generate an authSig for smart contracts using [EIP1271](https://eips.ethereum.org/EIPS/eip-1271), EIP-1271 is a standard to verify a signature when the account is a smart contract.
+Currently, Externally-owned accounts (EOA) can interface with Lit via an [authsig](/SDK/Explanation/WalletSigs/authSig). With this paradigm, a private key is needed to sign an authSig. Smart contracts generally can not produce an authSig since they don't have a private key. However, this tutorial will show you how to generate an authSig for smart contracts using [EIP1271](https://eips.ethereum.org/EIPS/eip-1271). EIP-1271 is a standard to verify a signature when the account is a smart contract.
 
 ## How to structure the Authsig
 

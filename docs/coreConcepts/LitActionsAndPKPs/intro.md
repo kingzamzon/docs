@@ -44,7 +44,7 @@ Get started with Lit Actions [here](/coreConcepts/LitActionsAndPKPs/litActions.m
 
 A user can mint a new PKP and grant a Lit Action the right to sign using it, giving it the ability to sign and decrypt arbitrary data based on pre-defined conditions.
 
-## Why is any of this useful?
+## Why is this useful?
 
 Because Lit Actions + PKPs + web3 storage can be a replacement for a traditional web2 backend. Imagine a web3 Twitter clone that stores the data on Ceramic. You could create a PKP that owns a Ceramic stream, and then grant access to sign with that PKP to a group of Lit Actions for things like `createPost()` and `likePost()`. Your Lit Actions can work just like a web2 backend, with business logic to ensure that only correct data is written to your Ceramic Stream. For example, the `likePost()` function could check that a user has not already liked a post, and only write the like to the stream if they have not already liked it.
 
