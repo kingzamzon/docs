@@ -14,7 +14,7 @@ An authentication method refers to the specific credential (i.e a wallet address
 
 Authorization is through auth signatures - an auth sig is always required when making a request to Lit, whether it be decrypting some piece of content or sending a transaction with a PKP.
 
-[Read more.](spark.litprotocol.com/how-authentication-works-with-pkps/)
+[Read more.](https://spark.litprotocol.com/how-authentication-works-with-pkps/)
 
 ## How to use
 Inside of your Lit Actions, there is an object called `Lit.Auth` that will be pre-populated with the resolved Auth Methods, and a few other items. For example, if you pass a Google Oauth Token, then the Lit Nodes will resolve the Oauth Token into a user ID and application ID and those will be available to you in `Lit.Auth`. `Lit.Auth` has the following members:
