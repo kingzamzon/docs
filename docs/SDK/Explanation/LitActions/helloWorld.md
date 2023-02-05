@@ -26,13 +26,15 @@ In order to collect the responses from the Lit nodes, you'll also need to write 
 
 In the example below, we will write a simple Lit Action that requests a signature from the Lit nodes on the string "Hello World".
 
-## 1. Install the SDK
+## 1. Install the SDK and get a PKP
 
 First, install the Lit JS SDK `serrano` tag:
 
 ```
 yarn add lit-js-sdk@serrano
 ```
+
+Then, go to https://explorer.litprotocol.com/ and mint a PKP. Note the Public Key for the steps below.
 
 ## 2. Requesting a Signature
 
