@@ -18,7 +18,7 @@ Need some Polygon Mumbai Tokens to mint a PKP? Fill out this [form](https://form
 
 :::
 
-Lit Actions are JavaScript programs used to define arbitrary signing conditions for [PKPs](/coreConcepts/LitActionsAndPKPs/PKPs.md). In other words, they are the immutable "rules" that dictate *what* or *who* has permission to sign using a particular PKP. 
+Lit Actions are JavaScript programs used to define arbitrary signing conditions for [PKPs](/coreConcepts/LitActionsAndPKPs/PKPs.md). In other words, they are the immutable "rules" that dictate _what_ or _who_ has permission to sign using a particular PKP.
 
 To create a Lit Action, all you need to do is write some JavaScript code that will accomplish your goals. The Lit Protocol provides JS function bindings to do things like request a signature or check an arbitrary condition.
 
@@ -35,7 +35,8 @@ yarn add lit-js-sdk@serrano
 ```
 
 ## 2. Requesting a Signature
-The Lit Action below  will sign the string "Hello World" with the shared testnet ECDSA key and return the signature.
+
+The Lit Action below will sign the string "Hello World" with the shared testnet ECDSA key and return the signature.
 
 The JS below will be run by every node in the network in parallel.
 
@@ -48,7 +49,7 @@ const go = async () => {
   const sigShare = await Lit.Actions.signEcdsa({
     toSign,
     publicKey:
-      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
+      "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
     sigName: "sig1",
   });
 };
@@ -96,7 +97,7 @@ const runLitAction = async () => {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
       publicKey:
-        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
+        "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
       sigName: "sig1",
     },
   });
@@ -145,7 +146,7 @@ const runLitAction = async () => {
       // this is the string "Hello World" for testing
       toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
       publicKey:
-        "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
+        "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
       sigName: "sig1",
     },
   });
@@ -154,6 +155,7 @@ const runLitAction = async () => {
 
 runLitAction();
 ```
+
 </TabItem>
 </Tabs>
 
@@ -183,7 +185,7 @@ const signatures = await litNodeClient.executeJs({
     // this is the string "Hello World" for testing
     toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
     publicKey:
-      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
+      "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
     sigName: "sig1",
   },
 });
@@ -202,7 +204,7 @@ const signatures = await litNodeClient.executeJs({
     // this is the string "Hello World" for testing
     toSign: [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100],
     publicKey:
-      "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64",
+      "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
     sigName: "sig1",
   },
 });
