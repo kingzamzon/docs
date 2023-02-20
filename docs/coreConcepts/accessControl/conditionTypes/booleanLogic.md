@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 2
 ---
 
 # Boolean Logic
@@ -11,34 +11,29 @@ If you wanted to check that the user is a member of a DAO or that they hold more
 ```js
 const accessControlConditions = [
   {
-    contractAddress: '0x50D8EB685a9F262B13F28958aBc9670F06F819d9',
-    standardContractType: 'MolochDAOv2.1',
+    contractAddress: "0x50D8EB685a9F262B13F28958aBc9670F06F819d9",
+    standardContractType: "MolochDAOv2.1",
     chain,
-    method: 'members',
-    parameters: [
-      ':userAddress',
-    ],
+    method: "members",
+    parameters: [":userAddress"],
     returnValueTest: {
-      comparator: '=',
-      value: 'true'
-    }
+      comparator: "=",
+      value: "true",
+    },
   },
-  {"operator": "or"},
+  { operator: "or" },
   {
-    contractAddress: '',
-    standardContractType: '',
+    contractAddress: "",
+    standardContractType: "",
     chain,
-    method: 'eth_getBalance',
-    parameters: [
-      ':userAddress',
-      'latest'
-    ],
+    method: "eth_getBalance",
+    parameters: [":userAddress", "latest"],
     returnValueTest: {
-      comparator: '>=',
-      value: '10000000000000'
-    }
-  }
-]
+      comparator: ">=",
+      value: "10000000000000",
+    },
+  },
+];
 ```
 
 ## Boolean nesting

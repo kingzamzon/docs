@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 3
 ---
 
 # Updateable Conditions
@@ -16,7 +16,6 @@ const encryptedSymmetricKey = await litNodeClient.saveEncryptionKey({
   chain,
   permanent: false,
 });
-
 ```
 
 ## Permanent Conditions
@@ -48,14 +47,13 @@ const newAccessControlConditions = [
   },
 ];
 
-const newEncryptedSymmetricKey =
-  await litNodeClient.saveEncryptionKey({
-    accessControlConditions: newAccessControlConditions,
-    encryptedSymmetricKey,
-    authSig,
-    chain,
-    permanent: false,
-  });
+const newEncryptedSymmetricKey = await litNodeClient.saveEncryptionKey({
+  accessControlConditions: newAccessControlConditions,
+  encryptedSymmetricKey,
+  authSig,
+  chain,
+  permanent: false,
+});
 ```
 
 Note that in the above example, you may throw away `newEncryptedSymmetricKey` because it is identical to the `encryptedSymmetricKey` you passed in and presumably already saved somewhere.
