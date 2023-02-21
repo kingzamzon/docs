@@ -35,7 +35,7 @@ console.log("response: ", results.response);
 
 ## Composability
 
-You can call Lit Actions from inside Lit Actions and any signatures or decryptions will be appended to the parent Lit Action response. You do this by passing an IPFS ID to the LitActions.call() function like so: `LitActions.call({ ipfsId: "Qmb2sJtVLXiNNXnerWB7zjSpAhoM8AxJF2uZsU2iednTtT", params: {})` which would call the Lit Action at the given IPFS ID with the params you pass in to the `params` key. Check out that action code here to see how it works: https://ipfs.io/ipfs/Qmb2sJtVLXiNNXnerWB7zjSpAhoM8AxJF2uZsU2iednTtT
+You can call Lit Actions from inside Lit Actions and any signatures or decryptions will be appended to the parent Lit Action response. You do this by passing an IPFS ID to the Lit.Actions.call() function like so: `Lit.Actions.call({ ipfsId: "Qmb2sJtVLXiNNXnerWB7zjSpAhoM8AxJF2uZsU2iednTtT", params: {})` which would call the Lit Action at the given IPFS ID with the params you pass in to the `params` key. Check out that action code here to see how it works: https://ipfs.io/ipfs/Qmb2sJtVLXiNNXnerWB7zjSpAhoM8AxJF2uZsU2iednTtT
 
 Below is an action that takes a function name to run, and runs a "child" Lit Action accordingly. This example only has 1 function ("signEcdsa") but it could have many.
 
@@ -48,7 +48,7 @@ import LitJsSdk from "lit-js-sdk/build/index.node.js";
 const litActionCode = `
 const signEcdsa = async () => {
   // this Lit Action simply requests an ECDSA signature share from the Lit Node
-  const resp = await LitActions.call({
+  const resp = await Lit.Actions.call({
     ipfsId: "QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm",
     params: {
       // this is the string "Hello World" for testing
