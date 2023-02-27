@@ -49,11 +49,9 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 |-|----|
 |NodeSystemFault|An internal node error occured. Please try again. If this error persists contact us on Discord.|
 |NodeAccessControlConditionsCheckFailed|The provided Authsig doesn't meet the access conditions.|
-|NodeAccessControlConditionsReturnedNotAuthorized||
 |NodeEncryptedSymmetricKeyNotFound|The provided encryptedSymmetricKey doesn't exist.|
 |NodeExpWrongOrTooLarge|The provided exp param is either expired or is too much in the future.|
 |NodeIatOutsideGracePeriod|The provided iat param is either outside the grace_period or the issue time is in the future.|
-|NodeIncorrectAccessControlConditions||
 |NodeAuthFailed|The authMethod isn't allowed for the provided PKP.|
 |NodeInvalidAuthSig|The provided Authsig is invalid. Please ensure that the Authsig is in the required format as provided: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authsig|
 |NodeAuthSigNotSupported|Multiple Authsigs not supported for the function.|
@@ -74,8 +72,6 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 |NodeAuthSigSessionKeyConversionError|Invalid Authsig.address param. Please look at the returned error for more info  ensure it's compatible as given here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authsig|
 |NodeAuthSigSignedMessageConversionError|Invalid Authsig.signedMessage param. Please look at the returned error for more info  ensure it's compatible as given here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authsig|
 |NodeInvalidAuthSigSessionKeySignature|The provided sessionSig is invalid. Please look at the error for more info.|
-|NodeInvalidUnifiedConditionType||
-|NodeLitNodeClientNotReady||
 |NodeMissingAccessControlConditions|No Access Control Condition provided. You have to provide at least one of the accessControlCondition, evmContractConditions, solRpConditions|
 |NodeNotAuthorized|The Lit node requested isn't a validator in the current epoch. Please try again. If this error persists contact us on Discord.|
 |NodeResourceIdNotFound|Invalid resourceId param.|
@@ -115,13 +111,10 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 |NodeTooManyConditions|Number of provided accessControlCondition exceeds the maximum permitted value of 30.|
 |NodeActionNotAllowed|Lit Action isn't allowed to be executed. You have to permit the Lit Action first to execute it on the nodes.|
 |NodeJsExecutionError|Error executing code on the Lit nodes. Note, the maximum execution time for a code is 1s, the nodes will time out after this. Please try again. If this error persists contact us on Discord.|
-|NodeJsTimeoutError||
 |NodeBlsNoKeyGenError|Internal error with BLS keygen. Please try again. If this error persists contact us on Discord.|
 |NodeBlsWrongKeyGenEpochError|Internal error with BLS epoch sync. Please try again AFTER a while. If this error persists contact us on Discord.|
 |NodeContractFunctionParamsEncodingError|Couldn't encode the provided Authsig into the isValidSignature function. Please ensure that it is compatible with the isValidSignature params.|
 |NodeContractAuthsigUnauthorized|EIP1271 Authsig failed for the passed Authsig.|
-|NodeChainNotSupported||
-|NodeBadInput||
 </TabItem>
 </Tabs>
 
