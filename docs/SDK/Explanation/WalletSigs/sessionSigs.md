@@ -144,7 +144,7 @@ The `getSessionSigs()` function will generate a session key for you automaticall
 
 ## Obtaining session signatures when the user doesn't have a wallet
 
-You can use Oauth login with services including Discord and Google when the user doesn't have a wallet. You can see an example of how to do this using Google Oauth here: https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.js
+You can use Oauth login with services including Discord and Google when the user doesn't have a wallet. You can see an example of how to do this using Google Oauth here: https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L386
 
 ## Clearing the stored session key and signature
 
