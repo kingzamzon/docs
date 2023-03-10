@@ -14,10 +14,9 @@ Get a PKP on the [PKP Explorer](https://explorer.litprotocol.com/mint-pkp)
 
 :::
 
-
 ## What are Programmable Key Pairs (PKPs)?
 
-A PKP is an ECDSA key-pair that is held in distributed custody by the Lit network. PKPs can be programmed to automatically sign based on application logic, which is specified in a JavaScript program called a Lit Action. 
+A PKP is an ECDSA key-pair that is held in distributed custody by the Lit network. PKPs can be programmed to automatically sign based on application logic, which is specified in a JavaScript program called a Lit Action.
 
 Each PKP is an ECDSA key-pair generated collectively by the Lit nodes through a process called Distributed Key Generation (DKG). As a network, this allows Lit to generate a new keypair where nobody knows the whole private key. Instead, each node only holds a share of the key. These signature shares must be combined above the threshold ( 2/3 of the nodes) to produce the complete signature signed by the PKP.
 
@@ -25,9 +24,12 @@ It’s important to note: only those with authorized access have the ability to 
 
 ## How do I create a PKP?
 
-You can mint an NFT from our PKP contract on Polygon Mumbai [here](https://explorer.litprotocol.com/mint-pkp).  This NFT represents the root ownership of the PKP. The NFT owner can grant other users (via a wallet address) or grant Lit Actions the ability to use the PKP to sign and decrypt data. They also have the ability to assign additional authentication methods, described at the bottom of the page.
+You can mint an NFT from our PKP contract on Polygon Mumbai [here](https://explorer.litprotocol.com/mint-pkp). This NFT represents the root ownership of the PKP. The NFT owner can grant other users (via a wallet address) or grant Lit Actions the ability to use the PKP to sign and decrypt data. They also have the ability to assign additional authentication methods, described at the bottom of the page.
+
+You can also use our handy auth helper contract on Polygon Mumbai [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPHelper.sol) and you can find the contract addresses [here](https://explorer.litprotocol.com/contracts)
 
 ## What blockchains can PKPs write to?​
+
 Any blockchain or cryptographic system that utilizes [ECDSA](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/) for digital signatures. This includes Ethereum and most EVM chains, Bitcoin, and Cosmos. View all supported chains [here.](/Support/supportedChains#programmable-key-pairs)
 
 ## What can I use PKPs for?
