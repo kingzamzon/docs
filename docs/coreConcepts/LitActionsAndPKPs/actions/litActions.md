@@ -53,8 +53,6 @@ Currently, you could use something like [Tenderly Web3 Actions](https://docs.ten
 
 No, but without it, Lit Actions lose their capabilities of signing and decryption. An Action without a PKP is essentially a JavaScript function that **can’t sign or decrypt** arbitrary data.  
 
-## Test your knowledge of Lit Actions on 101.xyz
-Go through this [Lit Actions](https://101.xyz/course/claift8fc415408l116dbsqpl) course on 101.xyz and receive an NFT credential to show your proof of knowledge. 
 
 ## Getting started with Lit Actions
 

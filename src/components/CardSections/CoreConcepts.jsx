@@ -18,6 +18,11 @@ export default function CoreConceptsSection({ title, className }) {
         to="/coreConcepts/LitActionsAndPKPs/intro"
       />
       <Card
+        title="💳 Distributed Custody Wallets"
+        description="Learn how you can leverage PKPs to create MPC wallets with support for Web2 authentication."
+        to="/coreConcepts/Wallets/overview"
+      />
+      <Card
         title="🧩 Use Cases"
         description="Learn about how you can integrate Lit infrastructure within your own products."
         to="/coreConcepts/usecases"

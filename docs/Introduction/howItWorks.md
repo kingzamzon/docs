@@ -16,7 +16,7 @@ For references to [programmatic signing](/coreConcepts/LitActionsAndPKPs/intro.m
 
 ## Introduction
 
-The Lit network is made up of a decentralized\* federation of nodes, each playing a vital role in key generation, consensus, and the execution of Lit Actions (Javascript smart contracts that can utilize on or off-chain data in their computation). Lit is **not a blockchain** but instead can be defined as a middleware service that has the capacity to read and write data between blockchains and other distributed systems and state machines.
+The Lit network is made up of a decentralized\* network of nodes, each playing a vital role in key generation, consensus, and the execution of Lit Actions (Javascript smart contracts that can utilize on or off-chain data in their computation). Lit is **not a blockchain** but instead can be defined as a middleware service that has the capacity to read and write data between blockchains and other distributed systems and state machines.
 
 ## Threshold Cryptography
 
@@ -24,9 +24,18 @@ Lit is powered by **threshold cryptography**. This implies that no one node ever
 
 In the context of the Lit network, threshold cryptography is used to generate **_shares_** of a new public/private key pair in a process called [Distributed Key Generation](https://en.wikipedia.org/wiki/Distributed_key_generation). This means that the private key of this key pair **never exists in its entirety**, ever.
 
-Instead, each node holds a **private key share**, which they can use to both sign and decrypt data, just like a regular old private key. The key (no pun intended) difference is that someone needs to combine the resulting signature or decryption shares from all the nodes, **above the threshold**, to get the final signature or decrypted content. We currently set the threshold to two-thirds, so if there are 100 nodes in the Lit network, then you would need to request decryption or signature shares from at least 67 of them. Because of this, a single private key share is useless on its own, and the ownership of the private key itself is decentralized across the nodes.
+Instead, each node holds a **private key share**, which they can use to both sign and decrypt data, just like a regular old private key. The key (no pun intended) difference is that someone needs to combine the resulting signature or decryption shares from all the nodes, **above the threshold**, to get the final signature or decrypted content. We currently set the threshold to two-thirds, so if there are 30 nodes in the Lit network, then you would need to request decryption or signature shares from at least 20 of them. Because of this, a single private key share is useless on its own, and the ownership of the private key itself is decentralized across the nodes.
 
-It is important to note that all operations are done inside of a secure, black-box environment, meaning node operators and other external "agents" have no access to thes key shares contained within. In the context user-facing operations (such as provisioning shares for signing and decryption), nodes communicate with each user via independent, encrypted channels. This means that shares are only ever exposed client-side at the exact moment of recombination.
+![networkOverview](/img/networkOverview.png)
+
+## Secure Encrypted Virtualization (SEV)
+
+As an additional layer of security, Lit has built a bare-metal implementation of [AMD’s SEV-SNP](https://www.amd.com/system/files/TechDocs/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf) as a hardware solution for node operators. All network operations are done inside of this secure, black-box environment, meaning operators and other external agents never have direct access to any of the computation or key material stored within each node. 
+
+In the context user-facing operations — such as when key shares are provisioned for signing and decryption — nodes communicate via independent, encrypted channels. This means that shares are only ever exposed client-side at the exact moment of recombination.
+
+We believe that the marriage of MPC, threshold secret schemes (TSS), and SEV provides end users with the most robustly secure and versatile custody solution currently available on the market today.
+
 
 ## How Lit Protocol works for:
 
@@ -50,9 +59,9 @@ Lit Protocol nodes will verify that the user owns the NFT, sign the JWT to creat
 
 ### Lit Actions
 
-Lit Actions are our version of smart contracts, native to Lit Protocol. Actions are immutable JavaScript functions stored on IPFS that can utilize the threshold cryptography that powers Lit. They can also make external HTTP requests and interact with most EVM-compatible blockchains.
+[Lit Actions](/coreConcepts/LitActionsAndPKPs/actions/litActions) are our version of smart contracts, native to Lit Protocol. Actions are immutable JavaScript functions stored on IPFS that can utilize the threshold cryptography that powers Lit. They can also make external HTTP requests and interact with most EVM-compatible blockchains.
 
-Lit Actions can be used for signing and decryption and work directly with Programmable Key Pairs (PKPs). You can write some JS code, upload it to IPFS, and ask the Lit Nodes to execute that code and return the result.
+Lit Actions can be used for signing and decryption and work directly with [Programmable Key Pairs (PKPs)](/coreConcepts/LitActionsAndPKPs/PKPs). You can write some JS code, upload it to IPFS, and ask the Lit Nodes to execute that code and return the result.
 
 The Lit Nodes can sign or decrypt some data for you using their private key share. These signature or decryption shares can be collected and combined on the client side to get the full signature or decryption key.
 
