@@ -31,6 +31,9 @@ Don't see a blockchain you want?  Fill out this form for EVM chains and we'll ad
 - evmosTestnet
 - bscTestnet
 - baseGoerli
+- moonbeam
+- moonriver
+- moonbaseAlpha
 - solana
 - solanaDevnet
 - solanaTestnet
