@@ -45,6 +45,8 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 </TabItem>
 <TabItem value="serrano">
 
+// TODO: replace api doc link
+
 |error code    |reason    |
 |-|----|
 |NodeSystemFault|An internal node error occured. Please try again. If this error persists contact us on Discord.|

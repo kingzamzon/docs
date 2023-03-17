@@ -52,6 +52,8 @@ First, we need to encrypt the static content, in our case, an image. In order to
 
 **Step A:**
 
+// TODO: replace api doc link
+
 Turn the static content into a `String` format (you can use the [utilities](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#authentication-signature-utilities) we provide), then pass the `staticContentInString` to the `LitJsSdk.encryptString()` function. After execution, we will be given:
 
 `encryptedString`: which is the encrypted image data

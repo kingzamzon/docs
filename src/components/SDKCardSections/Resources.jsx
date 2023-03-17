@@ -7,6 +7,7 @@ import {
 export default function ResourcesSection({ title, className }) {
   return (
     <Section title={title} className={className}>
+      {/* TODO: replace links */}
       <Card
         title="API Documentation"
         description="Production branch SDK API documentation."

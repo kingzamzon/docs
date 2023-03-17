@@ -38,6 +38,7 @@ export default new Lit()
 
 ## Encrypting
 
+// TODO: replace api doc link
 API docs with detailed info on functions are here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/
 
 ### Access Control

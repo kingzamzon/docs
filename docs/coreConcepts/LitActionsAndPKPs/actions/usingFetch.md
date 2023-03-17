@@ -13,7 +13,7 @@ The Lit Action below will get the current temperature from the [National Weather
 
 The HTTP request will be sent out by all the Lit Nodes in parallel, and consensus is based on at least 2/3 of the nodes getting the same response. If less than 2/3 nodes get the same response, then the user can not collect the signature shares above the threshold and therefore cannot produce the final signature. Note that your HTTP request will be sent N times where N is the number of nodes in the Lit Network, because it's sent from every Lit Node in parallel. You should be careful about how many requests you're making and note that this may trigger rate limiting issues on some servers. N is currently 10 on the Serrano testnet.
 
-
+// TODO: update import
 ```js
 import LitJsSdk from "lit-js-sdk/build/index.node.js";
 

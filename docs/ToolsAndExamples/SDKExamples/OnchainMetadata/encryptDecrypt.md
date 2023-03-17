@@ -38,6 +38,8 @@ Define a function `encryptText` which encrypts the `text` argument
     }
 ```
 
+// TODO: replace api doc link
+
 ### 3. Obtain an authsig
 Sign using our wallet before encrypting. This will show a Metamask pop-up which the user signs. For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#checkandsignauthmessage).
 ```js
@@ -47,6 +49,8 @@ Sign using our wallet before encrypting. This will show a Metamask pop-up which 
 ### 4. Encrypt the string
 Finally, let's encrypt our string. This will return a promise containing the `encryptedString` as a **Blob** and the `symmetricKey` used to encrypt it, as a **Uint8Array**.
 
+// TODO: replace api doc link
+
 For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#encryptstring).
 ```js
     const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(text);
@@ -54,6 +58,8 @@ For more info, please check out our [API docs](https://lit-protocol.github.io/li
 
 ### 5. Save encryption key & access control condition
 Now, we save the encryption key with the access control condition. Both are needed for Lit to know who should be able to decrypt.
+
+// TODO: replace api doc link
 
 For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient).
 ```js
@@ -120,6 +126,9 @@ Just as before, let's connect to the Lit nodes if not already connected & get th
 ```
 
 ### 2. Obtain the symmetric key
+
+// TODO: replace api doc link
+
 As described before, we have to get the `symmetricKey` using the `getEncryptionKey` function. More info in the [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient).
 ```js
     const symmetricKey = await this.litNodeClient.getEncryptionKey({
@@ -131,6 +140,9 @@ As described before, we have to get the `symmetricKey` using the `getEncryptionK
 ```
 
 ### 3. Decrypt String
+
+// TODO: replace api doc link
+
 Finally, we can get the decrypted string. For more info see the [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#decryptstring).
 ```js
     return await LitJsSdk.decryptString(

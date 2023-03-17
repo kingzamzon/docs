@@ -6,6 +6,8 @@ sidebar_position: 2
 
 :::note
 
+// TODO: "lit-js-sdk"
+
 Session Keys and Signatures are a replacement for Wallet Signatures / Auth Sigs and are still heavily in development and things may change. You can currently only use them with the Serrano branch of the lit-js-sdk on the Serrano testnet.
 
 :::

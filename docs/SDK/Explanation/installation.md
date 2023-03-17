@@ -53,6 +53,7 @@ yarn add @lit-protocol/sdk-nodejs
 
 Use the SDK:
 
+// TODO: update import
 ```js
 import LitJsSdk from "@lit-protocol/sdk-nodejs";
 ```
@@ -67,6 +68,7 @@ You can use Node v14 (and possibly lower) if you import a global webcrypto polyf
 </TabItem>
 </Tabs>
 
+// TODO: update pkg name
 <!-- ### For React
 
 First, add `lit-js-sdk` to your react app

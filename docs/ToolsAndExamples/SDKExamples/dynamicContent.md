@@ -42,6 +42,8 @@ YOU MUST CHECK THE PAYLOAD AGAINST THE CONTENT YOU ARE PROTECTING. This means yo
 
 ## Provisioning access to a resource
 
+// TODO: replace api doc link
+
 You can use dynamic content provisioning to put some dynamic content behind an on chain condition. You can do this by calling the [`saveSigningCondition`](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclient) function of the LitNodeClient. It will essentially store that condition and the resource that users who meet that condition should be authorized to access. The resource could be a URL, for example. The dynamic content server should then verify the JWT provided by the network on every request, which proves that the user meets the on chain condition.
 
 :::note
@@ -107,6 +109,8 @@ Make sure that you save the `accessControlConditions` and `resourceId`, because 
 
 ## Accessing a resource via a JWT
 
+// TODO: replace api doc link
+
 Obtaining a signed JWT from the Lit network can be done via the getSignedToken function of the [LitNodeClient](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclient).
 
 :::note
@@ -141,6 +145,8 @@ const jwt = await litNodeClient.getSignedToken({
   resourceId,
 });
 ```
+
+// TODO: replace api doc link
 
 You can then present this JWT to a server, which can verify it using the [verifyJwt function](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#verifyjwt).
 

@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+// TODO: remove page?
+
 # HTML NFTs
 
 HTML NFTs are essentially super-powered NFTs. To mint an HTML NFT, you should mint (or already own) any ERC721 or ERC1155 NFT that will serve as the access control token for unlocking the NFT. In the past, we called HTML NFTs "LITs" (Locked Interactive Tokens) so if you see a reference in docs or code to "a LIT" that is referring to an HTML NFT.

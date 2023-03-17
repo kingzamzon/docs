@@ -9,6 +9,8 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
+// TODO: replace api doc link
+
 Lit Actions and PKPs are still heavily in development and things may change. The correct Lit JS SDK to use is on the lit-js-sdk `@serrano` branch.
 
 **SDK DOCUMENTATION**
