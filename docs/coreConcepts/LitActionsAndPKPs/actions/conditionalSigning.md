@@ -11,9 +11,8 @@ Lit Actions inherit the powerful condition checking that Lit Protocol utilizes f
 
 The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do.
 
-// TODO: update import
 ```js
-import LitJsSdk from "lit-js-sdk/build/index.node.js";
+import * as LitJsSdk from '@lit-protocol/lit-node-client';
 
 // this code will be run on the node
 const litActionCode = `

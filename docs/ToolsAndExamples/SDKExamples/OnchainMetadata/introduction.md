@@ -24,7 +24,7 @@ _Estimated time to complete: 1 hour_
 - [Ethers.js](https://docs.ethers.io/v5/) - interacting with our deployed NFT smart contract
 - [Polygon Mumbai network](https://faucet.polygon.technology/) - where we deploy our NFT smart contract
 - [OpenZeppelin](https://www.openzeppelin.com/) - library for smart contracts for the Ethereum network
-- [Metamask](https://metamask.io/) - crypto wallet to connect to our DApp
+- [MetaMask](https://metamask.io/) - crypto wallet to connect to our DApp
 
 ## Project Replit
 

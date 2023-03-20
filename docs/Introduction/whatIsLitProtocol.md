@@ -88,12 +88,6 @@ Lit infrastructure can be used to support an entire host of web3 applications. H
 - Condition-based reward systems and achievements.
 - Private data for multiplayer games.
 
-### Unlockable NFTs
-
-Using [HTML NFTs](/ToolsAndExamples/SDKExamples/HTMLNfts.md), you can create locked content that only owners of the NFT have access to. This includes dynamic content, like websites or metaverse spaces. 
-
-Here’s an [example](https://twitter.com/LitProtocol/status/1504630741849853954) using our Lit Genesis Canvas NFT. Only holders can access the private canvas site linked within!
-
 ### Add Token Gating to Web2 Apps
 
 - [Shopify](https://apps.shopify.com/lit-token-access): Blockchain-based access control for your online store.

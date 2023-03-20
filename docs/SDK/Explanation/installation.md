@@ -17,16 +17,17 @@ values={[
 {label: 'server side with nodejs', value: 'server-side'},
 ]}>
 <TabItem value="browser">
-Install the SDK:
+
+Install the `@lit-protocol/lit-node-client` package, which can be used in both browser and Node environments:
 
 ```sh
-yarn add @lit-protocol/sdk-browser
+yarn add @lit-protocol/lit-node-client
 ```
 
-Use the SDK:
+Use the Lit JS SDK:
 
 ```js
-import LitJsSdk from "@lit-protocol/sdk-browser";
+import * as LitJsSdk from "@lit-protocol/lit-node-client";
 ```
 
 </TabItem>
@@ -34,110 +35,39 @@ import LitJsSdk from "@lit-protocol/sdk-browser";
 <TabItem value="script-tag">
 
 ```js
-<script
-  onload="LitJsSdk.litJsSdkLoadedInALIT()"
-  src="https://jscdn.litgateway.com/index.web.js"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/@lit-protocol/lit-node-client-vanilla/lit-node-client.js"></script>
 ```
 
-If you decide to import the SDK with the script tag, we provide a web-ready package with all dependencies included at build/index.web.js.
-You can use all the SDK functions via LitJsSdk, for example `LitJsSdk.encryptString()`
+If you decide to import the SDK with the script tag, we provide a web-ready package with the dependencies you need. You can use the SDK functions via `LitJsSdk_litNodeClient`, for example `LitJsSdk_litNodeClient.encryptString()`
 </TabItem>
+
 <TabItem value="server-side">
 
-Install the SDK:
+Install the `@lit-protocol/lit-node-client-nodejs`, which is for Node environments only:
 
 ```sh
-yarn add @lit-protocol/sdk-nodejs
+yarn add @lit-protocol/lit-node-client-nodejs
 ```
 
-Use the SDK:
+Use the Lit JS SDK:
 
-// TODO: update import
 ```js
-import LitJsSdk from "@lit-protocol/sdk-nodejs";
+import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
 ```
 
 :::note
 
-You should use at least Node v16 because of the need for the webcrypto library.  
-You can use Node v14 (and possibly lower) if you import a global webcrypto polyfill like @peculiar/webcrypto and define the global `crypto` object in your code.
+You should use **at least Node v16** because of the need for the **webcrypto** library.  
+You can use Node v14 (and possibly lower) if you import a global **webcrypto** polyfill like `@peculiar/webcrypto` and define the global `crypto` object in your code.
 
 :::
 
 </TabItem>
 </Tabs>
 
-// TODO: update pkg name
-<!-- ### For React
-
-First, add `lit-js-sdk` to your react app
-
-```js
-yarn add lit-js-sdk
-```
-
-If you are using `create-react-app ≥ 5` you may be see this error:
-
-```js
-BREAKING CHANGE: webpack < 5 used to include polyfills for node.js core modules by default.
-This is no longer the case. Verify if you need this module and configure a polyfill for it.
-```
-
-This is because NodeJS polyfills are no longer included in the node modules.
-
-You will need to install this NPM package to rewrite your app
-
-```js
-yarn add react-app-rewired --dev
-```
-
-and the following for polyfills:
-
-```js
-yarn add --dev react-app-rewired process crypto-browserify stream-browserify stream-http buffer path-browserify
-```
-
-Then, in the root of your project, create `config-overrides.js` with the following content:
-
-```js
-const webpack = require('webpack');
-
-module.exports = function override(config) {
-    const fallback = config.resolve.fallback || {};
-    Object.assign(fallback, {
-        "crypto": require.resolve("crypto-browserify"),
-        "stream": require.resolve("stream-browserify"),
-        "http": require.resolve("stream-http"),
-        "path": require.resolve("path-browserify")
-    })
-    config.resolve.fallback = fallback;
-    config.plugins = (config.plugins || []).concat([
-        new webpack.ProvidePlugin({
-            process: 'process/browser',
-            Buffer: ['buffer', 'Buffer']
-        })
-    ])
-    return config;
-}
-```
-
-Finally, you will need to change your `react-scripts` to `react-app-rewired` in your `package.json`
-
-```js
-"scripts": {
-	"start": "react-app-rewired start",
-	"build": "react-app-rewired build",
-	"test": "react-app-rewired test",
-	"eject": "react-app-rewired eject"
-},
-```
-
-The missing modules are now included, your app should be working with `import LitJsSdk from 'lit-js-sdk';` -->
-
 ## Connection to the Lit Network
 
-The SDK requires an active connection to the LIT nodes to perform most functions (notably, a connection to the LIT nodes is not required if you are just verifying a JWT). In web apps, this is typically done on first page load and can be shared between all your pages. In NodeJS apps, this is done when when the server starts.
+The SDK requires an active connection to the Lit nodes to perform most functions (notably, a connection to the Lit nodes is not required if you are just verifying a JWT). In web apps, this is typically done on first page load and can be shared between all your pages. In NodeJS apps, this is done when when the server starts.
 
 ### SDK installed via yarn or the script tag (browser usage)
 
@@ -161,7 +91,7 @@ In the **yarn / NPM** example:
 
 `client.connect()` will return a promise that resolves when you are connected to the Lit Network. You may also listen for the `lit-ready` event.
 
-In the code examples we make the litNodeClient available as a global variable so that it can be used throughout the web app.
+In the code examples we make the `litNodeClient` available as a global variable so that it can be used throughout the web app.
 
 :::
 
@@ -170,7 +100,7 @@ In the code examples we make the litNodeClient available as a global variable so
 
 ```js
 function litJsSdkLoaded() {
-  var litNodeClient = new LitJsSdk.LitNodeClient();
+  var litNodeClient = new LitJsSdk_litNodeClient();
   litNodeClient.connect();
   window.litNodeClient = litNodeClient;
 }
@@ -178,7 +108,7 @@ function litJsSdkLoaded() {
 
 In the **script tag** example:
 
-If you're using the script tag with `onload='LitJsSdk.litJsSdkLoadedInALIT()'` then the SDK will connect to the Lit Network and put a connected LitNodeClient into `window.litNodeClient` for you. Alternatively, you can put your own connection code in the `litJsSdkLoaded()` function and call it yourself with `onload=litJsSdkLoaded()`.
+If you're using the script tag, you can put your own connection code in a `litJsSdkLoaded()` function and call it yourself with `onload=litJsSdkLoaded()`.
 
 </TabItem>
 </Tabs>
@@ -232,6 +162,6 @@ document.addEventListener(
 
 ## Debug Logging and Lit Node Client configuration
 
-The LitNodeClient object has a number of config params you can pass, documented here: https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient
+The `LitNodeClient` object has a number of config params you can pass, documented here: https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#config
 
-For example, to turn off logging in the JS SDK, you could set debug to false like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`
+For example, to turn off logging in the Lit JS SDK, you could set `debug` to `false` like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`

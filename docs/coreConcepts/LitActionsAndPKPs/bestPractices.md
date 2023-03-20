@@ -5,8 +5,8 @@ sidebar_position: 5
 # Best Practices
 
 :::note
-// TODO: "lit-js-sdk"
-It is NOT recommended to use the lit-js-sdk within a Lit Action due to the potential for exponential growth of computational complexity (n^2) (eg. If 10 nodes try to get 10 signature shares, there are now 100 http requests). It is the responsibility of the client to collect and combine the signature or decryption shares, as the combination operation is not supported within a Lit Action. 
+
+It is NOT recommended to use the Lit JS SDK within a Lit Action due to the potential for exponential growth of computational complexity (n^2) (eg. If 10 nodes try to get 10 signature shares, there are now 100 http requests). It is the responsibility of the client to collect and combine the signature or decryption shares, as the combination operation is not supported within a Lit Action. 
 :::
 
 ## Ideal Use Cases

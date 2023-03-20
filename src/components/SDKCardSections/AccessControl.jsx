@@ -22,11 +22,6 @@ export default function AccessControlSection({ title, className }) {
         description="Authorize network signatures that provide access to dynamic content."
         to="/toolsAndExamples/SDKExamples/dynamicContent"
       />
-      <Card
-        title="Interactive HTML NFTs"
-        description="Create HTML NFTs that contain embedded HTML/JS/CSS that is only accessible to the owner of the NFT."
-        to="/toolsAndExamples/SDKExamples/HTMLNfts"
-      />
     </Section>
   );
 }

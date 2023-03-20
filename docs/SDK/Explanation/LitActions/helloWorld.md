@@ -9,12 +9,12 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
-// TODO: replace api doc link
-
-Lit Actions and PKPs are still heavily in development and things may change. The correct Lit JS SDK to use is on the lit-js-sdk `@serrano` branch.
+Lit Actions and PKPs are still heavily in development and things may change.
 
 **SDK DOCUMENTATION**
-For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome). For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
+For the most up to date SDK documentation, check out the [Lit JS SDK docs](https://js-sdk.litprotocol.com/index.html).
+
+For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
 
 Need some Polygon Mumbai Tokens to mint a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9).
 
@@ -30,11 +30,28 @@ In the example below, we will write a simple Lit Action that requests a signatur
 
 ## 1. Install the SDK and get a PKP
 
-First, install the Lit JS SDK `serrano` tag:
+First, install the Lit JS SDK:
 
+<Tabs
+defaultValue="browser"
+values={[
+{label: 'Browser', value: 'browser'},
+{label: 'NodeJS', value: 'nodejs'},
+]}>
+
+<TabItem value="browser">
+```bash
+yarn add @lit-protocol/lit-node-client
 ```
-yarn add lit-js-sdk@serrano
+</TabItem>
+
+<TabItem value="nodejs">
+```bash
+yarn add @lit-protocol/lit-node-client-nodejs
 ```
+</TabItem>
+
+</Tabs>
 
 Then, go to https://explorer.litprotocol.com/ and mint a PKP. Note the Public Key for the steps below.
 
@@ -72,7 +89,7 @@ values={[
 <TabItem value="browser">
 
 ```js
-import LitJsSdk from "lit-js-sdk";
+import * as LitJsSdk from '@lit-protocol/lit-node-client';
 
 // this code will be run on the node
 const litActionCode = `
@@ -88,7 +105,7 @@ go();
 
 const runLitAction = async () => {
   // you need an AuthSig to auth with the nodes
-  // this will get it from metamask or any browser wallet
+  // this will get it from MetaMask or any browser wallet
   const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
 
   const litNodeClient = new LitJsSdk.LitNodeClient({ litNetwork: "serrano" });
@@ -112,10 +129,11 @@ runLitAction();
 ```
 
 </TabItem>
+
 <TabItem value="nodejs">
 
 ```js
-import LitJsSdk from "lit-js-sdk/build/index.node.js";
+import * as LitJsSdk from '@lit-protocol/lit-node-client-nodejs';
 
 // this code will be run on the node
 const litActionCode = `

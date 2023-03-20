@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.png",
   organizationName: "lit-protocol", // Usually your GitHub org/user name.
-  projectName: "lit-js-sdk", // Usually your repo name.
+  projectName: "@lit-protocol/js-sdk", // Usually your repo name.
 
   presets: [
     [
@@ -55,12 +55,12 @@ const config = {
         },
         items: [
           {
-            href: "https://lit-protocol.github.io/lit-js-sdk/api_docs_html/",
+            href: "https://js-sdk.litprotocol.com/index.html",
             label: "API",
             position: "right",
           },
           {
-            href: "https://github.com/LIT-Protocol/lit-js-sdk",
+            href: "https://github.com/LIT-Protocol/js-sdk",
             label: "GitHub",
             position: "right",
           },
@@ -102,11 +102,11 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/LIT-Protocol/lit-js-sdk",
+                href: "https://github.com/LIT-Protocol/js-sdk",
               },
               {
                 label: "API",
-                href: "https://lit-protocol.github.io/lit-js-sdk/api_docs_html/",
+                href: "https://js-sdk.litprotocol.com/index.html",
               },
             ],
           },

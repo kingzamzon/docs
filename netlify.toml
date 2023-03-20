@@ -101,18 +101,6 @@
   force = false
 
 [[redirects]]
-  from = "/docs/LitTools/JSSDK/HTMLNfts"
-  to = "/docs/ToolsAndExamples/SDKExamples/HTMLNfts"
-  status = 302
-  force = false
-
-[[redirects]]
-  from = "/docs/ExamplesAndGuides/SDKExamples/HTMLNfts"
-  to = "/docs/ToolsAndExamples/SDKExamples/HTMLNfts"
-  status = 302
-  force = false
-
-[[redirects]]
   from = "/docs/LitTools/JSSDK/authSig"
   to = "/docs/SDK/authSig"
   status = 302

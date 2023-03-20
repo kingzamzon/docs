@@ -41,10 +41,8 @@ Below is an action that takes a function name to run, and runs a "child" Lit Act
 
 All child Lit Actions run inside a new JS runtime / sandbox so none of the parent variables, functions, or state are available to the child action.
 
-// TODO: update import
-
 ```js
-import LitJsSdk from "lit-js-sdk/build/index.node.js";
+import * as LitJsSdk from '@lit-protocol/lit-node-client';
 
 // this code will be run on the node
 const litActionCode = `

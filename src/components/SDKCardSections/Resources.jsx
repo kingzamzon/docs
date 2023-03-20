@@ -7,16 +7,10 @@ import {
 export default function ResourcesSection({ title, className }) {
   return (
     <Section title={title} className={className}>
-      {/* TODO: replace links */}
       <Card
-        title="API Documentation"
-        description="Production branch SDK API documentation."
-        to="https://lit-protocol.github.io/lit-js-sdk/api_docs_html/"
-      />
-      <Card
-        title="Programmable Key Pair API Documentation"
-        description="Serrano branch API docs. View the full list of functions available."
-        to="https://serrano-sdk-docs.litprotocol.com/#welcome"
+        title="Lit JS SDK API Documentation"
+        description="Lit JS SDK API documentation."
+        to="https://js-sdk.litprotocol.com/index.html"
       />
       <Card
         title="Lit Actions API Documentation"
