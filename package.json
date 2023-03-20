@@ -13,7 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "update-chains": "node updateChains.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "tools": "node tools.mjs"
   },
   "dependencies": {
     "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": "^7.18.6",
