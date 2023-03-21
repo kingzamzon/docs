@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Verifying a JWT would typically be done on the server side (Node.js), but should work in the browser too.
 
-First, import the Lit JS SDK Node.js package:
+First, import the Lit JS SDK V2 Node.js package:
 
 ```js
 import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";

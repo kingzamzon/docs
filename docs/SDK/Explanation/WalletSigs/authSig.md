@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## AuthSigs
 
-To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation. You can use any EIP 4361 compliant signature (Sign in with Ethereum) for the authSig, but you must put the signature into the AuthSig data structure format (documented [here](https://js-sdk.litprotocol.com/interfaces/types_src.JsonAuthSig.html)). You do not need to use the Lit JS SDK to obtain the signature as long as it's EIP 4361 compliant and in the AuthSig data structure format.
+To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation. You can use any EIP 4361 compliant signature (Sign in with Ethereum) for the authSig, but you must put the signature into the AuthSig data structure format (documented [here](https://js-sdk.litprotocol.com/interfaces/types_src.JsonAuthSig.html)). You do not need to use the Lit JS SDK V2 to obtain the signature as long as it's EIP 4361 compliant and in the AuthSig data structure format.
 
 ## Format of AuthSig
 

@@ -45,7 +45,7 @@ We believe that the marriage of MPC, threshold secret schemes (TSS), and SEV pro
 
 The SDK encrypts your content and uploads the conditions for decryption to each Lit Protocol node. You will need to store the encrypted content in a place of your choosing (IPFS, Arweave, or even somewhere centralized).
 
-When someone wants to access the content the SDK will request a message signature from the user's wallet. The message signature proves that the corresponding wallet meets the conditions (ex. NFT ownership) for decryption. The Lit Protocol nodes will then send down the decryption shares. Collecting responses and combining them above a threshold is included in the functionality of the [Lit JS SDK](/SDK/intro).
+When someone wants to access the content the SDK will request a message signature from the user's wallet. The message signature proves that the corresponding wallet meets the conditions (ex. NFT ownership) for decryption. The Lit Protocol nodes will then send down the decryption shares. Collecting responses and combining them above a threshold is included in the functionality of the [Lit JS SDK V2](/SDK/intro).
 
 ### Dynamic Content - Authorizing access to a resource via JWT[](https://developer.litprotocol.com/Introduction/howItWorks#dynamic-content---authorizing-access-to-a-resource-via-jwt)
 

@@ -24,7 +24,7 @@ Install the `@lit-protocol/lit-node-client` package, which can be used in both b
 yarn add @lit-protocol/lit-node-client
 ```
 
-Use the Lit JS SDK:
+Use the Lit JS SDK V2:
 
 ```js
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
@@ -49,7 +49,7 @@ Install the `@lit-protocol/lit-node-client-nodejs`, which is for Node environmen
 yarn add @lit-protocol/lit-node-client-nodejs
 ```
 
-Use the Lit JS SDK:
+Use the Lit JS SDK V2:
 
 ```js
 import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
@@ -164,4 +164,4 @@ document.addEventListener(
 
 The `LitNodeClient` object has a number of config params you can pass, documented here: https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#config
 
-For example, to turn off logging in the Lit JS SDK, you could set `debug` to `false` like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`
+For example, to turn off logging, you could set `debug` to `false` like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`
