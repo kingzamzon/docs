@@ -9,7 +9,7 @@ export default function QuickStartSection({ title, className }) {
     <Section title={title} className={className}>
       <Card
         title="Installation"
-        description="How to load the Lit JS SDK."
+        description="How to load the Lit JS SDK V2."
         to="/SDK/Explanation/installation"
       />
       <Card

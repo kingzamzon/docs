@@ -25,7 +25,7 @@ export default function LearnCodeSection({ title, className }) {
       <Card
         title="📖 API Documentation"
         description="Discover all the functions available in the Lit SDK."
-        to="https://serrano-sdk-docs.litprotocol.com/#welcome"
+        to="https://js-sdk.litprotocol.com/"
       />
       <Card
         title="📃 Lit Actions SDK Documentation"

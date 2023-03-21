@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Encryption
@@ -7,12 +7,11 @@ You can use Lit to encrypt and store any static content. This could be a file, a
 
 If you want to use IPFS as a storage solution, Lit has an `encryptToIpfs` function that will help streamline the process of encryption and storing the encrypted data. You will need to provide an Infura ID and API secret key. [Jump to encryptToIPFS](/SDK/Explanation/encryption#encrypttoipfs).
 
-
 Check out the Replit below, which is a full-fledged **React** application that encrypts & decrypt a **file** using Lit SDK. For best experience please open the web app in a new tab.
 
 <iframe frameborder="0" width="100%" height="500px" className="repls" style={{display: "none"}} src="https://replit.com/@lit/Encrypt-and-Decrypt-a-File/#encrypt_and_decrypt_file/src/App.js"></iframe>
 
-This example will show you how to encrypt and decrypt static data using Lit Protocol's JS SDK on the client side.
+This example will show you how to encrypt and decrypt static data using the Lit JS SDK on the client side.
 
 ## Setup
 
@@ -40,7 +39,7 @@ export default new Lit()
 
 ## Encrypting
 
-Check out the API docs with detailed info on [functions](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/).
+Get more info on functions in the [API docs](https://js-sdk.litprotocol.com/index.html).
 
 Steps to Encrypt
 1. Obtain an `authSig` and create an access control condition.
@@ -69,7 +68,9 @@ const accessControlConditions = [
 ];
 ```
 
-First, obtain an authSig. This will ask metamask to sign a message proving the holder owns the crypto address.
+### AuthSig
+
+First, obtain an authSig. This will ask MetaMask to sign a message proving the holder owns the crypto address.
 
 ```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
@@ -147,7 +148,7 @@ There are 2 steps:
 
 ### AuthSig
 
-First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own their crypto address. The chain used here is ethereum.
+First, obtain an authSig from the user. This will ask their MetaMask to sign a message proving they own their crypto address. The chain used here is ethereum.
 
 ```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });

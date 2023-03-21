@@ -71,7 +71,7 @@ https://github.com/LIT-Protocol/lit-only-serverside-sdk-example
 
 ## Lit AuthSig - server side, no access to MetaMask
 
-- An example of how to create a Lit AuthSig (aka a wallet signature) on the server side, where you don't have access to Metamask: https://github.com/LIT-Protocol/hotwallet-signing-example
+- An example of how to create a Lit AuthSig (aka a wallet signature) on the server side, where you don't have access to MetaMask: https://github.com/LIT-Protocol/hotwallet-signing-example
 
 ## Access Control List Smart Contract to create an authorization system
 

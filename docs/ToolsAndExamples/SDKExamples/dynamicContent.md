@@ -6,12 +6,12 @@ sidebar_position: 2
 
 ## Verifying a JWT that was signed by the Lit network
 
-Verifying a JWT would typically be done on the server side (nodejs), but should work in the browser too.
+Verifying a JWT would typically be done on the server side (Node.js), but should work in the browser too.
 
-First, import the SDK:
+First, import the Lit JS SDK V2 Node.js package:
 
 ```js
-import LitJsSdk from "@lit-protocol/sdk-nodejs";
+import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
 ```
 
 Now, you must have a JWT to verify. Usually this comes from the user who is trying to access the resource. You can try the JWT harcoded in the example below, which may be expired but should at least return a proper header and payload. In the real world, you should use a JWT presented by the user.
@@ -36,13 +36,13 @@ The "verified" variable is a boolean that indicates whether or not the signature
 
 :::note
 
-YOU MUST CHECK THE PAYLOAD AGAINST THE CONTENT YOU ARE PROTECTING. This means you need to look at "payload.baseUrl" which should match the hostname of the server, and you must also look at "payload.path" which should match the path being accessed. If these do not match what you're expecting, you should reject the request.
+YOU MUST CHECK THE PAYLOAD AGAINST THE CONTENT YOU ARE PROTECTING. This means you need to look at `payload.baseUrl` which should match the hostname of the server, and you must also look at "payload.path" which should match the path being accessed. If these do not match what you're expecting, you should reject the request.
 
 :::
 
 ## Provisioning access to a resource
 
-You can use dynamic content provisioning to put some dynamic content behind an on chain condition. You can do this by calling the [`saveSigningCondition`](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclient) function of the LitNodeClient. It will essentially store that condition and the resource that users who meet that condition should be authorized to access. The resource could be a URL, for example. The dynamic content server should then verify the JWT provided by the network on every request, which proves that the user meets the on chain condition.
+You can use dynamic content provisioning to put some dynamic content behind an on chain condition. You can do this by calling the [`saveSigningCondition`](https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#saveSigningCondition) function of the `LitNodeClient`. It will essentially store that condition and the resource that users who meet that condition should be authorized to access. The resource could be a URL, for example. The dynamic content server should then verify the JWT provided by the network on every request, which proves that the user meets the on chain condition.
 
 :::note
 
@@ -53,7 +53,7 @@ This connection can be made with the following code:
 
 ```js
 const litNodeClient = new LitJsSdk.LitNodeClient();
-litNodeClient.connect();
+await litNodeClient.connect();
 ```
 
 Now, you should define you access control conditions. In the example below, we define a condition that requires the user holds at least 1 ERC1155 token with Token ID 9541 from the `0x3110c39b428221012934A7F617913b095BC1078C` contract.
@@ -74,7 +74,7 @@ const accessControlConditions = [
 ];
 ```
 
-Next, obtain an authSig from the user. This will ask their metamask to sign a message proving they own the crypto address in their wallet. Remember to pass the chain you're using.
+Next, obtain an authSig from the user. This will ask their MetaMask to sign a message proving they own the crypto address in their wallet. Remember to pass the chain you're using.
 
 ```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "polygon" });
@@ -107,7 +107,7 @@ Make sure that you save the `accessControlConditions` and `resourceId`, because 
 
 ## Accessing a resource via a JWT
 
-Obtaining a signed JWT from the Lit network can be done via the getSignedToken function of the [LitNodeClient](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#litnodeclient).
+Obtaining a signed JWT from the Lit network can be done via the `getSignedToken` function of the [`LitNodeClient`](https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#getSignedToken).
 
 :::note
 
@@ -122,7 +122,7 @@ This connection can be made with the following code:
 
 ```js
 const litNodeClient = new LitJsSdk.LitNodeClient();
-litNodeClient.connect();
+await litNodeClient.connect();
 ```
 
 First, obtain an authSig from the user. This will ask their metamask to sign a message proving they own the crypto address in their wallet. Remember to pass the chain you're using!
@@ -142,7 +142,7 @@ const jwt = await litNodeClient.getSignedToken({
 });
 ```
 
-You can then present this JWT to a server, which can verify it using the [verifyJwt function](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/index.html#verifyjwt).
+You can then present this JWT to a server, which can verify it using the [`verifyJwt` function](https://js-sdk.litprotocol.com/functions/encryption_src.verifyJwt.html).
 
 ## Dynamic Content Examples
 

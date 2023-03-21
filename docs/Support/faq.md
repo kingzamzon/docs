@@ -18,13 +18,13 @@ So while we don’t have plans for access control rate limiting yet, it could he
 
 In the end, rate limiting (if applied correctly and in good faith!) is a reasonable economic measure that falls into the web3 ethos of paying for what gets used - and only what gets used.  🙂  
 
-### 3. Why don’t I get a Metamask popup for signing?
+### 3. Why don’t I get a MetaMask popup for signing?
 
-The signature is stored in your browser local storage for convenience. You can call the LitJsSdk.disconnectWeb3() method to delete it from the local storage.
+The signature is stored in your browser local storage for convenience. You can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html) to delete it from the local storage.
 
 ### 4. How would this work if we wanted to use a custodial wallet instead?
 
-With a custodial wallet, there is no need to store the signature. the reason it's stored is to prevent the user from having to sign the Metamask popup a dozen times if they're doing a dozen operations. but with a custodial wallet, there is no Metamask popup, so you can just create the signature fresh each time.
+With a custodial wallet, there is no need to store the signature. the reason it's stored is to prevent the user from having to sign the MetaMask popup a dozen times if they're doing a dozen operations. but with a custodial wallet, there is no MetaMask popup, so you can just create the signature fresh each time.
 
 ## PKPs / Lit Actions
 

@@ -39,7 +39,7 @@ Define a function `encryptText` which encrypts the `text` argument
 ```
 
 ### 3. Obtain an authsig
-Sign using our wallet before encrypting. This will show a Metamask pop-up which the user signs. For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#checkandsignauthmessage).
+Sign using our wallet before encrypting. This will show a MetaMask pop-up which the user signs. For more info, please check out our [API docs](https://js-sdk.litprotocol.com/functions/auth_browser_src.checkAndSignAuthMessage.html).
 ```js
     const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain });
 ```
@@ -47,7 +47,7 @@ Sign using our wallet before encrypting. This will show a Metamask pop-up which 
 ### 4. Encrypt the string
 Finally, let's encrypt our string. This will return a promise containing the `encryptedString` as a **Blob** and the `symmetricKey` used to encrypt it, as a **Uint8Array**.
 
-For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#encryptstring).
+For more info, please check out our [API docs](https://js-sdk.litprotocol.com/functions/encryption_src.encryptString.html).
 ```js
     const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(text);
 ```
@@ -55,7 +55,7 @@ For more info, please check out our [API docs](https://lit-protocol.github.io/li
 ### 5. Save encryption key & access control condition
 Now, we save the encryption key with the access control condition. Both are needed for Lit to know who should be able to decrypt.
 
-For more info, please check out our [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient).
+For more info, please check out our [API docs](https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#saveEncryptionKey).
 ```js
     const encryptedSymmetricKey = await this.litNodeClient.saveEncryptionKey({
       accessControlConditions: accessControlConditions,
@@ -120,7 +120,8 @@ Just as before, let's connect to the Lit nodes if not already connected & get th
 ```
 
 ### 2. Obtain the symmetric key
-As described before, we have to get the `symmetricKey` using the `getEncryptionKey` function. More info in the [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#litnodeclient).
+
+As described before, we have to get the `symmetricKey` using the `getEncryptionKey` function. More info in the [API docs](https://js-sdk.litprotocol.com/classes/lit_node_client_src.LitNodeClientNodeJs.html#getEncryptionKey).
 ```js
     const symmetricKey = await this.litNodeClient.getEncryptionKey({
         accessControlConditions: accessControlConditions,
@@ -131,7 +132,8 @@ As described before, we have to get the `symmetricKey` using the `getEncryptionK
 ```
 
 ### 3. Decrypt String
-Finally, we can get the decrypted string. For more info see the [API docs](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/#decryptstring).
+
+Finally, we can get the decrypted string. For more info see the [API docs](https://js-sdk.litprotocol.com/functions/encryption_src.decryptString.html).
 ```js
     return await LitJsSdk.decryptString(
         encryptedString,

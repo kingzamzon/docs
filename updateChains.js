@@ -1,4 +1,4 @@
-const { ALL_LIT_CHAINS } = require("lit-js-sdk");
+const { ALL_LIT_CHAINS } = require("@lit-protocol/constants");
 const fs = require("fs");
 
 function capitalizeFirstLetter(string) {
