@@ -39,11 +39,7 @@ export default new Lit()
 
 ## Encrypting
 
-<<<<<<< HEAD
 Get more info on functions in the [API docs](https://js-sdk.litprotocol.com/index.html).
-=======
-Check out the API docs with detailed info on [functions](https://lit-protocol.github.io/lit-js-sdk/api_docs_html/).
->>>>>>> main
 
 Steps to Encrypt
 1. Obtain an `authSig` and create an access control condition.
@@ -72,13 +68,9 @@ const accessControlConditions = [
 ];
 ```
 
-<<<<<<< HEAD
 ### AuthSig
 
 First, obtain an authSig. This will ask MetaMask to sign a message proving the holder owns the crypto address.
-=======
-First, obtain an authSig. This will ask metamask to sign a message proving the holder owns the crypto address.
->>>>>>> main
 
 ```js
 const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
