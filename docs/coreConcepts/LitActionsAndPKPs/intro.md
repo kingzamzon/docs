@@ -9,7 +9,8 @@ sidebar_position: 2
 Lit Actions and PKPs are still heavily in development and things may change.
 
 **SDK DOCUMENTATION**
-For the most up to date SDK documentation, check out the [Serrano branch SDK docs](https://serrano-sdk-docs.litprotocol.com/#welcome). For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
+
+For the most up to date SDK documentation, check out the [Lit JS SDK V2 API docs](https://js-sdk.litprotocol.com/). For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
 
 Need some Polygon Mumbai Tokens to [mint](https://explorer.litprotocol.com/mint-pkp) a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9).
 

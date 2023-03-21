@@ -10,7 +10,7 @@ You can create a Lit Action Condition to grant access whenever a given Lit Actio
 
 **Serrano Testnet Only**
 
-This feature currently only works on the Serrano Testnet. You must make sure you install the Serrano version of the Lit Protocol SDK, and connect to the Serrano Testnet. This is because the Jalapeno Mainnet does not have Lit Action support yet.
+This feature currently only works on the Serrano Testnet. Be sure to install the latest version of the Lit JS SDK V2, and connect to the Serrano Testnet.
 
 :::
 
