@@ -96,8 +96,4 @@ Below is the complete [**React** project](https://replit.com/@lit/Smart-Contract
 
 ## Clearing the stored AuthSig
 
-If you want to clear the authSig stored in the browser local storage, you can use the `disconnectWeb3()` function:
-
-```js
-LitJsSdk.disconnectWeb3();
-```
+If you want to clear the authSig stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).

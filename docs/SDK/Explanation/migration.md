@@ -49,58 +49,111 @@ Some methods have been moved to separate packages and must be accessed from thos
 
  `@lit-protocol/crypto` 
 
-- **decryptWithSymmetricKey**
-- **encryptWithSymmetricKey**
-- **importSymmetricKey**
-- **generateSymmetricKey**
+- decryptWithSymmetricKey
+- encryptWithSymmetricKey
+- importSymmetricKey
+- generateSymmetricKey
 
 `@lit-protocol/misc-browser` 
 
-- **fileToDataUrl**
-- **injectViewerIFrame**
-- **downloadFile**
+- fileToDataUrl
+- injectViewerIFrame
+- downloadFile
 
 `@lit-protocol/access-control-conditions`
 
-- **hashUnifiedAccessControlConditions**
+- hashUnifiedAccessControlConditions
 
 `@lit-protocol/misc` 
 
-- **getVarType**
-- **checkType**
-- **convertLitActionsParams**
-- **decimalPlaces**
+- getVarType
+- checkType
+- convertLitActionsParams
+- decimalPlaces
 
 Constants have been moved to `@lit-protocol/constants`, which include:
 
-- **LIT_CHAINS**
-- **LIT_SVM_CHAINS**
-- **LIT_COSMOS_CHAINS**
-- **ALL_LIT_CHAINS**
+- LIT_CHAINS
+- LIT_SVM_CHAINS
+- LIT_COSMOS_CHAINS
+- ALL_LIT_CHAINS
 
 The following types are now declared in `@lit-protocol/types`:
 
-- **LITChain**
-- **LITEVMChain**
-- **LITSVMChain**
-- **LITCosmosChain**
-- **CallRequest**
+- LITChain
+- LITEVMChain
+- LITSVMChain
+- LITCosmosChain
+- CallRequest
+
+<br/>
 
 ### Changed Methods
 
 **signAndSaveAuthMessage**
 
-This method has changed to:
+<table>
+<tr>
+<td> Old V1 </td> <td> New V2 </td>
+</tr>
+<tr>
+<td>
 
-- `ethConnect.signAndSaveAuthMessage`
-- `cosmosConnect.signAndSaveAuthMessage`
-- `solConnect.signAndSaveAuthMessage`
+```js
+import * as LitJsSdk from 'lit-js-sdk';
 
-You can import `ethConnect`, `cosmosConnect`, and/or `solConnect` from `@lit-protocol/auth-browser`.
+const authSig = await LitJsSdk.signAndSaveAuthMessage({
+  // ...
+});
+```
+
+</td>
+<td>
+
+```js
+import { ethConnect } from '@lit-protocol/auth-browser';
+
+const authSig = await ethConnect.signAndSaveAuthMessage({
+  // ...
+});
+```
+
+Note: You can also import `cosmosConnect` and `solConnect` for Cosmos and Solana respectively.
+
+</td>
+</tr>
+</table>
+<br/>
 
 **disconnectWeb3**
 
-This method has changed to `ethConnect.disconnectWeb3`. You can import `ethConnect` from `@lit-protocol/auth-browser`.
+<table>
+<tr>
+<td> Old V1 </td> <td> New V2 </td>
+</tr>
+<tr>
+<td>
+
+```js
+import * as LitJsSdk from 'lit-js-sdk';
+
+LitJsSdk.disconnectWeb3();
+```
+
+</td>
+<td>
+
+```js
+import { ethConnect } from '@lit-protocol/auth-browser';
+
+ethConnect.disconnectWeb3();
+```
+
+</td>
+</tr>
+</table>
+<br/>
+
 
 **executeJs**
 
@@ -122,37 +175,51 @@ The optional `permanent` parameters are now type `number`.
 
 The parameter `chain` is now `chainId` and type `number`.
 
+<br/>
+
 ### Changed Types
 
 **AccessControlCondition** is now either `AccsRegularParams` or `AccsDefaultParams` and referenced in `AccessControlConditions`.
 
+<br/>
+
 **EVMContractCondition** is now `AccsEVMParams` and referenced in `EvmContractConditions`.
+
+<br/>
 
 **SolRpcCondition** is now `AccsSOLV2Params` , which now includes more properties like `pdaKey`, `pdaInterface`, and `pdaParams`. `AccsSOLV2Params` is referenced in `SolRpcConditions`.
 
+<br/>
+
 **CosmosCondition** is now `ConditionItem`.
+
+<br/>
 
 **ResourceId** is now `JsonSigningResourceId`.
 
+<br/>
+
 **AuthSig** is now `JsonAuthSig` and includes additional optional properties like `capabilities` and `algo`.
+
+<br/>
 
 ### Deprecated Methods
 
 These methods are no longer supported:
 
-- **signPKPTransaction**
-- **sendPKPTransaction**
-- **findLITs**
-- **sendLIT**
-- **createHtmlLIT**
-- **mintLIT**
-- **unlockLitWithKey**
-- **toggleLock**
-- **encryptWithPubKey**
-- **decryptWithPrivKey**
-- **lookupNameServiceAddress**
-- **metadataForFile**
-- **configure**
+- signPKPTransaction
+- sendPKPTransaction
+- findLITs
+- sendLIT
+- createHtmlLIT
+- mintLIT
+- unlockLitWithKey
+- toggleLock
+- encryptWithPubKey
+- decryptWithPrivKey
+- lookupNameServiceAddress
+- metadataForFile
+- configure
 
 ## Changelog
 

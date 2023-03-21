@@ -20,7 +20,7 @@ In the end, rate limiting (if applied correctly and in good faith!) is a reasona
 
 ### 3. Why don’t I get a MetaMask popup for signing?
 
-The signature is stored in your browser local storage for convenience. You can call the `LitJsSdk.disconnectWeb3()` method to delete it from the local storage.
+The signature is stored in your browser local storage for convenience. You can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html) to delete it from the local storage.
 
 ### 4. How would this work if we wanted to use a custodial wallet instead?
 

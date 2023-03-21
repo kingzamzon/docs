@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Session Keys
+# Coming Soon: Session Keys
 
 :::note
 
@@ -148,11 +148,7 @@ You can use Oauth login with services including Discord and Google when the user
 
 ## Clearing the stored session key and signature
 
-If you want to clear the session key stored in the browser local storage, you can use the `disconnectWeb3()` function:
-
-```js
-LitJsSdk.disconnectWeb3();
-```
+If you want to clear the session key stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).
 
 ## Resources you can request
 
