@@ -223,4 +223,4 @@ These methods are no longer supported:
 
 ## Changelog
 
-Changes to the **Lit JS SDK V2** will be tracked in the [changelog]([https://github.com/LIT-Protocol/js-sdk/blob/master/CHANGELOG.md](https://github.com/LIT-Protocol/js-sdk/blob/master/CHANGELOG.md)).
+Changes to the **Lit JS SDK V2** will be tracked in the [changelog](https://github.com/LIT-Protocol/js-sdk/blob/master/CHANGELOG.md).
