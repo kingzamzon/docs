@@ -423,8 +423,17 @@ force = false
   status = 301
   force = false
 
+# double bc redirects are case sensitive
+
 [[redirects]]
   from = "/Introduction/stateOfNetwork"
+  to = "/Support/stateOfNetwork"
+  status = 301
+  force = false
+
+
+[[redirects]]
+  from = "/introduction/stateOfNetwork"
   to = "/Support/stateOfNetwork"
   status = 301
   force = false
