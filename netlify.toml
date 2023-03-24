@@ -138,7 +138,7 @@ force = false
 
 [[redirects]]
   from = "/docs/intro"
-  to = "/docs/Introduction/whatIsLitProtocol"
+  to = "/whatIsLit"
   status = 302
   force = false
 
@@ -207,8 +207,8 @@ force = false
   force = false
 
 [[redirects]]
-  from = "/LitActionsAndPKPs/toolsAndExamples"
-  to = "/coreConcepts/LitActionsAndPKPs/toolsAndExamples"
+  from = "/LitActionsAndPKPs/ToolsAndExamples"
+  to = "/coreConcepts/LitActionsAndPKPs/ToolsAndExamples"
   status = 302
   force = false
 
@@ -280,7 +280,7 @@ force = false
 
 [[redirects]]
   from = "/AccessControlConditions/booleanLogic"
-  to = "/coreConcepts/accessControl/conditionTypes/booleanLogic"
+  to = "/accessControl/conditionTypes/booleanLogic"
   status = 302
   force = false
 
@@ -292,49 +292,49 @@ force = false
 
 [[redirects]]
   from = "/ToolsAndExamples/Ceramic/*"
-  to = "/toolsAndExamples/integrations/Ceramic/intro"
+  to = "/ToolsAndExamples/Integrations/Ceramic/intro"
   status = 302
   force = false
 
 [[redirects]]
   from = "/ToolsAndExamples/bundlrxarweave"
-  to = "/toolsAndExamples/integrations/bundlrxarweave"
+  to = "/ToolsAndExamples/Integrations/bundlrxarweave"
   status = 302
   force = false
 
 [[redirects]]
   from = "/ToolsAndExamples/additionalIntegrations"
-  to = "/toolsAndExamples/integrations/additionalIntegrations"
+  to = "/ToolsAndExamples/Integrations/additionalIntegrations"
   status = 302
   force = false
 
 [[redirects]]
   from = "/ToolsAndExamples/shareModal"
-  to = "/toolsAndExamples/tools/shareModal"
+  to = "/ToolsAndExamples/Tools/shareModal"
   status = 302
   force = false
 
 [[redirects]]
-  from = "/toolsandexamples/sdkexamples/dynamiccontent/"
-  to = "/toolsAndExamples/tools/jwtverify"
+  from = "/ToolsAndExamples/sdkexamples/dynamiccontent/"
+  to = "/ToolsAndExamples/Tools/jwtverify"
   status = 302
   force = false
 
 [[redirects]]
   from = "/ToolsAndExamples/SDKExamples/examples"
-  to = "/toolsAndExamples/SDKExamples/dynamicContent"
+  to = "/ToolsAndExamples/SDKExamples/dynamicContent"
   status = 302
   force = false
 
 [[redirects]]
   from = "/litGrants"
-  to = "/ecosystem/litGrants"
+  to = "/Ecosystem/litGrants"
   status = 302
   force = false
 
 [[redirects]]
   from = "/Introduction/whatIsLitProtocol#join-the-community"
-  to = "/ecosystem/community"
+  to = "/Ecosystem/community"
   status = 302
   force = false
 
@@ -346,7 +346,7 @@ force = false
 
 [[redirects]]
   from = "/supportedChains"
-  to = "/support/supportedChains"
+  to = "/resources/supportedChains"
   status = 302
   force = false
 
@@ -393,18 +393,116 @@ force = false
 # 02/14/23 - Move up Lit Actions sections from within SDK to the core concepts / programmatic signing section
 [[redirects]]
   from = "/SDK/Explanation/LitActions/conditionalSigning/*"
-  to = "/coreConcepts/LitActionsAndPKPs/actions/conditionalSigning"
+  to = "/LitActions/conditionalSigning"
   status = 302
   force = false
 
 [[redirects]]
   from = "/SDK/Explanation/LitActions/usingFetch"
-  to = "/coreConcepts/LitActionsAndPKPs/actions/usingFetch"
+  to = "/LitActions/usingFetch"
   status = 302
   force = false
 
 [[redirects]]
   from = "/SDK/Explanation/LitActions/authHelpers/*"
-  to = "/coreConcepts/LitActionsAndPKPs/actions/authHelpers"
+  to = "/LitActions/authHelpers"
   status = 302
+  force = false
+
+# 03/22/23 - docs re-org, flattening structure of docs
+
+[[redirects]]
+  from = "/Introduction/whatIsLitProtocol"
+  to = "/whatIsLit"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/Introduction/howItWorks"
+  to = "/resources/howItWorks"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/Introduction/stateOfNetwork"
+  to = "/Support/stateOfNetwork"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/usecases"
+  to = "/useCases"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/accessControl/*"
+  to = "/accessControl/:splat"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/intro"
+  to = "/pkp/intro"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/PKPs"
+  to = "/pkp/intro"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/actions/authHelpers"
+  to = "/LitActions/authHelpers"
+  status = 301
+  force = false
+  
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/actions/litActions"
+  to = "/LitActions/intro"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/actions/conditionalSigning"
+  to = "/LitActions/conditionalSigning"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/LitActionsAndPKPs/actions/usingFetch"
+  to = "/LitActions/usingFetch"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/coreConcepts/Wallets/*"
+  to = "/pkp/wallets/:splat"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/SDK/Explanation/LitActions/usingEIP"
+  to = "/LitActions/usingEIP"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/SDK/Explanation/LitActions/logAndReturn"
+  to = "/LitActions/logAndReturn"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/SDK/Explanation/LitActions/contracts"
+  to = "/resources/contracts"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/Support/glossary"
+  to = "/resources/glossary"
+  status = 301
   force = false
