@@ -92,6 +92,7 @@ const sidebars = {
           collapsed: true,
           items: [
             'pkp/wallets/intro',
+            'pkp/wallets/sendingTxs',
             'pkp/wallets/examples',
           ],
         },
@@ -106,12 +107,30 @@ const sidebars = {
         'LitActions/intro',
         'LitActions/getlitCli',
         'LitActions/helloWorld',
-        'LitActions/conditionalSigning',
-        'LitActions/usingFetch',
         'LitActions/usingPKPsAndActions',
-        'LitActions/logAndReturn',
-        'LitActions/usingEIP',
         'LitActions/bestPractices',
+        {
+          type: 'category',
+          label: 'Working With Lit Actions',
+          collapsed: true,
+          items: [
+            'LitActions/workingWithActions/conditionalSigning',
+            'LitActions/workingWithActions/usingFetch',
+            'LitActions/workingWithActions/singleExecution',
+            'LitActions/workingWithActions/signingTx',
+            'LitActions/workingWithActions/permissions',
+            'LitActions/workingWithActions/logAndReturn',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'More Examples',
+          collapsed: true,
+          items: [
+            'LitActions/additionalExamples/generatingSessionKey',
+            'LitActions/additionalExamples/usingEIP',
+          ],
+        },
       ],
     },
       
