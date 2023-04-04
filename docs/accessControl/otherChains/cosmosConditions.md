@@ -11,6 +11,7 @@ Note that Cosmos Conditions can only be used via the `unifiedAccessControlCondit
 ## Must posess at least 1 ATOM
 
 In this example, we are checking if the user's wallet contains more than 1 ATOM. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
+
 ```js
 var unifiedAccessControlConditions = [
   {
@@ -65,6 +66,27 @@ var unifiedAccessControlConditions = [
       key: "$.funders.*.account",
       comparator: "contains",
       value: ":userAddress",
+    },
+  },
+];
+```
+
+## Juno Network
+
+## A specific wallet address
+
+In this example, we are checking that the user is in posession of a specific wallet address `juno1vn6zl0924yj86jrp330wcwjclzdharljkajxqt`. The parameter of ":userAddress" will be automatically substituted with the user's wallet address which was verified by checking the message signed by their wallet.
+
+```js
+var unifiedAccessControlConditions = [
+  {
+    conditionType: "cosmos",
+    path: ":userAddress",
+    chain: "juno",
+    returnValueTest: {
+      key: "",
+      comparator: "=",
+      value: "juno1vn6zl0924yj86jrp330wcwjclzdharljkajxqt",
     },
   },
 ];

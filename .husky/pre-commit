@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-yarn install
+yarn add @lit-protocol/constants
 yarn update-chains
 git add docs/resources/supportedChains.md
