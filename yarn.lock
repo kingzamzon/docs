@@ -1681,18 +1681,18 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@lit-protocol/constants@^2.1.90":
-  version "2.1.90"
-  resolved "https://registry.npmjs.org/@lit-protocol/constants/-/constants-2.1.90.tgz"
-  integrity sha512-o+EbbnGd1p7CIDEGa9udAunzXknJV1pkqCAHaCE+AKc1UNkP+TSZtpoX8FN7llHxDMEn4bx30LdzLS6hG5YMmA==
+"@lit-protocol/constants@^2.1.112":
+  version "2.1.112"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/constants/-/constants-2.1.112.tgz#574505f178330e10a1cdc17491376038529c488e"
+  integrity sha512-RYedNHIsILsxqwD+dtYJ2yjDT4bPXUZBQGOSFwTi0qAFlBb+P9zotyPeiGIVKVCtbTzSDK9ujKpMfE7Q82hhmQ==
   dependencies:
-    "@lit-protocol/types" "2.1.90"
+    "@lit-protocol/types" "2.1.112"
     tslib "^2.3.0"
 
-"@lit-protocol/types@2.1.90":
-  version "2.1.90"
-  resolved "https://registry.npmjs.org/@lit-protocol/types/-/types-2.1.90.tgz"
-  integrity sha512-VzGAxFwizNRdVePDnf+8LHSPIexPhzvISX3ePZT/JSCdtrcEPQKWD4ifVu4g7dDfA3mKWqNEgObdPcNbBILX4g==
+"@lit-protocol/types@2.1.112":
+  version "2.1.112"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-2.1.112.tgz#5c281219b28deb5425dd04e222bd6a6ec7875c47"
+  integrity sha512-cvp2L0MiPCu2ZiTOD6ixyXRUbf4vXBqdYQ9zOESqcIgvTWCG26MG3+pwvIaXP0tAbSVMSH6Ln5HI8sDb6qGxgA==
 
 "@mdx-js/mdx@^1.6.22":
   version "1.6.22"

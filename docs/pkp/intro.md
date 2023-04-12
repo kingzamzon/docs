@@ -7,7 +7,7 @@ sidebar_position: 1
 :::note
 PKPs are still heavily in development and things may change. We're grateful for [feedback](https://forms.gle/4UJNRcQspZyvsTHt8) on how to improve the docs and examples!
 
-Need some Polygon Mumbai Tokens to mint a PKP? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9)
+Need some Lit Test Tokens to mint a PKP on Chronicle? Fill out this [form](https://forms.gle/hcvh7VbS83DokBSE9)
 
 **PKP Developer Preview is Live!**
 Get a PKP on the [PKP Explorer](https://explorer.litprotocol.com/mint-pkp)
@@ -24,9 +24,9 @@ It’s important to note: only those with authorized access have the ability to 
 
 ## How do I create a PKP?
 
-You can mint an NFT from our PKP contract on Polygon Mumbai [here](https://explorer.litprotocol.com/mint-pkp). This NFT represents the root ownership of the PKP. The NFT owner can grant other users (via a wallet address) or grant Lit Actions the ability to use the PKP to sign and decrypt data. They also have the ability to assign additional authentication methods, described at the bottom of the page.
+You can mint an NFT from our PKP contract on Chronicle, Lit's custom EVM rollup testnet, [here](https://explorer.litprotocol.com/mint-pkp). This NFT represents the root ownership of the PKP. The NFT owner can grant other users (via a wallet address) or grant Lit Actions the ability to use the PKP to sign and decrypt data. They also have the ability to assign additional authentication methods, described at the bottom of the page.
 
-You can also use our handy auth helper contract on Polygon Mumbai [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPHelper.sol) and you can find the contract addresses [here](https://explorer.litprotocol.com/contracts)
+You can also use our handy auth helper contract on Chronicle [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPHelper.sol) and you can find the contract addresses [here](https://explorer.litprotocol.com/contracts)
 
 ## What blockchains can PKPs write to?​
 
