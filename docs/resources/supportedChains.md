@@ -36,6 +36,7 @@ Don't see a blockchain you want?  Fill out this form for EVM chains and we'll ad
 - moonbaseAlpha
 - filecoin
 - hyperspace
+- scrollAlphaTestnet
 - solana
 - solanaDevnet
 - solanaTestnet
