@@ -6,11 +6,11 @@ sidebar_position: 1
 
 ## AuthSigs
 
-To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation. You can use any EIP 4361 compliant signature (Sign in with Ethereum) for the authSig, but you must put the signature into the AuthSig data structure format (documented [here](https://js-sdk.litprotocol.com/interfaces/types_src.JsonAuthSig.html)). You do not need to use the Lit JS SDK V2 to obtain the signature as long as it's EIP 4361 compliant and in the AuthSig data structure format.
+To use Lit Protocol, you must present a wallet signature obtained from the user. This is refered to an as `AuthSig` in the documentation. You can use any EIP 4361 compliant signature (Sign in with Ethereum) for the authSig, but you must put the signature into the AuthSig data structure format (documented [here](https://js-sdk.litprotocol.com/interfaces/types_src.AuthSig.html)). You do not need to use the Lit JS SDK V2 to obtain the signature as long as it's EIP 4361 compliant and in the AuthSig data structure format.
 
 ## Format of AuthSig
 
-The AuthSig should match [this format](https://js-sdk.litprotocol.com/interfaces/types_src.JsonAuthSig.html).
+The AuthSig should match [this format](https://js-sdk.litprotocol.com/interfaces/types_src.AuthSig.html).
 
 An example AuthSig:
 
@@ -53,7 +53,7 @@ Currently, Externally-owned accounts (EOA) can interface with Lit via an [**auth
 
 ### How to structure the AuthSig
 
-The format of the authSig remains the same as noted in the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.JsonAuthSig.html). 
+The format of the authSig remains the same as noted in the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.AuthSig.html). 
 
 * **sig** is the actual hex-encoded signature.
 * **derivedVia** should be "EIP1271" to tell the nodes that the authSig is for smart contracts
