@@ -191,11 +191,11 @@ The Lit network doesn’t store these encrypted contents for you. You can store 
 
 ### 13. How to construct an accessControlCondition to authorize only a specific wallet address?
 
-Check out the solution our docs [here](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/basicExamples#a-specific-wallet-address).
+Check out the solution our [docs](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/basicExamples#a-specific-wallet-address).
 
 ### 14. How to use a time-lock based accessControlCondition?
 
-Check out the solution our docs [here](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/timelock).
+Check out the solution our [docs](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/timelock).
 
 <br />
 
@@ -211,7 +211,7 @@ For other permissions, please see the contract [here](https://github.com/LIT-Pro
 
 Assign the PKP to itself as we don’t want the PKP owner to arbitrarily change the functioning of the LitAction. Use the PKPHelper.`mintNextAndAddAuthMethods()` for that & to initially setup allow only specific IPFS CIDs to execute.
 
-But anyone can now call these LitActions, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or the LitAction, can fetch it from there or put that in the LitAction itself and use `conditionalSigning` to check whether the provided AuthSig is permitted to execute the LitAction. Learn more [here](https://developer.litprotocol.com/coreconcepts/litactionsandpkps/actions/conditionalsigning/).
+But anyone can now call these LitActions, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or the LitAction, can fetch it from there or put that in the LitAction itself and use `conditionalSigning` to check whether the provided AuthSig is permitted to execute the LitAction. Learn more [here](/litactions/workingwithactions/conditionalsigning).
 
 ### 3. But I want to upgrade the permitted LitActions/users?
 
@@ -219,7 +219,7 @@ Since the PKP is assigned to itself in the setup stage as described above, we ca
 
 ### 4. I want to create multiple different AuthSigs but don't want my users to sign multiple times?
 
-Firstly, if you are using Lit in a browser, the AuthSigs is stored in its local storage so you don’t need to sign multiple times as the stored AuthSig will be used subsequently. This design pattern is specifically applicable to when you want to sign different SIWE resources or messages which is generally required in [Custom Contract Calls](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/customContractCalls#using-siwe-params-in-custom-contract-calls).
+Firstly, if you are using Lit in a browser, the AuthSig is stored in its local storage so you don’t need to sign multiple times as the stored AuthSig will be used subsequently. This design pattern is specifically applicable to when you want to sign different SIWE resources or messages which is generally required in [Custom Contract Calls](https://developer.litprotocol.com/coreConcepts/accessControl/EVM/customContractCalls#using-siwe-params-in-custom-contract-calls).
 
 For different resources you’ll be required to sign each time since the signed message is different. One way to get around this is to use a PKP to do the signing for you. This is how it works: The user owns a PKP & uses it to sign a message in a LitAction with `Lit.Actions.signEcdsa()`. Then return all the sigShares from the LitAction to the app. Here the user can loop through & craft AuthSigs for each returned sigShare and process the required access control operation like decryption. Another way is to return the crafted AuthSigs from the LitActions directly.
 
