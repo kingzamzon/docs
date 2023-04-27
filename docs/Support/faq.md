@@ -148,7 +148,7 @@ No, you cannot. If the condition was saved with `"permanent": false` then you ca
 
 ### 7. Are encryptedSymmetricKey and encryptedString unique to a user or global for a piece of content that we've encrypted?
 
-Global for the piece of content. The only exception, where something is scoped to a user, is if you want to update the access control conditions, because you set permanent: false when you stored the access control condition.  In that case, then the wallet address that stored the condition is able to update it, and only that wallet address can update it.
+Global for the piece of content. The only exception is when something is scoped to a user and you want to update the access control conditions, because you set permanent: false at the time of storing the ACC.  In that case, then the wallet address that stored the condition is able to update it, and only that wallet address can update it.
 
 ### 8. LitJsSdk.encryptString(str) doesn’t print anything in the console?
 
