@@ -102,19 +102,15 @@ The value should be `2` as it represents ECDSA which supports the PKP.
 
 Check out our [blog post](https://spark.litprotocol.com/how-authentication-works-with-pkps/) on how authentication works with PKPs.
 
-### 9. Minting PKP on https://explorer.litprotocol.com/mint-pkp doesn’t progress?
-
-Try removing Mumbai network from your MetaMask. When you connect your wallet to this website, it will pop-up a window for adding Mumbai. Select that & it should work now.
-
-### 10. Can I use PKP to sign/send transactions as a regular Ethers Wallet object?
+### 9. Can I use PKP to sign/send transactions as a regular Ethers Wallet object?
 
 Yes, please check out the [pkp-ethers package](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-ethers).
 
-### 11. But how can I use Ethereum JSON RPC requests for signing and sending transactions?
+### 10. But how can I use Ethereum JSON RPC requests for signing and sending transactions?
 
 Check out this PKP x WalletConnect example [here](https://github.com/LIT-Protocol/pkp-walletconnect) to see how one can use PKP to connect to dApps and sign and send Ethereum requests through WalletConnect.
 
-### 12. Is Web Assembly supported in LitActions?
+### 11. Is Web Assembly supported in LitActions?
 
 Yes! Check out this [sample project.](https://github.com/dOrgJelli/lit-protocol-wasm-test/blob/d4b8873f9a5bceaf98e7f7a1bf325bf597cbfa40/src/App.js#L6-L51.)
 
