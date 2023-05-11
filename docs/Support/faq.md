@@ -74,6 +74,9 @@ const pkpBTCAddress = bitcoinjs.payments.p2pkh({
 }).address;
 ```
 
+### 3. "Internal JSON-RPC error" When attempting to mint a PKP
+You must have `Lit` test token in your wallet when minting a pkp, as it is used to pay the gas cost.
+
 ### 4. “Error: Invalid arrayify value”upon passing IPFS CID to functions (isPermittedActions, etc.) while interacting with PKPPermissions contract?
 
 The error is because the expected data type for IPFS CID in the contract is bytes. You have to use the conversion function below to convert your IPFS to bytes:
