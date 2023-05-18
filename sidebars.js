@@ -37,7 +37,7 @@ const sidebars = {
         "intro/overview",
         "intro/whatIsLitProtocol",
         "intro/usecases",
-        "intro/rollup"
+        "intro/rollup",
       ],
     },
     {
@@ -86,6 +86,7 @@ const sidebars = {
       collapsed: true,
       items: [
         "pkp/intro",
+        "pkp/minting",
         "pkp/authHelpers",
         {
           type: "category",
@@ -97,7 +98,7 @@ const sidebars = {
             "pkp/wallets/examples",
           ],
         },
-        "pkp/toolsAndExamples"
+        "pkp/toolsAndExamples",
       ],
     },
     {
@@ -152,11 +153,44 @@ const sidebars = {
             "SDK/Explanation/encryption",
             {
               type: "category",
-              label: "Wallet Signatures and Session Keys",
+              label: "Authentication",
+              link: {
+                type: "doc",
+                id: "SDK/Explanation/authentication/overview",
+              },
               collapsed: true,
               items: [
-                "SDK/Explanation/WalletSigs/authSig",
-                "SDK/Explanation/WalletSigs/sessionSigs",
+                "SDK/Explanation/authentication/authSig",
+                {
+                  type: "category",
+                  label: "Session Signatures",
+                  link: {
+                    type: "doc",
+                    id: "SDK/Explanation/authentication/sessionSigs/intro",
+                  },
+                  collapsed: true,
+                  items: [
+                    "SDK/Explanation/authentication/sessionSigs/resources-and-abilities",
+                    "SDK/Explanation/authentication/sessionSigs/capability-objects",
+                    "SDK/Explanation/authentication/sessionSigs/getSessionSigs",
+                    "SDK/Explanation/authentication/sessionSigs/usage",
+                    {
+                      type: "category",
+                      label: "Walletless Signatures",
+                      link: {
+                        type: "doc",
+                        id: "SDK/Explanation/authentication/sessionSigs/authMethods/overview",
+                      },
+                      collapsed: true,
+                      items: [
+                        "SDK/Explanation/authentication/sessionSigs/authMethods/socialLogin",
+                        "SDK/Explanation/authentication/sessionSigs/authMethods/webAuthn",
+                      ],
+                    },
+                    // "SDK/Explanation/authentication/sessionSigs/use-cases",
+                  ],
+                },
+                "SDK/Explanation/authentication/security",
               ],
             },
             "SDK/Explanation/tests",
