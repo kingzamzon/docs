@@ -31,6 +31,14 @@ Several auth methods are supported by Lit directly. These include methods config
 | GOOGLE           | 5                       | Google Oauth Login. You should try to use the Google JWT Oauth Login below if you can, since it's more efficient and secure.                                                                                                                                                                        |
 | GOOGLE_JWT       | 6                       | Google Oauth Login, except where Google provides a JWT. This is the most efficient way to use Google Oauth with Lit because the Lit nodes only need to check the JWT signature against the Google certificates, and don't need to make HTTP requests to the Google servers to verify the token.     |
 
+### Adding a Permitted Address
+
+You can use the [PKPPermissions contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L418) to add additional permitted auth methods and addresses to your PKP. Note that any permitted users will be able to execute transactions, authorized Lit Actions, and additional functionality associated with that PKP. 
+
+### Sending the PKP to itself
+
+Sending a PKP to itself is possible, because the PKP is an NFT and also a wallet. This is useful if you want to make sure that only the PKP itself can change it's auth methods. You can use our handy auth helper contract [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPHelper.sol) and use that contract there is a parameter called `sendPkpToItself` in the `mintNextAndAddAuthMethods` function that you can set to true to send the PKP to itself.
+
 ### Obtaining the PKP Public Key
 
 After a PKP is generated and assigned an auth method, you can pass the AuthMethodType and AuthMethodId into this [function](https://github.com/LIT-Protocol/LitNodeContracts/blob/ed2adf77e63f371ef864846dc9e92fef42f0ebb1/contracts/PKPPermissions.sol#L99) to obtain the PKP ID. The PKP ID can be used to fetch the PKP's public key by passing it into this [function](https://github.com/LIT-Protocol/LitNodeContracts/blob/ed2adf77e63f371ef864846dc9e92fef42f0ebb1/contracts/PKPPermissions.sol#L78).
