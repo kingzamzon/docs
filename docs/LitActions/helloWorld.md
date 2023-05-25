@@ -40,15 +40,19 @@ values={[
 ]}>
 
 <TabItem value="browser">
-```bash
+  
+```sh
 yarn add @lit-protocol/lit-node-client
 ```
+  
 </TabItem>
 
 <TabItem value="nodejs">
-```bash
+  
+```sh
 yarn add @lit-protocol/lit-node-client-nodejs
 ```
+  
 </TabItem>
 
 </Tabs>
