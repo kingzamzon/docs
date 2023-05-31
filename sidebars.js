@@ -89,6 +89,7 @@ const sidebars = {
         "pkp/minting",
         "pkp/authHelpers",
         "pkp/usage",
+        "pkp/walletconnect",
         "pkp/toolsAndExamples",
       ],
     },
