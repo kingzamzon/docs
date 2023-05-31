@@ -1,4 +1,4 @@
-# Minting A PKP
+# Minting a PKP
 
 ## Mint via Contracts
 

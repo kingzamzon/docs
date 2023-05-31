@@ -1,10 +1,8 @@
----
-sidebar_position: 3
----
+# Using PKPs as Wallets
 
-# Using PKPs
+With PKPs, you can build secure, customizable [MPC wallets](/resources/pkpsAsWallet) that offer intuitive onboarding experiences without the pain of private key management. 
 
-The [`@lit-protocol/pkp-ethers` package](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-ethers) makes it easy to use PKPs to sign data, send transactions, and handle Ethereum JSON RPC requests.
+The [`@lit-protocol/pkp-ethers` package](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-ethers) provides a familiar wallet interface that makes it easy to sign data, send transactions, and handle Ethereum JSON RPC requests using PKPs.
 
 ## Initialize `PKPEthersWallet`
 
@@ -17,11 +15,12 @@ const pkpWallet = new PKPEthersWallet({
   pkpPubKey: '<Your PKP public key>',
   rpc: 'https://chain-rpc.litprotocol.com/http'
 });
+await pkpWallet.init();
 ```
 
 The `controllerAuthSig` (or `controllerSessionSigs`) is used to authorize requests to the Lit nodes. To learn how to leverage different authentication methods, refer to the [Authentication section](/SDK/Explanation/authentication).
 
-To view more constructor options, refer to the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPEthersWalletProp.html)
+To view more constructor options, refer to the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPEthersWalletProp.html).
 
 ## Sign Message
 
