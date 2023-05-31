@@ -132,7 +132,7 @@ The following Ethereum JSON RPC requests are supported:
 - eth_sendTransaction
 - eth_sendRawTransaction
 
-Responding to requests is as easy as calling `ethRequestHandler` with the request object.
+Responding to requests is as easy as calling `ethRequestHandler` with a `PKPEthersWallet` instance and request payload.
 
 ```js
 import { ethRequestHandler } from '@lit-protocol/pkp-ethers';
@@ -146,10 +146,7 @@ const payload = {
 };
 
 const result = await ethRequestHandler({
-  signer: wallet,
-  payload: {
-    method: request.method,
-    params: request.params,
-  },
+  signer: pkpWallet,
+  payload: payload,
 });
 ```
