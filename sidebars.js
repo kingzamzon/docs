@@ -88,7 +88,7 @@ const sidebars = {
         "pkp/intro",
         "pkp/minting",
         "pkp/authHelpers",
-        "pkp/sendingTxs",
+        "pkp/usage",
         "pkp/toolsAndExamples",
       ],
     },

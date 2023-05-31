@@ -569,3 +569,9 @@ force = false
   to = "/SDK/Explanation/authentication/*"
   status = 301
   force = false
+
+[[redirects]]
+  from = "/pkp/sendingTxs"
+  to = "/pkp/usage"
+  status = 301
+  force = false
