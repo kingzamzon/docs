@@ -43,7 +43,8 @@ const sidebars = {
     {
       type: "category",
       label: "Access Control",
-      collapsed: true,
+      collapsible: false,
+      className: "category-not-collapsible",
       items: [
         "accessControl/intro",
         {
@@ -83,7 +84,8 @@ const sidebars = {
     {
       type: "category",
       label: "Programmable Key Pairs",
-      collapsed: true,
+      collapsible: false,
+      className: "category-not-collapsible",
       items: [
         "pkp/intro",
         "pkp/minting",
@@ -96,7 +98,8 @@ const sidebars = {
     {
       type: "category",
       label: "Lit Actions",
-      collapsed: true,
+      collapsible: false,
+      className: "category-not-collapsible",
       items: [
         "LitActions/intro",
         "LitActions/getlitCli",
@@ -127,7 +130,6 @@ const sidebars = {
         },
       ],
     },
-
     {
       type: "category",
       label: "SDK Reference",
@@ -177,6 +179,7 @@ const sidebars = {
                       items: [
                         "SDK/Explanation/authentication/sessionSigs/authMethods/socialLogin",
                         "SDK/Explanation/authentication/sessionSigs/authMethods/webAuthn",
+                        "SDK/Explanation/authentication/sessionSigs/authMethods/email-sms",
                       ],
                     },
                     // "SDK/Explanation/authentication/sessionSigs/use-cases",
