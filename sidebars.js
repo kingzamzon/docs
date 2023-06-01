@@ -88,16 +88,8 @@ const sidebars = {
         "pkp/intro",
         "pkp/minting",
         "pkp/authHelpers",
-        {
-          type: "category",
-          label: "Distributed Cloud Wallets",
-          collapsed: true,
-          items: [
-            "pkp/wallets/intro",
-            "pkp/wallets/sendingTxs",
-            "pkp/wallets/examples",
-          ],
-        },
+        "pkp/usage",
+        "pkp/walletconnect",
         "pkp/toolsAndExamples",
       ],
     },
@@ -109,8 +101,8 @@ const sidebars = {
         "LitActions/intro",
         "LitActions/getlitCli",
         "LitActions/helloWorld",
-        "LitActions/usingPKPsAndActions",
         "LitActions/bestPractices",
+        "LitActions/mintGrantBurn",
         {
           type: "category",
           label: "Working With Lit Actions",
@@ -264,6 +256,8 @@ const sidebars = {
       className: "category-not-collapsible",
       items: [
         "resources/howItWorks",
+        "resources/pkpsAndActions",
+        "resources/pkpsAsWallet",
         "resources/supportedChains",
         "resources/contracts",
         "resources/glossary",
