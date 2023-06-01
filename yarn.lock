@@ -1683,7 +1683,11 @@
 
 "@lit-protocol/auth-helpers@2.2.20":
   version "2.2.20"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/@lit-protocol/auth-helpers/-/auth-helpers-2.2.20.tgz#88676891c6bc621ff27b1a376e1e15898c9a3566"
+=======
+  resolved "https://registry.yarnpkg.com/@lit-protocol/auth-helpers/-/auth-helpers-2.2.20.tgz#88676891c6bc621ff27b1a376e1e15898c9a3566"
+>>>>>>> docs-reworks
   integrity sha512-F4o7/CsQw4df2eajgwFwxu1JKRQp4meGBxfViPR8AHgBazMkmidsKOAtZ0BINvdUat0J86rIqOrID7m+frXKBQ==
   dependencies:
     siwe "^2.0.5"
@@ -1692,7 +1696,11 @@
 
 "@lit-protocol/constants@^2.2.20":
   version "2.2.20"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/@lit-protocol/constants/-/constants-2.2.20.tgz#777f9629522f8949596a6540fce08ad95b71aa7e"
+=======
+  resolved "https://registry.yarnpkg.com/@lit-protocol/constants/-/constants-2.2.20.tgz#777f9629522f8949596a6540fce08ad95b71aa7e"
+>>>>>>> docs-reworks
   integrity sha512-S1i7RRfJ/wYCKdh7VpsYJ5cpH2LjMi3t/wQ8rKJig+gps6wH+tg1hmNIaNxlIah9bJzyDjr85FLxCE18AHV3Ag==
   dependencies:
     "@lit-protocol/auth-helpers" "2.2.20"
@@ -1703,7 +1711,11 @@
 
 "@lit-protocol/types@2.2.20":
   version "2.2.20"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/@lit-protocol/types/-/types-2.2.20.tgz#279183601031da6f059de30e310ae25047cc4925"
+=======
+  resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-2.2.20.tgz#279183601031da6f059de30e310ae25047cc4925"
+>>>>>>> docs-reworks
   integrity sha512-DYIk02M1KvBaJaELf3UU4xDonUGpWQlhhfJV1ri7axoLBiI31Ixrkiuc9dC2HN2GwS/InjTk0GjR0D3zIlKoOg==
   dependencies:
     "@lit-protocol/auth-helpers" "2.2.20"

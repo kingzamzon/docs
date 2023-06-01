@@ -101,7 +101,7 @@ pkpWalletConnect.on('session_request', async (requestEvent) => {
 });
 ```
 
-## Minimal Viable Wallet
+## Using `SignClient`
 
 The `@lit-protocol/pkp-walletconnect` library exposes base functionality needed to pair PKPs to dApps, approve and reject session proposals, and respond to session requests. For extended capabilities, you can retrieve WalletConnect's `SignClient` from the `PKPWalletConnect` instance.
 

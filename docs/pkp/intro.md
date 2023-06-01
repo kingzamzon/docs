@@ -21,7 +21,7 @@ Ready to jump right in? Quickly learn how you can integrate Programmable Key Pai
 
 ## Overview
 
-Each Programmable Key Pair (PKP) is a versatile [MPC wallet](https://medium.com/1kxnetwork/wallets-91c7c3457578) that can be utilized by developers to:
+Each Programmable Key Pair (PKP) is a versatile [MPC wallet](/resources/pkpsAsWallet) that can be utilized by developers to:
 
 1. Provide users of web3 with seamless, ["seed-phraseless" onboarding](https://spark.litprotocol.com/wallet-abstraction-with-google-oauth/) experiences.
 2. Facilitate transaction execution on [blockchains](https://www.youtube.com/watch?v=zJEVPH1UUxM), [storage networks](https://github.com/LIT-Protocol/key-did-provider-secp256k1), and other state machines.
