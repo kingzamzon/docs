@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Lit Resources And Abilities
+# Lit Resources and Abilities
 
 Lit Resources and Abilities are used to specifying what action is to be done against which resource. These are primitives that are used to seucrely authenticate users through appropriate scoping of users' abilities across various resources.
 

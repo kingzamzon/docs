@@ -6,7 +6,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Lit Protocol Developer Docs",
+  title: "Lit Protocol",
   tagline: "Blockchain based access control for the web",
   url: "https://developer.litprotocol.com",
   baseUrl: "/",
@@ -48,26 +48,29 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Lit Protocol Developer Docs",
+        title: "Lit Protocol",
         logo: {
           alt: "Lit Protocol",
           src: "img/logo.svg",
         },
         items: [
           {
-            href: "https://js-sdk.litprotocol.com/index.html",
-            label: "API Docs",
-            position: "right",
+            type: 'doc',
+            position: 'left',
+            docId: 'intro/overview',
+            label: 'Docs',
           },
           {
-            href: "https://spark.litprotocol.com/",
-            label: "Blog",
-            position: "right",
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'learningLab',
+            label: 'Learning Lab',
           },
           {
-            href: "/Ecosystem/litGrants",
-            label: "Ecosystem",
-            position: "right",
+            type: 'docSidebar',
+            position: 'left',
+            sidebarId: 'ecosystem',
+            label: 'Ecosystem',
           },
           {
             href: "https://github.com/LIT-Protocol/js-sdk",
