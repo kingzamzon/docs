@@ -588,8 +588,28 @@ force = false
   status = 301
   force = false
 
+# 6/5/23
+
 [[redirects]]
   from = "/LitActions/usingPKPsAndActions"
   to = "/resources/pkpsAndActions"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/resources/pkpsAndActions"
+  to = "/pkp/pkpsAndActions"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/LitActions/mintGrantBurn"
+  to = "/pkp/pkpsAndActions"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/resources/pkpsAsWallet"
+  to = "/concepts/pkpsAsWallet"
   status = 301
   force = false

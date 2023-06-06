@@ -49,15 +49,23 @@ const sidebars = {
       items: [
         "intro/overview",
         "intro/whatIsLitProtocol",
-        "intro/usecases",
         "intro/rollup",
+        "intro/usecases",
+      ],
+    },
+    {
+      type: "category",
+      label: "Concepts",
+      collapsible: false,
+      className: "category-not-collapsible",
+      items: [
+        "concepts/pkpsAsWallet",
       ],
     },
     {
       type: "category",
       label: "Access Control",
-      collapsible: false,
-      className: "category-not-collapsible",
+      collapsible: true,
       items: [
         "accessControl/intro",
         {
@@ -97,12 +105,12 @@ const sidebars = {
     {
       type: "category",
       label: "Programmable Key Pairs",
-      collapsible: false,
-      className: "category-not-collapsible",
+      collapsible: true,
       items: [
         "pkp/intro",
         "pkp/minting",
         "pkp/authHelpers",
+        "pkp/pkpsAndActions",
         "pkp/usage",
         "pkp/walletconnect",
         "pkp/toolsAndExamples",
@@ -111,14 +119,12 @@ const sidebars = {
     {
       type: "category",
       label: "Lit Actions",
-      collapsible: false,
-      className: "category-not-collapsible",
+      collapsible: true,
       items: [
         "LitActions/intro",
         "LitActions/getlitCli",
         "LitActions/helloWorld",
         "LitActions/bestPractices",
-        "LitActions/mintGrantBurn",
         {
           type: "category",
           label: "Working With Lit Actions",
@@ -272,24 +278,11 @@ const sidebars = {
       className: "category-not-collapsible",
       items: [
         "resources/howItWorks",
-        "resources/pkpsAndActions",
-        "resources/pkpsAsWallet",
         "resources/supportedChains",
         "resources/contracts",
         "resources/glossary",
       ],
     },
-    // {
-    //   type: "category",
-    //   label: "Ecosystem",
-    //   collapsible: false,
-    //   className: "category-not-collapsible",
-    //   items: [
-    //     "Ecosystem/litGrants",
-    //     "Ecosystem/community",
-    //     "Ecosystem/projects",
-    //   ],
-    // },
     {
       type: "category",
       label: "Support",
