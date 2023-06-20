@@ -117,6 +117,30 @@ The `removePermittedAuthMethod` function takes the following arguments:
 - `overrides`: An optional object that allows you to customize [certain parameters](https://docs.ethers.org/v5/api/contract/contract/#contract-functionsSend) of the transaction (e.g, `gasPrice`, `gasLimit`)
 
 
+## Estimating Gas
+
+To estimate of the amount of gas that would be required to add and remove auth methods, you can first mock the transaction using `populateTransaction` to create an unsigned transaction and then call `estimateGas` on the unsigned transaction.
+
+```js
+// First, mock the transaction to add an auth method
+const mockTransaction = await litContracts.pkpPermissionsContract.write.populateTransaction.addPermittedAuthMethod(
+  '<The token ID of the PKP you want to add an auth method to>',
+  '<The auth method object you want to add>',
+  []
+);
+
+// Then, estimate gas on the unsigned transaction
+const gas = await litContracts.signer.estimateGas(mockTransaction);
+
+// Now, you can use the gas value to set the gas limit
+const transaction = await litContracts.pkpPermissionsContract.write.addPermittedAuthMethod(
+  '<The token ID of the PKP you want to add an auth method to>',
+  '<The auth method object you want to add>',
+  [],
+  { gasLimit: gas }
+);
+```
+
 ## Fetch Auth Methods
 
 To check that the auth method was added or removed successfully, call the `getPermittedAuthMethods` function on the `PKPPermissions` contract.
