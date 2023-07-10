@@ -1,17 +1,13 @@
 # Email / SMS
 
-Email and SMS authentication provides users with a convenient way to verify their identity using one-time passwords (OTP) sent to their registered email address or phone number. We have chosen to [Stytch](https://stytch.com) as our supported OTP provider.
+Email and SMS authentication provides users with a convenient way to verify their identity using one-time passwords (OTP) sent to their registered email address or phone number. 
 
-Once you have authenticated your user using Stytch's OTP solutions. You can provide the user session jwt as proof of authentication, along with the `app id` and `user id` which will be validated on the Lit Network. 
-
-For more information on Stytch sessions see [here](https://stytch.com/docs/passcodes#sms_auth)
+Authenticating with OTP codes delivered via email or SMS is a two-step process. First, an OTP code is initiated and sent to the user's registered email or phone number. The user-provided code is then verified. Upon successful verification, a signed JSON Web Token (JWT) is generated. This token will be validated when creating session signatures.
 
 :::note
-To recieve a jwt within your session `session_duration_minutes` must be specified within your `Authenticate` request
-::: 
-
-
-### Register user Stytch session JWT
+Codes sent to users via email will be received from `noreply@litprotocol.com`. Codes sent to users via SMS will include `lit-verification` within the SMS message.
+:::
+### Register user with email or SMS
 
 ```javascript
 const authClient = new LitAuthClient({
@@ -21,15 +17,14 @@ const authClient = new LitAuthClient({
 });
 
 // starting a validation session
-let provider = client.initProvider<OtpProvider>(ProviderType.Otp, {
-      appId: "<STYTCH_APP_ID>",
-      userId: "<STYTCH_USER_ID>"
+let session = authClient.initProvider(ProviderType.Otp,{
+            userId: '<User email or phone number>'
 });
 
+let status = await session.sendOtpCode();
 let authMethod = await session.authenticate({
-    accessToken: "<AUTHENTICATION SESSION JWT>"
+    code: "<User entered OTP code>"
 });
-
 const txHash = await session.mintPKPThroughRelayer(authMethod);
 ```
 :::note
@@ -46,7 +41,7 @@ An alternative to minting the PKP NFT via the Lit Relay Server is to send a tran
 
 - `keyType` is `2`
 - `permittedAuthMethodTypes` is `[7]`
-- `permittedAuthMethodIds` is the `keccak256 encoding of "{userId}:{projectId}"`.
+- `permittedAuthMethodIds` is an array with 1 element being the user's email or phone number.
 - `permittedAuthMethodScopes` is an array with 1 zero-initialized element, e.g. `[[ethers.BigNumber.from("0")]]`
 - `addPkpEthAddressAsPermittedAddress` is `true`
 - `sendPkpToItself` is `true`
@@ -60,15 +55,15 @@ const authClient = new LitAuthClient({
     }
 });
 
-let provider = client.initProvider<OtpProvider>(ProviderType.Otp, {
-      appId: "<STYTCH_APP_ID>",
-      userId: "<STYTCH_USER_ID>"
+// starting a validation session
+let session = authClient.initProvider(ProviderType.Otp,{
+            userId: '<User email or phone number>'
 });
 
+let status = await session.sendOtpCode();
 let authMethod = await session.authenticate({
-    accessToken: "<AUTHENTICATION SESSION JWT>"
+    code: "<User entered OTP code>"
 });
-
 const txHash = await session.fetchPKPThroughRelayer(authMethod);
 ```
 :::note 
@@ -78,10 +73,15 @@ If the user is using a phone number, the country code must be provided.
 Below is an example of an authentication method from successful authentication
 ```javascript
 {
-    "accessToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Imp3ay10ZXN0LWZiMjhlYmY2LTQ3NTMtNDdkMS1iMGUzLTRhY2NkMWE1MTc1NyIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsicHJvamVjdC10ZXN0LWRlNGUyNjkwLTE1MDYtNGNmNS04YmNlLTQ0NTcxZGRhZWJjOSJdLCJleHAiOjE2ODg1Njc0MTQsImh0dHBzOi8vc3R5dGNoLmNvbS9zZXNzaW9uIjp7ImlkIjoic2Vzc2lvbi10ZXN0LTlkZDI3ZGE1LTVjNjQtNDE5NS04NjdlLWIxNGE3MWE5M2MxMSIsInN0YXJ0ZWRfYXQiOiIyMDIzLTA3LTA1VDE0OjI1OjE0WiIsImxhc3RfYWNjZXNzZWRfYXQiOiIyMDIzLTA3LTA1VDE0OjI1OjE0WiIsImV4cGlyZXNfYXQiOiIyMDIzLTA5LTEzVDAxOjA1OjE0WiIsImF0dHJpYnV0ZXMiOnsidXNlcl9hZ2VudCI6IiIsImlwX2FkZHJlc3MiOiIifSwiYXV0aGVudGljYXRpb25fZmFjdG9ycyI6W3sidHlwZSI6Im90cCIsImRlbGl2ZXJ5X21ldGhvZCI6ImVtYWlsIiwibGFzdF9hdXRoZW50aWNhdGVkX2F0IjoiMjAyMy0wNy0wNVQxNDoyNToxNFoiLCJlbWFpbF9mYWN0b3IiOnsiZW1haWxfaWQiOiJlbWFpbC10ZXN0LTAwMzZmM2YzLTQ0MjQtNDg2My1iYWQ3LTFkNGU3NTM1ZDJiMCIsImVtYWlsX2FkZHJlc3MiOiJqb3NoQGxpdHByb3RvY29sLmNvbSJ9fV19LCJpYXQiOjE2ODg1NjcxMTQsImlzcyI6InN0eXRjaC5jb20vcHJvamVjdC10ZXN0LWRlNGUyNjkwLTE1MDYtNGNmNS04YmNlLTQ0NTcxZGRhZWJjOSIsIm5iZiI6MTY4ODU2NzExNCwic3ViIjoidXNlci10ZXN0LTY4MTAzZTAxLTc0NjgtNGFiZi04M2M4LTg4NWRiMmNhMWM2YyJ9.rZgaunT1UV2pmliZ0V7nYqYtyfdGas4eY6Q6RCzEEBc5y1K66lopUbvvkfNsLJUjSc3vw12NlIX3Q47zm0XEP8AahrJ0QWAC4v9gmZKVYbKiL2JppqnaxtNLZV9Zo1KAiqm9gdqRQSD29222RTC59PI52AOZd4iTv4lSBIPG2J9rUkUwaRI23bGLMQ8XVkTSS7wcd1Ls08Q-VDXuwl8vuoJhssBfNfxFigk7cKHwbbM-o1sh3upEzV-WFgvJrTstPUNbHOBvGnqKDZX6A_45M5zBnHrerifz4-ST771tajiuW2lQXWvocyYlRT8_a0XBsW77UhU-YBTvKVpj3jmH4A",
+    "accessToken": "eyJhbGciOiJzZWNwMjU2azEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJMSVQtUHJvdG9jb2wiLCJzdWIiOiJMSVQtT1RQIiwiaWF0IjoxNjg0ODc1NTE0NDkxLCJleHAiOjE2ODQ4NzczMTQ0OTEsIm9yZ0lkIjoiTElUIiwicm9sZSI6InVzZXIiLCJleHRyYURhdGEiOiIrMTIwMTQwNzIwNzN8MjAyMy0wNS0yM1QyMDo1ODozNC40OTE3ODU5NDUrMDA6MDAifQ.eyJyIjoiZTA0ZDAyNjhjN2ExMzhiNmZiNDJjYTk4NmIxY2I4MWM0N2QyMTc0MzZlOWNlYzc4NGUzNWEyOTZkZmY2YjA4NSIsInMiOiI0NTE5MTVkMDY5YTZhZGE5M2U0OGY3ODUwMGM0MWUzNmMwYzQ4Y2FlODYwMmYxYWM0Njc0MTQ1YTNiMmMyNDU4In0",
     "authMethodType": 7
 }
 ```
+
+:::note 
+ Tokens expire after 30 minutes, and must be validated for session signature signing within that period
+:::
+
 
 ## Generating `SessionSigs`
 
