@@ -648,6 +648,6 @@ force = false
 
 [[redirects]]
   from = "/pkp/authHelpers"
-  to = "/pkp/authHelpers/overview"
+  to = "/pkp/authMethods/authHelpers"
   status = 301
   force = false
