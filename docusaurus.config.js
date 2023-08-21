@@ -83,6 +83,7 @@ const config = {
         logo: {
           alt: "Lit Protocol",
           src: "img/logo.svg",
+          href: 'https://developer.litprotocol.com/v2/',
         },
         items: [
           {
