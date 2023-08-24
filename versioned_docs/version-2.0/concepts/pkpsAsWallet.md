@@ -31,7 +31,7 @@ Each PKP is an ECDSA key pair generated collectively by the Lit nodes through a 
 
 The two-thirds threshold design provides a level of censorship resistance and fault tolerance that “typical” 2-of-2 MPC designs (e.g. Fireblocks) do not. In addition to any 2-of-2 provider being able to deny the user access to their funds or censor transactions, most of these systems also require the end user to custody a key share. This means the goal of a seamless, “web2” style onboarding UX is not possible (onboarding without seed phrases or private key management), instead delivering the UX of self-custody with additional steps.
 
-In Lit’s model, the entire key lives in the network, and *any* arbitrary rules for [authentication](../pkp/authHelpers/overview) can be assigned to that key pair through the use of [Lit Actions](../LitActions/intro). Authentication refers to the *****method***** that “owns” or controls the underlying key, denoting who has the power to combine the shares. This means that the provider or end user have full control over designing how these interactions should be managed. For example, allowing a user to create a wallet with nothing but their Gmail account, or requiring multi-factor authentication (MFA) when attempting to spend more than X amount of assets, as well as enabling flexible social recovery. Today, PKPs support the following auth methods:
+In Lit’s model, the entire key lives in the network, and *any* arbitrary rules for [authentication](../pkp/authHelpers/overview.md) can be assigned to that key pair through the use of [Lit Actions](../LitActions/intro.md). Authentication refers to the *****method***** that “owns” or controls the underlying key, denoting who has the power to combine the shares. This means that the provider or end user have full control over designing how these interactions should be managed. For example, allowing a user to create a wallet with nothing but their Gmail account, or requiring multi-factor authentication (MFA) when attempting to spend more than X amount of assets, as well as enabling flexible social recovery. Today, PKPs support the following auth methods:
 
 - WebAuthn from [FIDO Alliance](https://fidoalliance.org/fido2-2/fido2-web-authentication-webauthn/) (AKA Apple Passkey, [demo](http://getlit.dev/demo))
 - Web3 ownership (holding the “controller” [PKP NFT](https://explorer.litprotocol.com/mint-pkp))
@@ -43,7 +43,7 @@ The current methods are a work in progress:
 - Email
 - SMS
 
-You can read more about how authentication works with PKPs in [this section](../pkp/authHelpers/overview) of the docs.
+You can read more about how authentication works with PKPs in [this section](../pkp/authHelpers/overview.md) of the docs.
 
 The end goal of this system is to facilitate a simple onboarding experience that helps bridge the next billion users into Web3.
 
