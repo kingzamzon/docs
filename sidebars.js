@@ -205,6 +205,15 @@ const sidebars = {
             "tools/pkpexplorer",
       ],
     },
+
+    {
+      type: "category",
+      label: "Integrations",
+      collapsed: true,
+      items: [
+        "integrations/ceramicExample",
+      ],
+    },
     {
       type: "category",
       label: "Network",
