@@ -213,7 +213,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Account Abstraction",
+          label: "Smart Contract Accounts",
           link: {
             type: "doc",
             id: "integrations/aa/overview",
