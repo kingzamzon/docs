@@ -211,6 +211,18 @@ const sidebars = {
       label: "Integrations",
       collapsed: true,
       items: [
+        {
+          type: "category",
+          label: "Account Abstraction",
+          link: {
+            type: "doc",
+            id: "integrations/aa/overview",
+          },
+          collapsible: true,
+          items: [
+            "integrations/aa/alchemy-account-kit"
+          ],
+        },
         "integrations/ceramicExample",
       ],
     },
