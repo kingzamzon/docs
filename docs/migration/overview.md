@@ -232,6 +232,33 @@ THe following methods have their names updated in `@lit-protocol/encryption` and
 
 All method interfaces in `@lit-protocol/encryption` have been updated.
 
+## Troubleshooting
+
+### Using Next.js
+
+If you are using **Next.js ^12**, you may encounter the following [error](https://github.com/vercel/next.js/issues/28774):
+
+```bash
+Module build failed: UnhandledSchemeError: Reading from "node:buffer" is not handled by plugins (Unhandled scheme).
+```
+
+Implement the [following workaround](https://github.com/vercel/next.js/issues/28774#issuecomment-1264555395) in your `next.config.js` file:
+
+```javascript
+module.exports = {
+  // Your Next.js config
+  // ...
+  webpack: (config, options) => {
+    config.plugins.push(
+      new webpack.NormalModuleReplacementPlugin(/^node:/, (resource) => {
+        resource.request = resource.request.replace(/^node:/, "");
+      })
+    );
+    return config;
+  },
+};
+```
+
 ## Changelog
 
 Changes to the **Lit JS SDK V3** will be tracked in the [changelog](https://github.com/LIT-Protocol/js-sdk/blob/master/CHANGELOG.md).
