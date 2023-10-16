@@ -238,9 +238,9 @@ All method interfaces in `@lit-protocol/encryption` have been updated.
 
 If you are using **Next.js ^12**, you may encounter the following [error](https://github.com/vercel/next.js/issues/28774):
 
-![image](../static/img/v3/nextjs-node-error.png)
+![image](/img/nextjs_node_error.png)
 
-Implement the [following workaround](https://github.com/vercel/next.js/issues/28774#issuecomment-1264555395) in `next.config.js`:
+Implement the [following workaround](https://github.com/vercel/next.js/issues/28774#issuecomment-1264555395) in your `next.config.js` file:
 
 ```javascript
 module.exports = {
