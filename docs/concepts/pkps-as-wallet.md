@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # MPC Wallets
 
-:::note
+:::warning
 **STATE OF THE NETWORK**
 
 Lit MPC wallets are still heavily in development and should NOT BE USED to transact live assets that hold monetary value. DO NOT store assets you are not prepared to lose. During this period, we're grateful for feedback on how to improve the docs and examples.

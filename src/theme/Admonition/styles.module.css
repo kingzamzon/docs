@@ -1,0 +1,48 @@
+.admonition {
+  --ifm-alert-border-radius: 0.5rem;
+  --ifm-alert-border-left-width: 0;
+  --ifm-alert-padding-vertical: 1.5rem;
+  --ifm-alert-shadow: none;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+html[data-theme='dark'] .admonition {
+  --ifm-alert-border-width: 1px;
+  --ifm-alert-border-left-width: 1px;
+}
+
+.admonitionHeading {
+  font: var(--ifm-heading-font-weight) var(--ifm-h6-font-size) /
+    var(--ifm-heading-line-height) var(--ifm-heading-font-family);
+}
+
+.admonitionHeading code {
+  text-transform: none;
+}
+
+.admonitionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.admonitionIcon svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  fill: var(--ifm-alert-icon-fill);
+}
+
+.admonitionContent > :last-child {
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 1200px) {
+  .admonition {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
