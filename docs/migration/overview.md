@@ -238,7 +238,9 @@ All method interfaces in `@lit-protocol/encryption` have been updated.
 
 If you are using **Next.js ^12**, you may encounter the following [error](https://github.com/vercel/next.js/issues/28774):
 
-![image](/img/nextjs_node_error.png)
+```bash
+Module build failed: UnhandledSchemeError: Reading from "node:buffer" is not handled by plugins (Unhandled scheme).
+```
 
 Implement the [following workaround](https://github.com/vercel/next.js/issues/28774#issuecomment-1264555395) in your `next.config.js` file:
 
