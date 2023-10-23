@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Pimlico
 
-Learn how to use Lit Protocol's OTP sign-in (email, SMS, and Whatsapp) with a smart account whose user operations are relayed and sponsored by [Pimlico](https://www.pimlico.io/).
+Learn how to use Lit Protocol's one time password (OTP) sign-in (email, SMS, and Whatsapp) with a smart account whose user operations are relayed and sponsored by [Pimlico](https://www.pimlico.io/).
 
 
 
