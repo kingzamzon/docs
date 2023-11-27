@@ -13,6 +13,8 @@ The GetLit CLI is a command-line tool designed to help developers manage their L
 
 ## Getting Started
 
+### Installation
+
 ```
 npm install -g getlit
 
@@ -20,7 +22,7 @@ npm install -g getlit
 yarn add global getlit
 ```
 
-## Usage
+### Usage
 
 To use the GetLit CLI, navigate to a directory or your existing project, and then simply run the desired command followed by any required or optional arguments. The CLI will execute the associated function and display the output accordingly.
 
@@ -34,3 +36,45 @@ To use the GetLit CLI, navigate to a directory or your existing project, and the
 | `setup`           | `getlit setup`                      | 🔑 Setup config for authSig and PKP      |
 | `docs` \| `doc` | `getlit docs`                       | 📖 Open the Lit Protocol documentation   |
 | `help` \|  `show` | `getlit help`    | 🆘 Show the help menu                     |
+
+### Basic Application
+
+```
+getlit action
+```
+
+Initialized Lit project directory looks like:
+
+```
+├── README.md
+├── getlit.json
+├── globa.d.ts
+├── package-lock.json
+├── package.json
+├── src
+│   ├── README.md
+│   ├── foo.action.ts
+│   └── main.action.ts
+├── test
+│   ├── README.md
+│   ├── foo.t.action.mjs
+│   └── main.t.action.mjs
+├── tsconfig.json
+└── utils.mjs
+```
+
+In order to proceed, src/foo.action.ts needs to be modified as ‘NA_E’ to ‘NAME’:
+
+```javascript
+/**
+ * NA_E: foo
+ *
+ * ⬆️ Replace "_" with "M" to pass the schema validation
+ *
+ */
+ 
+const foo = () => {
+  return "bar";
+};
+```
+
