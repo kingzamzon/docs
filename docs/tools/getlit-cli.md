@@ -99,7 +99,7 @@ const helloWorld: SignData = [
   // the signature share will be automatically returned in the HTTP response from the node
   const sigShare = await LitActions.signEcdsa({
     toSign: new Uint8Array(helloWorld),
-    publicKey, // <-- You should pass this in jsParam
+    <your pkp publickey>, // <-- You should pass this in jsParam
     sigName,
   });
  
