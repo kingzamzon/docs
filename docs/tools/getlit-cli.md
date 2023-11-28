@@ -128,4 +128,12 @@ getlit setup
 - Confirm the transaction,
 - Select the PKP appeared on the page.
 
-It will directly redirect to the terminal back.
+It will directly redirect to the terminal back. Your authSig and pkpPublicKey will be automatically saved to the config file: `getlit.json`.
+
+To build the Lit Action:
+
+```
+getlit build
+```
+
+This command builds the code and now tests can be run.
