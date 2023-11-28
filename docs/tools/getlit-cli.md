@@ -63,7 +63,42 @@ Initialized Lit project directory looks like:
 └── utils.mjs
 ```
 
-In order to proceed, src/foo.action.ts needs to be modified as ‘NA_E’ to ‘NAME’:
+Let's see what we have in `src/main.action.ts`:
+
+```javascript
+/**
+ * NAME: hello
+ */
+ 
+// This will exceed the default file size limit
+// import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
+ 
+type SignData = number[];
+ 
+const helloWorld: SignData = [
+  72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100,
+];
+ 
+(async () => {
+  // this requests a signature share from the Lit Node
+  // the signature share will be automatically returned in the HTTP response from the node
+  const sigShare = await LitActions.signEcdsa({
+    toSign: new Uint8Array(helloWorld),
+    publicKey, // <-- You should pass this in jsParam
+    sigName,
+  });
+ 
+  console.log('sigShare', sigShare);
+})();
+```
+
+This code basically does:
+- define a new type called `SignData` that is an array of numbers,
+- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
+- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
+- finally, print the signature share output.
+
+In order to proceed, `src/foo.action.ts` needs to be modified as ‘NA_E’ to ‘NAME’:
 
 ```javascript
 /**
