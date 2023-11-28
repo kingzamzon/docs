@@ -63,12 +63,6 @@ Initialized Lit project directory looks like:
 └── utils.mjs
 ```
 
-This code basically does:
-- define a new type called `SignData` that is an array of numbers,
-- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
-- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
-- finally, print the signature share output.
-
 In order to proceed, `src/foo.action.ts` needs to be modified as ‘NA_E’ to ‘NAME’:
 
 ```javascript
@@ -84,7 +78,7 @@ const foo = () => {
 };
 ```
 
-Before moving forward, let's see what we have in `src/main.action.ts`:
+Let's see what we have in our main Lit Action, `src/main.action.ts`:
 
 ```javascript
 /**
@@ -113,3 +107,25 @@ const helloWorld: SignData = [
 })();
 ```
 
+This Lit Action basically does:
+- define a new type called `SignData` that is an array of numbers,
+- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
+- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
+- finally, print the signature share output.
+
+Before moving forward, we need to mint a PKP (Programmable Key Pair).
+
+:::note
+You should mint some test LIT tokens from the [Faucet](https://faucet.litprotocol.com/) to be able to mint the PKP!
+:::
+
+```
+getlit setup
+```
+
+- This command redirects to the browser,
+- Click on "Mint PKP!" button,
+- Confirm the transaction,
+- Select the PKP appeared on the page.
+
+It will directly redirect to the terminal back.
