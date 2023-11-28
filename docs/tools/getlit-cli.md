@@ -63,7 +63,28 @@ Initialized Lit project directory looks like:
 └── utils.mjs
 ```
 
-Let's see what we have in `src/main.action.ts`:
+This code basically does:
+- define a new type called `SignData` that is an array of numbers,
+- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
+- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
+- finally, print the signature share output.
+
+In order to proceed, `src/foo.action.ts` needs to be modified as ‘NA_E’ to ‘NAME’:
+
+```javascript
+/**
+ * NA_E: foo
+ *
+ * ⬆️ Replace "_" with "M" to pass the schema validation
+ *
+ */
+ 
+const foo = () => {
+  return "bar";
+};
+```
+
+Before moving forward, let's see what we have in `src/main.action.ts`:
 
 ```javascript
 /**
@@ -90,26 +111,5 @@ const helloWorld: SignData = [
  
   console.log('sigShare', sigShare);
 })();
-```
-
-This code basically does:
-- define a new type called `SignData` that is an array of numbers,
-- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
-- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
-- finally, print the signature share output.
-
-In order to proceed, `src/foo.action.ts` needs to be modified as ‘NA_E’ to ‘NAME’:
-
-```javascript
-/**
- * NA_E: foo
- *
- * ⬆️ Replace "_" with "M" to pass the schema validation
- *
- */
- 
-const foo = () => {
-  return "bar";
-};
 ```
 
