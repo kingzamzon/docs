@@ -15,7 +15,7 @@ The GetLit CLI is a command-line tool designed to help developers manage their L
 
 ### Installation
 
-```
+```bash
 npm install -g getlit
 
 // or
@@ -39,7 +39,7 @@ To use the GetLit CLI, navigate to a directory or your existing project, and the
 
 ### Basic Application
 
-```
+```bash
 getlit action
 ```
 
@@ -107,33 +107,8 @@ const helloWorld: SignData = [
 })();
 ```
 
-This Lit Action basically does:
-- define a new type called `SignData` that is an array of numbers,
-- define `helloWorld` SignData and assign hash of "HelloWorld" plaintext,
-- sign the helloWorld array with the user's public key and request a signature share from the Lit Node,
-- finally, print the signature share output.
-
-Before moving forward, we need to mint a PKP (Programmable Key Pair).
+You can start building your own Lit Action by modifying `src/main.action.ts`, and `test/main.t.action.mjs` accordingly.
 
 :::note
-You should mint some test LIT tokens from the [Faucet](https://faucet.litprotocol.com/) to be able to mint the PKP!
+Don't forget to [mint your PKP](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start/) before running the build and test commands.
 :::
-
-```
-getlit setup
-```
-
-- This command redirects to the browser,
-- Click on "Mint PKP!" button,
-- Confirm the transaction,
-- Select the PKP appeared on the page.
-
-It will directly redirect to the terminal back. Your authSig and pkpPublicKey will be automatically saved to the config file: `getlit.json`.
-
-To build the Lit Action:
-
-```
-getlit build
-```
-
-This command builds the code and now tests can be run.
