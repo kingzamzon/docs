@@ -7,7 +7,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Lit Protocol",
-  tagline: "Blockchain based access control and programmatic signing for the web",
+  tagline:
+    "Blockchain based access control and programmatic signing for the web",
   url: "https://developer.litprotocol.com",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -15,7 +16,6 @@ const config = {
   favicon: "img/favicon.png",
   organizationName: "lit-protocol", // Usually your GitHub org/user name.
   projectName: "@lit-protocol/js-sdk", // Usually your repo name.
-
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -23,7 +23,7 @@ const config = {
       ({
         docs: {
           breadcrumbs: false,
-          lastVersion: "2.0",
+          // lastVersion: "2.0",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl: "https://github.com/LIT-Protocol/docs/tree/main",
@@ -78,20 +78,21 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      announcementBar: {
-        id: "SDK V3 Beta",
-        content:
-          "Lit JS SDK V3 is now available in beta. Check out <a target='_self' href='/v3/'>v3.x.x</a> of the docs to learn more.",
-        backgroundColor: '#ff844e',
-        textColor: '#fffff',
-        isCloseable: false,
-      },
+      // re-purpose for next version
+      // announcementBar: {
+      //   id: "SDK V3 Beta",
+      //   content:
+      //     "Lit JS SDK V3 is now available in beta. Check out <a target='_self' href='/v3/'>v3.x.x</a> of the docs to learn more.",
+      //   backgroundColor: "#ff844e",
+      //   textColor: "#fffff",
+      //   isCloseable: true,
+      // },
       navbar: {
         title: "Lit Protocol",
         logo: {
           alt: "Lit Protocol",
           src: "img/logo.svg",
-          href: 'https://developer.litprotocol.com/v2/',
+          href: "https://developer.litprotocol.com/v3/",
         },
         items: [
           {

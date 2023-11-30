@@ -43,14 +43,17 @@ const sidebars = {
   docs: [
     {
       type: "category",
+      label: "Version 2.0",
+      collapsible: false,
+      className: "category-not-collapsible",
+      items: ["version2/prior-version"],
+    },
+    {
+      type: "category",
       label: "Getting Started",
       collapsible: false,
       className: "category-not-collapsible",
-      items: [
-        "intro/overview",
-        "intro/what-is-lit-protocol",
-        "intro/usecases"
-      ],
+      items: ["intro/overview", "intro/what-is-lit-protocol", "intro/usecases"],
     },
     {
       type: "category",
@@ -61,13 +64,18 @@ const sidebars = {
         "concepts/access-control-concept",
         "concepts/aa-x-lit",
         "concepts/programmable-signing-concept",
-        "concepts/pkps-as-wallet"],
+        "concepts/pkps-as-wallet",
+      ],
     },
     {
       type: "category",
       label: "Migration to V3",
       collapsible: true,
-      items: ["migration/overview", "network/feature-matrix", "migration/changes"],
+      items: [
+        "migration/overview",
+        "network/feature-matrix",
+        "migration/changes",
+      ],
     },
     {
       type: "category",
@@ -76,137 +84,135 @@ const sidebars = {
       className: "category-not-collapsible",
       items: [
         "sdk/installation",
+        {
+          type: "category",
+          label: "Authentication",
+          link: {
+            type: "doc",
+            id: "sdk/authentication/overview",
+          },
+          collapsed: true,
+          items: [
+            "sdk/authentication/auth-sig",
             {
               type: "category",
-              label: "Authentication",
+              label: "Session Signatures",
               link: {
                 type: "doc",
-                id: "sdk/authentication/overview",
+                id: "sdk/authentication/session-sigs/intro",
               },
               collapsed: true,
               items: [
-                "sdk/authentication/auth-sig",
+                "sdk/authentication/session-sigs/resources-and-abilities",
+                "sdk/authentication/session-sigs/capability-objects",
+                "sdk/authentication/session-sigs/get-session-sigs",
+                "sdk/authentication/session-sigs/usage",
                 {
                   type: "category",
-                  label: "Session Signatures",
+                  label: "Walletless Signatures",
                   link: {
                     type: "doc",
-                    id: "sdk/authentication/session-sigs/intro",
+                    id: "sdk/authentication/session-sigs/auth-methods/overview",
                   },
                   collapsed: true,
                   items: [
-                    "sdk/authentication/session-sigs/resources-and-abilities",
-                    "sdk/authentication/session-sigs/capability-objects",
-                    "sdk/authentication/session-sigs/get-session-sigs",
-                    "sdk/authentication/session-sigs/usage",
-                    {
-                      type: "category",
-                      label: "Walletless Signatures",
-                      link: {
-                        type: "doc",
-                        id: "sdk/authentication/session-sigs/auth-methods/overview",
-                      },
-                      collapsed: true,
-                      items: [
-                        "sdk/authentication/session-sigs/auth-methods/add-remove-auth-methods",
-                        "sdk/authentication/session-sigs/auth-methods/social-login",
-                        "sdk/authentication/session-sigs/auth-methods/web-authn",
-                        "sdk/authentication/session-sigs/auth-methods/email-sms",
-                      ],
-                    },
+                    "sdk/authentication/session-sigs/auth-methods/add-remove-auth-methods",
+                    "sdk/authentication/session-sigs/auth-methods/social-login",
+                    "sdk/authentication/session-sigs/auth-methods/web-authn",
+                    "sdk/authentication/session-sigs/auth-methods/email-sms",
                   ],
                 },
-                "sdk/authentication/security",
+              ],
+            },
+            "sdk/authentication/security",
+          ],
+        },
+        {
+          type: "category",
+          label: "Access Control",
+          link: {
+            type: "doc",
+            id: "sdk/access-control/intro",
+          },
+          collapsible: true,
+          items: [
+            "sdk/access-control/encryption",
+            "sdk/access-control/jwt-auth",
+            {
+              type: "category",
+              label: "Types of Conditions",
+              collapsed: true,
+              items: [
+                "sdk/access-control/condition-types/unified-access-control-conditions",
+                "sdk/access-control/condition-types/boolean-logic",
+                "sdk/access-control/condition-types/lit-action-conditions",
               ],
             },
             {
               type: "category",
-              label: "Access Control",
-              link: {
-                type: "doc",
-                id: "sdk/access-control/intro",
-              },
-              collapsible: true,
+              label: "EVM",
+              collapsed: true,
               items: [
-                "sdk/access-control/encryption",
-                "sdk/access-control/jwt-auth",
-                {
-                  type: "category",
-                  label: "Types of Conditions",
-                  collapsed: true,
-                  items: [
-                    "sdk/access-control/condition-types/unified-access-control-conditions",
-                    "sdk/access-control/condition-types/boolean-logic",
-                    "sdk/access-control/condition-types/lit-action-conditions",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "EVM",
-                  collapsed: true,
-                  items: [
-                    "sdk/access-control/evm/basic-examples",
-                    "sdk/access-control/evm/custom-contract-calls",
-                    "sdk/access-control/evm/poap",
-                    "sdk/access-control/evm/timelock",
-                    "sdk/access-control/evm/siwe",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Other Chains",
-                  collapsed: true,
-                  items: [
-                    "sdk/access-control/other-chains/sol-rpc-conditions",
-                    "sdk/access-control/other-chains/cosmos-conditions",
-                  ],
-                },
+                "sdk/access-control/evm/basic-examples",
+                "sdk/access-control/evm/custom-contract-calls",
+                "sdk/access-control/evm/poap",
+                "sdk/access-control/evm/timelock",
+                "sdk/access-control/evm/siwe",
               ],
             },
             {
               type: "category",
-              label: "Programmable Wallets",
-              link: {
-                type: "doc",
-                id: "sdk/wallets/intro",
-              },
-              collapsible: true,
+              label: "Other Chains",
+              collapsed: true,
               items: [
-                "sdk/wallets/auth-methods",
-                "sdk/wallets/minting",
-                "sdk/wallets/walletconnect",
-                {
-                  type: "category",
-                  label: "Claimable Keys (HD Keys)",
-                  link: {
-                    type: "doc",
-                    id: "sdk/wallets/claimable-keys/intro",
-                  },
-                  collapsible: true,
-                  items: [
-                    "sdk/wallets/claimable-keys/usage",
-                  ],
-                },
+                "sdk/access-control/other-chains/sol-rpc-conditions",
+                "sdk/access-control/other-chains/cosmos-conditions",
               ],
             },
+          ],
+        },
+        {
+          type: "category",
+          label: "Programmable Wallets",
+          link: {
+            type: "doc",
+            id: "sdk/wallets/intro",
+          },
+          collapsible: true,
+          items: [
+            "sdk/wallets/auth-methods",
+            "sdk/wallets/minting",
+            "sdk/wallets/walletconnect",
             {
               type: "category",
-              label: "Serverless Signing",
+              label: "Claimable Keys (HD Keys)",
               link: {
                 type: "doc",
-                id: "sdk/serverless-signing/overview",
+                id: "sdk/wallets/claimable-keys/intro",
               },
               collapsible: true,
-              items: [
-                "sdk/serverless-signing/quick-start",
-                "sdk/serverless-signing/conditional-signing",
-                "sdk/serverless-signing/fetch",
-                "sdk/serverless-signing/processing-validation",
-                "sdk/serverless-signing/key-claiming",
-                "sdk/serverless-signing/eip191",
-              ],
+              items: ["sdk/wallets/claimable-keys/usage"],
             },
-            "sdk/tests",
+          ],
+        },
+        {
+          type: "category",
+          label: "Serverless Signing",
+          link: {
+            type: "doc",
+            id: "sdk/serverless-signing/overview",
+          },
+          collapsible: true,
+          items: [
+            "sdk/serverless-signing/quick-start",
+            "sdk/serverless-signing/conditional-signing",
+            "sdk/serverless-signing/fetch",
+            "sdk/serverless-signing/processing-validation",
+            "sdk/serverless-signing/key-claiming",
+            "sdk/serverless-signing/eip191",
+          ],
+        },
+        "sdk/tests",
       ],
     },
     {
@@ -214,10 +220,10 @@ const sidebars = {
       label: "Tools",
       collapsed: true,
       items: [
-            "tools/access-control",
-            "tools/getlit-cli",
-            "tools/event-listener",
-            "tools/pkpexplorer",
+        "tools/access-control",
+        "tools/getlit-cli",
+        "tools/event-listener",
+        "tools/pkpexplorer",
       ],
     },
 
@@ -255,7 +261,11 @@ const sidebars = {
       label: "Network",
       collapsible: false,
       className: "category-not-collapsible",
-      items: ["network/state-of-network", "network/feature-matrix", "network/rollup"],
+      items: [
+        "network/state-of-network",
+        "network/feature-matrix",
+        "network/rollup",
+      ],
     },
     {
       type: "category",
@@ -275,7 +285,7 @@ const sidebars = {
       collapsible: false,
       className: "category-not-collapsible",
       items: ["support/faq", "support/bug-bounty"],
-    }
+    },
   ],
 };
 

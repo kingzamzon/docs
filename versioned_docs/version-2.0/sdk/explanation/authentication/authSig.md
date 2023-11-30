@@ -12,10 +12,10 @@ You can use any signature compliant with EIP-4361, also known as Sign in with Et
 
 ```json
 {
-	"sig": "0x18720b54cf0d29d618a90793d5e76f4838f04b559b02f1f01568d8e81c26ae9536e11bb90ad311b79a5bc56149b14103038e5e03fee83931a146d93d150eb0f61c",
-	"derivedVia": "web3.eth.personal.sign",
-	"signedMessage": "localhost wants you to sign in with your Ethereum account:\n0x1cD4147AF045AdCADe6eAC4883b9310FD286d95a\n\nThis is a test statement.  You can put anything you want here.\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: gzdlw7mR57zMcGFzz\nIssued At: 2022-04-15T22:58:44.754Z",
-	"address": "0x1cD4147AF045AdCADe6eAC4883b9310FD286d95a"
+  "sig": "0x18720b54cf0d29d618a90793d5e76f4838f04b559b02f1f01568d8e81c26ae9536e11bb90ad311b79a5bc56149b14103038e5e03fee83931a146d93d150eb0f61c",
+  "derivedVia": "web3.eth.personal.sign",
+  "signedMessage": "localhost wants you to sign in with your Ethereum account:\n0x1cD4147AF045AdCADe6eAC4883b9310FD286d95a\n\nThis is a test statement.  You can put anything you want here.\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: gzdlw7mR57zMcGFzz\nIssued At: 2022-04-15T22:58:44.754Z",
+  "address": "0x1cD4147AF045AdCADe6eAC4883b9310FD286d95a"
 }
 ```
 
@@ -35,7 +35,7 @@ You can refer to the `AuthSig` type definition in the [Lit JS SDK V2](https://js
 The Lit SDK `checkAndSignAuthMessage()` function provides a convenient way to obtain an `AuthSig` from an externally-owned account in a browser environment.
 
 ```js
-import { checkAndSignAuthMessage } from '@lit-protocol/lit-node-client';
+import { checkAndSignAuthMessage } from "@lit-protocol/lit-node-client@serrano";
 
 const authSig = await checkAndSignAuthMessage({
   chain: "ethereum",
@@ -53,7 +53,7 @@ The function also stores the `AuthSig` in local storage, removing the need for t
 If you prefer to implement your own wallet selection interface, you can call the `signAndSaveAuthMessage()` function, which offers more customization. To use this function, pass in an instance of an [ethers.js `Web3Provider` object](https://docs.ethers.org/v5/api/providers/other/#Web3Provider), the wallet address, the chain ID, and the signature expiration time.
 
 ```js
-import { ethConnect } from '@lit-protocol/auth-browser';
+import { ethConnect } from "@lit-protocol/auth-browser";
 
 const authSig = await ethConnect.signAndSaveAuthMessage({
   web3: web3Provider,
@@ -71,7 +71,7 @@ Be sure to import `cosmosConnect` and `solConnect` for Cosmos and Solana respect
 
 In general, smart contracts can't produce an `AuthSig` since they don't possess a private key. However, you can generate an `AuthSig` for smart contracts using [EIP-1271](https://eips.ethereum.org/EIPS/eip-1271), a standard for verifying signatures when the account is a smart contract.
 
-Following the same data structure as above, you can format your smart contract `AuthSig` like so: 
+Following the same data structure as above, you can format your smart contract `AuthSig` like so:
 
 - `sig` is the actual hex-encoded signature
 - `derivedVia` must be "EIP1271" to inform the nodes that this `AuthSig` is for smart contracts
@@ -95,9 +95,9 @@ If you want to clear the `AuthSig` stored in local storage, you can call the [`d
 If you want to obtain an `AuthSig` on the server-side, you can instantiate an `ethers.Signer` to sign a SIWE message, which will produce a signature that can be used in an `AuthSig` object.
 
 ```js
-const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
+const LitJsSdk = require("@lit-protocol/lit-node-client-nodejs");
 const { ethers } = require("ethers");
-const siwe = require('siwe');
+const siwe = require("siwe");
 
 async function main() {
   // Initialize LitNodeClient
@@ -105,30 +105,30 @@ async function main() {
   await litNodeClient.connect();
 
   // Initialize the signer
-  const wallet = new ethers.Wallet('<Your private key>');
+  const wallet = new ethers.Wallet("<Your private key>");
   const address = ethers.utils.getAddress(await wallet.getAddress());
 
   // Craft the SIWE message
-  const domain = 'localhost';
-  const origin = 'https://localhost/login';
+  const domain = "localhost";
+  const origin = "https://localhost/login";
   const statement =
-    'This is a test statement.  You can put anything you want here.';
+    "This is a test statement.  You can put anything you want here.";
   const siweMessage = new siwe.SiweMessage({
     domain,
     address: address,
     statement,
     uri: origin,
-    version: '1',
-    chainId: '1',
+    version: "1",
+    chainId: "1",
   });
   const messageToSign = siweMessage.prepareMessage();
-  
+
   // Sign the message and format the authSig
   const signature = await wallet.signMessage(messageToSign);
 
   const authSig = {
     sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
+    derivedVia: "web3.eth.personal.sign",
     signedMessage: messageToSign,
     address: address,
   };

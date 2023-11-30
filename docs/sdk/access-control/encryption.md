@@ -1,8 +1,19 @@
 # Encryption
 
-The Lit network uses an identity (ID) based encryption scheme to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity. 
+The Lit network uses an identity (ID) based encryption scheme to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity.
+
+:::note
+Lit is still in developer preview with the mainnet launching soon. Follow [@LitProtocol](https://twitter.com/litprotocol) on X for mainnet updates.
+
+Do not use this for production at this moment - if you want to use stable encryption use v2 and the Jalapeno network.
+
+For practical purposes, run `npm install @lit-protocol/lit-node-client@jalapeno`
+
+[Learn more](https://developer.litprotocol.com/v3/network/state-of-network) about what data will persist during the developer preview.
+:::
 
 ### How Does ID Encrypt Work
+
 This is made possible because the BLS network signature is the decryption key for a particular set of access control conditions and private data, and the BLS network will only produce signature shares to the client if the user can prove that they satisfy the corresponding access control conditions.
 
 This scheme is highly efficient, as encrypting private data is a entirely a client-side operation, and only 1 round of network interactivity with the nodes is required upon decryption (in order to request signature shares to assemble into a decryption key).
@@ -40,7 +51,7 @@ At the top of your file, create your Lit Node client like so:
 
 ```js
 const client = new LitJsSdk.LitNodeClient({
-  litNetwork: 'cayenne',
+  litNetwork: "cayenne",
 });
 const chain = "ethereum";
 ```
@@ -65,9 +76,10 @@ export default new Lit()
 Get more info on functions in the [API docs](https://js-sdk.litprotocol.com/index.html).
 
 Steps to Encrypt
+
 1. Obtain an `authSig` and create an access control condition.
 2. Encrypt the static content (string, file, zip, etc...) using `LitJsSdk.encryptString` to get the `ciphertext` and `dataToEncryptHash`.
-3. Finally, store the `ciphertext`, `dataToEncryptHash` and other metadata: `accessControlConditions` (or other conditions eg: `evmContractConditions`) and `chain`. You'll need to pass in these 
+3. Finally, store the `ciphertext`, `dataToEncryptHash` and other metadata: `accessControlConditions` (or other conditions eg: `evmContractConditions`) and `chain`. You'll need to pass in these
 
 #### Access Control & AuthSig
 
@@ -110,10 +122,10 @@ const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
   {
     accessControlConditions,
     authSig,
-    chain: 'ethereum',
-    dataToEncrypt: 'this is a secret message',
+    chain: "ethereum",
+    dataToEncrypt: "this is a secret message",
   },
-  litNodeClient,
+  litNodeClient
 );
 ```
 
@@ -161,12 +173,12 @@ There is just one step:
 Obtain an authSig from the user. This will ask their MetaMask to sign a message proving they own their crypto address. The chain we are using in this example is `ethereum`.
 
 ```js
-const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'ethereum' });
+const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
 ```
 
 #### Obtaining the Decrypted Data
 
-In the example, we used `encryptString()` to encrypt so we will use `decryptToString()` to decrypt. Pass in the data `accessControlConditions`, `ciphertext`, `dataToEncryptHash`, `authSig`. 
+In the example, we used `encryptString()` to encrypt so we will use `decryptToString()` to decrypt. Pass in the data `accessControlConditions`, `ciphertext`, `dataToEncryptHash`, `authSig`.
 
 :::note
 If you want to use another LitJsSDK encryption method to encrypt content, you will need to use the appropriate decrypt method.
@@ -179,9 +191,9 @@ const decryptedString = await LitJsSdk.decryptToString(
     ciphertext,
     dataToEncryptHash,
     authSig,
-    chain: 'ethereum',
+    chain: "ethereum",
   },
-  litNodeClient,
+  litNodeClient
 );
 ```
 

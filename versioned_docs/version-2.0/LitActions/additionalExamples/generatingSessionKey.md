@@ -6,10 +6,10 @@ sidebar_position: 1
 
 This [example](https://github.com/LIT-Protocol/js-serverless-function-test/blob/main/js-sdkTests/sessionKeys.js) demonstrates how to generate a signed [session key](../../SDK/Explanation/authentication/sessionSigs/intro) using Lit Actions.
 
-``` js
+```js
 // this example will generate and sign a session key and use it for a request
 
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 import { Wallet } from "@ethersproject/wallet";
 import { computeAddress } from "@ethersproject/transactions";
 import { SiweMessage } from "siwe";
@@ -89,5 +89,4 @@ const runLitAction = async () => {
 };
 
 runLitAction();
-
 ```
