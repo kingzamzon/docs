@@ -92,7 +92,7 @@ const { encryptedString, symmetricKey } = await LitJsSdk.encryptString(
 
 **Note**: `encryptedString` will be a Blob and `symmetricKey` will be a Uint8Array.
 
-#### **Saving the Encrypted Content to the Lit Nodes**
+#### Saving the Encrypted Content to the Lit Nodes
 
 Now, we can save the encryption key with the access control condition, which tells Lit Protocol that users that meet this access control condition should be able to decrypt.
 
