@@ -59,6 +59,9 @@
   --ifm-scrollbar-thumb-hover-background-color: var(--ifm-color-gray-300);
   --ifm-code-font-size: 0.875rem;
   --ifm-hover-overlay: var(--ifm-color-gray-100);
+  --ifm-menu-color-background-active: rgba(221, 22, 111, 0.1);
+  --ifm-menu-color-background-hover: rgba(221, 22, 111, 0.05);
+  --ifm-dropdown-hover-background-color: rgba(221, 22, 111, 0.05);
   /**
   * ---------- Type system ----------
   */
@@ -164,6 +167,8 @@ html[data-theme='dark'] {
   --ifm-scrollbar-track-background-color: var(--ifm-color-gray-900);
   --ifm-scrollbar-thumb-background-color: var(--ifm-color-gray-800);
   --ifm-scrollbar-thumb-hover-background-color: var(--ifm-color-gray-700);
+  --ifm-menu-color-background-active: rgba(255, 128, 86, 0.1);
+  --ifm-menu-color-background-hover: rgba(255, 128, 86, 0.01);
   /**
   * ---------- Navbar ----------
   */
@@ -322,11 +327,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dropdown__link:not(.dropdown__link--active):hover {
-  color: var(--ifm-heading-color);
+  color: var(--ifm-link-color);
 }
 
 .dropdown__link--active {
-  /* --ifm-dropdown-hover-background-color: var(--lit-pink-background); */
   font-weight: 600;
 }
 
@@ -735,6 +739,7 @@ html[data-theme='dark'] .alert--danger {
 }
 
 .homepage-card__title {
+  font-weight: 600;
   color: var(--ifm-heading-color);
   margin-bottom: 0.5rem;
 }
