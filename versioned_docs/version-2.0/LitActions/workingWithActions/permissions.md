@@ -6,8 +6,8 @@ sidebar_position: 3
 
 Verifying [PKP permissions](https://github.com/LIT-Protocol/js-serverless-function-test/blob/main/js-sdkTests/pkpPermissions.js) using a Lit Action.
 
-``` js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+```js
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 
 // this code will be run on the node
 const litActionCode = `
@@ -87,5 +87,4 @@ const runLitAction = async () => {
 };
 
 runLitAction();
-
 ```

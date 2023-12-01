@@ -24,16 +24,16 @@ values={[
 ]}>
 <TabItem value="browser">
 
-Install the `@lit-protocol/lit-node-client` package, which can be used in both browser and Node environments:
+Install the `@lit-protocol/lit-node-client@serrano` package using your favorite package manager, which can be used in both browser and Node environments. We are using `yarn` however, `npm` works as well:
 
 ```sh
-yarn add @lit-protocol/lit-node-client
+yarn install @lit-protocol/lit-node-client@serrano
 ```
 
 Use the **Lit JS SDK V2**:
 
 ```js
-import * as LitJsSdk from "@lit-protocol/lit-node-client";
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 ```
 
 </TabItem>
@@ -41,7 +41,7 @@ import * as LitJsSdk from "@lit-protocol/lit-node-client";
 <TabItem value="script-tag">
 
 ```js
-<script src="https://cdn.jsdelivr.net/npm/@lit-protocol/lit-node-client-vanilla/lit-node-client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@lit-protocol/lit-node-client-vanilla@serrano/lit-node-client.js"></script>
 ```
 
 If you decide to import the SDK with the script tag, we provide a web-ready package with the dependencies you need. You can use the SDK functions via `LitJsSdk_litNodeClient`, for example `LitJsSdk_litNodeClient.encryptString()`

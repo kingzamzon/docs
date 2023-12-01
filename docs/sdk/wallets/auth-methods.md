@@ -17,23 +17,107 @@ Several auth methods are supported by Lit directly. These include methods config
 
 ### Existing supported auth methods
 
-| Auth Method Name | Auth Method Type Number | Description                                                                                                                                                                                                                                                                                         |
-| ---------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| NULLMETHOD       | 0                       | Don't use this one, it's just a placeholder                                                                                                                                                                                                                                                         |
-| ADDRESS          | 1                       | An Ethereum address. As long as the user presents an AuthSig with this address, they can sign using the PKP.                                                                                                                                                                                        |
-| ACTION           | 2                       | A Lit Action. This is the IPFS CID of the Javascript that is your Lit Action, base58 decoded. As long as the user is calling a Lit Action with this CID, the Lit Action can sign using this PKP. It's very important to only authorize actions that you trust, because they can sign using the PKP. |
-| WEBAUTHN         | 3                       | A WebAuthn Public Key. Take a look at our [WebAuthn example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/tree/main) to learn more.                                                                                                                                                     |
-| DISCORD          | 4                       | Discord Oauth Login                                                                                                                                                                                                                                                                                 | 
-| GOOGLE           | 5                       | Google Oauth Login. You should try to use the Google JWT Oauth Login below if you can, since it's more efficient and secure.                                                                                                                                                                        |
-| GOOGLE_JWT       | 6                       | Google Oauth Login, except where Google provides a JWT. This is the most efficient way to use Google Oauth with Lit because the Lit nodes only need to check the JWT signature against the Google certificates, and don't need to make HTTP requests to the Google servers to verify the token.     |
-| One Time Password (OTP)              | 7                       | Email / SMS Login, verification services provides a JWT, this is token will be within the auth method, this token is verified within the nodes when requesting a session signature |
+| Auth Method Name     | Auth Method Type Number | Description                                                                                                                                                                                                                                                                                         |
+| -------------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NULLMETHOD           | 0                       | Don't use this one, it's just a placeholder                                                                                                                                                                                                                                                         |
+| ADDRESS              | 1                       | An Ethereum address. As long as the user presents an AuthSig with this address, they can sign using the PKP.                                                                                                                                                                                        |
+| ACTION               | 2                       | A Lit Action. This is the IPFS CID of the Javascript that is your Lit Action, base58 decoded. As long as the user is calling a Lit Action with this CID, the Lit Action can sign using this PKP. It's very important to only authorize actions that you trust, because they can sign using the PKP. |
+| WEBAUTHN             | 3                       | A WebAuthn Public Key. Take a look at our [WebAuthn example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/tree/main) to learn more.                                                                                                                                                     |
+| DISCORD              | 4                       | Discord Oauth Login                                                                                                                                                                                                                                                                                 |
+| GOOGLE               | 5                       | Google Oauth Login. You should try to use the Google JWT Oauth Login below if you can, since it's more efficient and secure.                                                                                                                                                                        |
+| GOOGLE_JWT           | 6                       | Google Oauth Login, except where Google provides a JWT. This is the most efficient way to use Google Oauth with Lit because the Lit nodes only need to check the JWT signature against the Google certificates, and don't need to make HTTP requests to the Google servers to verify the token.     |
+| APPLE_JWT            | 8                       | Sign in with Apple Login                                                                                                                                                                                                                                                                            |
+| STYTCH_JWT           | 9                       | Stytch Login using the Stytch user. Can use any supported Stytch auth method but note - the Stytch account admin can change underlying identifiers like phone number. To prevent this attack, use one of the explicit Stytch auth methods below                                                     |
+| STYTCH_EMAIL_OTP     | 10                      | Stytch Login using the Stytch user's email address. This is a one-time password (OTP) sent to the user's email address.                                                                                                                                                                             |
+| STYTCH_SMS_OTP       | 11                      | Stytch Login using the Stytch user's phone number. This is a one-time password (OTP) sent to the user's phone number.                                                                                                                                                                               |
+| STYTCH_WHATS_APP_OTP | 12                      | Stytch Login using the Stytch user's WhatsApp number. This is a one-time password (OTP) sent to the user's WhatsApp account.                                                                                                                                                                        |
+| STYTCH_TOTP          | 13                      | Stytch Login using the Stytch user's TOTP. This is a one-time password (OTP) generated by the user's authenticator app.                                                                                                                                                                             |
 
 Check out the implementation details within the SDK section [here](../../sdk/authentication/session-sigs/auth-methods/overview).
 
+### Auth Method Scopes
+
+Auth methods support scoping, which permits what they can be used for within Lit. These scopes are passed in to the "scopes" array as numbers when adding an auth method, or minting a PKP with PKPHelper. An overview of minting with scopes is provided in this [section](../wallets/minting). The scopes are as follows:
+
+| Scope Name         | Scope Number | Description                                                                                                                                                                                                                                               |
+| ------------------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sign Anything      | 1            | This scope allows signing any data                                                                                                                                                                                                                        |
+| Only Sign Messages | 2            | This scope only allows signing messages using the [EIP-191 scheme](https://eips.ethereum.org/EIPS/eip-191) which prefixes "Ethereum Signed Message" to the data to be signed. This prefix prevents creating signatures that can be used for transactions. |
+
+You can also set scopes: [] which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages.
+
+Any auth methods (regardless of scope) passed in to a Lit Action will be resolved/checked and put into the Lit.Auth object which is available inside the Lit Action. However, when you try to sign something using signEcdsa(), you'll find that it checks the scopes of the auth methods passed in, and will only sign if the appropriate scope is present.
+
+Using this strategy, you could have a Lit Action that governs all signing for a user, and then add many auth methods with scopes: [], so that they cannot be used on their own without the Lit Action. You would then also use addPermittedAction() with scopes: [1] on the PKP to permit that action to sign. Then, inside the action, you can check if the auth methods resolved in Lit.Auth are authorized to sign, and if so, sign the data.
+
+Using this strategy, you could implement your own MFA, where the user must present 2 or more auth methods to sign something, for example.
+
+**Adding permitted scopes to existing PKPs**
+1. Verify the scopes:
+```js
+import { LitAuthClient } from '@lit-protocol/lit-auth-client';
+import { LitContracts } from '@lit-protocol/contracts-sdk';
+import { AuthMethodScope, AuthMethodType } from '@lit-protocol/constants';
+
+const authMethod = {
+  authMethodType: AuthMethodType.EthWallet,
+  accessToken: ...,
+};
+
+const authId = LitAuthClient.getAuthIdByAuthMethod(authMethod);
+
+const scopes = await contractClient.pkpPermissionsContract.read.getPermittedAuthMethodScopes(
+  tokenId,
+  AuthMethodType.EthWallet,
+  authId,
+  3 // there are only 2 scope numbers atm. and index 0 doesn't count
+);
+
+// -- validate both scopes should be false
+if (scopes[1] !== false) {
+  return fail('scope 1 (sign anything) should be false');
+}
+
+if (scopes[2] !== false) {
+  return fail('scope 2 (only sign messages) should be false');
+}
+```
+2. Set the scopes:
+```js
+import { LitAuthClient } from '@lit-protocol/lit-auth-client';
+import { LitContracts } from '@lit-protocol/contracts-sdk';
+import { AuthMethodScope, AuthMethodType } from '@lit-protocol/constants';
+
+const authMethod = {
+  authMethodType: xx,
+  accessToken: xxx,
+};
+
+const authId = LitAuthClient.getAuthIdByAuthMethod(authMethod);
+
+const setScopeTx =
+  await contractClient.pkpPermissionsContract.write.addPermittedAuthMethodScope(
+    tokenId,
+    AuthMethodType.EthWallet,
+    authId,
+    AuthMethodScope.SignAnything
+  );
+
+await setScopeTx.wait();
+```
+
+**Demos**: 
+1. [Minting a PKP with an auth method and permitted scopes (Easy)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-2-easy.mjs)
+
+2. [Minting a PKP with an auth method and permitted scopes (Advanced)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-advanced.mjs)
+
+3. [Minting a PKP with no permissions, then add permitted scopes](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-then-set-scope-1.mjs)
+
+4. [Minting a PKP using the relayer, adding permitted scopes, and getting session sigs](https://github.com/LIT-Protocol/js-sdk/tree/feat/SDK-V3/e2e-nodejs/group-pkp-session-sigs)
 
 ### Adding a Permitted Address
 
-You can use the [PKPPermissions contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L418) to add additional permitted auth methods and addresses to your PKP. Note that any permitted users will be able to execute transactions, authorized Lit Actions, and additional functionality associated with that PKP. 
+You can use the [PKPPermissions contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L418) to add additional permitted auth methods and addresses to your PKP. Note that any permitted users will be able to execute transactions, authorized Lit Actions, and additional functionality associated with that PKP.
 
 ### Sending the PKP to itself
 
@@ -45,7 +129,7 @@ After a PKP is generated and assigned an auth method, you can pass the AuthMetho
 
 The PKP public key is required to initialize a new 'wallet' object when using [Lit and WalletConnect](https://github.com/LIT-Protocol/pkp-walletconnect/blob/main/components/CallRequest.js#L44) together.
 
-You will also need the PKP public key in order to generate a [sessionSig](../../sdk/authentication/session-sigs/intro) which is required to communicate with the Lit nodes, as seen in this [example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L422). 
+You will also need the PKP public key in order to generate a [sessionSig](../../sdk/authentication/session-sigs/intro) which is required to communicate with the Lit nodes, as seen in this [example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L422).
 
 ## Custom Auth
 
@@ -122,10 +206,10 @@ const runLitAction = async () => {
       //   authMethodType: 5,
       // },
       // {
-          // email / sms
+      // email / sms
       //   accessToken: "eyJhbGciOiJzZWNwMjU2azEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJMSVQtUHJvdG9jb2wiLCJzdWIiOiJMSVQtT1RQIiwiaWF0IjoxNjgzMjIzNjIyMDg5LCJleHAiOjE2ODMyMjU0MjIwODksIm9yZ0lkIjoiTElUIiwicm9sZSI6InVzZXIiLCJleHRyYURhdGEiOiIrMTIwMTQwNzIwNzN8MjAyMy0wNS0wNFQxODowNzowMi4wODkxODgrMDA6MDAifQ.eyJyIjoiOTRiOWE1ODkyODFlYzdlYmZlZTdjOGRjMjU0YTk1NGY5NjY1N2IzZmRkNmFlMWIwZThmMmY1OWIxMWYwNTU1YSIsInMiOiI0NWNlNTA0YTBkZjFlZWFkMWYxMGIyYTQ1MjU4ZjlhOTI5ZTY5ODYzYjIzNDdlZGViMmRkODMxM2Y4NDVhNDA1In0"
       //   authMethodType: 7,
-      // } 
+      // }
       {
         // google oauth JWT
         accessToken:
@@ -136,6 +220,14 @@ const runLitAction = async () => {
     // all jsParams can be used anywhere in your litActionCode
     jsParams: {
       // this is the string "Hello World" for testing
+      toSign: ethers.utils.arrayify(
+        ethers.utils.keccak256([
+          72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100,
+        ])
+      ),
+      publicKey:
+        "0x0404e12210c57f81617918a5b783e51b6133790eb28a79f141df22519fb97977d2a681cc047f9f1a9b533df480eb2d816fb36606bd7c716e71a179efd53d2a55d1",
+      sigName: "sig1",
     },
   });
   console.log("results: ", JSON.stringify(results.response, null, 2));
