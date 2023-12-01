@@ -37,7 +37,7 @@ To use the GetLit CLI, navigate to a directory or your existing project, and the
 | `docs` \| `doc` | `getlit docs`                       | 📖 Open the Lit Protocol documentation   |
 | `help` \|  `show` | `getlit help`    | 🆘 Show the help menu                     |
 
-### Basic Application
+### `getlit action`
 
 ```bash
 getlit action
@@ -83,3 +83,36 @@ You can start building your own Lit Action by modifying `src/main.action.ts`, an
 :::note
 Don't forget to [mint your PKP](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start/) before running the build and test commands.
 :::
+
+### `getlit build`
+
+### `getlit new`
+
+This command is used to create a new Lit Action in an existing project.
+
+```bash
+getlit new newAction
+```
+
+A new Lit Action called `newAction` and the test are automatically created in the project directory:
+
+```
+├── README.md
+├── getlit.json
+├── globa.d.ts
+├── package-lock.json
+├── package.json
+├── src
+│   ├── README.md
+│   ├── foo.action.ts
+│   ├── main.action.ts
+│   └── newAction.action.ts
+├── test
+│   ├── README.md
+│   ├── foo.t.action.mjs
+│   ├── main.t.action.mjs
+│   └── newAction.t.action.mjs
+├── tsconfig.json
+└── utils.mjs
+```
+
