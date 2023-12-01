@@ -5,98 +5,42 @@ sidebar_position: 4
 
 # Use Cases
 
-When run by a distributed set of node operators, the Lit Protocol software provides generalizable, fault-tolerant key management for encryption, signing, and programmable wallets. Users of Lit can leverage advanced features that serve to enhance the security and functionality of web3 applications, namely:
+Developers can leverage the Lit Network to build decentralized applications with programmable keys at their core. Possible use cases include:
 
 ### Decentralized Access Control
 
-Lit’s threshold encryption network can be used to introduce private and permissioned data to a host of application categories, specifically by offering a solution to the “public-by-default” nature of blockchains and public storage networks. The Lit software can be applied generally, agnostic to the storage provider and desired use case. Lit provides the capacity for assigning arbitrary logic ([access control conditions](../sdk/access-control/evm/basic-examples)) for condition-based access control and encryption. Some possible use cases for this functionality include:
+The Lit Network can be used to introduce private and permissioned data to the open web through [threshold encryption](../resources/how-it-works.md), addressing the “public-by-default” nature of blockchains and public storage networks like IPFS. 
 
-1. Encrypted wallet-based messaging: Secure wallet-to-wallet communication without relying on a centralized key custodian. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#privacy-and-encryption).
+Encrypting your data with Lit is simple and a completely [client-side operation](../sdk/access-control/encryption.md). In order to decrypt, users have to meet the ([access control conditions](../sdk/access-control/evm/basic-examples)) you set. Some possible use cases for decentralized access control include:
 
-2. User-owned social and identity graphs (“self-sovereign data”): Empower users with full control over how their personal data is managed on the Web, shifting power away from centralized corporations to individuals. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#social).
+1. Encrypted wallet-based messaging: Secure wallet-to-wallet communication. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md).
 
-3. Credential-gated spaces: Use token and credential ownership as “keys” to accessing exclusive spaces, content, and experiences, introducing additional utility to digital assets. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#metaverse).
+2. User-owned social and identity graphs (“self-sovereign data”): Empower users with full control over how their data is managed on the Web. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md).
+
+3. Credential-gated spaces: Use token and credential ownership as “keys” to accessing exclusive spaces, content, and experiences. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md).
 
 4. Mempool encryption: This technique can be used to conceal transaction data from Searchers and Block Builders and mitigate the negative externalities of MEV. 
 
 5. Private NFTs: Release NFTs with private embedded content that can only be accessed by the NFT owner themselves. 
 
-6. Open data marketplaces: Open data marketplaces facilitate the exchange of data between individuals and organizations, allowing users to buy, sell, or share information in a secure and transparent manner. These systems promote data-driven innovation by making diverse datasets accessible to researchers, developers, and businesses, while also providing data creators with the opportunity to monetize their own content. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#data-and-identity-marketplaces).
+6. Open data marketplaces: Open data marketplaces facilitate the exchange of data between individuals and organizations, allowing users to buy, sell, or share information in a permissioned yet transparent manner. These systems promote data-driven innovation by making diverse datasets accessible to researchers, developers, and businesses, while also providing data creators with full control over how their data is used and managed. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md).
 
-### Programmable Signing and Wallets
+### Programmable Signing and User Wallets
 
-Interrelated but distinct from Lit’s decentralized access control product is the ability to create programmable [MPC wallets](../concepts/pkps-as-wallet.md) and complex signing automations. Some potential use cases include:
+Interrelated but distinct from Lit’s decentralized encryption capabilities is the ability to generate programmable keys for non-custodial [user onboarding](../sdk/wallets/intro.md) and [serverless signing](../sdk/serverless-signing/overview.md). Some potential use cases include:
 
-1. Event listening and condition-based transaction execution: Automate your interactions with blockchain ecosystems using condition-based execution, enabling use cases such as on-chain limit orders or recurring payments that don’t require manual input (i.e. signing off on the transaction) from the end user. [Example](https://spark.litprotocol.com/automated-portfolio-rebalancing-uniswap/).
+1. Event listening and condition-based transaction execution: Automate transactions with condition-based execution, enabling use cases such as on-chain limit orders, recurring payments, and more. [Example](https://spark.litprotocol.com/automated-portfolio-rebalancing-uniswap/).
 
-2. Native cross-chain messaging and swaps: Seamlessly transfer assets and data across blockchain networks without relying on a trusted intermediary or centralized asset bridge. [Example](https://spark.litprotocol.com/xchain-bridging-yacht-lit-swap/).
+2. Native cross-chain messaging and swaps: Transfer assets and data across blockchain networks without relying on a trusted intermediary or centralized asset bridge. [Example](https://spark.litprotocol.com/xchain-bridging-yacht-lit-swap/).
 
-3. Seed-phraseless wallet onboarding using web2 authentication and sign-on flows (such as SMS, Discord oAuth, Passkey): Create easier onboarding experiences for non-crypto native users using familiar sign-on methods and abstract away seed phrases and complex private key management, while also providing the full web3 capabilities of an EOA. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#wallets-and-account-abstraction-aa).
+3. Seed-phraseless user onboarding and web2 authentication flows (such as SMS, Discord oAuth, Passkeys): Create easier onboarding experiences for non-crypto native users using familiar sign-on methods and session keys, while providing the full web3 capabilities of an EOA. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md?ref=spark.litprotocol.com#wallets-and-account-abstraction-aa).
 
-4. Automated verifiable credential issuance: Verifiable credentials are digital certifications attesting to particular user attributes or qualifications. Using condition-based signing, automate the issuance of these credentials and eliminate the possibility of fraud or human error. [Example](https://spark.litprotocol.com/krebitxlitactions/).
+4. Automated verifiable credential issuance: Automate credential issuance with prgrammable signing. [Example](https://spark.litprotocol.com/krebitxlitactions/).
 
 5. Enterprise signed data applications: There are numerous use cases for cryptographically-verifiable “signed data” in institutional and enterprise environments, such as using digital signatures to authenticate and track goods in physical supply chains. 
 Generating signed proofs over arbitrary Web data: Using digital signatures to verify the provenance and integrity of data sourced from various locations on the open web. [Example](https://spark.litprotocol.com/authenticity-matters/).
 
-6. Trustless vault applications: Each key generated by Lit is represented by an ERC-721 token on the blockchain. This means that any assets sent to the Lit key can be traded or sold in a single transaction by selling the NFT that controls the underlying key pair. This facilitates potential trustless “vault” applications where an array of assets may be managed together according to the rules associated with the PKP itself.
-
 7. Backup, recovery, and progressive self custody for account abstraction (AA): Use Lit to configure robust backup and recovery solutions for AA wallets (such as multi-factor authentication or social recovery methods), helping users avoid the loss of access to their assets due to lost or compromised keys. [Get started](https://spark.litprotocol.com/mass-adoption-of-digital-ownership-and-progressive-self-custody/).
-
-### DeFi Automation
-
-Use PKPs and Actions to automate your interactions across decentralized finance. 
-
-- Condition-based transactions (ex. on-chain limit orders).
-- Recurring payments.
-- Automated vault applications for seamlessly trading asset bundles.
-
-Example Projects:
-
-- [Sling Protocol](https://github.com/Sling-Protocol/pkp-dex-sdk): An SDK for automating transactions on popular DEXs. Currently supports Uniswap V3 and 1inch.
-- [Cask](https://www.cask.fi/): Automated, recurring payments.
-
-### Infrastructure
-
-Build powerful infrastructure that harnesses the power of Lit!
-
-- Cross-chain bridges.
-- Oracles for off-chain data.
-- Event listening and condition-based execution.
-- Privacy-preserving transactions.
-- Decentralized key custodians.
-
-Example Projects:
-
-- [Yacht Labs](https://spark.litprotocol.com/xchain-bridging-yacht-lit-swap/): Cross-chain atomic swaps with PKPs and Lit Actions
-- [Curve Labs](https://github.com/Curve-Labs/lit-privacy/tree/main): SDK for building privacy-preserving interactions on-chain
-- [MagicWallet](https://github.com/DustilDawn/Magic): One account, multiple seedless wallets
-- More coming soon… 👀 —> [build with us](https://litgateway.com/discord)!
-
-### Web3 Social
-
-Social applications that empower users with privacy and true data ownership.
-
-- Credentialing systems for privacy-preserving web3 login.
-- User owned social graphs.
-- Account abstraction with support for web2 auth methods (i.e. Apple Passkey).
-- Decentralized chat bots.
-- Verifiable, on-chain reputation building.
-
-Example Projects:
-
-- [Ceramic Integration](https://github.com/LIT-Protocol/lit-action-ceramic-signing-demo): Write and permission access to your own private Ceramic data store.
-- [Krebit](https://spark.litprotocol.com/krebitxlitactions/): Automated Verifiable Credential issuance.
-- [Wallet Abstraction demo](https://spark.litprotocol.com/wallet-abstraction-with-google-oauth/): Using Google oAuth to create a Lit MPC wallet.
-
-### Gaming
-
-Improve the state of [web3 gaming](https://spark.litprotocol.com/lit-and-web3-gaming/).
-
-- Signing and wallet abstraction for blockchain-based games.
-- NPCs!
-- Condition-based reward systems and achievements.
-- Private data for multiplayer games.
-
 
 ## Additional Resources
 

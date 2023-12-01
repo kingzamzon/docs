@@ -12,6 +12,8 @@ For an in-depth review of the functionality provided by the Lit Actions SDK, tak
 2. Tool: [GetLit CLI](https://developer.litprotocol.com/v3/tools/getlit-cli)
 3. Example: [Fetching Off-Chain Data in a Lit Action](../serverless-signing/fetch.md)
 4. Example: [Conditional Signing with Lit Actions](../serverless-signing/conditional-signing.md)
+3. Example: [Using Mint/Grant/Burn](https://github.com/LIT-Protocol/js-sdk/blob/70a041a97b56ba1a75724ba2cd56952b622e8a7f/packages/contracts-sdk/src/abis/PKPNFT.ts#L376): Use the Mint/Grant/Burn function in the Lit `contracts-sdk` to atomically assign a Lit Action(s) to a PKP. The PKP will only return a signed response if the function you've declared in your Lit Action returns 'true'. Learn more about minting PKPs [here](../wallets/minting.md).
+
 
 ### Overview
 
