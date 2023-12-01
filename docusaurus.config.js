@@ -91,7 +91,8 @@ const config = {
         title: 'Lit Protocol',
         logo: {
           alt: 'Lit Protocol',
-          src: 'brand/lit-logo.svg',
+          src: 'brand/lit-logo-black.svg',
+          srcDark: 'brand/lit-logo-white.svg',
           href: 'https://developer.litprotocol.com/v3/',
         },
         items: [
