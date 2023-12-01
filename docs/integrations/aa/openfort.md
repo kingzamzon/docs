@@ -1,6 +1,7 @@
+
 # Openfort
 
-# Programmable MPC Wallets with Lit and Openfort
+## Programmable MPC Wallets with Lit and Openfort
 
 This is an example web app that shows how you can use Lit as a programmable MPC signer on an Openfort smart acoount, using social accounts, one-time passwords, and passkeys for authentication.
 
