@@ -11,9 +11,7 @@ The GetLit CLI is a command-line tool designed to help developers manage their L
 - GitHub repo: https://github.com/LIT-Protocol/getlit
 - npm: https://www.npmjs.com/getlit
 
-## Getting Started
-
-### Installation
+## Installation
 
 ```bash
 npm install -g getlit
@@ -22,7 +20,7 @@ npm install -g getlit
 yarn add global getlit
 ```
 
-### Usage
+## Usage
 
 To use the GetLit CLI, navigate to a directory or your existing project, and then simply run the desired command followed by any required or optional arguments. The CLI will execute the associated function and display the output accordingly.
 
@@ -38,6 +36,8 @@ To use the GetLit CLI, navigate to a directory or your existing project, and the
 | `help` \|  `show` | `getlit help`    | 🆘 Show the help menu                     |
 
 ### `getlit action`
+
+This command is used to initialize a new Lit project.
 
 ```bash
 getlit action
@@ -80,12 +80,6 @@ const foo = () => {
 
 You can start building your own Lit Action by modifying `src/main.action.ts`, and `test/main.t.action.mjs` accordingly.
 
-:::note
-Don't forget to [mint your PKP](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start/) before running the build and test commands.
-:::
-
-### `getlit build`
-
 ### `getlit new`
 
 This command is used to create a new Lit Action in an existing project.
@@ -115,4 +109,37 @@ A new Lit Action called `newAction` and the test are automatically created in th
 ├── tsconfig.json
 └── utils.mjs
 ```
+
+### `getlit setup`
+
+Recall that in order to build a Lit project, an [AuthSig](https://developer.litprotocol.com/v3/sdk/authentication/auth-sig) and a [PKP](https://developer.litprotocol.com/v3/sdk/wallets/intro) are needed. `setup` command is used to mint the PKP and create the AuthSig.
+
+```bash
+getlit setup
+```
+
+### `getlit build`
+
+When the Lit Action is coded, and the PKP is created, final step is to build the project.
+
+```bash
+getlit build
+```
+
+### `getlit test`
+
+You can test your Lit Actions by using the test command with the Lit Action to be tested specified:
+
+```bash
+getlit test foo
+```
+
+### `getlit watch`
+
+This command executes the `build` and `test` commands simultaneously:
+
+```bash
+getlit watch
+```
+
 
