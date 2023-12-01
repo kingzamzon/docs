@@ -370,6 +370,7 @@ html[data-theme='dark'] .header-github-link::before {
 
 .footer__title {
   font-size: 1rem;
+  font-weight: 600;
 }
 
 .footer__item {
@@ -680,6 +681,7 @@ html[data-theme='dark'] .alert--danger {
 
 .pagination-nav__label {
   font-size: var(--ifm-h6-font-size);
+  font-weight: 600;
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
@@ -689,14 +691,6 @@ html[data-theme='dark'] .alert--danger {
 .pagination-nav__link--next .pagination-nav__label::after {
   content: ' →';
 }
-
-/* .pagination-nav__link {
-  color: var(--lit-pink);
-}
-
-.pagination-nav__link:hover {
-  color: var(--lit-pink);
-} */
 
 /*
 * ---------- Custom cards ----------
