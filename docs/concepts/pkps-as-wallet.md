@@ -24,7 +24,7 @@ This two-thirds threshold design provides a level of censorship resistance and f
 
 With Lit, the *entire key lives in the network* and any arbitrary [authentication](../sdk/wallets/auth-methods) logic can be assigned to that key pair. This authentication logic determines what individuals or credentials have the ability to control these keys and use them. This gives the application developer or end user full control over designing how interactions with the MPC wallet should be managed. For example, allowing a user to onboard into web3 with [nothing but their Gmail account](https://spark.litprotocol.com/wallet-abstraction-with-google-oauth/), or requiring multi-factor authentication (MFA) when attempting to spend more than X amount of assets, or even enabling more complex social recovery mechanisms. Today, the following [auth methods](../sdk/authentication/session-sigs/auth-methods/overview) are supported by Lit at the time of wallet creation:
 
-- [WebAuthn](../sdk/wallets/auth-methods#existing-supported-auth-methods) from [FIDO Alliance](../sdk/authentication/session-sigs/auth-methods/web-authn) (AKA Apple Passkey, [demo](http://getlit.dev/demo))
+- [WebAuthn](../sdk/wallets/auth-methods#existing-supported-auth-methods) from [FIDO Alliance](../sdk/authentication/session-sigs/auth-methods/web-authn) (AKA Apple Passkey, [demo](https://lit-pkp-auth-demo.vercel.app/))
 - Web3 ownership (holding the “controller” [PKP NFT](https://explorer.litprotocol.com/mint-pkp))
 - [Social login](../sdk/authentication/session-sigs/auth-methods/social-login) (Google, Discord)
 - [Email and SMS](../sdk/authentication/session-sigs/auth-methods/email-sms)

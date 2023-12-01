@@ -13,14 +13,14 @@ export default function CoreConceptsSection({ title, className }) {
         to="/v3/sdk/access-control/intro"
       />
       <Card
-        title="📡 User Wallets"
-        description="Learn about programmable user wallets that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system."
+        title="🔑 User Wallets"
+        description="Deploy programmable user wallets that makes user onboarding seamless and secure."
         to="/v3/sdk/wallets/intro"
       />
       <Card
-        title="🧩 Use Cases"
-        description="Learn about how you can integrate Lit infrastructure within your own products."
-        to="/v3/usecases"
+        title="🖋️ Serverless Signing"
+        description="Build powerful serverless functions that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system."
+        to="/v3/sdk/serverless-signing/overview"
       />
     </Section>
   );

@@ -5,9 +5,11 @@ sidebar_position: 2
 
 # What is Lit Protocol
 
-Lit is a decentralized key management network and platform for building applications and experiences that leverage [threshold cryptography](../resources/how-it-works.md). 
+Lit is a decentralized key management network and platform for building applications and experiences that leverage [threshold cryptography](../resources/how-it-works.md). With Lit, you can create and control keys and run code for virtually any application that can be made private, immutable, and / or autonomous.
 
-Lit can primarily be used for [data encryption](../sdk/access-control/intro.md), building [user wallets](../sdk/wallets/intro.md), and [serverless digital signatures](../sdk/serverless-signing/overview.md).
+The system builds off of contemporary work in applied cryptography, secure enclaves, and distributed systems to provide the maximum amount of control and privacy to end users, without requiring an extensive technical understanding of key management or public key cryptography. 
+
+Developers can use Lit to build apps with [private data](../sdk/access-control/intro.md), intuitive [wallet onboarding](../sdk/wallets/intro.md) and asset management experiences, and [immutable serverless functions](../sdk/serverless-signing/overview.md) that run based on the rules you set.
 
 Get started with the [Lit SDK](../sdk/installation.md).
 

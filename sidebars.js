@@ -43,13 +43,6 @@ const sidebars = {
   docs: [
     {
       type: "category",
-      label: "Version 2.0",
-      collapsible: false,
-      className: "category-not-collapsible",
-      items: ["version2/prior-version"],
-    },
-    {
-      type: "category",
       label: "Getting Started",
       collapsible: false,
       className: "category-not-collapsible",
