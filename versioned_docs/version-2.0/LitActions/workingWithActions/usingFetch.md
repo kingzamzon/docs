@@ -7,14 +7,14 @@ import TabItem from '@theme/TabItem';
 
 # Using Fetch
 
-Unlike traditional smart contract ecosystems, Lit Actions can natively talk to the external world. This is useful for things like fetching data from the web, or sending API requests to other services. 
+Unlike traditional smart contract ecosystems, Lit Actions can natively talk to the external world. This is useful for things like fetching data from the web, or sending API requests to other services.
 
-The Lit Action below will get the current temperature from the [National Weather Service](https://www.weather.gov/) API, and ONLY sign a txn if the temperature is forecast to be **above 60 degrees F**. Since you can put this HTTP request and logic that uses the response directly in your Lit Action, you don't have to worry about using a 3rd party oracle to pull data in. 
+The Lit Action below will get the current temperature from the [National Weather Service](https://www.weather.gov/) API, and ONLY sign a txn if the temperature is forecast to be **above 60 degrees F**. Since you can put this HTTP request and logic that uses the response directly in your Lit Action, you don't have to worry about using a 3rd party oracle to pull data in.
 
 The HTTP request will be sent out by all the Lit Nodes in parallel, and consensus is based on at least 2/3 of the nodes getting the same response. If less than 2/3 nodes get the same response, then the user can not collect the signature shares above the threshold and therefore cannot produce the final signature. Note that your HTTP request will be sent N times where N is the number of nodes in the Lit Network, because it's sent from every Lit Node in parallel. You should be careful about how many requests you're making and note that this may trigger rate limiting issues on some servers. N is currently 10 on the Serrano testnet.
 
 ```js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 
 // this code will be run on the node
 const litActionCode = `
@@ -74,10 +74,9 @@ runLitAction();
 
 ## Using fetch() to write data
 
-You can also use fetch() inside a Lit Action to write data, but you **must be careful** (because the HTTP request will be run N times where N is the number of Lit Nodes). On Serrano, N is 10, so any fetch() request will be sent to the server 10 times. 
+You can also use fetch() inside a Lit Action to write data, but you **must be careful** (because the HTTP request will be run N times where N is the number of Lit Nodes). On Serrano, N is 10, so any fetch() request will be sent to the server 10 times.
 
-**This is safe**, however, if the place you're writing the data to is *idempotent*. Idempotent means that applying the same operation over and over will not change the result. So for example, a SQL Insert is not idempotent, becuase if you run it 10 times, it will create 10 rows. On the other hand, a SQL Update is idempotent, because if you run it 10 times, it will only update the row once. So if you're using fetch() to write data, make sure the server you're writing to is idempotent.
-
+**This is safe**, however, if the place you're writing the data to is _idempotent_. Idempotent means that applying the same operation over and over will not change the result. So for example, a SQL Insert is not idempotent, becuase if you run it 10 times, it will create 10 rows. On the other hand, a SQL Update is idempotent, because if you run it 10 times, it will only update the row once. So if you're using fetch() to write data, make sure the server you're writing to is idempotent.
 
 ## Example Project
 

@@ -7,12 +7,12 @@ import TabItem from '@theme/TabItem';
 
 # Conditional Signing
 
-Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs. This system can be harnessed to uphold the integrity of data on the open web, in its function as a decentralized notary. 
+Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs. This system can be harnessed to uphold the integrity of data on the open web, in its function as a decentralized notary.
 
 The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do.
 
 ```js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 
 // this code will be run on the node
 const litActionCode = `

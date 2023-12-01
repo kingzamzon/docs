@@ -22,7 +22,7 @@ Get started with **Lit JS SDK V2** by installing the package best suited for you
 Browser & Node environments:
 
 ```bash
-npm install @lit-protocol/lit-node-client
+npm install @lit-protocol/lit-node-client@serrano
 ```
 
 Node environment:
@@ -34,7 +34,7 @@ npm install @lit-protocol/lit-node-client-nodejs
 If you already have `lit-js-sdk` in your app, all you need to do is remove the old package and then update any import statement to reference the new SDK like so:
 
 ```bash
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from '@lit-protocol/lit-node-client@serrano';
 ```
 
 If you are using TypeScript, be sure to install the `@lit-protocol/types` package. Check out the list of available packages [here](https://github.com/LIT-Protocol/js-sdk/tree/master#packages).
@@ -92,23 +92,21 @@ The following types are now declared in `@lit-protocol/types`:
 
 **signAndSaveAuthMessage**
 
-| Version | Code  |
-| ------ | --------- |
-| V1   |<code><br />import * as LitJsSdk from "lit-js-sdk"; <br />const authSig = await LitJsSdk.signAndSaveAuthMessage({..}); </code>|
-| V2    |<code><br />import { ethConnect } from "@lit-protocol/auth-browser";,<br />const authSig = await ethConnect.signAndSaveAuthMessage({..}); </code>|
+| Version | Code                                                                                                                                              |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| V1      | <code><br />import \* as LitJsSdk from "lit-js-sdk"; <br />const authSig = await LitJsSdk.signAndSaveAuthMessage({..}); </code>                   |
+| V2      | <code><br />import { ethConnect } from "@lit-protocol/auth-browser";,<br />const authSig = await ethConnect.signAndSaveAuthMessage({..}); </code> |
 
 :::note
 For V2: You can also import `cosmosConnect` and `solConnect` for Cosmos and Solana respectively.
 :::
 
-
 **disconnectWeb3**
 
-| Version | Code  |
-| ------ | --------- |
-| V1   |<code><br />import * as LitJsSdk from "lit-js-sdk"; <br />LitJsSdk.disconnectWeb3(); </code>|
-| V2    |<code><br />import { ethConnect } from "@lit-protocol/auth-browser";,<br />ethConnect.disconnectWeb3(); </code>|
-
+| Version | Code                                                                                                            |
+| ------- | --------------------------------------------------------------------------------------------------------------- |
+| V1      | <code><br />import \* as LitJsSdk from "lit-js-sdk"; <br />LitJsSdk.disconnectWeb3(); </code>                   |
+| V2      | <code><br />import { ethConnect } from "@lit-protocol/auth-browser";,<br />ethConnect.disconnectWeb3(); </code> |
 
 **executeJs**
 

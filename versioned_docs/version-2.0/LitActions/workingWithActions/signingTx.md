@@ -6,8 +6,8 @@ sidebar_position: 2
 
 This example shows how to generate a [signed Ethereum transaction](https://github.com/LIT-Protocol/js-serverless-function-test/blob/main/js-sdkTests/signTxn.js) with PKPs and Lit Actions.
 
-``` js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+```js
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 import fs from "fs";
 import { serialize, recoverAddress } from "@ethersproject/transactions";
 import {
@@ -85,5 +85,4 @@ const go = async () => {
 };
 
 go();
-
 ```

@@ -12,7 +12,7 @@ You can also use EIP191 `eth_personal_sign` to sign a message, instead of a tran
 This can be done with `LitActions.ethPersonalSignMessageEcdsa({ message, publicKey , sigName });` when signing. It will prepend "\\x19Ethereum Signed Message:\\n" to the message and then hash and sign it according to https://eips.ethereum.org/EIPS/eip-191
 
 ```js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 import fs from "fs";
 import { serialize, recoverAddress } from "@ethersproject/transactions";
 import {

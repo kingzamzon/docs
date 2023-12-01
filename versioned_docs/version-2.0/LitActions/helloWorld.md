@@ -91,7 +91,7 @@ values={[
 <TabItem value="browser">
 
 ```js
-import * as LitJsSdk from '@lit-protocol/lit-node-client';
+import * as LitJsSdk from "@lit-protocol/lit-node-client@serrano";
 
 // this code will be run on the node
 const litActionCode = `
@@ -135,7 +135,7 @@ runLitAction();
 <TabItem value="nodejs">
 
 ```js
-import * as LitJsSdk from '@lit-protocol/lit-node-client-nodejs';
+import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
 
 // this code will be run on the node
 const litActionCode = `
@@ -160,7 +160,9 @@ const authSig = {
 };
 
 const runLitAction = async () => {
-  const litNodeClient = new LitJsSdk.LitNodeClientNodeJs({ litNetwork: "serrano" });
+  const litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
+    litNetwork: "serrano",
+  });
   await litNodeClient.connect();
   const signatures = await litNodeClient.executeJs({
     code: litActionCode,
