@@ -5,7 +5,7 @@ sidebar_position: 4
 
 # Use Cases
 
-Developers can use the Lit Network to build applications that leverage decentralized and programmable keys at their core. Possible use cases include:
+Developers can leverage the Lit Network to build decentralized applications with programmable keys at their core. Possible use cases include:
 
 ### Decentralized Access Control
 
