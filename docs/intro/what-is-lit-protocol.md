@@ -7,7 +7,7 @@ sidebar_position: 2
 
 Lit is a decentralized key management network and platform for building applications and experiences that leverage [threshold cryptography](../resources/how-it-works.md). 
 
-Lit can primarily be used for [data encryption](../sdk/access-control/intro.md), building [embedded wallets](../sdk/wallets/intro.md), and [programmable digital signatures](../sdk/serverless-signing/overview.md).
+Lit can primarily be used for [data encryption](../sdk/access-control/intro.md), building [user wallets](../sdk/wallets/intro.md), and [programmable digital signatures](../sdk/serverless-signing/overview.md).
 
 Get started with the [Lit SDK](../sdk/installation.md).
 

@@ -13,8 +13,8 @@ export default function CoreConceptsSection({ title, className }) {
         to="/v3/sdk/access-control/intro"
       />
       <Card
-        title="📡 Programmable Wallets"
-        description="Learn about programmable wallets that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system."
+        title="📡 User Wallets"
+        description="Learn about programmable user wallets that can read and write from any HTTP endpoint, blockchain, state machine, or decentralized storage system."
         to="/v3/sdk/wallets/intro"
       />
       <Card

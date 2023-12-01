@@ -191,7 +191,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Programmable Wallets",
+          label: "User Wallets",
           link: {
             type: "doc",
             id: "sdk/wallets/intro",

@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Programmable Wallets
+# User Wallets
 
 :::note
 **STATE OF THE NETWORK**
@@ -34,9 +34,9 @@ What’s the end goal? Providing a seamless onboarding experience for the next o
 
 ## Getting Started and Further Reading
 
-Some links to further reading and resources to help you get started building with programmable MPC wallets on the Lit network today:
+Some links to further reading and resources to help you get started building with MPC wallets on the Lit network today:
 
 - Getting started with the [Lit SDK](../sdk/installation)
-- Working with [Programmable Wallets](../sdk/wallets/intro)
+- Working with [User Wallets](../sdk/wallets/intro)
 - [Creating a wallet](../sdk/wallets/minting)
 - Overview of supported [authentication methods](../sdk/authentication/session-sigs/auth-methods/overview)

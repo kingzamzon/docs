@@ -25,7 +25,7 @@ Encrypting your data with Lit is simple and a completely [client-side operation]
 
 6. Open data marketplaces: Open data marketplaces facilitate the exchange of data between individuals and organizations, allowing users to buy, sell, or share information in a permissioned yet transparent manner. These systems promote data-driven innovation by making diverse datasets accessible to researchers, developers, and businesses, while also providing data creators with full control over how their data is used and managed. [Examples](https://github.com/LIT-Protocol/awesome/blob/main/README.md).
 
-### Programmable Signing and Wallets
+### Programmable Signing and User Wallets
 
 Interrelated but distinct from Lit’s decentralized encryption capabilities is the ability to generate programmable keys for non-custodial [user onboarding](../sdk/wallets/intro.md) and [serverless signing](../sdk/serverless-signing/overview.md). Some potential use cases include:
 
