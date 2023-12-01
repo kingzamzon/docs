@@ -62,9 +62,27 @@ const sidebars = {
       className: "category-not-collapsible",
       items: [
         "concepts/access-control-concept",
-        "concepts/aa-x-lit",
         "concepts/programmable-signing-concept",
         "concepts/pkps-as-wallet",
+      ],
+    },
+    {
+      type: "category",
+      label: "Network",
+      collapsible: false,
+      className: "category-not-collapsible",
+      items: [
+        {
+          type: "category",
+          label: "Lit Networks",
+          collapsed: true,
+          items: [
+            "network/networks/testnet",
+            "network/networks/mainnet",
+          ]
+        },
+        "network/feature-matrix",
+        "network/rollup",
       ],
     },
     {
@@ -243,6 +261,7 @@ const sidebars = {
           items: [
             "integrations/aa/alchemy-account-kit",
             "integrations/aa/pimlico",
+            "integrations/aa/openfort",
           ],
         },
         {
@@ -254,17 +273,6 @@ const sidebars = {
             "integrations/storage/irys",
           ],
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Network",
-      collapsible: false,
-      className: "category-not-collapsible",
-      items: [
-        "network/state-of-network",
-        "network/feature-matrix",
-        "network/rollup",
       ],
     },
     {
