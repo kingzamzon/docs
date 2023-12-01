@@ -62,6 +62,7 @@
   --ifm-menu-color-background-active: rgba(221, 22, 111, 0.1);
   --ifm-menu-color-background-hover: rgba(221, 22, 111, 0.05);
   --ifm-dropdown-hover-background-color: rgba(221, 22, 111, 0.05);
+  --ifm-breadcrumb-item-background-active: none;
   /**
   * ---------- Type system ----------
   */
@@ -94,8 +95,6 @@
     rgba(255, 255, 255, 0.9)
   );
   --lit-navbar-border-color: var(--ifm-color-gray-50);
-  /* --ifm-navbar-link-hover-color: var(--lit-pink); */
-  /* --ifm-dropdown-hover-background-color: var(--lit-pink-background); */
   /**
   * ---------- Footer ----------
   */
@@ -109,9 +108,6 @@
   * ---------- Sidebar ----------
   */
   --ifm-menu-color: var(--ifm-font-color-base);
-  /* --ifm-menu-color-active: var(--lit-pink); */
-  /* --ifm-menu-color-background-hover: var(--lit-pink-background);
-  --ifm-menu-color-background-active: var( --lit-pink-background); */
   /**
   * ---------- Table of Contents ----------
   */
@@ -169,6 +165,8 @@ html[data-theme='dark'] {
   --ifm-scrollbar-thumb-hover-background-color: var(--ifm-color-gray-700);
   --ifm-menu-color-background-active: rgba(255, 128, 86, 0.1);
   --ifm-menu-color-background-hover: rgba(255, 128, 86, 0.01);
+  --ifm-dropdown-hover-background-color: rgba(255, 128, 86, 0.05);
+  --ifm-breadcrumb-item-background-active: none;
   /**
   * ---------- Navbar ----------
   */
@@ -544,6 +542,20 @@ html[data-theme] .DocSearch-Prefill {
   --ifm-badge-border-color: #fd7e14;
   color: #d9480f;
 } */
+
+/*
+ * ---------- Breadcrumbs ----------
+*/
+nav[aria-label="Breadcrumbs"] {
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumbs__link {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  padding: 0;
+}
 
 /*
 * ---------- Link ----------
