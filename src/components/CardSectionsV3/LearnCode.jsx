@@ -10,7 +10,7 @@ export default function LearnCodeSection({ title, className }) {
       <Card
         title="👐 Open Source Examples"
         description="More examples to get you started."
-        to=""
+        to="https://github.com/LIT-Protocol/awesome/blob/main/README.md"
       />
       <Card
         title="📖 SDK V3 API Documentation"
@@ -21,6 +21,11 @@ export default function LearnCodeSection({ title, className }) {
         title="📃 Lit Actions SDK Documentation"
         description="Discover all the functions that can be used inside a Lit Action."
         to="https://actions-docs.litprotocol.com/" 
+      />
+      <Card
+        title="📄 V2 Docs"
+        description="For accessing the Lit V2 docs (deprecated)."
+        to="https://developer.litprotocol.com/v2/" 
       />
       <Card
         title="🛠 Tools"
