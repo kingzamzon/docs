@@ -143,4 +143,11 @@ This command executes the `build` and `test` commands simultaneously:
 getlit watch
 ```
 
+### `getlit deploy`
+
+Once the Lit Action code is ready, after building it, it can be deployed using the `deploy` command:
+
+```bash
+getlit deploy
+```
 
