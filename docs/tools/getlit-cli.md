@@ -33,6 +33,8 @@ To use the GetLit CLI, navigate to a directory or your existing project, and the
 | `watch`           | `getlit watch [<lit-action-name>]`  | 🔧 Simultaneously build and test a Lit Action |
 | `setup`           | `getlit setup`                      | 🔑 Setup config for authSig and PKP      |
 | `deploy`           | `getlit deploy`                      | 🚀 Deploy your Lit Actions      |
+| `derive-pkp`           | `getlit derive-pkp --userId --projectId --format`                      | 🔑 Derive a public key from user and application IDs      |
+| `search`           | `getlit search --get --format --publicKey --authMethodId --userId --appId`                      | 🔍 Search for data related to PKPs      |
 | `docs` \| `doc` | `getlit docs`                       | 📖 Open the Lit Protocol documentation   |
 | `help` \|  `show` | `getlit help`    | 🆘 Show the help menu                     |
 
@@ -151,3 +153,18 @@ Once the Lit Action code is ready, after building it, it can be deployed using t
 getlit deploy
 ```
 
+### `getlit search`
+
+This command is used to get PKP-related data by providing some data like public key or IDs:
+
+```bash
+getlit search --get --format --publicKey --authMethodId --userId --appId
+```
+
+### `getlit derive-pkp`
+
+When the application ID and the user ID is provided, but PKP public key is not; `derive-pkp` command outputs the public key:
+
+```bash
+getlit derive-pkp --userId --projectId --format
+```
