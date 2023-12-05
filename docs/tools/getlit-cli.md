@@ -163,7 +163,7 @@ getlit search --get --format --publicKey --authMethodId --userId --appId
 
 ### `getlit derive-pkp`
 
-When the application ID and the user ID is provided, but PKP public key is not; `derive-pkp` command outputs the public key:
+Lit Protocol supports [derived keys](https://developer.litprotocol.com/v3/sdk/wallets/claimable-keys/intro/). Users are able to claim the key from the authentication method identifier:
 
 ```bash
 getlit derive-pkp --userId --projectId --format
