@@ -87,6 +87,7 @@ const config = {
       //   textColor: "#fffff",
       //   isCloseable: true,
       // },
+      image: 'brand/docs-twitter.png',
       navbar: {
         title: 'Lit Protocol',
         logo: {
