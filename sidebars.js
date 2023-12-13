@@ -156,7 +156,6 @@ const sidebars = {
               items: [
                 "sdk/access-control/condition-types/unified-access-control-conditions",
                 "sdk/access-control/condition-types/boolean-logic",
-                "sdk/access-control/condition-types/lit-action-conditions",
               ],
             },
             {
@@ -178,6 +177,14 @@ const sidebars = {
               items: [
                 "sdk/access-control/other-chains/sol-rpc-conditions",
                 "sdk/access-control/other-chains/cosmos-conditions",
+              ],
+            },
+            {
+              type: "category",
+              label: "Off-Chain",
+              collapsed: true,
+              items: [
+                "sdk/access-control/lit-action-conditions",
               ],
             },
           ],
