@@ -100,11 +100,11 @@ yarn add @lit-protocol/lit-node-client@cayenne
 
 ### 2. Get A Programmable Key Pair (PKP)
 
-Get some LIT Testnet tokens from Lit's [Chronicle network](../../network/rollup.mdx). 
+Get some testLIT test tokens from Lit's [Chronicle network](../../network/rollup.mdx).
 
 Then mint a PKP through the [PKP explorer](https://explorer.litprotocol.com/mint-pkp).
 
-For other ways to obtain a PKP, [read more within the Lit docs](../../sdk/wallets/intro.md). 
+For other ways to create a PKP, [read more within the Lit docs](../../sdk/wallets/minting.md). 
 
 ### 3. Create a SmartAccountSigner
 
@@ -138,7 +138,7 @@ const resourceAbilities = [
 
 /**
  * For provisioning keys and setting up authentication methods see documentation below
- * https://developer.litprotocol.com/v2/pkp/minting
+ * https://developer.litprotocol.com/v3/sdk/wallets/auth-methods
  */
 const authNeededCallback = async (params: AuthCallbackParams) => {
   const response = await litNodeClient.signSessionKey({
@@ -235,7 +235,7 @@ const resourceAbilities = [
 
 /**
  * For provisioning keys and setting up authentication methods see documentation below
- * https://developer.litprotocol.com/v2/pkp/minting
+ * https://developer.litprotocol.com/v3/sdk/wallets/auth-methods
  */
 const authNeededCallback = async (params: AuthCallbackParams) => {
   const response = await litNodeClient.signSessionKey({
