@@ -100,7 +100,7 @@ yarn add @lit-protocol/lit-node-client@cayenne
 
 ### 2. Get A Programmable Key Pair (PKP)
 
-Get some testLIT test tokens from Lit's [Chronicle network](../../network/rollup.mdx). 
+Get some testLIT test tokens from Lit's [Chronicle network](../../network/rollup.mdx).
 
 Then mint a PKP through the [PKP explorer](https://explorer.litprotocol.com/mint-pkp).
 
