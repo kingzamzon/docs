@@ -57,6 +57,7 @@ const sidebars = {
         "concepts/access-control-concept",
         "concepts/programmable-signing-concept",
         "concepts/pkps-as-wallet",
+        "concepts/capacity-credits-concept",
       ],
     },
     {
@@ -95,6 +96,7 @@ const sidebars = {
       className: "category-not-collapsible",
       items: [
         "sdk/installation",
+        "sdk/capacity-credits",
         {
           type: "category",
           label: "Authentication",
