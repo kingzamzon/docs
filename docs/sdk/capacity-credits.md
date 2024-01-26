@@ -1,9 +1,9 @@
 # Capacity Credits
 
 :::note
-Currently Rate Limiting is only enabled on `Habanero` and `Manzano`
-see [here](../../../network/networks/testnet) for test networks
-see [here](../../../network/networks/mainnet) for mainnet networks
+Currently Rate Limiting is only enabled on `Habanero` and `Manzano`.
+See [here](../../../network/networks/testnet) for a list of test networks.
+See [here](../../../network/networks/mainnet) for a list of mainnet networks.
 :::
 
 # Overview
