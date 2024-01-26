@@ -81,7 +81,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Migration to V3",
+      label: "Migrating to the SDK V3",
       collapsible: true,
       items: [
         "migration/overview",
