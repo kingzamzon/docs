@@ -129,8 +129,8 @@ After a PKP is generated and assigned an auth method, you can pass the AuthMetho
 
 The PKP public key is required to initialize a new 'wallet' object when using [Lit and WalletConnect](https://github.com/LIT-Protocol/pkp-walletconnect/blob/main/components/CallRequest.js#L44) together.
 
-You will also need the PKP public key in order to generate a [sessionSig](../../sdk/authentication/session-sigs/intro) which is required to communicate with the Lit nodes, as seen in this [example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L422).
+You will also need the PKP public key in order to generate a [sessionSig](https://developer.litprotocol.com/v3/sdk/authentication/session-sigs/intro) which is required to communicate with the Lit nodes, as seen in this [example](https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L422).
 
 ## Custom Auth / Adding new Auth Methods not yet supported by Lit
 
-More info on this is available [here](../sdk/authentication/session-sigs/auth-methods/custom-auth/).
+More info on this is available [here](https://developer.litprotocol.com/v3/sdk/authentication/session-sigs/auth-methods/custom-auth).
