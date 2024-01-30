@@ -3,13 +3,9 @@
 The Lit network uses an identity (ID) based encryption scheme to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity.
 
 :::note
-Lit is still in developer preview with the mainnet launching soon. Follow [@LitProtocol](https://twitter.com/litprotocol) on X for mainnet updates.
+The Lit Habanero Mainnet Beta is now live. Read the full announcement [here](https://spark.litprotocol.com/).
 
-Do not use this for production at this moment - if you want to use stable encryption use v2 and the Jalapeno network.
-
-For practical purposes, run `npm install @lit-protocol/lit-node-client@jalapeno`
-
-[Learn more](https://developer.litprotocol.com/v3/network/state-of-network) about what data will persist during the developer preview.
+The Mainnet Beta is designed to be used in production and supports transacting live assets. Check out the [docs on migration](https://spark.litprotocol.com/) to learn how you can start building on Habanero today. 
 :::
 
 ### How Does ID Encrypt Work

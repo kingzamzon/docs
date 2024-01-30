@@ -3,15 +3,12 @@ import TabItem from '@theme/TabItem';
 
 # Quick Start
 
-:::note
-💡 Lit Actions and PKPs are still heavily in development and things may change.
+:::info
+**STATE OF THE NETWORK**
 
-**API DOCUMENTATION** For the most up to date API documentation, check out the [Lit JS SDK V3 docs](https://lit-js-sdk-v3-api-docs.vercel.app/).
+Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet.md). You can read the full announcement [here](https://spark.litprotocol.com/) and check out [the docs](https://spark.litprotocol.com/) on performing the required migration steps. 
 
 For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
-
-Need some `testLIT` test tokens to mint a PKP? Get some from the [faucet](https://faucet.litprotocol.com/)!
-
 :::
 
 ## Prerequisites
@@ -229,8 +226,8 @@ You can provide either a `code` param or a `ipfsId` param for the Lit Actions co
 ## Conclusion and More Examples
 
 This page showed how you can mint a PKP and use it to sign messages with Lit Actions. To learn more, check out these resources:
-- [Generating signed transactions](https://developer.litprotocol.com/v3/sdk/serverless-signing/processing-validation/)
-- [Fetching off-chain data](https://developer.litprotocol.com/v3/sdk/serverless-signing/fetch/)
-- [Connecting PKPs to dApps](https://developer.litprotocol.com/v3/sdk/wallets/walletconnect/)
+- [Generating signed transactions](../serverless-signing/processing-validation.md)
+- [Fetching off-chain data](../serverless-signing/fetch.md)
+- [Connecting PKPs to dApps](../wallets/walletconnect.md)
 
-Reach out to us on [Discord](https://litgateway.com/discord) if you need help or have questions!
+Reach out to the Lit Protocol development team on [Discord](https://litgateway.com/discord) if you need help or have questions!

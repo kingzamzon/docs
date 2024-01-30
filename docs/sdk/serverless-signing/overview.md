@@ -1,9 +1,10 @@
 # Overview
 
-:::note
-💡 Lit Actions are still heavily in development and things may change. We're grateful for [feedback](https://forms.gle/4UJNRcQspZyvsTHt8) on how to improve the docs and examples!
+:::info
+**STATE OF THE NETWORK**
 
-For an in-depth review of the functionality provided by the Lit Actions SDK, take a look at the [API docs](https://actions-docs.litprotocol.com/).
+Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet.md). You can read the full announcement [here](https://spark.litprotocol.com/) and check out [the docs](https://spark.litprotocol.com/) on performing the required migration steps. 
+
 :::
 
 ## Quick Start

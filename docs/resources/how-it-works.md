@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # How Does Lit Protocol Work
 
-:::note
+:::info
 
-**FOR DEVELOPERS: SDK API DOCUMENTATION**
+**FOR DEVELOPERS: SDK and API Documentation**
 
 To start building on Lit based on your use case, check out the Lit SDK [here](../../sdk/installation). For an in-depth understanding of the functionality provided, check out the [API docs](https://js-sdk.litprotocol.com/).
 
