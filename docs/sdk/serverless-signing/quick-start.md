@@ -9,6 +9,9 @@ import TabItem from '@theme/TabItem';
 Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet.md). You can read the full announcement [here](https://spark.litprotocol.com/) and check out [the docs](https://spark.litprotocol.com/) on performing the required migration steps. 
 
 For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
+
+Need some `testLITPRO` test tokens to mint a PKP? Get some from the [faucet](https://faucet.litprotocol.com/)!
+
 :::
 
 ## Prerequisites

@@ -3,7 +3,10 @@
 :::info
 **STATE OF THE NETWORK**
 
-Using Programmable Key Pairs (PKPs) in production (storing and transacting live assets) IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet.md). You can read the full announcement [here](https://spark.litprotocol.com/) and check out [the docs](https://spark.litprotocol.com/) on performing the required migration steps. 
+Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: https://faucet.litprotocol.com/
+
+**PKP Developer Preview is Live!**
+Get a PKP on the [PKP Explorer](https://explorer.litprotocol.com/mint-pkp)
 
 Need some `testLIT` test tokens to mint a PKP on Chronicle? Use the [faucet](https://faucet.litprotocol.com/).
 :::
