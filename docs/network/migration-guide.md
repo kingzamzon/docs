@@ -116,6 +116,7 @@ In this example stub, the litNodeClient is stored in a global variable `app.loca
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   alertWhenUnauthorized: false,
   litNetwork: "habanero",
+  checkNodeAttestation: true 
 });
 await app.locals.litNodeClient.connect();
 ```
