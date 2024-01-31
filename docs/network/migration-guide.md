@@ -130,6 +130,7 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set 
 ```js
 const client = new LitJsSdk.LitNodeClient({
   litNetwork: 'habanero',
+  checkNodeAttestation: true 
 });
 
 await client.connect();
