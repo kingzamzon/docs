@@ -2,8 +2,8 @@
 
 :::note
 Currently Rate Limiting is only enabled on `Habanero` and `Manzano`.
-See [here](../../../network/networks/testnet) for a list of test networks.
-See [here](../../../network/networks/mainnet) for a list of mainnet networks.
+See [here](../network/networks/testnet.md) for a list of test networks.
+See [here](../network/networks/mainnet.md) for a list of mainnet networks.
 :::
 
 # Overview

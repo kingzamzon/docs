@@ -3,7 +3,7 @@
 :::info
 **STATE OF THE NETWORK**
 
-Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet.md). You can read the full announcement [here](https://spark.litprotocol.com/) and check out [the docs](https://spark.litprotocol.com/) on performing the required migration steps. 
+Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet). Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
 
 :::
 

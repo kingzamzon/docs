@@ -3,12 +3,9 @@
 :::info
 **STATE OF THE NETWORK**
 
+The Lit Habanero Mainnet Beta is now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
+
 Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: https://faucet.litprotocol.com/
-
-**PKP Developer Preview is Live!**
-Get a PKP on the [PKP Explorer](https://explorer.litprotocol.com/mint-pkp)
-
-Need some `testLIT` test tokens to mint a PKP on Chronicle? Use the [faucet](https://faucet.litprotocol.com/).
 :::
 
 ## Quick Start
