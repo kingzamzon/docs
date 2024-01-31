@@ -48,3 +48,90 @@ Re-encryption is simply, decrypting the content, then encrypting it again.  In t
 Since in many cases, only the end user themselves can actually decrypt the content, you may adopt a system where you migrate each user when they use the system. You may start sending traffic from new users that *don’t* have any existing content to Habanero, immediately.  You may want to track which network each user is using in your user DB, and then upon login, look this up to decide which network to talk to.
 
 You may follow the docs on [encryption](../sdk/access-control/encryption.md) to learn how to decrypt and re-encrypt your data. 
+
+## Installing and Initializing the Lit SDK
+
+To connect to the Habanero network, you'll need to import the Lit SDK using the following command:
+
+<Tabs
+defaultValue="general"
+values={[
+{label: 'general', value: 'general'},
+{label: 'server side with nodejs', value: 'server-side'},
+]}>
+<TabItem value="general">
+
+Install the `@lit-protocol/lit-node-client` package, which can be used in both browser and Node environments:
+
+```sh
+yarn add @lit-protocol/lit-node-client
+```
+
+Use the **Lit JS SDK V3**:
+
+```js
+import * as LitJsSdk from "@lit-protocol/lit-node-client@habanero";
+```
+
+</TabItem>
+
+<TabItem value="server-side">
+
+Install the `@lit-protocol/lit-node-client-nodejs`, which is for Node environments only:
+
+```sh
+yarn add @lit-protocol/lit-node-client-nodejs
+```
+
+Use the **Lit JS SDK V3**:
+
+```js
+import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs@habanero";
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+You should use **at least Node v16.16.0** because of the need for the **webcrypto** library.
+:::
+
+## Connection to the Lit Network
+
+The SDK requires an active connection to the Lit nodes to perform most functions (notably, a connection to the Lit nodes is not required if you are just verifying a JWT).
+
+In web apps, this is typically done on first page load and can be shared between all your pages. In NodeJS apps, this is done when when the server starts.
+
+Calling `connect()` on the `litNodeClient`` returns a promise that resolves when you are connected to the Lit network.
+
+### SDK installed via NodeJS / serverside usage
+
+In this example stub, the litNodeClient is stored in a global variable `app.locals.litNodeClient` so that it can be used throughout the server. `app.locals` is provided by [Express](https://expressjs.com/) for this purpose. You may have to use what your own server framework provides for this purpose, instead.
+
+> Keep in mind that in the server-side implementation, the client class is named `LitNodeClientNodeJs`.
+
+`client.connect()` returns a promise that resolves when you are connected to the Lit network.
+
+```js
+app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
+  alertWhenUnauthorized: false,
+  litNetwork: "habanero",
+});
+await app.locals.litNodeClient.connect();
+```
+
+### SDK installed for client side usage
+
+Within a file (in the Lit example repos it will likely be called `lit.js`), set up your Lit object.
+
+`client.connect()` will return a promise that resolves when you are connected to the Lit Network.
+
+```js
+const client = new LitJsSdk.LitNodeClient({
+  litNetwork: 'habanero',
+});
+
+await client.connect();
+```
+
+Read more about using the Lit SDK, testing, and error handling [here](../sdk/tests.md).
