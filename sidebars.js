@@ -77,6 +77,7 @@ const sidebars = {
         },
         "network/feature-matrix",
         "network/rollup",
+        "network/migration-guide"
       ],
     },
     {
