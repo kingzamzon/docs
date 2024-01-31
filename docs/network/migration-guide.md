@@ -69,8 +69,12 @@ yarn add @lit-protocol/lit-node-client
 
 Use the **Lit JS SDK V3**:
 
+:::note
+Both the Habanero and Manzano networks can be accessed using the '@beta' tag below. You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
+:::
+
 ```js
-import * as LitJsSdk from "@lit-protocol/lit-node-client@habanero";
+import * as LitJsSdk from "@lit-protocol/lit-node-client@beta";
 ```
 
 </TabItem>
@@ -85,8 +89,12 @@ yarn add @lit-protocol/lit-node-client-nodejs
 
 Use the **Lit JS SDK V3**:
 
+:::note
+Both the Habanero and Manzano networks can be accessed using the '@beta' tag below. You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
+:::
+
 ```js
-import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs@habanero";
+import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs@beta";
 ```
 
 </TabItem>
