@@ -32,7 +32,7 @@ In order to send transactions on Lit, you must first authenticate with the [Lit 
 
 Every time you authenticate with Lit, the request context (i.e. wallet address, owned capacity credits, etc) is extracted and validated against the Rate Limiting Module to ensure capacity has not been breached.
 
-To mint a Capacity Credit NFT, you’ll need some 'testLITPRO' tokens. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLITPRO` test token should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
+To mint a Capacity Credit NFT, you’ll need some 'testLPX' tokens. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` test token should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
 
 For minting a Capacity Credits NFT see example docs for using our contract-sdk [here](../sdk/rate-limiting) 
 
