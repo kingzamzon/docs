@@ -39,7 +39,7 @@ For more information on how Ceramic works, visit [How it Works](https://ceramic.
 
 ## ComposeDB
 
-ComposeDB is a graph database built on Ceramic that offers further composability and ease of querying to developers. ComposeDB delivers native support for GraphQL and also splits read/write load by default for additional performance. When running a Ceramic node with ComposeDB, developers can define their own [data models](https://composedb.js.org/docs/0.5.x/create-your-composite) using GraphQL, or choose to begin indexing on existing data models already defined by the community, or both!
+ComposeDB is a graph database built on Ceramic that offers further composability and ease of querying to developers. ComposeDB delivers native support for GraphQL and also splits read/write load by default for additional performance. When running a Ceramic node with ComposeDB, developers can define their own [data models](https://developers.ceramic.network/docs/composedb/create-your-composite) using GraphQL, or choose to begin indexing on existing data models already defined by the community, or both!
 
 For the purpose of this tutorial, we will be using Ceramic with ComposeDB to illustrate how developers can generate, store, and query simple encrypted messages.
 
@@ -67,9 +67,9 @@ Open the repository in your editor of choice to continue following along.
 
 This tutorial shows developers how to run a local node with which they will deploy model definitions and publish/read transactions to the network.
 
-In order to do this, a [server configuration](https://composedb.js.org/docs/0.5.x/guides/composedb-server/server-configurations) will have to be defined, as well as corresponding Ceramic node admin credentials.
+In order to do this, a [server configuration](https://developers.ceramic.network/docs/composedb/guides/composedb-server/server-configurations) will have to be defined, as well as corresponding Ceramic node admin credentials.
 
-We've done most of this work for you using [this script](https://github.com/mzkrasner/lit-composedb/blob/main/scripts/commands.mjs) we've provided.
+We've done most of this work for you using [this script](https://github.com/ceramicstudio/lit-composedb/blob/main/scripts/commands.mjs) we've provided.
 
 To generate your credentials, run the following in your terminal:
 
@@ -79,7 +79,7 @@ npm run generate
 
 If you explore your `composedb.config.json` and `admin_seed.txt` files, you will now see a defined JSON ComposeDB server configuration and Ceramic admin seed, respectively.
 
-For more information on server configurations, visit [Server Configurations](https://composedb.js.org/docs/0.5.x/guides/composedb-server/server-configurations) in the ComposeDB docs.
+For more information on server configurations, visit [Server Configurations](https://developers.ceramic.network/docs/composedb/guides/composedb-server/server-configurations) in the ComposeDB docs.
 
 ### Observe Your Schema Definitions
 
@@ -103,7 +103,7 @@ type Posts @createModel(accountRelation: LIST, description: "A simple Post") {
 
 In this model definition, you'll notice that the "author" field takes a scalar type `DID` with an `@documentAccount` directive. This field definition allows each Posts instance to be queried based on the controlling Ceramic Account (based on DID), and therefore is automatically assigned each time a model instance is defined.
 
-(For more information on controlling Accounts and Documents, visit [ComposeDB Concepts](https://composedb.js.org/docs/0.5.x/core-concepts)).
+(For more information on controlling Accounts and Documents, visit [ComposeDB Concepts](https://developers.ceramic.network/docs/composedb/core-concepts)).
 
 Finally, if you navigate into the `/scripts/composites.mjs` file, you'll find the application's deployment script. When you launch the application, this script compiles the model into a composite definition that will then be deployed on your local node and writes that definition to the files located in `/src/__generated__`, which will later be used by the ComposeDB client library to read and write data.
 
@@ -140,7 +140,7 @@ Upon opening the homepage in your browser, you will be prompted with the option 
 
 Navigating back to your text editor, observe the `useEffect` lifecycle hook within /src/pages/index.tsx that checks the browser's local storage for an item with a "did" key. Upon pressing the button to initiate the authentication sequence, the `handleLogin` method on the same page is called, relying on an `authenticateCeramic` method imported from /utils/index.ts, using the client definitions imported from /context/index.tsx.
 
-The important item to recognize during this sequence is which DID method is being used. While Ceramic supports multiple [DID methods](https://developers.ceramic.network/protocol/accounts/decentralized-identifiers/), this application authorizes Ethereum accounts using [@didtools/pkh-ethereum](https://did.js.org/docs/api/modules/pkh_ethereum/) (visit [User Sessions](https://composedb.js.org/docs/0.5.x/guides/composedb-client/user-sessions) for more information).
+The important item to recognize during this sequence is which DID method is being used. While Ceramic supports multiple [DID methods](https://developers.ceramic.network/protocol/accounts/decentralized-identifiers/), this application authorizes Ethereum accounts using [@didtools/pkh-ethereum](https://did.js.org/docs/api/modules/pkh_ethereum/) (visit [User Sessions](https://developers.ceramic.network/docs/composedb/guides/composedb-client/user-sessions) for more information).
 
 This type of authentication flow offers a familiar "web2" experience allowing users to sign in once (thus generating a timebound session), removing the need to manually approve every transaction. In doing so, this method utilizes a root Ceramic `did:pkh` account with the user's wallet, and generates a temporary and resolvable Ceramic `did:key` account that lives in the browser's local storage, expiring after a default duration of 24 hours.
 
@@ -214,11 +214,11 @@ If you want to simulate what the experience might look like with multiple users 
 
 While this tutorial represents a very simple example of how to store and retrieve encrypted data on ComposeDB, there are other patterns and examples developers will find useful to learn more about building on Ceramic.
 
-- To migrate from local development to running ComposeDB in the cloud, visit [Running in the Cloud](https://composedb.js.org/docs/0.5.x/guides/composedb-server/running-in-the-cloud).
-- To move from Ceramic Testnet to Mainnet, visit [Access Ceramic Mainnet](https://composedb.js.org/docs/0.5.x/guides/composedb-server/access-mainnet).
-- To view a social application example with more complex data modeling and querying based on relations, visit this [Social App ComposeDB Starter](https://github.com/ceramicstudio/EthDenver2023Demo).
+- To migrate from local development to running ComposeDB in the cloud, visit [Running in the Cloud](https://developers.ceramic.network/docs/composedb/guides/composedb-server/running-in-the-cloud).
+- To move from Ceramic Testnet to Mainnet, visit [Access Ceramic Mainnet](https://developers.ceramic.network/docs/composedb/guides/composedb-server/access-mainnet).
+- To view a social application example with more complex data modeling and querying based on relations, visit this [Social App ComposeDB Starter](https://github.com/ceramicstudio/ComposeDbExampleApp).
 - To view how to generate, save, query, and verify off-chain attestations using the Ethereum Attestation Service together with ComposeDB, visit [this repository](https://github.com/ceramicstudio/ceramic-eas).
-- Use the [ComposeDB API Sandbox](https://composedb.js.org/sandbox) to test example queries on a real dataset directly from your browser
+- Use the [ComposeDB API Sandbox](https://developers.ceramic.network/docs/composedb/sandbox) to test example queries on a real dataset directly from your browser
 - Build an AI-powered Chatbot and save message history to ComposeDB by following this [ComposeDB Tutorial](https://learnweb3.io/lessons/build-an-ai-chatbot-on-compose-db-and-the-ceramic-network)
 
 ### Support from the Ceramic Team
