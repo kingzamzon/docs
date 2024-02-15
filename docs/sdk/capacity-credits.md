@@ -18,12 +18,11 @@ In order to increase your rate limit you'll need to mint an `Capacity Credits NF
 
 You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
 
-
 ```javascript
 const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
-  network: 'manzano'
+  network: 'manzano',
 });
 
 await contractClient.connect();
@@ -60,7 +59,7 @@ Here we use the `capacityTokenId` we recieved when minting our Capacity Credit.
 
 ```javascript
 const litNodeClient = new LitNodeClient({
-    litNetwork: "habanero",
+    litNetwork: "manzano",
     checkNodeAttestation: true,
 });
 
@@ -89,7 +88,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
 
 ```javascript
   const litNodeClient = new LitNodeClient({
-      litNetwork: "habanero",
+      litNetwork: "manzano",
       checkNodeAttestation: true,
   });
   
@@ -166,7 +165,7 @@ For more information on session signatures and pkps see [here](./authentication/
 
 ```javascript
   const litNodeClient = new LitNodeClient({
-      litNetwork: "habanero",
+      litNetwork: "manzano",
       checkNodeAttestation: true,
   });
   
