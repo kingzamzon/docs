@@ -23,7 +23,7 @@ Welcome to Lit Protocol's Community Resources! Here you'll find everything you n
 - **Community Calendar:** Subscribe to the Lit Community [Calendar](https://litgateway.com/calendar) to stay informed about upcoming events, workshops, and releases.
 
 ## Join Us
-- **Jobs:** Explore opportunities to join our team at [Lit Protocol](https://jobs.lever.co/litprotocol).
+- **Jobs:** Explore opportunities to join our team at [Lit Protocol](https://jobs.litprotocol.com).
 
 We look forward to having you be a part of our vibrant community!
 
