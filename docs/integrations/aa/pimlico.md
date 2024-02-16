@@ -221,7 +221,8 @@ We will now generate a wallet that can act a regular Ethers.js wallet, but will 
 const pkpWallet = new PKPEthersWallet({
     pkpPubKey: pkp[pkp.length - 1].publicKey,
     rpc: "<standard RPC URL for the chain you are using>", // e.g. https://rpc.ankr.com/eth_goerli
-    controllerSessionSigs: sessionSigs
+    // TODO: authContext...
+    // controllerSessionSigs: sessionSigs
 });
  
 await pkpWallet.init();
