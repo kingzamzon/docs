@@ -16,7 +16,9 @@ To connect a PKP and a dApp, you will need to:
 import { PKPClient } from "@lit-protocol/pkp-client";
 
 const pkpClient = new PKPClient({
-  controllerAuthSig: "<Your AuthSig>",
+  authContext: {...},
+  // @deprecated methods below
+  // controllerAuthSig: "<Your AuthSig>",
   // Or you can also pass in controllerSessionSigs
   pkpPubKey: "<Your PKP public key>",
 });
