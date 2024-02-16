@@ -12,7 +12,8 @@ To write to the blockchain, the `LitContracts` instance must be created with a `
 import { PKPEthersWallet } from "@lit-protocol/pkp-ethers";
 
 const pkpWallet = new PKPEthersWallet({
-  controllerAuthSig: "<Your AuthSig>",
+  // TODO: authContext...
+  // controllerAuthSig: "<Your AuthSig>",
   // Or you can also pass in controllerSessionSigs
   pkpPubKey: "<Your PKP public key>",
   rpc: "https://chain-rpc.litprotocol.com/http",

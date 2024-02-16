@@ -17,6 +17,7 @@ import { PKPClient } from "@lit-protocol/pkp-client";
 
 const pkpClient = new PKPClient({
   authContext: {...},
+  // // TODO: authContext...
   // @deprecated methods below
   // controllerAuthSig: "<Your AuthSig>",
   // Or you can also pass in controllerSessionSigs
