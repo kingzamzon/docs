@@ -96,6 +96,10 @@ The `addPermittedAuthMethod` function takes the following arguments:
 - `authMethod`: The auth method you want to add
 - `overrides`: An optional object that allows you to customize [certain parameters](https://docs.ethers.org/v5/api/contract/contract/#contract-functionsSend) of the transaction (e.g, `gasPrice`, `gasLimit`)
 
+**Note:** Here, we have specified a hardcoded `gasLimit` of `400000`. Users should note that this `gasLimit` is a number which is dependent on the authentication methods being added. For estimating the `gasLimit` specific to your use case, please visit [Estimating Gas](#estimating-gas) section.
+
+Alternatively, you can set a sufficiently high `gasLimit` fee based on your testing and requirements.
+
 ## Remove an Auth Method
 
 To remove an auth method, call the `removePermittedAuthMethod` function on the `PKPPermissions` contract.
@@ -116,6 +120,10 @@ The `removePermittedAuthMethod` function takes the following arguments:
 - `authMethodType`: A number representing the type of auth method you want to remove. Refer to the supported auth methods table [here](../../../../wallets/auth-methods#existing-supported-auth-methods).
 - `id`: Bytes that represent a hash of a string that uniquely identifies the auth method you want to remove
 - `overrides`: An optional object that allows you to customize [certain parameters](https://docs.ethers.org/v5/api/contract/contract/#contract-functionsSend) of the transaction (e.g, `gasPrice`, `gasLimit`)
+
+**Note:** Here, we have specified a hardcoded `gasLimit` of `400000`. Users should note that this `gasLimit` is a number which is dependent on the authentication methods being added. For estimating the `gasLimit` specific to your use case, please visit [Estimating Gas](#estimating-gas) section.
+
+Alternatively, you can set a sufficiently high `gasLimit` fee based on your testing and requirements.
 
 ## Estimating Gas
 
