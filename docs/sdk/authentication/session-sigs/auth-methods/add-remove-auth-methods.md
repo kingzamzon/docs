@@ -6,15 +6,27 @@ To write to the blockchain, the `LitContracts` instance must be created with a `
 
 ## Initialize `PKPEthersWallet`
 
-`PKPEthersWallet` must be instantiated with an `AuthSig` or a `SessionSig` in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../authentication/overview).
+`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` (deprecated) in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../authentication/overview).
+
+Ideally you would want to pass `AuthenticationProps` as it will update `SessionSigs` for you based on current conditions while retaining the benefits of sessions.
+
+You can only pass one of the three. If you pass more than one, `PKPEthersWallet` will throw an exception when constructing or trying to use it.
 
 ```js
 import { PKPEthersWallet } from "@lit-protocol/pkp-ethers";
 
 const pkpWallet = new PKPEthersWallet({
-  // TODO: authContext...
-  // controllerAuthSig: "<Your AuthSig>",
-  // Or you can also pass in controllerSessionSigs
+  authContext: {
+    client: litNodeClient,
+    getSessionSigsProps: {
+      chain: 'ethereum',
+      expiration: new Date(Date.now() + 60_000 * 60).toISOString(),
+      resourceAbilityRequests: resourceAbilities,
+      authNeededCallback,
+    },
+  },
+  // controllerAuthSig: authSig,
+  // controllerSessionSigs: sesionSigs, // (deprecated)
   pkpPubKey: "<Your PKP public key>",
   rpc: "https://chain-rpc.litprotocol.com/http",
 });
@@ -25,7 +37,7 @@ To view more constructor options for `PKPEthersWallet`, check out the [API docs]
 
 :::note
 
-**Passing `SessionSigs`**
+**Passing `AuthenticationProps` or `SessionSigs`**
 
 When generating session signatures for `PKPEthersWallet`, be sure to request the ability to execute Lit Actions by passing the following object in the `resourceAbilityRequests` array:
 

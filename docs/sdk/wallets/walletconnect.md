@@ -16,17 +16,23 @@ To connect a PKP and a dApp, you will need to:
 import { PKPClient } from "@lit-protocol/pkp-client";
 
 const pkpClient = new PKPClient({
-  authContext: {...},
-  // // TODO: authContext...
-  // @deprecated methods below
-  // controllerAuthSig: "<Your AuthSig>",
-  // Or you can also pass in controllerSessionSigs
+  authContext: {
+    client: litNodeClient,
+    getSessionSigsProps: {
+      chain: 'ethereum',
+      expiration: new Date(Date.now() + 60_000 * 60).toISOString(),
+      resourceAbilityRequests: resourceAbilities,
+      authNeededCallback,
+    },
+  },
+  // controllerAuthSig: authSig,
+  // controllerSessionSigs: sesionSigs, // (deprecated)
   pkpPubKey: "<Your PKP public key>",
 });
 await pkpClient.connect();
 ```
 
-The `controllerAuthSig` (or `controllerSessionSigs`) is used to authorize requests to the Lit nodes. To learn how to leverage different authentication methods, refer to the [Authentication section](../../authentication/overview).
+The `getSessionSigsProps`, `controllerAuthSig` or `controllerSessionSigs` (this last one deprecated) are used to authorize requests to the Lit nodes. To learn how to leverage different authentication methods, refer to the [Authentication section](../authentication/overview).
 
 To view more constructor options, refer to the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPClientProp.html).
 
