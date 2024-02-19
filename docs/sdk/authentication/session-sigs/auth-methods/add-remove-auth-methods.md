@@ -13,7 +13,34 @@ Ideally you would want to pass `AuthenticationProps` as it will update `SessionS
 You can only pass one of the three. If you pass more than one, `PKPEthersWallet` will throw an exception when constructing or trying to use it.
 
 ```js
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
+import { LitAbility, LitActionResource } from '@lit-protocol/auth-helpers';
 import { PKPEthersWallet } from "@lit-protocol/pkp-ethers";
+
+// If you haven't done before, create a LitNodeClient instance
+const litNodeClient = new LitNodeClient({
+  litNetwork: "cayenne",
+});
+await litNodeClient.connect();
+
+// Prepare needed params for authContext
+const resourceAbilities = [
+  {
+    resource: new LitActionResource("*"),
+    ability: LitAbility.PKPSigning,
+  },
+];
+
+const authNeededCallback = async (params: AuthCallbackParams) => {
+  const response = await litNodeClient.signSessionKey({
+    statement: params.statement,
+    authMethods: [authMethod],
+    expiration: params.expiration,
+    resources: params.resources,
+    chainId: 1,
+  });
+  return response.authSig;
+};
 
 const pkpWallet = new PKPEthersWallet({
   authContext: {
@@ -34,21 +61,6 @@ await pkpWallet.init();
 ```
 
 To view more constructor options for `PKPEthersWallet`, check out the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPEthersWalletProp.html).
-
-:::note
-
-**Passing `AuthenticationProps` or `SessionSigs`**
-
-When generating session signatures for `PKPEthersWallet`, be sure to request the ability to execute Lit Actions by passing the following object in the `resourceAbilityRequests` array:
-
-```js
-{
-  resource: new LitActionResource('*'),
-  ability: LitAbility.LitActionExecution,
-}
-```
-
-:::
 
 ## Initialize `LitContracts`
 

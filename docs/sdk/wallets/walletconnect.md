@@ -13,7 +13,34 @@ To connect a PKP and a dApp, you will need to:
 `PKPClient` represents a PKP and initializes signers for use across multiple blockchains (note: EVM-only at the moment).
 
 ```js
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
+import { LitAbility, LitActionResource } from '@lit-protocol/auth-helpers';
 import { PKPClient } from "@lit-protocol/pkp-client";
+
+// If you haven't done before, create a LitNodeClient instance
+const litNodeClient = new LitNodeClient({
+  litNetwork: "cayenne",
+});
+await litNodeClient.connect();
+
+// Prepare needed params for authContext
+const resourceAbilities = [
+  {
+    resource: new LitActionResource("*"),
+    ability: LitAbility.PKPSigning,
+  },
+];
+
+const authNeededCallback = async (params: AuthCallbackParams) => {
+  const response = await litNodeClient.signSessionKey({
+    statement: params.statement,
+    authMethods: [authMethod],
+    expiration: params.expiration,
+    resources: params.resources,
+    chainId: 1,
+  });
+  return response.authSig;
+};
 
 const pkpClient = new PKPClient({
   authContext: {
