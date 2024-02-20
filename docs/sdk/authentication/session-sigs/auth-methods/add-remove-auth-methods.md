@@ -6,14 +6,54 @@ To write to the blockchain, the `LitContracts` instance must be created with a `
 
 ## Initialize `PKPEthersWallet`
 
-`PKPEthersWallet` must be instantiated with an `AuthSig` or a `SessionSig` in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../authentication/overview).
+`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` (deprecated) in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../authentication/overview).
+
+Ideally you would want to pass `AuthenticationProps` as it will update `SessionSigs` for you based on current conditions while retaining the benefits of sessions.
+
+You can only pass one of the three. If you pass more than one, `PKPEthersWallet` will throw an exception when constructing or trying to use it.
 
 ```js
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
+import { LitAbility, LitActionResource } from '@lit-protocol/auth-helpers';
 import { PKPEthersWallet } from "@lit-protocol/pkp-ethers";
 
+// If you haven't done before, create a LitNodeClient instance
+const litNodeClient = new LitNodeClient({
+  litNetwork: "cayenne",
+});
+await litNodeClient.connect();
+
+// Prepare needed params for authContext
+const resourceAbilities = [
+  {
+    resource: new LitActionResource("*"),
+    ability: LitAbility.PKPSigning,
+  },
+];
+
+const authNeededCallback = async (params: AuthCallbackParams) => {
+  const response = await litNodeClient.signSessionKey({
+    statement: params.statement,
+    authMethods: [authMethod],
+    expiration: params.expiration,
+    resources: params.resources,
+    chainId: 1,
+  });
+  return response.authSig;
+};
+
 const pkpWallet = new PKPEthersWallet({
-  controllerAuthSig: "<Your AuthSig>",
-  // Or you can also pass in controllerSessionSigs
+  authContext: {
+    client: litNodeClient,
+    getSessionSigsProps: {
+      chain: 'ethereum',
+      expiration: new Date(Date.now() + 60_000 * 60).toISOString(),
+      resourceAbilityRequests: resourceAbilities,
+      authNeededCallback,
+    },
+  },
+  // controllerAuthSig: authSig,
+  // controllerSessionSigs: sesionSigs, // (deprecated)
   pkpPubKey: "<Your PKP public key>",
   rpc: "https://chain-rpc.litprotocol.com/http",
 });
@@ -21,21 +61,6 @@ await pkpWallet.init();
 ```
 
 To view more constructor options for `PKPEthersWallet`, check out the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPEthersWalletProp.html).
-
-:::note
-
-**Passing `SessionSigs`**
-
-When generating session signatures for `PKPEthersWallet`, be sure to request the ability to execute Lit Actions by passing the following object in the `resourceAbilityRequests` array:
-
-```js
-{
-  resource: new LitActionResource('*'),
-  ability: LitAbility.LitActionExecution,
-}
-```
-
-:::
 
 ## Initialize `LitContracts`
 
