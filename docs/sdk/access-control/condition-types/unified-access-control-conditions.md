@@ -147,5 +147,5 @@ Below is a list of supported comparators that can be specified in the `returnVal
 - `<=` (Less Than or Equal To)
 - `=` (Equal To)
 - `!=` (Not Equal To)
-- `contains`
-- `!contains`
+- `contains` (Contains the specified value)
+- `!contains` (Does not contain the specified value)
