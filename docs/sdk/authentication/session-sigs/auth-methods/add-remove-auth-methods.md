@@ -6,7 +6,7 @@ To write to the blockchain, the `LitContracts` instance must be created with a `
 
 ## Initialize `PKPEthersWallet`
 
-`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` (deprecated) in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../authentication/overview).
+`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` (deprecated) in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../authentication/overview).
 
 Ideally you would want to pass `AuthenticationProps` as it will update `SessionSigs` for you based on current conditions while retaining the benefits of sessions.
 
@@ -81,7 +81,7 @@ To view more constructor options for `LitContracts`, check out the [API docs](ht
 
 To add an auth method, you must pass an `authMethod` object, which should have the following properties:
 
-- `authMethodType`: A number representing the type of auth method you want to add. Refer to the supported auth methods table [here](../../../../wallets/auth-methods).
+- `authMethodType`: A number representing the type of auth method you want to add. Refer to the supported auth methods table [here](../../../wallets/auth-methods).
 - `id`: Bytes that represent a hash of a string that uniquely identifies the auth method
 - `userPubkey`: Public key of a WebAuthn credential (only required when using WebAuthn as an auth method)
 
@@ -142,7 +142,7 @@ const transaction =
 The `removePermittedAuthMethod` function takes the following arguments:
 
 - `tokenId`: The token ID of the PKP you want to remove an auth method from
-- `authMethodType`: A number representing the type of auth method you want to remove. Refer to the supported auth methods table [here](../../../../wallets/auth-methods#existing-supported-auth-methods).
+- `authMethodType`: A number representing the type of auth method you want to remove. Refer to the supported auth methods table [here](../../../wallets/auth-methods#existing-supported-auth-methods).
 - `id`: Bytes that represent a hash of a string that uniquely identifies the auth method you want to remove
 - `overrides`: An optional object that allows you to customize [certain parameters](https://docs.ethers.org/v5/api/contract/contract/#contract-functionsSend) of the transaction (e.g, `gasPrice`, `gasLimit`)
 
