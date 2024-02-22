@@ -80,6 +80,9 @@ To delegate your Rate Limit NFT there are 4 properties to configure:
 - `capacityTokenId` -  The `token identifier` of the Rate Limit NFT
 - `delegateeAddresses` - The wallet addresses which will be delegated to
 
+:::note
+The `delegateeAddress` parameter is optional. If omitted, anyone can use your `capacityDelegationAuthSig` to use your app without restrictions. In this case, you can utilize other restrictions like the `uses` param to limit the amount of usage by your users. 
+:::
 
 ## **Generating Sessions from delegation signature**
 To create sesssions from your delegation signature you can use the following example.
