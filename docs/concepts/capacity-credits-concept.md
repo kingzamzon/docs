@@ -111,5 +111,5 @@ Bob can generate an `AuthSig` by delegating equal rights to Bob's session keys
 ### **Best Practices**
 
 - **Capacity Management**: Keep an eye on your usage limit and expiration date.
-- **Understanding Limits**: Be aware of the free tier rate limit. Capacity credits can be used to reserve more usage.
-- **Prioritization**: Utilize session signatures to ensure request prioritization.
+- **Delegation**: You can create restrictions on your delegations to ensure that your users don't take your `capacityDelegationAuthSig` and use it for other apps
+
