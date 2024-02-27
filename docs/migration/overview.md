@@ -14,11 +14,11 @@ The **Lit JS SDK V3** replaces the existing access control condition based encry
 
 :::caution
 
-The Lit development team will not be migrating the access control conditions that have been "stored" in the `jalapeno` and `serrano` networks but we will continue to maintain support for them for a finite period of time.
+The Lit development team will not be migrating the access control conditions that have been "stored" in the `jalapeno` and `serrano` networks but we will continue to maintain support for them for a finite period of time. Therefore, we will request users to migrate to `habanero` and `manzano` networks.
 
 :::
 
-If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK.
+If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK. But still we will recommend users to migrate to V3 SDK as it supports our new networks, `habanero` and `manzano`, which are not supported by V2 SDK.
 
 Alternatively, here are some general instructions for migrating to use the new encryption scheme:
 
@@ -38,6 +38,16 @@ Some factors that have different implications on the migration timeline include:
 - Whether a single storage engine is used to store encrypted data, vs. a multitude of storage engines are used
 
 ## Per-Package Changes
+
+### `@lit-protocol/encryption`
+
+All of the methods now require `ILitNodeClient` in the function argument.
+
+### `@lit-protocol/lit-node-client` and `lit-node-client-nodejs`
+
+All of the functionality for encrypting and decrypting private data is now implemented by the `encrypt` and `decrypt` methods.
+
+All of the functionality for obtaining a BLS network signature over a JWT is now implemented by the `getSignedToken` method.
 
 ### `@lit-protocol/bls-sdk`
 
@@ -169,23 +179,13 @@ const plaintext = verifyAndDecryptWithSignatureShares(
 );
 ```
 
-### `@lit-protocol/encryption`
-
-All of the methods now require `ILitNodeClient` in the function argument.
-
-### `@lit-protocol/lit-node-client` and `lit-node-client-nodejs`
-
-All of the functionality for encrypting and decrypting private data is now implemented by the `encrypt` and `decrypt` methods.
-
-All of the functionality for obtaining a BLS network signature over a JWT is now implemented by the `getSignedToken` method.
-
 ## Notable Changes
 
 V3 includes the following breaking changes from V2.
 
 ### Supported Lit Networks
 
-Both `jalapeno` and `serrano` will no longer be supported. `cayenne` is the only supported network and will be the new default moving forward.
+Both `jalapeno` and `serrano` will no longer be supported. Now, `cayenne`, `manzano` and `habanero` are the only supported networks and we will be moving forward with them.
 
 ### Types
 
@@ -231,6 +231,18 @@ THe following methods have their names updated in `@lit-protocol/encryption` and
 - `decryptZip` becomes `decryptToZip`
 
 All method interfaces in `@lit-protocol/encryption` have been updated.
+
+## Minting Capacity Credits for Usage
+
+Currently Rate Limiting is enabled on `Habanero` and `Manzano`. In order to use these networks, you must reserve capacity on them by minting a `Capacity Credits NFT` on Chronicle - Lit's custom EVM rollup testnet. Capacity credits allow holders to reserve a configurable number of requests (measured in requests per second) over a fixed length of time (i.e. one week). For minting capacity credits, you can either use:
+1. The [Lit  Explorer](https://explorer.litprotocol.com/get-credits) or,
+2. Our `contracts-sdk`.
+
+A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For minting Capacity Credits using `contracts-sdk` see [here](../sdk/capacity-credits).
+
+You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
+
+For more information on Capacity Credits and network rate limiting see [here](../concepts/capacity-credits-concept)
 
 ## Troubleshooting
 

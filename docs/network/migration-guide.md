@@ -23,11 +23,9 @@ If you’re migrating from Jalapeno to Habanero, it’s important to remember th
 
 ### For encryption / decryption use cases
 
-Cayenne and Habanero have different root keys, so you’ll need to re-encrypt your user’s content in order to migrate to Habanero
+Cayenne and Habanero have different root keys, so you’ll need to re-encrypt your user’s content in order to migrate to Habanero. In order to perform re-encryption, you can use the same v3 SDK for both Cayenne and Habanero, but note that you will need 2 instances of the SDK, one connected to each network. First, use Cayenne SDK instance to decrypt the encrypted data and then use Habanero SDK instance to re-encrypt it.  
 
 You can learn more about re-encryption at the end of this guide.
-
-You can use the same v3 SDK for both Cayenne and Habanero, but note that you will need 2 instances of the SDK, one connected to each network.  
 
 ### For PKP Signing / Lit Actions use cases
 
@@ -146,3 +144,15 @@ await client.connect();
 ```
 
 Read more about using the Lit SDK, testing, and error handling [here](../sdk/tests.md).
+
+## Minting Capacity Credits for Usage
+
+Currently Rate Limiting is enabled on `Habanero` and `Manzano`. In order to use these networks, you must reserve capacity on them by minting a `Capacity Credits NFT` on Chronicle - Lit's custom EVM rollup testnet. Capacity credits allow holders to reserve a configurable number of requests (measured in requests per second) over a fixed length of time (i.e. one week). For minting capacity credits, you can either use:
+1. The [Lit  Explorer](https://explorer.litprotocol.com/get-credits) or,
+2. Our `contracts-sdk`.
+
+A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For minting Capacity Credits using `contracts-sdk` see [here](../sdk/capacity-credits).
+
+You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
+
+For more information on Capacity Credits and network rate limiting see [here](../concepts/capacity-credits-concept)

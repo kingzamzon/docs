@@ -30,7 +30,7 @@ For minting a Capacity Credits NFT see example docs for using our contract-sdk [
 ### **Delegating Capacity — Paying for Your Users’ Requests**
 You can also delegate your capacity credits to other users. For example, Alice owns a Capacity Credit NFT and wants to let Bob use it, but only for a specific Lit Actions or another resource or set of resources that she owns.
 
-Alice can create a session capability object that specifies the ability to Authenticate with an Capacity Credits NFT as well as request for Threshold Execution against a particular Lit Action IPFS CID(s). Alice then signs and issues these capabilities to Bob.
+Alice can create a session capability object that specifies the ability to Authenticate with an Capacity Credits NFT as well as request for Threshold Execution (collect and combine key shares from the Lit nodes above the threshold to form the complete signature after executing Lit Action and getting responses) against a particular Lit Action IPFS CID(s). Alice then signs and issues these capabilities to Bob.
 
 Bob can generate an `AuthSig` by delegating equal rights to Bob's session keys, and attaching the capabilities granted to him by Alice as a proof in the session object. Bob can subsequently generate a `SessionSig` that requests for Alice's Capacity Credits NFT, specifying the Lit Action IPFS CID in the `resourceAbilityRequests` field.
 
@@ -38,5 +38,5 @@ Bob can generate an `AuthSig` by delegating equal rights to Bob's session keys
 ### **Best Practices**
 
 - **Capacity Management**: Keep an eye on your usage limit and expiration date.
-- **Understanding Limits**: Be aware of the free tier rate limit. Capacity credits can be used to reserve more usage.
+- **Understanding Limits**: Be aware of the free tier rate limit which is set to 3 free requests per day as of now on `Manzano` and `Habanero` networks. Capacity credits can be used to reserve more usage.
 - **Prioritization**: Utilize session signatures to ensure request prioritization.

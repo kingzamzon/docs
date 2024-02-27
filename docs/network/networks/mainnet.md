@@ -16,7 +16,7 @@ You can set your Lit Network in the [LitNodeClient config of the Lit SDK](../../
 | Name | Description | Supported Algorithms | Supported Features | Status | SDK Version | Deprecation timeline | Contracts |
 | ---- | ----------- | -------------------- | ------------------ | ------ | ----------- | -------------------- | --------------- |
 | Jalapeno | Centralized alpha network. Persistent, keys will not be deleted. | BLS | Encryption | [Live](https://jalapeno-status.litprotocol.com/) | V1, V2 | None | n/a |
-| Habanero | Decentralized mainnet beta. Persistent, keys will not be deleted. | BLS, ECDSA | Encryption, User Wallets (PKPs), Serverless Signing (Lit Actions) | Coming Soon | V3 | TBD | [habanero](https://github.com/LIT-Protocol/networks/tree/main/habanero) | 
+| Habanero | Decentralized mainnet beta. Persistent, keys will not be deleted. | BLS, ECDSA | Encryption, User Wallets (PKPs), Serverless Signing (Lit Actions) | Live | V3 | TBD | [habanero](https://github.com/LIT-Protocol/networks/tree/main/habanero) | 
 
 ## Token Usage
 If you'd like to use Habanero, you'll need some 'testLPX' tokens to pay for network fees and [gas](../rollup.mdx) when minting PKPs. Habanero uses a test token for payments and gas that holds no real world value. You can acquire some tokens from the verified [faucet](https://faucet.litprotocol.com/).
