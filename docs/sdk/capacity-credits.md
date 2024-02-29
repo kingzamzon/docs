@@ -14,7 +14,11 @@ For more information on Capacity Credits and network rate limiting see [here](..
 
 ## **Minting Capacity Credits**
 
-In order to increase your rate limit you'll need to mint an `Capacity Credits NFT`. To do so, you can use our `contract-sdk` to mint the NFT. You can download the `contracts-sdk` from `npm` [here](https://www.npmjs.com/package/@lit-protocol/contracts-sdk)
+In order to increase your rate limit, you'll need to mint a `Capacity Credits NFT` on Chronicle - Lit's custom EVM rollup testnet. To do so, you can either use:
+1. The [Lit  Explorer](https://explorer.litprotocol.com/get-credits) or,
+2. Our `contracts-sdk`.
+
+A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. So, here we will show how you can mint it using `contracts-sdk`. You can download the `contracts-sdk` from `npm` [here](https://www.npmjs.com/package/@lit-protocol/contracts-sdk).
 
 You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
 
@@ -80,6 +84,9 @@ To delegate your Rate Limit NFT there are 4 properties to configure:
 - `capacityTokenId` -  The `token identifier` of the Rate Limit NFT
 - `delegateeAddresses` - The wallet addresses which will be delegated to
 
+:::note
+The `delegateeAddress` parameter is optional. If omitted, anyone can use your `capacityDelegationAuthSig` to use your app without restrictions. In this case, you can utilize other restrictions like the `uses` param to limit the amount of usage by your users. 
+:::
 
 ## **Generating Sessions from delegation signature**
 To create sesssions from your delegation signature you can use the following example.
@@ -87,6 +94,9 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
 
 
 ```javascript
+
+  const DELEGATEE_WALLET = new ethers.Wallet(your_private_key_string, provider);
+
   const litNodeClient = new LitNodeClient({
       litNetwork: "manzano",
       checkNodeAttestation: true,
@@ -118,7 +128,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
 
     let siweMessage = new siwe.SiweMessage({
       domain: 'localhost:3000', // change to your domain ex: example.app.com
-      address: dAppOwnerWallet_address,
+      address: DELEGATEE_WALLET.address,
       statement: 'Some custom statement.', // configure to what ever you would like
       uri,
       version: '1',
@@ -130,13 +140,13 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
     siweMessage = recapObject.addToSiweMessage(siweMessage);
 
     const messageToSign = siweMessage.prepareMessage();
-    const signature = await dAppOwnerWallet.signMessage(messageToSign);
+    const signature = await DELEGATEE_WALLET.signMessage(messageToSign);
 
     const authSig = {
       sig: signature.replace('0x', ''),
       derivedVia: 'web3.eth.personal.sign',
       signedMessage: messageToSign,
-      address: dAppOwnerWallet_address,
+      address: DELEGATEE_WALLET.address,
     };
 
     return authSig;
