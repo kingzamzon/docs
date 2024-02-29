@@ -45,6 +45,8 @@ We have an example script here that will perform the re-minting for you: https:/
 
 Re-encryption is simply, decrypting the content, then encrypting it again. The v3 SDK of the encryption system introduces significant enhancements compared to v2 SDK. It employs a more intricate yet secure method of encryption and decryption, utilizing hashes and a comprehensive set of parameters to bolster security and integrity. 
 
+The Lit network employs an ID-based encryption method allowing only users who meet specific identity criteria to decrypt data. This process involves the use of the BLS network signature as a decryption key, which is generated based on access control conditions and private data. Encryption occurs client-side, requiring minimal network interaction—just a single round for decryption to gather necessary signature shares. Read more about ID based encryption [here](../sdk/access-control/encryption/#how-does-id-encrypt-work).
+
 Unlike v2, both encryption and decryption processes in v3 explicitly rely on the `litNodeClient` showcasing a deeper integration with the Lit network's infrastructure. Additionally, v3 incorporates a data hash (`dataToEncryptHash`) during encryption, allowing for additional validation and integrity checks, which were absent in v2. Furthermore, v3 transitions from using basic types (like `string`) to structured request and response objects, like `EncryptStringRequest` and `DecryptRequest`, indicates a shift towards more detailed and configurable encryption/decryption operations to cater to diverse use cases.
 
 In the case of a migration from an old Lit Network to Habanero, you would follow these steps to learn how to decrypt and re-encrypt your data:
