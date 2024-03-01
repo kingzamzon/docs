@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Intro
 
+:::info
+[Habanero Mainnet](../../network/networks/mainnet) and [Manzano Testnet](../../network/networks/testnet) are now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 ## Quick Start
 
 Ready to jump right in? Quickly learn how you can integrate decentralized access control today:

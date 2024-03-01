@@ -7,7 +7,7 @@ sidebar_position: 3
 :::info
 **STATE OF THE NETWORK**
 
-Storing and transacting live assets with Programmable Key Pairs (PKPs) IS now supported on the [Habanero Mainnet Beta](../network/networks/mainnet). Take a look at the docs on [migration](../network/migration-guide) to start building today!
+Storing and transacting live assets with Programmable Key Pairs (PKPs) IS now supported on the [Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet). Take a look at the docs on [migration](../network/migration-guide) to start building today!
 :::
 
 ## Overview

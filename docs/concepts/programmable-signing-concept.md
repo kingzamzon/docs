@@ -4,6 +4,10 @@ sidebar_position: 2
 
 # Serverless Signing
 
+:::info
+[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 ## Overview
 
 With the Lit network, you can generate decentralized key pairs for signing and encryption. Associated with these signing keys is the ability to create powerful serverless functions and condition-based signing automations using Lit Actions. Written in JavaScript, Lit Actions allow you to define the rules and logic PKPs should follow when signing data. These rules are:

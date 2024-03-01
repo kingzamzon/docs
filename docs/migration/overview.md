@@ -9,6 +9,10 @@ import TabItem from '@theme/TabItem';
 
 The **Lit JS SDK V3** replaces the existing access control condition based encryption and JWT signing processes with new cryptographic primitives to offer a more secure and seamless user experience.
 
+:::info
+[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 ## Data Migration
 
 
@@ -18,7 +22,7 @@ The Lit development team will not be migrating the access control conditions tha
 
 :::
 
-If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK. But still we will recommend users to migrate to V3 SDK as it supports our new networks, `habanero` and `manzano`, which are not supported by V2 SDK.
+If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK. But we strongly recommend users to migrate to V3 SDK as it supports our new networks, `habanero` and `manzano`, which are not supported by V2 SDK.
 
 Alternatively, here are some general instructions for migrating to use the new encryption scheme:
 

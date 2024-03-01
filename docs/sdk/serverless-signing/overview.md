@@ -3,7 +3,7 @@
 :::info
 **STATE OF THE NETWORK**
 
-Using Lit Actions in production IS now supported on the [Habanero Mainnet Beta](../../network/networks/mainnet). Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
+Using Lit Actions in production IS now supported on the [Habanero Mainnet](../../network/networks/mainnet) and [Manzano Testnet](../../network/networks/testnet). Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
 
 :::
 

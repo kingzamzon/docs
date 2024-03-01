@@ -2,10 +2,10 @@
 
 ## Overview
 
-:::note
+:::info
 **STATE OF THE NETWORK**
 
-Lit V0, the Habanero Mainnet Beta, is now live and available for teams building apps in production. Habanero supports [ID encrypt](../../sdk/access-control/encryption.md), [user wallets](../../sdk/wallets/intro.md), and [serverless signing](../../sdk/serverless-signing/overview.md). 
+Lit V0, the Habanero Mainnet, is now live and available for teams building apps in production. Habanero supports [ID encrypt](../../sdk/access-control/encryption.md), [user wallets](../../sdk/wallets/intro.md), and [serverless signing](../../sdk/serverless-signing/overview.md). 
 :::
 
 Main networks should be used by applications that are currently live in production, supporting the storage of live assets. Mainnet keys are persistent and will not be deleted. 

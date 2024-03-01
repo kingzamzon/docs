@@ -9,6 +9,9 @@ import TabItem from '@theme/TabItem';
 
 The **Lit JS SDK V3** replaces the existing access control condition based encryption and JWT signing processes with new cryptographic primitives to offer a more secure and seamless user experience.
 
+:::info
+[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
 
 ## `@lit-protocol/bls-sdk`
 
