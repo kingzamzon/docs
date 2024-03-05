@@ -38,6 +38,83 @@ Alice can create a session capability object that specifies the ability to Authe
 
 Alice can generate an `AuthSig` by delegating equal rights to Bob's session keys, and attaching the capabilities granted to him by Alice as a proof in the session object. Bob can subsequently generate a `SessionSig` that requests for Alice's Capacity Credits NFT, specifying the Lit Action IPFS CID in the `resourceAbilityRequests` field.
 
+Lit employs `SessionSig` as a secure method for session management, utilizing ed25519 keypairs created randomly in the browser and stored locally. To generate a `SessionSig`, a user first needs to acquire an [AuthSig](../sdk/authentication/auth-sig.md) via an [authentication method](../sdk/authentication/session-sigs/auth-methods/overview.md) like Google OAuth. This `AuthSig`, incorporating the session keypair's public key, allows users to delegate specific actions to the session keypair, enhancing security and control over [resource](../sdk/authentication/session-sigs/resources-and-abilities.md) access. The session keypair signs all requests to Lit Nodes, with the `AuthSig` attached as a [capability](../sdk/authentication/session-sigs/capability-objects.md) to ensure that each node can verify the user's ownership of the wallet address. This process not only secures session management but also streamlines user interactions with the Lit Network's resources. 
+
+You can read more about Session Signatures [here](../sdk/authentication/session-sigs/intro.md).
+
+>**Note**: With the migration to SDK v3, the use of `AuthSigs` is no longer recommended for various tasks such as access control, encryption, minting PKPs, Lit Action signing with the PKP, etc. This change is due to the requirement for `capacityDelegationAuthSig` in signatures, as capacity credits are now required on both `Habanero` and `Manzano` networks. We strongly advise users to transition to using `SessionSigs` alongside `capacityDelegationAuthSig`, as `AuthSigs` lack the necessary capabilities to delegate capacity credits moving forward.  You may continue to use `AuthSigs` for the time being, but the limitation is that the `AuthSig` must have capacity credits to use the service.  This means every one of your users must buy capacity credits from Lit.  Instead, you can buy capacity credits centrally and delegate their use to your users. You can generate a `SessionSig` with the help of `capacityDelegationAuthSig` object in the following way (and replace it with `AuthSig` in your project):
+
+
+```javascript
+  const litNodeClient = new LitNodeClient({
+      litNetwork: "manzano",
+      checkNodeAttestation: true,
+  });
+  
+  await litNodeClient.connect();
+  const authNeededCallback = async ({ resources, expiration, uri }) => {
+    // you can change this resource to anything you would like to specify
+    const litResource = new LitActionResource('*');
+
+    const recapObject =
+      await litNodeClient.generateSessionCapabilityObjectWithWildcards([
+        litResource,
+      ]);
+
+    recapObject.addCapabilityForResource(
+      litResource,
+      LitAbility.LitActionExecution
+    );
+
+    const verified = recapObject.verifyCapabilitiesForResource(
+      litResource,
+      LitAbility.LitActionExecution
+    );
+
+    if (!verified) {
+      throw new Error('Failed to verify capabilities for resource');
+    }
+
+    let siweMessage = new siwe.SiweMessage({
+      domain: 'localhost:3000', // change to your domain ex: example.app.com
+      address: dAppOwnerWallet_address,
+      statement: 'Some custom statement.', // configure to what ever you would like
+      uri,
+      version: '1',
+      chainId: '1',
+      expirationTime: expiration,
+      resources,
+    });
+
+    siweMessage = recapObject.addToSiweMessage(siweMessage);
+
+    const messageToSign = siweMessage.prepareMessage();
+    const signature = await dAppOwnerWallet.signMessage(messageToSign);
+
+    const authSig = {
+      sig: signature.replace('0x', ''),
+      derivedVia: 'web3.eth.personal.sign',
+      signedMessage: messageToSign,
+      address: dAppOwnerWallet_address,
+    };
+
+    return authSig;
+  };
+
+  let sessionSigs = await litNodeClient.getSessionSigs({
+    expiration: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(), // 24 hours
+    chain: 'ethereum',
+    resourceAbilityRequests: [
+      {
+        resource: new LitActionResource('*'),
+        ability: LitAbility.LitActionExecution,
+      },
+    ],
+    authNeededCallback,
+    capacityDelegationAuthSig,
+  });
+```
+
 
 ### **Best Practices**
 
