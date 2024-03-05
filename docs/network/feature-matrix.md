@@ -1,5 +1,9 @@
 # Feature Matrix
 
+:::info
+[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 Shown below is a matrix illustrating which features are available with each SDK version. 
 
 V1 refers to the deprecated [lit-js-sdk](https://github.com/LIT-Protocol/lit-js-sdk)

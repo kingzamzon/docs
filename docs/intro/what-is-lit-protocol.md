@@ -5,6 +5,10 @@ sidebar_position: 2
 
 # What is Lit Protocol
 
+:::info
+[Habanero Mainnet](network/networks/mainnet) and [Manzano Testnet](network/networks/testnet) are now live. Check out the [docs on migration](network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 Lit is a decentralized key management network and platform for building applications and experiences that leverage [threshold cryptography](../resources/how-it-works.md). With Lit, you can create and control keys and run code for virtually any application that can be made private, immutable, and / or autonomous.
 
 The system builds off of contemporary work in applied cryptography, secure enclaves, and distributed systems to provide the maximum amount of control and privacy to end users, without requiring an extensive technical understanding of key management or public key cryptography. 

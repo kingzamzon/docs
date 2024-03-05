@@ -3,7 +3,7 @@
 :::info
 **STATE OF THE NETWORK**
 
-The Lit Habanero Mainnet Beta is now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
+[Habanero Mainnet](../../network/networks/mainnet) and [Manzano Testnet](../../network/networks/testnet) are now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
 
 Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: https://faucet.litprotocol.com/
 :::

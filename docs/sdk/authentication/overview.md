@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Overview
 
+:::info
+[Habanero Mainnet](../../network/networks/mainnet) and [Manzano Testnet](../../network/networks/testnet) are now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 To interact with the nodes in the Lit Network, you will need to generate and present signatures. Currently, there are three ways to do this:
 
 ## Obtain an `AuthSig`
