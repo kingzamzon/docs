@@ -6,7 +6,9 @@ sidebar_position: 2
 
 You can use any wallet or auth method to generate session signatures with the `getSessionSigs()` function from the Lit SDK. This function generates a session keypair and uses a callback function that signs the generated session key to create an `AuthSig` that is scoped to specific capabilities.
 
-**Note:** The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake
+In order to generate `SessionSigs`, you need a `capacityDelegationAuthSig` in signatures. This is because capacity credits are now required on both `Habanero` and `Manzano` networks. You can buy or [mint](../../capacity-credits.md#minting-capacity-credits) capacity credits centrally and [delegate](../../capacity-credits.md#delegating-access-to-your-capacity-credits-nft) them to your users. 
+
+You can generate a `SessionSig` with the help of `capacityDelegationAuthSig` object in the following way:
 
 ```javascript
 import { LitNodeClient } from '@lit-protocol/lit-node-client';
@@ -17,7 +19,7 @@ const wallet = new Wallet(process.env.YOUR_PRIVATE_KEY);
 
 // Instantiate a LitNodeClient
 const litNodeClient = new LitNodeClient({
-  litNetwork: "cayenne",
+  litNetwork: "manzano",
   debug: true,
 });
 await litNodeClient.connect();
@@ -70,8 +72,11 @@ const sessionSigs = await litNodeClient.getSessionSigs({
     }
   ],
   authNeededCallback,
+  capacityDelegationAuthSig,  // here is where we add the delegation to our session request
 });
 ```
+
+**Note:** The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
 
 :::note
  If running the SDK in a Server environment, session signatures may *not* be cached unless you provide an instance of `Storage` to the runtime.

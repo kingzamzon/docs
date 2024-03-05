@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Decentralized Access Control
 
+:::info
+[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 ## Overview
 
 Lit Protocol can be used with your storage provider of choice for secure data encryption. With Lit, you can encrypt and decrypt content client-side, defining specific rules for access using [access control conditions (ACCs)](../sdk/access-control/evm/basic-examples).

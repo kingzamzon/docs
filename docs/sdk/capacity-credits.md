@@ -1,6 +1,6 @@
 # Capacity Credits
 
-:::note
+:::info
 Currently Rate Limiting is only enabled on `Habanero` and `Manzano`.
 See [here](../network/networks/testnet.md) for a list of test networks.
 See [here](../network/networks/mainnet.md) for a list of mainnet networks.
@@ -101,8 +101,10 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
       litNetwork: "manzano",
       checkNodeAttestation: true,
   });
-  
   await litNodeClient.connect();
+  
+  let nonce = litNodeClient.getLatestBlockhash();
+  
   const authNeededCallback = async ({ resources, expiration, uri }) => {
     // you can change this resource to anything you would like to specify
     const litResource = new LitActionResource('*');
@@ -135,6 +137,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
       chainId: '1',
       expirationTime: expiration,
       resources,
+      nonce,
     });
 
     siweMessage = recapObject.addToSiweMessage(siweMessage);
@@ -199,8 +202,8 @@ For more information on session signatures and pkps see [here](./authentication/
 
       const response = await litNodeClient.signSessionKey({
         statement: 'Some custom statement.',
-        authMethods: [secondWalletControllerAuthMethod],
-        pkpPublicKey: secondWalletPKPInfo.publicKey,
+        authMethods: [secondWalletControllerAuthMethod],  // authMethods for signing the sessionSigs
+        pkpPublicKey: secondWalletPKPInfo.publicKey,  // public key of the wallet which is delegated
         expiration: expiration,
         resources: resources,
         chainId: 1,
@@ -215,7 +218,7 @@ For more information on session signatures and pkps see [here](./authentication/
   };
 
   const pkpSessionSigs = await litNodeClient.getSessionSigs({
-    pkpPublicKey: secondWalletPKPInfo.publicKey,
+    pkpPublicKey: secondWalletPKPInfo.publicKey,   // public key of the wallet which is delegated
     expiration: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(), // 24 hours
     chain: 'ethereum',
     resourceAbilityRequests: [
@@ -240,7 +243,7 @@ For more information on session signatures and pkps see [here](./authentication/
         });
       })();`,
     authMethods: [],
-    jsParams: {
+    jsParams: {     // parameters to js function above
       dataToSign: ethers.utils.arrayify(
         ethers.utils.keccak256([1, 2, 3, 4, 5])
       ),
