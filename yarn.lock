@@ -2272,6 +2272,7 @@
     siwe-recap "0.0.2-alpha.0"
     tslib "^2.3.0"
 
+
 "@lit-protocol/types@3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-3.2.2.tgz#3531b4e28a977698ffa33dc1a0bc98c0392cc6fc"
