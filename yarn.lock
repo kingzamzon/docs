@@ -2249,36 +2249,38 @@
   dependencies:
     ajv "^8.12.0"
 
-"@lit-protocol/auth-helpers@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@lit-protocol/auth-helpers/-/auth-helpers-3.2.1.tgz#7f4c47a608221316ccd6e65bd634e03dbc02f859"
-  integrity sha512-nkuEifffHbfgQ3M9dSnSyP+sE+JN2vNrz6cLvpPO/gmDldL4c5KebPHUNeEa+LSxuaXLo5G46RsM7pBcStUrpw==
+"@lit-protocol/auth-helpers@3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/auth-helpers/-/auth-helpers-3.2.2.tgz#a982bd7c80a72a5657e2b6c7f45dd1789178bba9"
+  integrity sha512-S+903Ucze6QGMSu2oQxk/V0pO4bXGd4htloLsok2jToGDvz93eexdp53ZMik1Fo6tIwz647/YCq/jKEMapMWxQ==
   dependencies:
     siwe "^2.0.5"
     siwe-recap "0.0.2-alpha.0"
-    tslib "^2.3.0"
 
-"@lit-protocol/constants@^3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@lit-protocol/constants/-/constants-3.2.1.tgz#c78bd37bfd6acc568cf18b97aac7685a926aaa74"
-  integrity sha512-gYXLpSBsFHZsS8OTjdKdZYjuWbOemgO/ujKX479TBl7nPvit41Xi+EeyAqTaE27qDepZ7Fi2jBGrlovI9alROw==
+"@lit-protocol/constants@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/constants/-/constants-3.2.2.tgz#b0ebf9ab5dc9ae2b92aea34df10cf5ff13fbeac7"
+  integrity sha512-CH7k8ugINXsXPUv0bP7LDuAqauRTRRGd4HvsHUxPaYbDtASspKePuHpuoyzr2qNST8Pz073VEv3wyNl3a8++pw==
   dependencies:
+    "@ethersproject/abstract-provider" "5.7.0"
     "@lit-protocol/accs-schemas" "0.0.6"
-    "@lit-protocol/auth-helpers" "3.2.1"
-    "@lit-protocol/types" "3.2.1"
+    "@lit-protocol/auth-helpers" "3.2.2"
+    "@lit-protocol/types" "3.2.2"
     ethers "^5.7.1"
     jszip "^3.10.1"
     siwe "^2.0.5"
     siwe-recap "0.0.2-alpha.0"
     tslib "^2.3.0"
 
-"@lit-protocol/types@3.2.1":
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-3.2.1.tgz#b0e63988663a98d06a6fcbdb9b0694e7b10ada98"
-  integrity sha512-fnPtXTfvXqU2dvyaT4wnBb31V3B3EaZQfueKbHziloif8N2nX8ApJd0X/v2fae5yzuXcPaCfC9oyIUsQIJIQ+g==
+
+"@lit-protocol/types@3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@lit-protocol/types/-/types-3.2.2.tgz#3531b4e28a977698ffa33dc1a0bc98c0392cc6fc"
+  integrity sha512-R7zpyHgh+IkNoEmTCScWEXLPt3qJ26bG6Sg35mypPWkXhA463Wsgtiphc0eTDsd9e5yzvcUw/0rYfuTmEzQbbA==
   dependencies:
+    "@ethersproject/abstract-provider" "5.7.0"
     "@lit-protocol/accs-schemas" "0.0.6"
-    "@lit-protocol/auth-helpers" "3.2.1"
+    "@lit-protocol/auth-helpers" "3.2.2"
     ethers "^5.7.1"
     jszip "^3.10.1"
     siwe "^2.0.5"

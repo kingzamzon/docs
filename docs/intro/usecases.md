@@ -5,6 +5,10 @@ sidebar_position: 4
 
 # Use Cases
 
+:::info
+[Habanero Mainnet](network/networks/mainnet) and [Manzano Testnet](network/networks/testnet) are now live. Check out the [docs on migration](network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::
+
 Developers can leverage the Lit Network to build decentralized applications with programmable keys at their core. Possible use cases include:
 
 ### Decentralized Access Control

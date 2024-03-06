@@ -9,7 +9,7 @@ If you are currently in early-stage research and development, you should be usin
 
 In order to deploy to Habanero or Manzano, you’ll first need to make sure you're using the v3 SDK. If you haven’t yet upgraded to v3, you can do so following these [upgrade instructions](../migration/overview.md). Once you've upgraded, the next step will be to connect to the appropriate network branch in your SDK config, either [Habanero](../network/networks/mainnet.md) or [Manzano](../network/networks/testnet.md).
 
-Once your application is using v3, you can follow the following migration guide to learn how to perform re-encryption (if you're using [access control](../sdk/access-control/intro.md)) or re-mint PKPs (if you're building with [user wallets](../sdk/wallets/intro.md)) on Habanero. 
+Once your application is using v3, you can follow the following migration guide to learn how to perform re-encryption (if you're using [access control](../sdk/access-control/intro.md)) or re-mint PKPs (if you're building with [user wallets](../sdk/wallets/intro.md)) on Habanero or Manzano. 
 
 ## Migrating From Jalapeno
 
@@ -23,26 +23,24 @@ If you’re migrating from Jalapeno to Habanero, it’s important to remember th
 
 ### For encryption / decryption use cases
 
-Cayenne and Habanero have different root keys, so you’ll need to re-encrypt your user’s content in order to migrate to Habanero
+Cayenne and Habanero (or Manzano) have different root keys and, so you’ll need to re-encrypt your user’s content in order to migrate to Habanero (or Manzano). In order to perform re-encryption, you can use the same v3 SDK for both Cayenne and Habanero (or Manzano), but note that you will need 2 instances of the SDK, one connected to each network. First, use Cayenne SDK instance to decrypt the encrypted data and then use Habanero (or Manzano) SDK instance to re-encrypt it.  
 
 You can learn more about re-encryption at the end of this guide.
 
-You can use the same v3 SDK for both Cayenne and Habanero, but note that you will need 2 instances of the SDK, one connected to each network.  
-
 ### For PKP Signing / Lit Actions use cases
 
-Since Habanero has new root keys, you will need to re-mint any PKPs on Habanero.  To do this, you can loop over all your old users and simply mint a new PKP on Habanero with the exact same auth methods.  At this point, your users could use both the old network PKP and the new network PKP with the same auth methods.  
+Since Habanero (or Manzano) has new root keys, you will need to re-mint any PKPs on Habanero (or Manzano) as old PKPs cannot be directly migrated from the old networks.  To do this, you can loop over all your old users and simply mint a new PKP on Habanero (or Manzano) with the exact same auth methods.  
 
-However, the ETH address of each PKP will be different. Your users may have things tied to the old PKP ETH address, like assets stored there, or AA wallets that see that PKP as authorized signer. So the next step is to migrate these items.  
+> **Note:** To facilitate this process, we have an example script that automates the re-minting of PKPs on Habanero (or Manzano). This script allows you to seamlessly generate new PKPs for all your users, ensuring the same authentication methods are preserved. You can access the script [here](https://github.com/LIT-Protocol/PKP-Migrate).
+
+At this point, your users could use both the old network PKPs and the new network PKPs with the same auth methods. However, the ETH address of each PKP will be different. Your users may have things tied to the old PKP ETH address, like assets stored there, or AA wallets that see that PKP as authorized signer. So the next step is to migrate these items.  
 
 In the case of assets, like ETH or Tokens or NFTs, you must have the user send these to their new PKP wallet address. Once they have sent their assets, the migration is complete.
 
 In the case of AA wallets, you would change the authorized signer from the old PKP wallet address to the new PKP wallet address. Once you’ve done this, the migration is complete.
 
-We have an example script here that will perform the re-minting for you: https://github.com/LIT-Protocol/PKP-Migrate
 
 ## Performing re-encryption
-
 Re-encryption is simply, decrypting the content, then encrypting it again. The v3 SDK of the encryption system introduces significant enhancements compared to v2 SDK. It employs a more intricate yet secure method of encryption and decryption, utilizing hashes and a comprehensive set of parameters to bolster security and integrity. 
 
 The Lit network employs an ID-based encryption method allowing only users who meet specific identity criteria to decrypt data. This process involves the use of the BLS network signature as a decryption key, which is generated based on access control conditions and private data. Encryption occurs client-side, requiring minimal network interaction—just a single round for decryption to gather necessary signature shares. Read more about ID based encryption [here](../sdk/access-control/encryption/#how-does-id-encrypt-work).
@@ -254,3 +252,15 @@ await client.connect();
 ```
 
 Read more about using the Lit SDK, testing, and error handling [here](../sdk/tests.md).
+
+## Minting Capacity Credits for Usage
+
+Currently Rate Limiting is enabled on `Habanero` and `Manzano`. In order to use these networks, you must reserve capacity on them by minting a `Capacity Credits NFT` on Chronicle - Lit's custom EVM rollup testnet. Capacity credits allow holders to reserve a configurable number of requests (measured in requests per second) over a fixed length of time (i.e. one week). For minting capacity credits, you can either use:
+1. The [Lit  Explorer](https://explorer.litprotocol.com/get-credits) or,
+2. Our `contracts-sdk`.
+
+A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For minting Capacity Credits using `contracts-sdk` see [here](../sdk/capacity-credits).
+
+You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
+
+For more information on Capacity Credits and network rate limiting see [here](../concepts/capacity-credits-concept)

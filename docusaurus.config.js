@@ -11,6 +11,7 @@ const config = {
     'Blockchain based access control and programmatic signing for the web',
   url: 'https://developer.litprotocol.com',
   baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'brand/favicon.ico',
