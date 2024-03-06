@@ -1,4 +1,4 @@
-# Custom Auth
+# Custom Auth Methods
 
 If you would like further customization over your PKP auth methods, or want to add a new one not yet supported by Lit, you can do auth yourself with a Lit Action, using the auth helpers we provide (see below). In this scenario, after you give your Lit Action permission to use the PKP, the typical flow is to burn the PKP NFT or send it to itself. It is important to note, if you do decide to burn the PKP, you will be unable to add additional auth methods in the future. 
 
@@ -12,7 +12,7 @@ Authentication refers to confirming a users identity.  This generally involves r
 
 Authorization refers to confirming that a user is allowed to use a PKP.  Specifically, it's checking the permissions of a PKP and making sure that the user that was Authenticated is also authorized to use a PKP.  
 
-Note: Currently, an [auth signature](../../auth-sig), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, an auth sig will always be required.
+Note: Currently, an [auth signature](../../authentication/auth-sig), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, an auth sig will always be required.
 
 In the case that a user doesn’t own a wallet (and therefore cannot produce a valid AuthSig), and you're using an Auth Method supported by Lit, they can present their alternative auth method to the Lit SDK which will convert it into a “compliant” AuthSig. This is documented in our [docs](overview).  If you're not using an auth method supported by Lit, then your AuthSig is not for authorization, but you must still present one for Rate Limit authentication.  In this case, the rate limit is tracked against the AuthSig, and you may wish to pay for your users requests by giving this wallet a Capacity Credit NFT.  
 
@@ -28,7 +28,7 @@ Inside of your Lit Actions, there is an object called `Lit.Auth` that will be pr
 
 - actionIpfsIds: An array of IPFS IDs that are being called by this Lit Action. This will typically only have a single item, but if you call multiple Lit Actions from inside your Lit Action, they will all be included here. For example, if you have two Lit Actions, A, and B, and A calls B, then the first item in the array will be A and the last item will be B. Therefore, the last item in the array is always the IPFS ID of the Lit Action that is currently running.
 - authSigAddress: A verified wallet address, if one was passed in. This is the address that was used to sign the AuthSig.
-- authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found [here](../../../../sdk/wallets/auth-methods) in the docs and is used [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L25) in the PKPPermissions Contract.
+- authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found [here](../auth-methods) in the docs and is used [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L25) in the PKPPermissions Contract.
 
 Important to note on Authentication Helpers: authorization is not included. This means that a user can present a Google oAuth JWT as an auth method to be resolved and validated by your Lit Action. The Action will then stick the result inside the Lit.Auth object. In this case, the result would be the users verified google account info like their user id, email address, and more.
 
@@ -127,7 +127,7 @@ If you use the deployed Lit PKPPermissions contract, then it is important to pic
 ## Steps to implement both custom authentication and authorization
 
 1. Get your user's identity material.  For example, if you were implementing Roblox Oauth, this would be your user's Roblox user id.  
-2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../../../../sdk/wallets/minting/#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
+2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../minting/#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
 3. Write a Lit Action for your custom authentication and authorization, which is documented further below.
 
 ### Writing a Lit Action for custom authentication and authorization

@@ -121,22 +121,7 @@ const sidebars = {
                 "sdk/authentication/session-sigs/capability-objects",
                 "sdk/authentication/session-sigs/get-session-sigs",
                 "sdk/authentication/session-sigs/usage",
-                {
-                  type: "category",
-                  label: "Walletless Signatures",
-                  link: {
-                    type: "doc",
-                    id: "sdk/authentication/session-sigs/auth-methods/overview",
-                  },
-                  collapsed: true,
-                  items: [
-                    "sdk/authentication/session-sigs/auth-methods/add-remove-auth-methods",
-                    "sdk/authentication/session-sigs/auth-methods/social-login",
-                    "sdk/authentication/session-sigs/auth-methods/web-authn",
-                    "sdk/authentication/session-sigs/auth-methods/email-sms",
-                    "sdk/authentication/session-sigs/auth-methods/custom-auth",
-                  ],
-                },
+                "sdk/authentication/session-sigs/walletless-sigs",
               ],
             },
             "sdk/authentication/security",
@@ -202,7 +187,33 @@ const sidebars = {
           },
           collapsible: true,
           items: [
-            "sdk/wallets/auth-methods",
+            {
+              type: "category",
+              label: "Auth Methods",
+              link: {
+                type: "doc",
+                id: "sdk/wallets/auth-methods",
+              },
+              collapsed: true,
+              items: [
+                {
+                  type: "category",
+                  label: "Lit Auth Methods",
+                  link: {
+                    type: "doc",
+                    id: "sdk/wallets/auth-methods/overview",
+                  },
+                  collapsed: true,
+                  items: [
+                    "sdk/wallets/auth-methods/lit-auth-methods/add-remove-auth-methods",
+                    "sdk/wallets/auth-methods/lit-auth-methods/social-login",
+                    "sdk/wallets/auth-methods/lit-auth-methods/web-authn",
+                    "sdk/wallets/auth-methods/lit-auth-methods/email-sms",
+                  ],
+                },
+                "sdk/wallets/auth-methods/custom-auth",
+              ],
+            },
             "sdk/wallets/minting",
             "sdk/wallets/walletconnect",
             {
