@@ -41,12 +41,120 @@ In the case of AA wallets, you would change the authorized signer from the old P
 
 
 ## Performing re-encryption
+Re-encryption is simply, decrypting the content, then encrypting it again. The v3 SDK of the encryption system introduces significant enhancements compared to v2 SDK. It employs a more intricate yet secure method of encryption and decryption, utilizing hashes and a comprehensive set of parameters to bolster security and integrity. 
 
-Re-encryption is simply, decrypting the content, then encrypting it again.  In the case of a migration from an old Lit Network to Habanero (or Manzano), you would connect to the old network, decrypt the user’s data, and then connect to Habanero (or Manzano) and encrypt it again.
+The Lit network employs an ID-based encryption method allowing only users who meet specific identity criteria to decrypt data. This process involves the use of the BLS network signature as a decryption key, which is generated based on access control conditions and private data. Encryption occurs client-side, requiring minimal network interaction—just a single round for decryption to gather necessary signature shares. Read more about ID based encryption [here](../sdk/access-control/encryption/#how-does-id-encrypt-work).
 
-Since in many cases, only the end user themselves can actually decrypt the content, you may adopt a system where you migrate each user when they use the system. You may start sending traffic from new users that *don’t* have any existing content to Habanero (or Manzano), immediately.  You may want to track which network each user is using in your user DB, and then upon login, look this up to decide which network to talk to.
+Unlike v2, both encryption and decryption processes in v3 explicitly rely on the `litNodeClient` showcasing a deeper integration with the Lit network's infrastructure. Additionally, v3 incorporates a data hash (`dataToEncryptHash`) during encryption, allowing for additional validation and integrity checks, which were absent in v2. Furthermore, v3 transitions from using basic types (like `string`) to structured request and response objects, like `EncryptStringRequest` and `DecryptRequest`, indicates a shift towards more detailed and configurable encryption/decryption operations to cater to diverse use cases.
 
-You may follow the docs on [encryption](../sdk/access-control/encryption.md) to learn how to decrypt and re-encrypt your data. 
+In the case of a migration from an old Lit Network to Habanero, you would follow these steps to learn how to decrypt and re-encrypt your data:
+
+### 1. Connect to the old network using Lit Js SDK V2
+```js
+class LitV2 {
+  private litNodeClient;
+
+  async connect() {
+    const client = new LitJsSdk.LitNodeClient();
+    await client.connect();
+    this.litNodeClient = client;
+  }
+}
+
+export default new Lit();
+```
+### 2. Decrypt the user’s data using old network
+```js
+// Lit Js SDK V2 decryption example
+async decrypt(encryptedString, encryptedSymmetricKey) {
+  if (!this.litNodeClient) {
+    await this.connect();
+  }
+
+  const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: "ethereum" });
+  const accessControlConditions = [
+    {
+      contractAddress: "",
+      standardContractType: "",
+      chain: "ethereum",
+      method: "eth_getBalance",
+      parameters: [":userAddress", "latest"],
+      returnValueTest: {
+        comparator: ">=",
+        value: "1000000000000", // 0.000001 ETH
+      },
+    },
+  ];
+
+  const symmetricKey = await this.litNodeClient.getEncryptionKey({
+    accessControlConditions,
+    toDecrypt: encryptedSymmetricKey,
+    chain: "ethereum",
+    authSig
+  });
+  const decryptedString = await LitJsSdk.decryptString(
+    encryptedString,
+    symmetricKey
+  );
+
+  return { decryptedString };
+}
+```
+### 3. Connect to `Habanero` or `Manzano` and encrypt it again
+```js
+class LitV3 {
+  private litNodeClient;
+
+  async connect() {
+    const client = new LitJsSdk.LitNodeClient({
+         litNetwork: "manzano",
+    });
+    await client.connect();
+    this.litNodeClient = client;
+  }
+
+  async encrypt(message) {
+    if (!this.litNodeClient) {
+      await this.connect();
+    }
+  
+    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'ethereum' });
+    const accessControlConditions = [
+      {
+        contractAddress: "",
+        standardContractType: "",
+        chain: "ethereum",
+        method: "eth_getBalance",
+        parameters: [":userAddress", "latest"],
+        returnValueTest: {
+          comparator: ">=",
+          value: "1000000000000", // 0.000001 ETH
+        },
+      },
+    ];
+
+    const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
+      {
+        accessControlConditions,
+        authSig,
+        chain: 'ethereum',
+        dataToEncrypt: message,
+      },
+      litNodeClient,
+    );
+  
+    return {
+      ciphertext,
+      dataToEncryptHash,
+    };
+  }
+}
+
+export default new Lit();
+
+```
+
+Since in many cases, only the end user themselves can actually decrypt the content, you may adopt a system where you migrate each user when they use the system. You may start sending traffic from new users that *don’t* have any existing content to Habanero, immediately.  You may want to track which network each user is using in your user DB, and then upon login, look this up to decide which network to talk to.
 
 ## Installing and Initializing the Lit SDK
 
