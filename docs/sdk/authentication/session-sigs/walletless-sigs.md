@@ -10,12 +10,8 @@ With Lit Protocol, you can seamlessly onboard users into web3 using familiar aut
 - [WebAuthn](../../wallets/auth-methods/lit-auth-methods/web-authn)
 - [Email / SMS](../../wallets/auth-methods/lit-auth-methods/email-sms)
 
-Support for one-time passcodes (OTPs) through email and SMS is coming soon.
-
-By utilizing PKP authentication methods, you can build frictionless and secure experiences in the decentralized web without the complexities of private key management.
-
-:::note
-
-Generating `SessionSigs` using various authentication methods is still in active development, so things may change. To stay up-to-date, always use the latest version of the Lit JS SDK.
-
+:::info
+Support for one-time passcodes (OTPs) through email and SMS is now live!
 :::
+
+By utilizing PKP authentication methods, you can build frictionless and secure experiences in the decentralized web without the complexities of private key management and without trusting a centralized custodian with your data.

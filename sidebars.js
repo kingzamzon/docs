@@ -199,10 +199,6 @@ const sidebars = {
                 {
                   type: "category",
                   label: "Lit Auth Methods",
-                  link: {
-                    type: "doc",
-                    id: "sdk/wallets/auth-methods/overview",
-                  },
                   collapsed: true,
                   items: [
                     "sdk/wallets/auth-methods/lit-auth-methods/add-remove-auth-methods",

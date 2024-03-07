@@ -42,7 +42,7 @@ yarn install @lit-protocol/contracts-sdk
 
 ## Set up the controller
 
-To initialize a LitContracts client you need an Eth Signer. This can be a standard Ethers wallet or also a `PKPEthersWallet` (more info on the latter [here](../authentication/session-sigs/auth-methods/add-remove-auth-methods)). But here, we're gonna use the standard Ethers wallet.
+To initialize a LitContracts client you need an Eth Signer. This can be a standard Ethers wallet or also a `PKPEthersWallet` (more info on the latter [here](../wallets/auth-methods/lit-auth-methods/add-remove-auth-methods)). But here, we're gonna use the standard Ethers wallet.
 
 ## Initialize the ContractsSDK
 
