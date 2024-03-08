@@ -9,7 +9,7 @@ Don't see a blockchain you want?  Fill out this form for EVM chains and we'll ad
 
 You can learn more about compatible chains [here.](http://ethanfast.com/top-crypto.html)
 
-## Cayenne (Access Control & PKP)
+## Supported Chains (Access Control & PKP)
 
 - alfajores
 
