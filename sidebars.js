@@ -210,7 +210,20 @@ const sidebars = {
                 "sdk/wallets/auth-methods/custom-auth",
               ],
             },
-            "sdk/wallets/minting",
+            {
+              type: "category",
+              label: "Minting a PKP",
+              link: {
+                type: "doc",
+                id: "sdk/wallets/minting",
+              },
+              collapsible: true,
+              items: [
+                "sdk/wallets/minting-methods/mint-via-contracts",
+                "sdk/wallets/minting-methods/mint-via-social",
+                "sdk/wallets/minting-methods/mint-via-web-authn",
+              ],
+            },
             "sdk/wallets/walletconnect",
             {
               type: "category",

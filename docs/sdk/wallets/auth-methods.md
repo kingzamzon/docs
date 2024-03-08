@@ -48,7 +48,7 @@ Auth methods support scoping, which permits what they can be used for within Lit
 | Sign Anything      | 1            | This scope allows signing any data                                                                                                                                                                                                                        |
 | Personal Sign | 2            | This scope only allows signing messages using the [EIP-191 scheme](https://eips.ethereum.org/EIPS/eip-191) which prefixes "Ethereum Signed Message" to the data to be signed. This prefix prevents creating signatures that can be used for transactions. |
 
-You can also set scopes: [] which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages.
+You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages.
 
 Any auth methods (regardless of scope) passed in to a Lit Action will be resolved/checked and put into the Lit.Auth object which is available inside the Lit Action. However, when you try to sign something using signEcdsa(), you'll find that it checks the scopes of the auth methods passed in, and will only sign if the appropriate scope is present.
 

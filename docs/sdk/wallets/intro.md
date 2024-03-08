@@ -19,6 +19,8 @@ Ready to jump right in? Quickly learn how you can integrate Programmable Key Pai
 
 ## Overview
 
+Each PKP is functionally a wallet, where the private key lives across the Lit Network. It is represented as an ERC-721 NFT, and the owner of the NFT becomes the designated “controller” of the Programmable Key Pair. The controller has the ability to assign additional signing logic and [authentication methods](../authentication/overview) to their PKP using Lit Actions.
+
 Each Programmable Key Pair (PKP) is a versatile MPC wallet that can be used to [seamlessly onboard](https://spark.litprotocol.com/wallet-abstraction-with-google-oauth/) users into web3 and provide flexible and intuitive asset management experiences. 
 
 ## Features

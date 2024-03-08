@@ -122,7 +122,7 @@ async function handleRedirect() {
   // Check if app has been redirected from Lit login server
   if (isSignInRedirect(redirectUri)) {
     // Get the provider that was used to sign in
-    const provider = provider = litAuthClient.getProvider(
+    const provider = litAuthClient.getProvider(
       ProviderType.Google,
     );
     // Get auth method object that has the OAuth token from redirect callback
