@@ -113,4 +113,70 @@ const sessionSigs = await provider.getSessionSigs({
 
 You can also mint a PKP by presenting a generated token from sucessful OTP code confirmation, which will be returned by the `lit-auth-client` in the `AuthMethod` return from successful code confirmation.
 
+```javascript
+import { LitAuthClient } from '@lit-protocol/lit-auth-client';
+import { AuthMethodScope, ProviderType } from '@lit-protocol/constants';
+
+// Set up LitAuthClient
+const litAuthClient = new LitAuthClient({
+  litRelayConfig: {
+     // Request a Lit Relay Server API key here: https://forms.gle/RNZYtGYTY9BcD9MEA
+    relayApiKey: '<Your Lit Relay Server API Key>',
+  },
+});
+
+// Send one-time passcodes via email or phone number through Stytch
+async function sendPasscode(method, userId) {  
+  // method: 'email' or 'sms', userId: email or phone number
+  let response;
+  if (method === 'email') {
+    response = await stytchClient.otps.email.loginOrCreate(userId);
+  } else {
+    response = await stytchClient.otps.sms.loginOrCreate(
+      !userId.startsWith('+') ? `+${userId}` : userId
+    );
+  }
+  return response.method_id;
+}
+
+// Get auth method object by validating Stytch JWT and mint PKP after authenticating it
+async function authenticateWithStytch(method, code, methodId) {
+  // method: 'email' or 'sms', code: OTP code, methodId: method_id returned from sendPasscode
+  
+  // Authenticate the OTP code with Stytch
+  const response = await stytchClient.otps.authenticate(code, methodId, {
+    session_duration_minutes: 60,
+  });
+
+  // Initialize StytchEmailFactorOtp or StytchSmsFactorOtp provider
+  let provider;
+  if (method === "email") {
+    provider = litAuthClient.initProvider(ProviderType.StytchEmailFactorOtp, {
+      appId: YOUR_STYTCH_PROJECT_ID,
+    });
+  } else {
+    provider = litAuthClient.initProvider(ProviderType.StytchSmsFactorOtp, {
+      appId: YOUR_STYTCH_PROJECT_ID
+    });
+  }
+
+  // Get auth method object after autheticating Stytch JWT
+  const authMethod = await provider.authenticate({ response.session_jwt, response.user_id });
+
+  // -- setting scope for the auth method
+  // <https://developer.litprotocol.com/v3/sdk/wallets/auth-methods/#auth-method-scopes>
+  const options = {
+      permittedAuthMethodScopes: [[AuthMethodScope.SignAnything]],
+  };
+  // Mint PKP using the auth method
+  const mintTx = await provider.mintPKPThroughRelayer(
+      authMethod,
+      options
+  );
+  // Fetch PKPs associated with the authenticated social account
+  const pkps = await provider.fetchPKPsThroughRelayer(authMethod);
+  return pkps;
+}
+```
+
 Read more about this process [here](../auth-methods).
