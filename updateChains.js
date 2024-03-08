@@ -18,7 +18,7 @@ md +=
   "You can learn more about compatible chains [here.](http://ethanfast.com/top-crypto.html)\n\n";
 
 md +=
-  "## Cayenne (Access Control & PKP)\n\n";
+  "## Supported Chains (Access Control & PKP)\n\n";
 
 md += Object.keys(ALL_LIT_CHAINS)
   .sort()
