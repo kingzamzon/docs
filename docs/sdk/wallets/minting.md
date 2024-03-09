@@ -9,3 +9,4 @@ This section will walk you through the process of creating PKPs using the [V3 SD
 - [Mint via Contracts](minting-methods/mint-via-contracts)
 - [Mint via Social or Email/SMS (OTP) ](minting-methods/mint-via-social)
 - [Mint via WebAuthn](minting-methods/mint-via-web-authn)
+- [Mint via Multiple Auth Methods](minting-methods/mint-via-multiple-auth-methods)
