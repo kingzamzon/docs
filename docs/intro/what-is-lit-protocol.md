@@ -17,6 +17,8 @@ Developers can use Lit to build apps with [private data](../sdk/access-control/i
 
 Get started with the [Lit SDK](../sdk/installation.md).
 
+Read the Lit [Whitepaper](https://github.com/LIT-Protocol/whitepaper).
+
 ## Use Cases
 
 Lit Protocol can be utilized for various web3 applications, including:
