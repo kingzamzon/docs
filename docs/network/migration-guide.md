@@ -236,6 +236,13 @@ app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
 await app.locals.litNodeClient.connect();
 ```
 
+The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network.
+To stop the litNodeClient listeners and allow node to exit gracefully, call `client.disconnect()`
+
+```js
+await app.locals.litNodeClient.disconnect()
+```
+
 ### SDK installed for client side usage
 
 Within a file (in the Lit example repos it will likely be called `lit.js`), set up your Lit object.
