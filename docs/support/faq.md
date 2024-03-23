@@ -24,7 +24,7 @@ In the end, rate limiting (if applied correctly and in good faith!) is a reasona
 
 ### 1. Can’t use checkAndSignAuthMessage in a backend project?
 
-`checkAndSignAuthMessage` can only be used in browsers as it pops up Metamask or other crypto wallets for you to sign & generate the Authsig. In a backend project, you have to use hot wallet signing to generate the AuthSig. Check out this project: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.js
+`checkAndSignAuthMessage` can only be used in browsers as it pops up Metamask or other crypto wallets for you to sign & generate the Authsig. In a backend project, you have to use hot wallet signing to generate the AuthSig. Check out this project: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.mjs
 
 ### 2. My AuthSig was working before but now I get the error: Error getting auth context: Signature is not valid
 

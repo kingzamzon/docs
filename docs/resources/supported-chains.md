@@ -111,6 +111,8 @@ You can learn more about compatible chains [here.](http://ethanfast.com/top-cryp
 
 - solanaTestnet
 
+- verifyTestnet
+
 - waevEclipseDevnet
 
 - waevEclipseTestnet

@@ -239,7 +239,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Serverless Signing",
+          label: "Serverless Signing (Lit Actions)",
           link: {
             type: "doc",
             id: "sdk/serverless-signing/overview",
