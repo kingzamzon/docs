@@ -16,16 +16,26 @@ Lit Actions have their own support for [claiming](../wallets/claimable-keys/intr
 Instead of pre-authenticating the `access token` within an `Authentication Method`, claiming in a Lit Action allows you to define your own `userId` and use the Actions `IPFS CID` to form the `key identifier` through your own user identifier. This doesn't require a pre-authentication step which allows you to set up your own claims to then be routed on-chain with our `contract-sdk`.
 
 ## Example
+Here is an example of how to claim a key using the Lit SDK and then mint a claim using the `contract-sdk`.
+
+### Calculating your key id
+You can create key id by taking the keccak256 hash of the `theIPFSIdOfYourLitAction_yourUserId` where `theIPFSIdOfYourLitAction` is the IPFS CID of your lit action that will be used for claiming and then `yourUserId` is the user id of the user.  You need to separate these items with an `_` in the string.
+
+```jsx
+const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLitAction_yourUserId"))
+```
+
+### Minting a claim
 
 ```jsx
   const res = await client.executeJs({
     authSig,
     code: `(async () => {
-      Lit.Actions.claimKey({keyId: userId});
+      Lit.Actions.claimKey({keyId});
     })();`,
     authMethods: [],
     jsParams: {
-        userId: 'foo'
+        keyId
     },
   });
 
@@ -33,7 +43,7 @@ Instead of pre-authenticating the `access token` within an `Authentication Metho
   let tx = await contractClient.pkpNftContract.write.claimAndMint(2, res.claims['foo'].derivedKeyId, res.claims['foo'].signatures);
 ```
 
-### adding an auth method when minting a claim
+### Adding an auth method when minting a claim
 ```jsx
   const authMethod = {
     authMethodType: AuthMethodType.EthWallet,
@@ -42,13 +52,15 @@ Instead of pre-authenticating the `access token` within an `Authentication Metho
 
   const authMethodId = LitAuthClient.getAuthMethodId(authMethod);
 
+  const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLitAction_yourUserId"))
+
   const res = await client.executeJs({
     authSig,
     code: `(async () => {
-      Lit.Actions.claimKey({keyId: userId});
+      Lit.Actions.claimKey({keyId});
     })();`,
     jsParams: {
-        userId: 'foo'
+        keyId
     },
   });
 
