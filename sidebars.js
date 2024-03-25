@@ -222,6 +222,7 @@ const sidebars = {
                 "sdk/wallets/minting-methods/mint-via-contracts",
                 "sdk/wallets/minting-methods/mint-via-social",
                 "sdk/wallets/minting-methods/mint-via-web-authn",
+                "sdk/wallets/minting-methods/mint-via-multiple-auth-methods",
               ],
             },
             "sdk/wallets/walletconnect",
