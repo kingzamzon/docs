@@ -158,23 +158,23 @@ For other permissions, please see the contract [here](https://github.com/LIT-Pro
 
 ### 2. How to allow permitted users to execute only specific LitActions?
 
-Assign the PKP to itself as we don’t want the PKP owner to arbitrarily change the functioning of the LitAction. Use the PKPHelper.`mintNextAndAddAuthMethods()` for that & to initially setup allow only specific IPFS CIDs to execute.
+Assign the PKP to itself as we don't want the PKP owner to arbitrarily change the functioning of the LitAction. Use the PKPHelper.`mintNextAndAddAuthMethods()` for that & to initially set up allowing only specific IPFS CIDs to execute.
 
-But anyone can now call these LitActions, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or the LitAction, can fetch it from there or put that in the LitAction itself and use `conditional-signing` to check whether the provided AuthSig is permitted to execute the LitAction. Learn more [here](../sdk/serverless-signing/conditional-signing.md).
+But anyone can now call these LitActions, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or the LitAction can fetch it from there or put that in the LitAction itself and use `conditional-signing` to check whether the provided AuthSig is permitted to execute the LitAction. Learn more [here](../sdk/serverless-signing/conditional-signing.md).
 
 ### 3. But I want to upgrade the permitted lit-actions/users?
 
-Since the PKP is assigned to itself in the setup stage as described above, we can’t directly permit any new users/LitActions. Thus we have to lay down the upgrade logic in the LitAction itself. We can have an admin user that can satisfy the update AuthSig check & upgrade the LitAction to a new IPFS CID which will have the new permitted addresses/code.
+Since the PKP is assigned to itself in the setup stage as described above, we can't directly permit any new users/LitActions. Thus we have to lay down the upgrade logic in the LitAction itself. We can have an admin user that can satisfy the update AuthSig check & upgrade the LitAction to a new IPFS CID which will have the new permitted addresses/code.
 
 ### 4. I want to create multiple different AuthSigs but don't want my users to sign multiple times?
 
-Firstly, if you are using Lit in a browser, the AuthSig is stored in its local storage so you don’t need to sign multiple times as the stored AuthSig will be used subsequently. This design pattern is specifically applicable to when you want to sign different SIWE resources or messages which is generally required in [Custom Contract Calls](../sdk/access-control/evm/custom-contract-calls.md).
+Firstly, if you are using Lit in a browser, the AuthSig is stored in its local storage so you don't need to sign multiple times as the stored AuthSig will be used subsequently. This design pattern is specifically applicable when you want to sign different SIWE resources or messages, which is generally required in [Custom Contract Calls](../sdk/access-control/evm/custom-contract-calls.md).
 
-For different resources you’ll be required to sign each time since the signed message is different. One way to get around this is to use a PKP to do the signing for you. This is how it works: The user owns a PKP & uses it to sign a message in a LitAction with `Lit.Actions.signEcdsa()`. Then return all the sigShares from the LitAction to the app. Here the user can loop through & craft AuthSigs for each returned sigShare and process the required access control operation like decryption. Another way is to return the crafted AuthSigs from the LitActions directly.
+For different resources, you'll be required to sign each time since the signed message is different. One way to get around this is to use a PKP to do the signing for you. This is how it works: The user owns a PKP & uses it to sign a message in a LitAction with `Lit.Actions.signEcdsa()`. Then return all the sigShares from the LitAction to the app. Here the user can loop through & craft AuthSigs for each returned sigShare and process the required access control operation like decryption. Another way is to return the crafted AuthSigs from the LitActions directly.
 
 ### 5. Out of the above two approaches, which one is preferred?
 
-A key point to note here is that the LitAction can execute only for 60 seconds after which it times out. Hence it makes sense to reduce complexity in the LitActions code. Also if you want to create a lot of AuthSigs process those in batches. This will require multiple calls to execute the LitAction. You may also parallelize these promises using a package like [p-queue](https://www.npmjs.com/package/p-queue).
+A key point to note here is that the LitAction can execute only for 60 seconds after which it times out. Hence it makes sense to reduce complexity in the LitActions code. Also, if you want to create a lot of AuthSigs, process those in batches. This will require multiple calls to execute the LitAction. You may also parallelize these promises using a package like [p-queue](https://www.npmjs.com/package/p-queue).
 
 <br />
 
@@ -182,17 +182,17 @@ A key point to note here is that the LitAction can execute only for 60 seconds a
 
 ### 1. What encryption algorithm are you using? AES?
 
-Yes. AES-GCM webcrypto for the symmetric encryption. then that key is encrypted to the Lit network's BLS public key. the BLS private key shares are used by the nodes to decrypt.
+Yes, AES-GCM webcrypto is used for symmetric encryption. Then that key is encrypted to the Lit network's BLS public key. The BLS private key shares are used by the nodes to decrypt.
 
-### 2. How does Lit handles key management?
+### 2. How does Lit handle key management?
 
-There is only one key, created with distributed key generation. The nodes all know the public key but nobody knows the whole private key.
+There is only one key, created with distributed key generation. The nodes all know the public key, but nobody knows the whole private key.
 
 ### 3. What's to prevent a Lit node operator from discovering all the symmetric keys stored on the network and being able to decrypt anything?
 
-**(cont'd) It says that it uses BLS threshold signatures so that the decryption key is split into multiple pieces, but that doesn't really totally explain how the key management works? How nodes learn about the various keys being managed by the network? How you prevent one node operator from accumulating all the component keys needed to reconstruct any of the symmetric decryption keys?**
+**(cont'd) It says that it uses BLS threshold signatures so that the decryption key is split into multiple pieces, but that doesn't really totally explain how the key management works? How do nodes learn about the various keys being managed by the network? How do you prevent one node operator from accumulating all the component keys needed to reconstruct any of the symmetric decryption keys?**
 
-Each node only holds a private key share. When a user wants to decrypt something, he presents the thing to decrypt, and proof that he meets the conditions (a wallet signature). Each node independently checks that the user meets the condition with a RPC call to an ETH node. If the user meets the condition, the node uses its private key share to create a decryption share. The user collects the decryption shares and accumulates them above the threshold, and is then able to decrypt the content.
+Each node only holds a private key share. When a user wants to decrypt something, they present the thing to decrypt and proof that they meet the conditions (a wallet signature). Each node independently checks that the user meets the condition with an RPC call to an ETH node. If the user meets the condition, the node uses its private key share to create a decryption share. The user collects the decryption shares and accumulates them above the threshold and is then able to decrypt the content.
 
 So, you can see, the nodes don't talk to each other when decrypting the content. Each node's private key share never leaves the node.
 
@@ -200,33 +200,33 @@ So, you can see, the nodes don't talk to each other when decrypting the content.
 
 **(cont'd) If the latter, then doesn't that mean that there's no redundancy on the key fragments and you're very susceptible to nodes going offline? Like if too many nodes go offline then you might no longer have enough key fragments in the online nodes to decrypt some pieces of content?**
 
-Right now, we're running all the nodes, so the nodes and shares don't change. soon, we will run a federated network with named nodes, and the ultimate goal is to run a permissionless one. we use a process called proactive secret sharing to share the private key shares with new nodes as they come online. the shares given to new nodes are incompatible with any nodes that have left the network. we use threshold encryption with a 2/3 threshold so redundancy is built in.
+Right now, we're running all the nodes, so the nodes and shares don't change. Soon, we will run a federated network with named nodes, and the ultimate goal is to run a permissionless one. We use a process called proactive secret sharing to share the private key shares with new nodes as they come online. The shares given to new nodes are incompatible with any nodes that have left the network. We use threshold encryption with a 2/3 threshold, so redundancy is built-in.
 
 ### 5. What's to prevent one person from running many Lit Protocol nodes so as to acquire sufficient key fragments across their nodes to be able to reconstitute the decryption key for some pieces of content?
 
-In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node. so, you can do the math there to figure out the cryptoeconomic guarantees depending on the number of nodes and the staking cost, which are parameters we will tune. We also intend to use probabilistic guarantees that make it difficult for a given node operator to actually know which private key shares they have and which public keys they correspond to. Meaning, a node operator doesn't actually know what stuff the key share they are holding will unlock. the goal here is to make it difficult to amass 2/3 of the private key shares for a given private key.
+In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node. So, you can do the math there to figure out the cryptoeconomic guarantees depending on the number of nodes and the staking cost, which are parameters we will tune. We also intend to use probabilistic guarantees that make it difficult for a given node operator to actually know which private key shares they have and which public keys they correspond to. Meaning, a node operator doesn't actually know what stuff the key share they are holding will unlock. The goal here is to make it difficult to amass 2/3 of the private key shares for a given private key.
 
 ### 6. Orphaned and unreachable data due to nodes rotating
 
 **(cont'd) Even with the redundancy that 2/3 threshold encryption gives you, that's 2/3 of the number of shares at the time of the encryption right? So over a long enough time horizon, isn't it fairly likely that after a few years you'll have had enough nodes rotate off the network that more than a third of the shares for some early content encrypted by the network are now lost, leaving that data orphaned and unable to ever be decrypted?**
 
-Nope! you're probably thinking of shares in the context of shamir's secret sharing? We use threshold encryption which is different. Nodes all share one big private key generated via a distributed key generation operation. Nobody knows the whole private key. As nodes join and leave the network, through a process called proactive secret sharing, the private key shares are regenerated and each node gets a new private key share. But the shares, together, still represent the original private key.
+Nope! You're probably thinking of shares in the context of Shamir's secret sharing? We use threshold encryption, which is different. Nodes all share one big private key generated via a distributed key generation operation. Nobody knows the whole private key. As nodes join and leave the network, through a process called proactive secret sharing, the private key shares are regenerated, and each node gets a new private key share. But the shares, together, still represent the original private key.
 
-So the entire network could turnover (all nodes that were there when you encrypted content are gone) but you can still decrypt the content, becuause the private key itself is persisted
+So the entire network could turnover (all nodes that were there when you encrypted content are gone), but you can still decrypt the content because the private key itself is persisted.
 
 ### 7. So you need 2/3 of the entire network to decrypt content? not 2/3 of some fixed constant number of key fragments?
 
-Yup! those are the default params we are launching with. Over time, we want to let users launch their own "subnets" with their own parameters.
+Yup! Those are the default params we are launching with. Over time, we want to let users launch their own "subnets" with their parameters.
 
 ### 8. As the number of nodes on the network grows, it gets more secure, but also slower to decrypt content?
 
-Yeah that's correct. we plan to tune the network to have the max number of nodes while still remaining within some performance bounds. like if we can have 100 nodes and it takes less than 2 seconds to unlock something, that would be acceptable. when the network grows beyond that size, we support the automatic creation of subnets, which are basically just parallel networks. and then when someone goes to store some content, automatically load balance between those subnets
+Yeah, that's correct. We plan to tune the network to have the max number of nodes while still remaining within some performance bounds. Like if we can have 100 nodes and it takes less than 2 seconds to unlock something, that would be acceptable. When the network grows beyond that size, we support the automatic creation of subnets, which are basically just parallel networks. And then when someone goes to store some content, automatically load balance between those subnets.
 
-### 9. So long as that an attack on the network remains impractical then the system is pretty robust?
+### 9. So long as an attack on the network remains impractical, then the system is pretty robust?
 
 **(cont'd) One operator runs enough nodes to gather sufficient fragments to decrypt stuff - is sufficiently difficult and costly to execute so as to be impractical. That still seems like the most likely attack vector if things aren't designed just right. **
 
-Yeah you nailed it - there are lots of little tricks we can use there. like suppose there are 10 subnets each with their own private key, each with 100 nodes. if you wanted to break one of those private keys, you would need to run 66 of 100 of those nodes. but, when you join the network, the subnet you are assigned to is uniformly random. so now, you need to run 666 of 1000 nodes to amass those 66 shares for a single given subnet (maybe technically less due to the birthday problem). we could give out fake shares. we could make it difficult to discover which public key goes with which private key share, so as a node operator can't even tell which shares will unlock a given piece of data. It's a hard problem to solve but we have a lot of tools.
+Yeah, you nailed it - there are lots of little tricks we can use there. Like suppose there are 10 subnets each with their private key, each with 100 nodes. If you wanted to break one of those private keys, you would need to run 66 of 100 of those nodes. But when you join the network, the subnet you are assigned to is uniformly random. So now, you need to run 666 of 1000 nodes to amass those 66 shares for a single given subnet (maybe technically less due to the birthday problem). We could give out fake shares. We could make it difficult to discover which public key goes with which private key share, so a node operator can't even tell which shares will unlock a given piece of data. It's a hard problem to solve, but we have a lot of tools.
 
 <br />
 
