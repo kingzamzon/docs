@@ -31,11 +31,11 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
   const res = await client.executeJs({
     authSig,
     code: `(async () => {
-      Lit.Actions.claimKey({keyId});
+      Lit.Actions.claimKey({keyId: userId});
     })();`,
     authMethods: [],
     jsParams: {
-        keyId
+        userId: 'foo'
     },
   });
 
@@ -57,10 +57,10 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
   const res = await client.executeJs({
     authSig,
     code: `(async () => {
-      Lit.Actions.claimKey({keyId});
+      Lit.Actions.claimKey({keyId: userId});
     })();`,
     jsParams: {
-        keyId
+        userId: 'foo'
     },
   });
 
