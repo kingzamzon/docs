@@ -6,37 +6,33 @@ sidebar_position: 2
 
 ## General Questions
 
-### 1. Does the SDK work with Typescript?
+### 1. Does the Lit SDK work with Typescript?
 
 Yes, you can find the latest Lit JS SDK version [here](https://github.com/LIT-Protocol/js-sdk). The older JavaScript library [lit-js-sdk](https://github.com/LIT-Protocol/lit-js-sdk) has been deprecated as of March 2023.
 
-### 2. Are there fees for using Lit? What about rate limits?
+### 2. How do I pay for using the Lit Network?
 
-Currently access control conditions aren’t very expensive in terms of compute & storage, so we’ve been working under the premise that the “artificial” rate limiting of web3 (i.e., RPC endpoints aren’t lightning fast right now) will provide all users with an equal opportunity of excellent network performance. Our payment model, when it becomes active, is predicated on payment being made to store access control conditions - not to read & evaluate them.
-
-So while we don’t have plans for access control rate limiting yet, it could help with scaling up; Lit could envision a project that stores a single access control conditions, and then effectively attempts to “read” it a thousand times a second … obviously this starts to add up, and takes from other projects. This could create a rate limiting scenario - though we’d prefer to scale up first!
-
-In the end, rate limiting (if applied correctly and in good faith!) is a reasonable economic measure that falls into the web3 ethos of paying for what gets used - and only what gets used. 🙂
+To use the Lit Network you must mint Capacity Credits, which permit you to execute a configurable number of requests per second over a given period of time. You can read the docs on payments here: https://developer.litprotocol.com/v3/concepts/capacity-credits-concept.
 
 <br />
 
 ## Auth Sigs & Session Sigs
 
-### 1. Can’t use checkAndSignAuthMessage in a backend project?
+### 1. Can I use checkAndSignAuthMessage in a backend project?
 
-`checkAndSignAuthMessage` can only be used in browsers as it pops up Metamask or other crypto wallets for you to sign & generate the Authsig. In a backend project, you have to use hot wallet signing to generate the AuthSig. Check out this project: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.mjs
+The `checkAndSignAuthMessage` function can only be used in browser environments as it will prompt a Metamask (or other crypto wallet) popup for you to sign & generate the Authsig. If you are building a backend project, you have to use hot wallet signing to generate the AuthSig. You can learn how to do so following this project: https://github.com/LIT-Protocol/hotwallet-signing-example/blob/main/sign.mjs
 
 ### 2. My AuthSig was working before but now I get the error: Error getting auth context: Signature is not valid
 
-We’ve enforced [EIP-55](https://eips.ethereum.org/EIPS/eip-55) compliance so now it’s necessary to use a SIWE message if you’re using hot wallet signing.
+We are enforcing compliance with [EIP-55](https://eips.ethereum.org/EIPS/eip-55) so it is now necessary to use a SIWE message if you’re using hot wallet signing.
 
 ### 3. Why don’t I get a MetaMask popup for signing?
 
-The signature is stored in your browser local storage for convenience. You can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html) to delete it from the local storage.
+The auth signature is stored in your browser's local storage for convenience. You can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html) to delete it from local storage.
 
 ### 4. How would this work if we wanted to use a custodial wallet instead?
 
-With a custodial wallet, there is no need to store the signature. the reason it's stored is to prevent the user from having to sign the MetaMask popup a dozen times if they're doing a dozen operations. but with a custodial wallet, there is no MetaMask popup, so you can just create the signature fresh each time.
+With a custodial wallet, there is no need to store the signature. The reason it's stored is to prevent the user from having to sign the MetaMask popup a dozen times if they're doing a dozen operations. If you are using a custodial wallet, there is no MetaMask popup, so you can just create the signature fresh each time.
 
 <br />
 
@@ -44,17 +40,13 @@ With a custodial wallet, there is no need to store the signature. the reason it'
 
 ### 1. What is the difference between authorization and authentication?
 
-An authentication method refers to the specific credential (i.e a wallet address, Google oAuth, or Discord account) that is programmatically tied to the PKP and used to control the underlying key-pair.
+Authentication refers to the specific credential(s) (i.e a wallet address, Google oAuth, or Discord account) that get programmatically "assigned" to a PKP and have the ability to control the underlying key-pair. Read more about authentication here: https://developer.litprotocol.com/v3/sdk/wallets/auth-methods.
 
-Authorization is through auth signatures - an auth sig is always required when making a request to Lit, whether it be decrypting some piece of content or sending a transaction with a PKP.
+Authorization refers to the use of an auth signature, which is always required when making a request to the Lit Network, whether it be decrypting some piece of content or sending a transaction with a PKP. You can read more about auth sigs here: https://developer.litprotocol.com/v3/sdk/authentication/overview.
 
 ### 2. Is it possible to define an access control condition that requires a signature generated by a Lit Action?
 
-You can start by minting a PKP and granting permission to your Lit Action to sign using it. Since each PKP is a valid Ethereum wallet, your Access Control Condition should be checking for ownership of a particular wallet address. For this context, the public address of the PKP should be passed in as your [parameter](../../../v3/sdk/access-control/evm/basic-examples#a-specific-wallet-address). You can configure your Lit Action to create an SIWE AuthSig using the PKP, only if your conditions have been met.
-
-We are currently working on implementing a more direct solution for using Lit Actions and ACCs together, allowing users to define ACCs that provision access based on the result of any Lit Action. This will enable the generation of more complex ACCs and the use of off-chain data in your conditions.
-
-Before this solution has been released (ETA ~1 month) make sure you set the expiration time in the SIWE Auth Sig to something short so that the user can't take it and pass it around to others who shouldn’t have access.
+Yes this is possible. You can follow the docs on Lit Actions Conditions to get started with this You can read more about auth sigs here: https://developer.litprotocol.com/v3/sdk/authentication/overview functionality: https://developer.litprotocol.com/v3/sdk/access-control/lit-action-conditions.
 
 ### 3. How to get the BTC address for a PKP?
 
@@ -74,13 +66,13 @@ const pkpBTCAddress = bitcoinjs.payments.p2pkh({
 }).address;
 ```
 
-### 3. "Internal JSON-RPC error" When attempting to mint a PKP
+### 4. "Internal JSON-RPC error" When attempting to mint a PKP
 
-You must have `Lit` test token in your wallet when minting a pkp, as it is used to pay the gas cost.
+Make sure that you have some LPX test tokens in your wallet before minting a PKP in order to pay for gas. You can use the faucet to claim test tokens: https://faucet.litprotocol.com/.
 
-### 4. “Error: Invalid arrayify value”upon passing IPFS CID to functions (isPermittedActions, etc.) while interacting with PKPPermissions contract?
+### 5. “Error: Invalid arrayify value” upon passing an IPFS CID to a function (e.g. isPermittedActions) while interacting with the PKPPermissions contract?
 
-The error is because the expected data type for IPFS CID in the contract is bytes. You have to use the conversion function below to convert your IPFS to bytes:
+This occurs because the expected data type for an IPFS CID in the PKPPermissions contract is bytes. You have to use the conversion function below to convert your IPFS to bytes:
 
 ```js
 function getBytesFromMultihash(ipfsId) {
@@ -90,31 +82,27 @@ function getBytesFromMultihash(ipfsId) {
 }
 ```
 
-### 5. How to import an npm package inside a LitAction?
+### 6. How to import an npm package inside a Lit Action?
 
-You have to use `esbuild` to create a bundle & use that. See example [here](https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/bundleTests/siwe).
+You have to use `esbuild` to create a bundle & use that. Check out an example [here](https://github.com/LIT-Protocol/js-serverless-function-test/tree/main/bundleTests/siwe).
 
-### 6. I’ve permitted LitAction for my PKP, do I still need to pass a valid authSig?
+### 7. I’ve permitted a Lit Action to use my PKP, do I still need to pass a valid authSig?
 
-Yes, the AuthSig is required to authenticate with the nodes. If you pass an empty object, the nodes will throw an error. You can use a global AuthSig if it’s not being used for auth hence it can be made available to all the users. Alternatively you may produce an AuthSig on the fly using hot wallet signing.
+Yes, the AuthSig is required to authenticate with the Lit nodes in the first place. If you pass an empty object, the nodes will throw an error. You can use a global AuthSig if it’s not being used for auth directly, which will mean that it can be made available to all of your users. Alternatively you can produce an AuthSig on the fly using hot wallet signing.
 
-### 7. What should be the value of keyType when interacting directly with the PKPNFT Contract?
+### 8. What should be the value of keyType when interacting directly with the PKPNFT Contract?
 
-The value should be `2` as it represents ECDSA which supports the PKP.
+The value should be `2` as it represents ECDSA signing. Currently, this is the only supported algorithm for signing with PKPs
 
-### 8. I want to understand how the PKP works internally.
+### 9. Can I use a PKP to sign/send transactions like a regular Ethereum wallet?
 
-Check out our [blog post](https://spark.litprotocol.com/how-authentication-works-with-pkps/) on how authentication works with PKPs.
+Yes, please check out the [pkp-ethers package](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-ethers) in the Lit SDK.
 
-### 9. Can I use PKP to sign/send transactions as a regular Ethers Wallet object?
+### 10. How can I use an Ethereum JSON RPC requests to sign and send transactions?
 
-Yes, please check out the [pkp-ethers package](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-ethers).
+Check out this PKP x WalletConnect example [here](https://github.com/LIT-Protocol/pkp-walletconnect) to see how one can use PKP to connect to dApps and sign and send Ethereum requests using WalletConnect.
 
-### 10. But how can I use Ethereum JSON RPC requests for signing and sending transactions?
-
-Check out this PKP x WalletConnect example [here](https://github.com/LIT-Protocol/pkp-walletconnect) to see how one can use PKP to connect to dApps and sign and send Ethereum requests through WalletConnect.
-
-### 11. Is Web Assembly supported in LitActions?
+### 11. Is Web Assembly supported in Lit Actions?
 
 Yes! Check out this [sample project.](https://github.com/dOrgJelli/lit-protocol-wasm-test/blob/d4b8873f9a5bceaf98e7f7a1bf325bf597cbfa40/src/App.js#L6-L51.)
 
@@ -136,97 +124,83 @@ Yes! See [boolean logic](../sdk/access-control/condition-types/boolean-logic) fo
 
 ### 3. Where can I save the ciphertext & dataToEncryptHash?
 
-The Lit network doesn’t store these encrypted contents for you. You can store these anywhere you want; in a database, in an on-chain smart contract, IPFS, anywhere else you like.
+The Lit network doesn’t store any encrypted content for you. You can store these anywhere you want; in a database, in an on-chain smart contract, IPFS, anywhere else you like.
 
 ### 4. How to construct an accessControlCondition to authorize only a specific wallet address?
 
-Check out the solution [here](../sdk/access-control/evm/basic-examples#a-specific-wallet-address).
+Check out an example [here](../sdk/access-control/evm/basic-examples#a-specific-wallet-address).
 
 ### 5. How to use a time-lock based accessControlCondition?
 
-Check out the solution [here](../sdk/access-control/evm/timelock).
+Check out an example [here](../sdk/access-control/evm/timelock).
 
 <br />
 
 ## Design Patterns
 
-### 1. How to allow only permitted users to execute a LitAction?
+### 1. How to allow only permitted users to execute a given Lit Action?
 
-Use the `PKPPermission.addPermittedAddress()` to allow only specific users to execute a LitAction. Note, this will allow these users to execute any LitAction.
+You can use the `PKPPermission.addPermittedAddress()` function to give other users permission to sign using your PKP. Any Lit Actions assigned to that PKP can then be executed by those users.
 
-For other permissions, please see the contract [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol).
+To configure other permissions, please use the contract [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol).
 
-### 2. How to allow permitted users to execute only specific LitActions?
+### 2. How to allow permitted users to execute only specific Lit Actions?
 
-Assign the PKP to itself as we don’t want the PKP owner to arbitrarily change the functioning of the LitAction. Use the PKPHelper.`mintNextAndAddAuthMethods()` for that & to initially setup allow only specific IPFS CIDs to execute.
+You can start by assigning the PKP to itself as we don't want the PKP owner to arbitrarily change the Lit Action. Check out the docs on doing so here: https://developer.litprotocol.com/v3/sdk/wallets/auth-methods#sending-the-pkp-to-itself. You can also use the PKPHelper.`mintNextAndAddAuthMethods()` function to do this by passing in a specific IPFS CIDs with permission to execute.
 
-But anyone can now call these LitActions, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or the LitAction, can fetch it from there or put that in the LitAction itself and use `conditional-signing` to check whether the provided AuthSig is permitted to execute the LitAction. Learn more [here](../sdk/serverless-signing/conditional-signing.md).
+Note that now anyone call your Lit Action, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or in the Lit Action itself and, fetch it from there. If you decide to put the access list in the Lit Action itself, you can use `conditional-signing` to check whether the provided AuthSig is permitted to execute the Lit Action. Learn more [here](../sdk/serverless-signing/conditional-signing.md).
 
-### 3. But I want to upgrade the permitted lit-actions/users?
+### 3. How can I update the permitted Lit Actions/users assigned to a PKP?
 
-Since the PKP is assigned to itself in the setup stage as described above, we can’t directly permit any new users/LitActions. Thus we have to lay down the upgrade logic in the LitAction itself. We can have an admin user that can satisfy the update AuthSig check & upgrade the LitAction to a new IPFS CID which will have the new permitted addresses/code.
+Since the PKP is assigned to itself in the setup stage as described above, we can't directly permit any new users/Lit Actions. Thus we have to lay down the upgrade logic in the Lit Action itself. We can have an admin user that can satisfy the update AuthSig check & upgrade the Lit Action to a new IPFS CID which will have the new permitted addresses/code.
 
-### 4. I want to create multiple different AuthSigs but don't want my users to sign multiple times?
+### 4. I want to create multiple different AuthSigs but don't want to require my users to sign multiple times?
 
-Firstly, if you are using Lit in a browser, the AuthSig is stored in its local storage so you don’t need to sign multiple times as the stored AuthSig will be used subsequently. This design pattern is specifically applicable to when you want to sign different SIWE resources or messages which is generally required in [Custom Contract Calls](../sdk/access-control/evm/custom-contract-calls.md).
+Firstly, if you are using Lit in a browser environment, the AuthSig is stored in local storage so you don't need to sign multiple times as the stored AuthSig will be used in subsequent requests made by that user. This design pattern is specifically applicable when you want to sign different SIWE resources or messages, which is generally required when making [Custom Contract Calls](../sdk/access-control/evm/custom-contract-calls.md).
 
-For different resources you’ll be required to sign each time since the signed message is different. One way to get around this is to use a PKP to do the signing for you. This is how it works: The user owns a PKP & uses it to sign a message in a LitAction with `Lit.Actions.signEcdsa()`. Then return all the sigShares from the LitAction to the app. Here the user can loop through & craft AuthSigs for each returned sigShare and process the required access control operation like decryption. Another way is to return the crafted AuthSigs from the LitActions directly.
+For different resources, you'll be required to sign each time since the signed message is different. One way to get around this is to use a PKP to do the signing for you. This is how it works: The user owns a PKP & uses it to sign a message in a Lit Action with `Lit.Actions.signEcdsa()` function. You can then return all of the sigShares from the Lit Action to your application. Here the user can loop through & craft AuthSigs for each returned sigShare and process the required access control operation (i.e. decryption). Another way is to return the crafted AuthSig from the Lit Action directly.
 
-### 5. Out of the above two approaches, which one is preferred?
-
-A key point to note here is that the LitAction can execute only for 60 seconds after which it times out. Hence it makes sense to reduce complexity in the LitActions code. Also if you want to create a lot of AuthSigs process those in batches. This will require multiple calls to execute the LitAction. You may also parallelize these promises using a package like [p-queue](https://www.npmjs.com/package/p-queue).
+A key point to note here is that the Lit Action can only execute for 60 seconds before it times out. Hence it makes sense to reduce complexity in your Lit Actions code. If you want to create a lot of AuthSigs, you should process those in batches. This will require multiple calls to execute the Lit Action. You may also parallelize these processes using a package like [p-queue](https://www.npmjs.com/package/p-queue).
 
 <br />
 
 ## Security & Trust Implications
 
-### 1. What encryption algorithm are you using? AES?
+### 1. What encryption algorithm does Lit uses?
 
-Yes. AES-GCM webcrypto for the symmetric encryption. then that key is encrypted to the Lit network's BLS public key. the BLS private key shares are used by the nodes to decrypt.
+The Lit network uses an identity (ID) based encryption scheme with BLS signatures to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity. Read out more [here](https://developer.litprotocol.com/v3/sdk/access-control/encryption).
 
-### 2. How does Lit handles key management?
+### 2. How does Lit handle key management?
 
-There is only one key, created with distributed key generation. The nodes all know the public key but nobody knows the whole private key.
+Lit handles PKPs which are public/private key-pairs generated by the Lit Network using Distributed Key Generation (DKG), meaning no one node ever has access to the entire private key. Instead, the private key is stored in shares across the network, where each node holds a single share. Read more about this [here](https://developer.litprotocol.com/v3/resources/how-it-works#decentralized-programmable-signing-and-mpc-wallets).
 
-### 3. What's to prevent a Lit node operator from discovering all the symmetric keys stored on the network and being able to decrypt anything?
+### 3. What's to prevent a Lit node operator from discovering all of the key shares stored in the network and being able to use them to sign or decrypt anything?
 
-**(cont'd) It says that it uses BLS threshold signatures so that the decryption key is split into multiple pieces, but that doesn't really totally explain how the key management works? How nodes learn about the various keys being managed by the network? How you prevent one node operator from accumulating all the component keys needed to reconstruct any of the symmetric decryption keys?**
-
-Each node only holds a private key share. When a user wants to decrypt something, he presents the thing to decrypt, and proof that he meets the conditions (a wallet signature). Each node independently checks that the user meets the condition with a RPC call to an ETH node. If the user meets the condition, the node uses its private key share to create a decryption share. The user collects the decryption shares and accumulates them above the threshold, and is then able to decrypt the content.
+Each node only holds a private key share. When a user wants to decrypt or sign something, they present the thing to decrypt and proof that they meet the conditions (using a wallet signature or permitted auth method). Each node independently checks that the user meets the condition with an RPC call to the applicable network. If the user meets the condition, the node uses its private key share to create a decryption os signing share. The user collects the decryption shares and accumulates them above the threshold and is then able to decrypt or sign the content.
 
 So, you can see, the nodes don't talk to each other when decrypting the content. Each node's private key share never leaves the node.
 
-### 4. How do new nodes that come online discover the key shares they need to help decrypt previously-encrypted data? Or is each key fragment tied to a single node lifetime?
+### 4. How do new nodes that come online discover the key shares they need to help decrypt previously-encrypted data?
 
-**(cont'd) If the latter, then doesn't that mean that there's no redundancy on the key fragments and you're very susceptible to nodes going offline? Like if too many nodes go offline then you might no longer have enough key fragments in the online nodes to decrypt some pieces of content?**
-
-Right now, we're running all the nodes, so the nodes and shares don't change. soon, we will run a federated network with named nodes, and the ultimate goal is to run a permissionless one. we use a process called proactive secret sharing to share the private key shares with new nodes as they come online. the shares given to new nodes are incompatible with any nodes that have left the network. we use threshold encryption with a 2/3 threshold so redundancy is built in.
+Right now, Manzano and Habanero are federated networks being run by named 3rd party operators. The ultimate goal is to transition to a fully permissionless network. Root keys are updated every epoch, rendering old shares functionally useless. New shares are shared with new operators through proactive secret sharing. The network uses threshold encryption with a 2/3 threshold, providing redundancy and security.
 
 ### 5. What's to prevent one person from running many Lit Protocol nodes so as to acquire sufficient key fragments across their nodes to be able to reconstitute the decryption key for some pieces of content?
 
-In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node. so, you can do the math there to figure out the cryptoeconomic guarantees depending on the number of nodes and the staking cost, which are parameters we will tune. We also intend to use probabilistic guarantees that make it difficult for a given node operator to actually know which private key shares they have and which public keys they correspond to. Meaning, a node operator doesn't actually know what stuff the key share they are holding will unlock. the goal here is to make it difficult to amass 2/3 of the private key shares for a given private key.
+In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node which means, you can do the math to figure out the cryptoeconomic guarantees depending on the number of nodes and the required stake amount, which are parameters that will be fine-tuned. Additionally, the use of SEV-SNP as a hardware requirement means node operators never have access to any of the underlying key material contained within their node.
 
-### 6. Orphaned and unreachable data due to nodes rotating
+### 6. So you need 2/3 of the entire network to decrypt or sign the content? Not 2/3 of some fixed constant number of key fragments?
 
-**(cont'd) Even with the redundancy that 2/3 threshold encryption gives you, that's 2/3 of the number of shares at the time of the encryption right? So over a long enough time horizon, isn't it fairly likely that after a few years you'll have had enough nodes rotate off the network that more than a third of the shares for some early content encrypted by the network are now lost, leaving that data orphaned and unable to ever be decrypted?**
+Yes, those are the default parameters that the Lit Network has launched with. We are currently exploring a 'subnet' architecture which would allow developers to launch their own subnets with their desired parameters
 
-Nope! you're probably thinking of shares in the context of shamir's secret sharing? We use threshold encryption which is different. Nodes all share one big private key generated via a distributed key generation operation. Nobody knows the whole private key. As nodes join and leave the network, through a process called proactive secret sharing, the private key shares are regenerated and each node gets a new private key share. But the shares, together, still represent the original private key.
+### 7. How is performance impacted as the number of nodes in the network increases?
 
-So the entire network could turnover (all nodes that were there when you encrypted content are gone) but you can still decrypt the content, becuause the private key itself is persisted
+The network is designed to handle a large number of nodes while maintaining acceptable performance. As the network grows, subnets can be automatically created to distribute the load and improve performance.
 
-### 7. So you need 2/3 of the entire network to decrypt content? not 2/3 of some fixed constant number of key fragments?
+### 8. Is the system robust against attacks?
 
-Yup! those are the default params we are launching with. Over time, we want to let users launch their own "subnets" with their own parameters.
+The system is designed with several security measures to mitigate attacks and ensure the confidentiality and integrity of data. The network consists of multiple node operators, which enhances security by distributing the private keys across different nodes. This makes it difficult for an attacker to gather sufficient key fragments to decrypt data. The system employs a threshold consensus mechanism, where 2/3 of the network nodes must agree to decrypt or sign content. This provides redundancy and security against malicious actors. The use of Secure Enclave Virtualization-Secure Nested Paging (SEV-SNP) ensures that node operators do not have direct access to the underlying key shares. This hardware requirement adds an additional layer of protection to the key material.
 
-### 8. As the number of nodes on the network grows, it gets more secure, but also slower to decrypt content?
-
-Yeah that's correct. we plan to tune the network to have the max number of nodes while still remaining within some performance bounds. like if we can have 100 nodes and it takes less than 2 seconds to unlock something, that would be acceptable. when the network grows beyond that size, we support the automatic creation of subnets, which are basically just parallel networks. and then when someone goes to store some content, automatically load balance between those subnets
-
-### 9. So long as that an attack on the network remains impractical then the system is pretty robust?
-
-**(cont'd) One operator runs enough nodes to gather sufficient fragments to decrypt stuff - is sufficiently difficult and costly to execute so as to be impractical. That still seems like the most likely attack vector if things aren't designed just right. **
-
-Yeah you nailed it - there are lots of little tricks we can use there. like suppose there are 10 subnets each with their own private key, each with 100 nodes. if you wanted to break one of those private keys, you would need to run 66 of 100 of those nodes. but, when you join the network, the subnet you are assigned to is uniformly random. so now, you need to run 666 of 1000 nodes to amass those 66 shares for a single given subnet (maybe technically less due to the birthday problem). we could give out fake shares. we could make it difficult to discover which public key goes with which private key share, so as a node operator can't even tell which shares will unlock a given piece of data. It's a hard problem to solve but we have a lot of tools.
+These security measures work together to make attacks, such as running multiple nodes to acquire key fragments or decrypt data, impractical and costly to execute.
 
 <br />
 
