@@ -79,16 +79,6 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Migrating to the SDK V3',
-      collapsible: true,
-      items: [
-        'migration/overview',
-        'network/feature-matrix',
-        'migration/changes',
-      ],
-    },
-    {
-      type: 'category',
       label: 'SDK Reference',
       collapsible: false,
       className: 'category-not-collapsible',
@@ -255,7 +245,19 @@ const sidebars = {
           type: 'category',
           label: 'Migrations',
           collapsible: true,
-          items: ['sdk/migrations/3.2.0'],
+          items: [
+            {
+              type: 'category',
+              label: 'Migrating from 2.x.x to 3.x.x',
+              collapsible: true,
+              items: [
+                'sdk/migrations/3.0.0/overview',
+                'network/feature-matrix',
+                'sdk/migrations/3.0.0/changes',
+              ],
+            },
+            'sdk/migrations/3.2.0'
+          ],
         },
         'sdk/tests',
       ],
