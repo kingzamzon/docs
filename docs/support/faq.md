@@ -182,15 +182,15 @@ So, you can see, the nodes don't talk to each other when decrypting the content.
 
 ### 4. How do new nodes that come online discover the key shares they need to help decrypt previously-encrypted data?
 
-Right now, we're running the nodes for the Manzano and Habanero networks, which are decentralized networks being run by 3rd party operators. The nodes and shares for these networks don't change. Soon, we will run a federated network with named nodes, and the ultimate goal is to run a permissionless one. We use a process called proactive secret sharing to share the private key shares with new nodes as they come online. The shares given to new nodes are incompatible with any nodes that have left the network. We use threshold encryption with a 2/3 threshold, so redundancy is built-in.
+Right now, Manzano and Habanero are federated networks being run by named 3rd party operators. The ultimate goal is to transition to a fully permissionless network. Root keys are updated every epoch, rendering old shares functionally useless. New shares are shared with new operators through proactive secret sharing. The network uses threshold encryption with a 2/3 threshold, providing redundancy and security.
 
 ### 5. What's to prevent one person from running many Lit Protocol nodes so as to acquire sufficient key fragments across their nodes to be able to reconstitute the decryption key for some pieces of content?
 
-In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node which means, you can do the math to figure out the cryptoeconomic guarantees depending on the number of nodes and the required stake amount, which are parameters that will be fine-tuned. We also intend to use probabilistic guarantees that make it difficult for a given node operator to actually know which private key shares they have and which public keys they correspond to. Meaning, a node operator doesn't actually know what stuff the key share they are holding will unlock. Additionally, the use of SEV-SNP as a hardware requirement means node operators ever have access to any of the underlying key material contained within their node.
+In the federated network with named nodes, we know who the operators are, so a sybil attack is pretty hard. In the permissionless network, node operators must stake to run a node which means, you can do the math to figure out the cryptoeconomic guarantees depending on the number of nodes and the required stake amount, which are parameters that will be fine-tuned. Additionally, the use of SEV-SNP as a hardware requirement means node operators never have access to any of the underlying key material contained within their node.
 
 ### 6. So you need 2/3 of the entire network to decrypt or sign the content? Not 2/3 of some fixed constant number of key fragments?
 
-Yup! Those are the default params we are launching with. Over time, we want to let users launch their own "subnets" with their parameters.
+Yes, those are the default parameters that the Lit Network has launched with. We are currently exploring a 'subnet' architecture which would allow developers to launch their own subnets with their desired parameters
 
 ### 7. How is performance impacted as the number of nodes in the network increases?
 
@@ -198,7 +198,9 @@ The network is designed to handle a large number of nodes while maintaining acce
 
 ### 8. Is the system robust against attacks?
 
-The system is designed to mitigate attacks, including the scenario where an operator runs multiple nodes to gather sufficient fragments to decrypt data. Various techniques are employed, such as distributing private keys across subnets and making it difficult to determine which shares correspond to specific data. These measures make such attacks impractical and costly to execute.
+The system is designed with several security measures to mitigate attacks and ensure the confidentiality and integrity of data. The network consists of multiple node operators, which enhances security by distributing the private keys across different nodes. This makes it difficult for an attacker to gather sufficient key fragments to decrypt data. The system employs a threshold consensus mechanism, where 2/3 of the network nodes must agree to decrypt or sign content. This provides redundancy and security against malicious actors. The use of Secure Enclave Virtualization-Secure Nested Paging (SEV-SNP) ensures that node operators do not have direct access to the underlying key shares. This hardware requirement adds an additional layer of protection to the key material.
+
+These security measures work together to make attacks, such as running multiple nodes to acquire key fragments or decrypt data, impractical and costly to execute.
 
 <br />
 
