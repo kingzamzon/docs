@@ -24,7 +24,7 @@ If you'd like to use Habanero, you'll need some 'testLPX' tokens to pay for netw
 ## Migration
 In order to connect to the Habanero network (the mainnet beta), you'll need to ensure your application is compatible with the v3 version of the Lit SDK. This means if you were previously building on Jalapeno or Serrano using the v2 SDK, you'll need to update your app to use v3. 
 
-Upgrading to the v3 SDK can be done by following the [migration guide](../../migration/overview.md), or checking out the related [blog post](https://spark.litprotocol.com/cayenne-network-release-lit-js-sdk-v3/) on Spark.
+Upgrading to the v3 SDK can be done by following the [migration guide](../../sdk/migrations/3.0.0/overview.md), or checking out the related [blog post](https://spark.litprotocol.com/cayenne-network-release-lit-js-sdk-v3/) on Spark.
 
 If your app currently has users in production (on the v1 or v2 SDK), we recommend upgrading internally while keeping users on the current branch until after Habanero is live and fully functional. Once you've upgraded to v3 and Habanero is stable, you’ll just need to perform the necessary migration tasks dependent on the Lit tooling that you’re using:
 - If you’re using Lit for encryption (AKA decentralized access control): Perform re-encryption with Habanero keys.
