@@ -1,9 +1,9 @@
 
 # Lit v0 Migration Guide
 
-The launch of Lit v0 introduces the [Habanero Mainnet Beta](../network/networks/mainnet.md) and the [Manzano Testnet](../network/networks/testnet.md). 
+The launch of Lit v0 introduces the [Habanero Mainnet](../network/networks/mainnet.md) and the [Manzano Testnet](../network/networks/testnet.md). 
 
-The keys created and managed on the Habanero Mainnet Beta are ready to be used for deploying production-level applications and user experiences. This means that sending, receiving, and managing real world assets IS now supported. Any keys that are created on the v0 network are persistent, will not be deleted, and will eventually be migrated to the v1 network when it is released later this year.
+The keys created and managed on the Habanero Mainnet are ready to be used for deploying production-level applications and user experiences. This means that sending, receiving, and managing real world assets IS now supported. Any keys that are created on the v0 network are persistent, will not be deleted, and will eventually be migrated to the v1 network when it is released later this year.
 
 If you are currently in early-stage research and development, you should be using the Manzano Testnet. Sending, receiving, and managing real world assets on Manzano is NOT recommended. 
 
@@ -17,7 +17,7 @@ Jalapeno only supports encryption / decryption use cases, so this guide will onl
 
 You can learn more about re-encryption at the end of this guide.
 
-If you’re migrating from Jalapeno to Habanero, it’s important to remember that they have different, incompatible Lit JS SDK versions.  Jalapeno only works with version 2.x.x and Habanero only works with 3.x.x. You will therefore need to decrypt with the v2 sdk and then re-encrypt with the v3 or v4 sdk. 
+If you’re migrating from Jalapeno to Habanero, it’s important to remember that they have different, incompatible Lit JS SDK versions.  Jalapeno only works with version 2.x.x and Habanero only works with 3.x.x and above. You will therefore need to decrypt with the v2 sdk and then re-encrypt with the v3 or v4 sdk. 
 
 ## Migrating From Cayenne
 
@@ -171,13 +171,13 @@ values={[
 Install the `@lit-protocol/lit-node-client` package, which can be used in both browser and Node environments:
 
 ```sh
-yarn add @lit-protocol/lit-node-client@beta
+yarn add @lit-protocol/lit-node-client
 ```
 
 Use the **Lit JS SDK V4**:
 
 :::note
-Both the Habanero and Manzano networks can be accessed using the '@beta' tag below. You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
+You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
 :::
 
 ```js
@@ -191,13 +191,13 @@ import * as LitJsSdk from "@lit-protocol/lit-node-client";
 Install the `@lit-protocol/lit-node-client-nodejs`, which is for Node environments only:
 
 ```sh
-yarn add @lit-protocol/lit-node-client-nodejs@beta
+yarn add @lit-protocol/lit-node-client-nodejs
 ```
 
 Use the **Lit JS SDK V4**:
 
 :::note
-Both the Habanero and Manzano networks can be accessed using the '@beta' tag below. You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
+You'll need to specify the network you want to connect to ('habanero' or 'manzano') when initializing your node client config.
 :::
 
 ```js

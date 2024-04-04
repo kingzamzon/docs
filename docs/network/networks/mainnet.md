@@ -16,13 +16,13 @@ You can set your Lit Network in the [LitNodeClient config of the Lit SDK](../../
 | Name | Description | Supported Algorithms | Supported Features | Status | SDK Version | Deprecation timeline | Contracts |
 | ---- | ----------- | -------------------- | ------------------ | ------ | ----------- | -------------------- | --------------- |
 | Jalapeno | Centralized alpha network. Persistent, keys will not be deleted. | BLS | Encryption | [Live](https://jalapeno-status.litprotocol.com/) | V1, V2 | None | n/a |
-| Habanero | Decentralized mainnet beta. Persistent, keys will not be deleted. | BLS, ECDSA | Encryption, User Wallets (PKPs), Serverless Signing (Lit Actions) | Live | V3, V4 | TBD | [habanero](https://github.com/LIT-Protocol/networks/tree/main/habanero) | 
+| Habanero | Decentralized mainnet. Persistent, keys will not be deleted. | BLS, ECDSA | Encryption, User Wallets (PKPs), Serverless Signing (Lit Actions) | Live | V3, V4 | TBD | [habanero](https://github.com/LIT-Protocol/networks/tree/main/habanero) | 
 
 ## Token Usage
 If you'd like to use Habanero, you'll need some 'testLPX' tokens to pay for network fees and [gas](../rollup.mdx) when minting PKPs. Habanero uses a test token for payments and gas that holds no real world value. You can acquire some tokens from the verified [faucet](https://faucet.litprotocol.com/).
 
 ## Migration
-In order to connect to the Habanero network (the mainnet beta), you'll need to ensure your application is compatible with the v3 version of the Lit SDK. This means if you were previously building on Jalapeno or Serrano using the v2 SDK, you'll need to update your app to use v3. 
+In order to connect to the Habanero mainnet network, you'll need to ensure your application is compatible with the v3 version of the Lit SDK. This means if you were previously building on Jalapeno or Serrano using the v2 SDK, you'll need to update your app to use v3. 
 
 Upgrading to the v3 SDK can be done by following the [migration guide](../../sdk/migrations/3.0.0/overview.md), or checking out the related [blog post](https://spark.litprotocol.com/cayenne-network-release-lit-js-sdk-v3/) on Spark.
 

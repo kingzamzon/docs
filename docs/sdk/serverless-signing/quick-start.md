@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 :::info
 **STATE OF THE NETWORK**
 
-The Lit Habanero Mainnet Beta is now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
+The Lit Habanero Mainnet is now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero today. 
 
 For references to the Lit Actions functions which can be accessed inside a Lit Action via the `Lit.Actions` object, check out the [Lit Actions](http://actions-docs.litprotocol.com/) API docs.
 
