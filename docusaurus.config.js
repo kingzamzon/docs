@@ -23,7 +23,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          breadcrumbs: false,
+          breadcrumbs: true,
           // lastVersion: "2.0",
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.

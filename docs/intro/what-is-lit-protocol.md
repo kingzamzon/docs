@@ -3,7 +3,7 @@ slug: /what-is-lit
 sidebar_position: 2
 ---
 
-# What is Lit Protocol
+# About this SDK
 
 :::info
 [Habanero Mainnet](network/networks/mainnet) and [Manzano Testnet](network/networks/testnet) are now live. Check out the [docs on migration](network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
