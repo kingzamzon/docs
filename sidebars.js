@@ -41,7 +41,16 @@ const sidebars = {
   // ],
 
   docs: [
-    'intro/overview',
+    {
+      type: 'category',
+      label: 'Getting Started',
+      collapsed: true,
+      items: [
+        'intro/overview',
+        'intro/what-is-lit-protocol',
+        'resources/how-it-works',
+      ],
+    },
     {
       type: 'category',
       label: 'Installation',
@@ -290,9 +299,22 @@ const sidebars = {
             }
           ],
         },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Appendix',
+      collapsed: true,
+      link: {
+        type: 'generated-index',
+        title: 'Appendix',
+        description: 'Learn about the appendix for the Lit SDK!',
+        keywords: ['appendix'],
+      },
+      items: [
         {
           type: 'category',
-          label: 'Appendix: Networks',
+          label: 'Networks',
           collapsed: true,
           link: {
             type: 'generated-index',
@@ -314,7 +336,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Appendix: Useful Tools',
+          label: 'Useful Tools',
           collapsed: true,
           link: {
             type: 'generated-index',
@@ -331,7 +353,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Appendix: Integrations',
+          label: 'Integrations',
           collapsed: true,
           link: {
             type: 'generated-index',
@@ -365,54 +387,41 @@ const sidebars = {
             },
           ],
         },
-        'sdk/tests',
         {
           type: 'category',
-          label: 'Appendix: Resources',
+          label: 'Concepts',
           collapsed: true,
           link: {
             type: 'generated-index',
-            title: 'Resources',
-            description: 'Learn about the different resources that can help you with Lit SDK!',
-            keywords: ['resources'],
+            title: 'Quick Concepts',
+            description: 'Learn about the different quick concepts that can help you with Lit SDK!',
+            keywords: ['concepts'],
           },
           items: [
-            'resources/how-it-works',
-            {
-              type: 'category',
-              label: 'Quick Concepts',
-              collapsed: true,
-              link: {
-                type: 'generated-index',
-                title: 'Quick Concepts',
-                description: 'Learn about the different quick concepts that can help you with Lit SDK!',
-                keywords: ['concepts'],
-              },
-              items: [
-                'concepts/access-control-concept',
-                'concepts/programmable-signing-concept',
-                'concepts/pkps-as-wallet',
-                'concepts/capacity-credits-concept',
-              ],
-            },
-            'resources/supported-chains',
-            'resources/contracts',
-            'resources/glossary',
+            'concepts/access-control-concept',
+            'concepts/programmable-signing-concept',
+            'concepts/pkps-as-wallet',
+            'concepts/capacity-credits-concept',
           ],
         },
+        'sdk/tests',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Resources and Support',
+      collapsed: true,
+      link: {
+        type:'doc',
+        id: 'support/intro',
+      },
+      items: [
         'intro/usecases',
-        {
-          type: 'category',
-          label: 'Support',
-          collapsed: true,
-          link: {
-            type: 'generated-index',
-            title: 'Support',
-            description: 'Want to know more about Lit SDK? Check out the support section!',
-            keywords: ['support'],
-          },
-          items: ['support/faq', 'support/bug-bounty'],
-        },
+        'resources/supported-chains',
+        'resources/contracts',
+        'resources/glossary',
+        'support/faq', 
+        'support/bug-bounty'
       ],
     },
     {
@@ -421,15 +430,28 @@ const sidebars = {
       collapsed: true,
       link: {
         type: 'generated-index',
-        title: 'Lit SDK APIs Reference',
-        description: 'Get the API reference for different versions of the Lit Js/Ts SDK!',
+        title: 'Lit SDK API Reference',
+        description: 'Get the API reference for different versions of the Lit SDK!',
         keywords: ['api-reference'],
       },
       items:[
-        'api-reference/v1-sdk',
-        'api-reference/v2-sdk',
-        'api-reference/v3-sdk',
-        'api-reference/v4-sdk'
+        'api-reference/v4-sdk',
+        {
+          type: 'category',
+          label: 'Legacy SDK Versions',
+          collapsed: true,
+          link: {
+            type: 'generated-index',
+            title: 'Legacy SDK Versions',
+            description: 'Get the API reference for older versions of the Lit SDK!',
+            keywords: ['api-reference'],
+          },
+          items: [
+            'api-reference/v3-sdk',
+            'api-reference/v2-sdk',
+            'api-reference/v1-sdk',
+          ],
+        },
       ]
     },
     'additional-examples',

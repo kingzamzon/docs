@@ -105,11 +105,6 @@ const config = {
             label: 'Docs',
           },
           {
-            to: 'learningLab/intro',
-            position: 'left',
-            label: 'Learning Lab',
-          },
-          {
             to: 'ecosystem/lit-grants',
             position: 'left',
             label: 'Ecosystem',
