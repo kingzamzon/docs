@@ -207,7 +207,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Encryption/Decryption',
+          label: 'Encryption and Access Control',
           link: {
             type: 'doc',
             id: 'sdk/access-control/intro',
@@ -270,7 +270,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Compute (Lit Actions)',
+          label: 'Private Compute (Lit Actions)',
           link: {
             type: 'doc',
             id: 'sdk/serverless-signing/overview',
