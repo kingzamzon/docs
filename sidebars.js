@@ -349,6 +349,7 @@ const sidebars = {
             'tools/getlit-cli',
             'tools/event-listener',
             'tools/pkpexplorer',
+            'tools/searchlit',
           ],
         },
         {

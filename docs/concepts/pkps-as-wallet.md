@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# User Wallets
+# User Wallets (Programmable Key Pairs)
 
 :::info
 **STATE OF THE NETWORK**
