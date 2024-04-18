@@ -4,81 +4,77 @@ sidebar_position: 1
 
 # How Does Lit Protocol Work
 
-:::info
+## Introduction
 
-**FOR DEVELOPERS: SDK and API Documentation**
+Lit Protocol combines cutting-edge cryptography, sealed confidential hardware, and peer-to-peer networking to provide builders in web3 with the ability to use cryptographic keys and private compute, as a service. With Lit, developers can: 
 
-To start building on Lit based on your use case, check out the Lit SDK [here](../sdk/installation.md). For an in-depth understanding of the functionality provided, check out the [API docs](https://js-sdk.litprotocol.com/).
-:::
+1. Securely generate and manage non-custodial keys
+    1. User wallets and signers: onboard users into your application without relying on a centralized custodian or dealing with the complexities of key management.
+        1. Example implementations: [PatchWallet](https://app.patchwallet.com/), [Silk](https://www.silk.sc/), [Collab.Land](https://www.collab.land/), [Tria](https://www.tria.so/), [Index Network](https://index.network/)
+    2. Privacy applications: perform data encryption and manage access behind flexible access control rules and policies. 
+        1. Example implementations: [Fox](https://docs.verifymedia.com/publishing/access-control/methods/lit-protocol), [Terminal3](https://www.terminal3.io/), [Streamr](https://streamr.network/), [Cheqd](https://cheqd.io/), [Lens Protocol](https://www.lens.xyz/), [Gitcoin](https://publicgoods.network/)
+        
+2. Write and execute private and immutable functions and compute jobs to power:
+    1. Cross-chain messaging and automation: build protocols that have the ability to read and write data across blockchains and web3 protocols.
+        1.  Example implementations: [Event Listener](https://developer.litprotocol.com/v3/tools/event-listener), [Yacht Labs SDK](https://github.com/Yacht-Labs/yacht-lit-sdk)
+    2. Off-chain oracles: fetch verifiable off-chain data for use on-chain.
+        1. Example implementations: coming soon.
+    3. Private and verifiable LLMs and AI agents
+        1. Example implementations: coming soon.
+    4. And more…
+    
 
-## Overview
+To learn more about possible ways you can use Lit and to view additional implementation examples, check out the [use cases](../intro/usecases.md) section or follow the links below:
 
-At its core, Lit is an attempt to decentralize [public key cryptography](https://www.cloudflare.com/learning/ssl/how-does-public-key-encryption-work/) through the use of secure [multi-party computation](https://en.wikipedia.org/wiki/Secure_multi-party_computation) and [threshold signature schemes](https://en.wikipedia.org/wiki/Threshold_cryptosystem) (MPC + TSS). When run across a distributed network of nodes (the “Lit Network”), the Lit software supports the secure management of persistent cryptographic keys for signing, encryption, and compute.
+[Whitepaper](https://github.com/LIT-Protocol/whitepaper).   [Open Source Node Code](https://github.com/LIT-Protocol/Node).   [Audit reports](https://drive.google.com/drive/folders/1Rrht88iUkzpofwl1CvP9gEjqY60BKyFn?ref=spark.litprotocol.com).
 
-Both MPC and TSS originate from the concepts of public key cryptography and extend their benefits to multi-party and decentralized environments, where the security and privacy of the private key material, data, and computation are critically important. These methods expand upon “traditional” public key infrastructure (PKI), removing the dependence on centralized key custodians, who exist as a single point of failure. This greatly reduces the attack vector for key compromise by distributing ownership among multiple parties, undermining the ability of a single entity to cause widespread harm. In order for an attacker to gain control, they would need to successfully gain control of more than the threshold of participating parties. In the Lit Network, this threshold is set to two-thirds, meaning participation from two-thirds of nodes is required for signing and encryption.
+Below, we will dive into how Lit works under the hood, starting with the following four core primitives:
 
-In the Lit Network, the nodes perform a [distributed key generation](../resources/glossary#distributed-key-generation) (DKG) to create new public/private key pairs where no one party ever holds the entire key. Instead, each node holds a key share which they can use to sign and decrypt data. The nodes perform each operation (signing or decryption) in parallel and the individual results are aggregated to form the complete signature or decryption key, without exposing the underlying private key itself. By distributing the key among multiple parties, the network becomes more robust and can continue to function even when multiple participating parties may be offline or possess malicious intent.
+## 1. Threshold Signatures
 
-## Secure Encrypted Virtualization (SEV)
+Nodes perform a [distributed key generation](https://docs.google.com/document/d/1eaSk6822d4B-bJtMiiGp4n9N4qZPnwWaEZOy-Xs8AK0/edit#heading=h.2q2y8wxw6nj8) (DKG) to create new public/private key pairs where no one party ever holds the entire key. Instead, each node holds a **key share** which they use to sign and decrypt data with.
 
-In addition to the security provided by the decentralized nature of MPC and TSS, Lit leverages AMD’s [Secure Encrypted Virtualization](https://www.amd.com/system/files/TechDocs/SEV-SNP-strengthening-vm-isolation-with-integrity-protection-and-more.pdf) (SEV), providing advanced hardware-level protection and an additional layer of security.
+- **Network Consensus:** All operations (signing or decryption) are performed in parallel and require participation from two-thirds of network nodes to be executed.
+- **Key Distribution:** No one node (or client) ever gains access to private keys in their entirety. Decryption and signing operations do not expose the underlying key.
+- **Curve Flexibility:** The protocol supports multiple cryptographic curves and signature schemes, with the ability to add new ones to enable interoperability with a wide variety of protocols and standards.
 
-SEV ensures that node operators never have access to any key shares directly, nor the computation processed inside of each node. This robust hardware-level isolation complements the decentralization of cryptographic operations and significantly reduces the risk of unauthorized access to sensitive information.
+## 2. Sealed and Confidential Hardware
 
-In the context user-facing operations — such as when key shares are provisioned for signing and decryption — nodes communicate via independent, encrypted channels. This means that shares are only ever exposed client-side at the exact moment of recombination.
+All Lit node operators run a bare metal install of [AMD’s SEV-SNP](https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/solution-briefs/amd-secure-encrypted-virtualization-solution-brief.pdf), ensuring they never have access to any key shares directly, nor the computation processed inside of each node.
 
-We believe that the marriage of MPC, threshold signature schemes (TSS), and SEV provides end users with the most robustly secure and versatile custody solution currently available on the market today.
+- **Trusted Execution Environment (TEE)**: SEV-SNP is an example of a TEE, which provides advanced hardware-level isolation for all network operations.
+- **Code Immutability and Confidentiality:** Deployed programs within the TEE are immutable and private, preventing unauthorized changes and maintaining consistent operational integrity.
 
-## How Lit Protocol works for:
+## 4. Programmability
 
-## Access Control
+As mentioned, each Lit node is a confidential compute environment. This enables developers to write [programs](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start) that govern the signing and encryption. 
 
-Lit offers threshold encryption for regulating access to data stored on the Web through the use of condition-based access control. With Lit, both encryption and decryption happen client-side according to specific rules defined by the end user. These rules are known as [“Access Control Conditions”](../sdk/access-control/evm/basic-examples) which make use of on or off-chain data to define their parameters.
+## 4. Crypto-Economic Security and Incentives
 
-An example of an Access Control Condition that utilizes on-chain data is gating by token ownership, such as requiring that a user possesses a [specific NFT](../sdk/access-control/evm/basic-examples#must-posess-a-specific-erc721-token-nft) in order to decrypt your content. When a user requests access, each Lit node confirms that the required condition has been satisfied using the user's wallet signature to verify asset ownership. Once verified, each node supplies a decryption share. After accumulating more than two-thirds of these shares, the user can decrypt the content on their device.
+The Lit network is supported by a decentralized network of node operators who must stake tokens in order to participate in the “active” node operator set. Current node operators include integration partners, project investors, and professional node operators. If you’re interested in becoming a node operator, please [reach out](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform).
 
-As mentioned above, Access Control Conditions are not limited to "on-chain" data sources. Using JavaScript logic known as [Lit Actions](../sdk/access-control/lit-action-conditions.md), an identical process is supported using off-chain data as input. A simple example would be mandating that a user follows you on Twitter before granting permission to decrypt your content. The Twitter API could be utilized to feed this information into a Lit Action, which gets executed concurrently by each node. If more than two-thirds of nodes verify that the condition has been fulfilled (according to the Lit Action), the shares would be provided, and the content could be decrypted client-side.
+- **Node Operators:** The current node operators active on the Habanero Mainnet Beta include:
+    - Lit Protocol (our node)
+    - [Collab.Land](https://www.collab.land/?ref=spark.litprotocol.com)
+    - [Terminal3](https://www.terminal3.io/?ref=spark.litprotocol.com)
+    - [Bware Labs](https://bwarelabs.com/?ref=spark.litprotocol.com)
+    - [Streamr](https://streamr.network/?ref=spark.litprotocol.com)
+    - [1kx](https://1kx.network/?ref=spark.litprotocol.com)
+    - [Molecule](https://www.molecule.xyz/?ref=spark.litprotocol.com)
+    - [Imperator](https://www.imperator.co/?ref=spark.litprotocol.com)
+    - [01node](https://01node.com/?ref=spark.litprotocol.com)
+    - [CMT Digital](https://cmt.digital/?ref=spark.litprotocol.com)
+- The Lit Protocol Token (LPX): The LPX token will be used by node operator to meet their staking requirement, as well as to reward them for their service.  Developers using Lit will also use the token to pay for transacting on the network.
+    
+    The LPX token is NOT live, and currently a test token (testLPX) is being used in its place. The LPX token will be released when the v1 network is released later this year. 
+    
 
-This feature empowers individuals to securely store data on the open Web and offers organizations a convenient method for sharing and distributing content across entire communities. For instance, employing NFTs to designate roles and access levels within a DAO, or using token ownership to grant exclusive discounts to users on an e-commerce platform such as Shopify. The capacity to gate access based on any arbitrary data via Lit Actions expands these possibilities even further, allowing the creation of decryption rules based on any accessible state.
+## Learn More
 
-Lit exclusively manages and provisions decryption keys, remaining entirely impartial to the storage provider. This means that **Lit does not store any encrypted content directly**, and developers integrating this service can choose a storage provider of their preference. Options include blockchains like Ethereum, open storage networks such as [IPFS](https://spark.litprotocol.com/encrypttoipfs/) or [Ceramic](https://github.com/LIT-Protocol/CeramicIntegration), or centralized providers like AWS or Google Cloud.
+Learn more about how Lit Protocol works by checking out the resources below:
 
-The comprehensive process for encrypting content with Lit is outlined [here](../sdk/access-control/encryption#high-level-overview).
+- About [user wallets](../concepts/pkps-as-wallet.md).
+- About [encryption and access control](../concepts/access-control-concept.md).
+- About [decentralized compute](../concepts/programmable-signing-concept.md).
 
-![accessControl](/img/AccessControl.png)
-
-## Decentralized Programmable Signing and MPC Wallets
-
-In addition to access control, Lit provides distributed ECDSA key-pairs that can be used for programmable, “smart” signing and a MPC wallet solution.
-
-These distributed key pairs are known as [Programmable Key Pairs](../sdk/wallets/intro) (PKPs), and the code that dictates their signing and authentication logic is called a Lit Action. Lit Actions are JavaScript functions that can be made immutable by storing them on the InterPlanetary File System (IPFS). They can be thought of as the permissionless rules that govern each PKPs signing automation. Every Lit Action is blockchain agnostic and has the ability to use off-chain data in their computation by making HTTP requests. This gives them the inherent ability to read and write data across on and off-chain platforms, facilitating interoperability and automation between previously disconnected ecosystems.
-
-Each PKP is a public/private key-pair generated by the Lit Network using Distributed Key Generation (DKG), meaning no one node ever has access to the entire private key. Instead, the private key is stored in shares across the network, where each node holds a single share. A PKP is represented as an ERC-721 NFT, and the [owner of the NFT](../sdk/wallets/minting) becomes the designated “controller” of the Programmable Key Pair. The controller has the ability to assign additional signing logic and [authentication](../sdk/authentication/overview) mechanisms to their PKP using Lit Actions.
-
-### Smart Signing
-
-Functionally, PKPs and Lit Actions introduce a capacity for developing distributed serverless functions that have the ability to sign data with their own private key. This can be used to facilitate complex, condition-based automation within and across decentralized applications, as well as to generate proofs for verifying data from arbitrary on or off-chain sources. A simple example would be a Lit Action and corresponding PKP that checks if a number is prime. The Lit Action will only return a signed response if the number is prime, kind of like a sort of prime number certification service. In this case, since the Lit Action is immutable, and every signature requires participation from at least two-thirds of nodes, there is a provable chain of trust. Instead of having to do the math to ensure a number is prime, you could simply use the number as an input in your Lit Action and use the signature as proof.
-
-### MPC Wallets
-
-Each PKP is functionally [a wallet](../sdk/wallets/intro), where the private key lives across the Lit Network. The two-thirds threshold requirement provides a level of censorship resistance and fault tolerance that “typical” 2-of-2 MPC designs do not. In addition to any 2-of-2 provider being able to deny the user access to their funds or censor transactions, most of these systems also require the end user to manage a key share (i.e the provider holds a share and the user holds the other share). This means the goal of a seamless, “web2” style onboarding UX without seed phrases or private key management is not possible, instead delivering the UX of self-custody with additional steps.
-
-Lit Actions are used to handle each PKP’s [authentication logic](https://spark.litprotocol.com/how-authentication-works-with-pkps/). Authentication refers to the method used to communicate with and “control” the underlying key pair. As mentioned above, by default each key pair is controlled by the underlying blockchain account (“wallet”) who mints and holds the associated PKP NFT. But what about users who don’t already have a wallet and are attempting to onboard into the ecosystem for the first time? Lit has integrated several “web2” authentication methods to make this onboarding process seamless for the end user, including WebAuthn (Apple Passkey) and oAuth. These credentials can be harnessed as the mechanism(s) associated with ownership of the PKP, [linking familiar web2 accounts to the world of web3](https://spark.litprotocol.com/wallet-abstraction-with-google-oauth/).
-
-The use of Lit Actions in the wallet context also provides users with the ability to define automated signing logic. For example, setting up an on-chain limit order for the assets held within the wallet, or configuring a [monthly dollar-cost average investment scheme](https://spark.litprotocol.com/automated-portfolio-rebalancing-uniswap/). Of course, this signing logic is arbitrary and can be customized based on the specific context and applications being used.
-
-![cloudSigning](/img/CloudSigning.png)
-
-## Supported Chains
-
-Lit is currently compatible with most EVM blockchains, Cosmos, and Solana. You can find the full list of supported chains [here](../resources/supported-chains).
-
-## Getting Started
-
-Learn more by checking out the [Lit blog.](https://spark.litprotocol.com/resources/)
-
-Getting started with [access control and encryption.](../sdk/access-control/intro)
-
-Dive into programmatic signing with [PKPs and Lit Actions.](../sdk/wallets/intro)
-
-Working with the [Lit SDK.](../sdk/installation)
+Did you find this guide helpful? If not, please [reach out](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform?usp=send_form).
