@@ -45,7 +45,7 @@ All Lit node operators run a bare metal install of [AMD’s SEV-SNP](https://www
 - **Trusted Execution Environment (TEE)**: SEV-SNP is an example of a TEE, which provides advanced hardware-level isolation for all network operations.
 - **Code Immutability and Confidentiality:** Deployed programs within the TEE are immutable and private, preventing unauthorized changes and maintaining consistent operational integrity.
 
-## 4. Programmability
+## 3. Programmability
 
 As mentioned, each Lit node is a confidential compute environment. This enables developers to write [programs](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start) that govern the signing and encryption. 
 
