@@ -24,7 +24,7 @@ const litNodeClient = new LitNodeClient({
 });
 await litNodeClient.connect();
 
-let nonce = litNodeClient.getLatestBlockhash();
+let nonce = await litNodeClient.getLatestBlockhash();
 
 /**
  * When the getSessionSigs function is called, it will generate a session key
