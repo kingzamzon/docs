@@ -73,21 +73,21 @@ In this example stub, the litNodeClient is stored in a global variable `app.loca
 
 > Keep in mind that in the server-side implementation, the client class is named `LitNodeClientNodeJs`.
 
-`client.connect()` returns a promise that resolves when you are connected to the Lit network.
+`app.locals.litNodeClient.connect()` returns a promise that resolves when you are connected to the Lit network.
 
 ```js
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   alertWhenUnauthorized: false,
-  litNetwork: "cayenne",
+  litNetwork: "habanero",
 });
 await app.locals.litNodeClient.connect();
 ```
 
 The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network.
-To stop the litNodeClient listeners and allow node to exit gracefully, call `client.disconnect()`
+To stop the litNodeClient listeners and allow node to exit gracefully, call:
 
 ```js
-await app.locals.litNodeClient.disconnect()
+await app.locals.litNodeClient.disconnect();
 ```
 
 ### SDK installed for client side usage
@@ -98,10 +98,20 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set 
 
 ```js
 const client = new LitJsSdk.LitNodeClient({
-  litNetwork: 'cayenne',
+  litNetwork: 'habanero',
 });
 
 await client.connect();
+```
+
+:::note
+To avoid errors from Lit nodes due to stale `authSig`, make sure to clear the local storage for `authSig` before reconnecting or restarting the client. One way to do this is to disconnect the client first and then reconnect.
+:::
+
+The client listens to network state, and those listeners will keep your client running until you explicitly disconnect from the Lit network. To stop the client listeners and allow the browser to disconnect gracefully, call:
+
+```js
+await client.disconnect();
 ```
 
 ## Debug Logging and Lit Node Client configuration

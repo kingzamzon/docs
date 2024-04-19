@@ -29,14 +29,12 @@ Install the `@lit-protocol/lit-node-client` package, which can be used in both
 
 ```jsx
 yarn add @lit-protocol/lit-node-client
-
 ```
 
 Use the **Lit JS SDK V4**:
 
 ```jsx
 import * as LitJsSdkfrom "@lit-protocol/lit-node-client";
-
 ```
 
 :::note
@@ -50,11 +48,21 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set
 `client.connect()` will return a promise that resolves when you are connected to the Lit Network.
 
 ```jsx
-const client =new LitJsSdk.LitNodeClient({
+const client = new LitJsSdk.LitNodeClient({
   litNetwork: 'habanero',
 });
 
 await client.connect();
+```
+
+:::note
+To avoid errors from Lit nodes due to stale `authSig`, make sure to clear the local storage for `authSig` before reconnecting or restarting the client. One way to do this is to disconnect the client first and then reconnect.
+:::
+
+The client listens to network state, and those listeners will keep your client running until you explicitly disconnect from the Lit network. To stop the client listeners and allow the browser to disconnect gracefully, call:
+
+```jsx
+await client.disconnect();
 ```
 
 ### Server-Side Usage
@@ -65,8 +73,7 @@ In this example stub, the litNodeClient is stored in a global variable `app.loc
 Keep in mind that in the server-side implementation, the client class is named LitNodeClientNodeJs.
 :::
 
-
-`client.connect()` returns a promise that resolves when you are connected to the Lit network.
+`app.locals.litNodeClient.connect()` returns a promise that resolves when you are connected to the Lit network.
 
 ```jsx
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
@@ -74,12 +81,13 @@ app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   litNetwork: 'habanero',
 });
 await app.locals.litNodeClient.connect();
-
 ```
 
-The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call `client.disconnect()` and
+The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call: 
 
-`await app.locals.litNodeClient.disconnect()`.
+```jsx
+await app.locals.litNodeClient.disconnect();
+```
 
 ## Install the Required Packages
 
@@ -309,7 +317,6 @@ await contractClient.connect();
 After you’ve set your wallet, your next step is to mint the NFT:
 
 ```jsx
-
 // this identifier will be used in delegation requests. 
 const { capacityTokenIdStr } = await contractClient.mintCapacityCreditsNFT({
   requestsPerKilosecond: 80,
@@ -433,7 +440,6 @@ We can use the Capacity Credit delegation to generate a Session Signature for th
   });
 
   console.log("signature result ", res);
-
 ```
 
 ## Managing Authentication Methods
@@ -451,7 +457,6 @@ const litContracts = new LitContracts({
   signer: pkpWallet, // pkp wallet of the owner of the pkp NFT
 });
 await litContracts.connect();
-
 ```
 
 
