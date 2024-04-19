@@ -157,49 +157,46 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = litNodeClient.getLatestBlockhash();
+let nonce = litNodeClient.getLatestBlockhash();
 
-  // Initialize the signer
-  const wallet = new ethers.Wallet('<Your private key>');
-  const address = ethers.getAddress(await wallet.getAddress());
+// Initialize the signer
+const wallet = new ethers.Wallet('<Your private key>');
+const address = ethers.getAddress(await wallet.getAddress());
 
-  // Craft the SIWE message
-  const domain = 'localhost';
-  const origin = 'https://localhost/login';
-  const statement =
-    'This is a test statement.  You can put anything you want here.';
-    
-  // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-  const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
-  ).toISOString();
-  
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: '1',
-    chainId: 1,
-    nonce,
-    expirationTime,
-  });
-  const messageToSign = siweMessage.prepareMessage();
-  
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
+// Craft the SIWE message
+const domain = 'localhost';
+const origin = 'https://localhost/login';
+const statement =
+ 'This is a test statement.  You can put anything you want here.';
+ 
+// expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
+const expirationTime = new Date(
+ Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+).toISOString();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
-    signedMessage: messageToSign,
-    address: address,
-  };
+const siweMessage = new siwe.SiweMessage({
+ domain,
+ address: address,
+ statement,
+ uri: origin,
+ version: '1',
+ chainId: 1,
+ nonce,
+ expirationTime,
+});
+const messageToSign = siweMessage.prepareMessage();
 
-  console.log(authSig);
-}
+// Sign the message and format the authSig
+const signature = await wallet.signMessage(messageToSign);
 
-main();
+const authSig = {
+ sig: signature,
+ derivedVia: 'web3.eth.personal.sign',
+ signedMessage: messageToSign,
+ address: address,
+};
+
+console.log(authSig);
 ```
 
 ### Encryption
@@ -313,49 +310,46 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = litNodeClient.getLatestBlockhash();
+let nonce = litNodeClient.getLatestBlockhash();
 
-  // Initialize the signer
-  const wallet = new ethers.Wallet('<Your private key>');
-  const address = ethers.getAddress(await wallet.getAddress());
+// Initialize the signer
+const wallet = new ethers.Wallet('<Your private key>');
+const address = ethers.getAddress(await wallet.getAddress());
 
-  // Craft the SIWE message
-  const domain = 'localhost';
-  const origin = 'https://localhost/login';
-  const statement =
-    'This is a test statement.  You can put anything you want here.';
-    
-  // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-  const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
-  ).toISOString();
-  
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: '1',
-    chainId: 1,
-    nonce,
-    expirationTime,
-  });
-  const messageToSign = siweMessage.prepareMessage();
-  
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
+// Craft the SIWE message
+const domain = 'localhost';
+const origin = 'https://localhost/login';
+const statement =
+ 'This is a test statement.  You can put anything you want here.';
+ 
+// expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
+const expirationTime = new Date(
+ Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+).toISOString();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
-    signedMessage: messageToSign,
-    address: address,
-  };
+const siweMessage = new siwe.SiweMessage({
+ domain,
+ address: address,
+ statement,
+ uri: origin,
+ version: '1',
+ chainId: 1,
+ nonce,
+ expirationTime,
+});
+const messageToSign = siweMessage.prepareMessage();
 
-  console.log(authSig);
-}
+// Sign the message and format the authSig
+const signature = await wallet.signMessage(messageToSign);
 
-main();
+const authSig = {
+ sig: signature,
+ derivedVia: 'web3.eth.personal.sign',
+ signedMessage: messageToSign,
+ address: address,
+};
+
+console.log(authSig);
 ```
 
 ## Mint Capacity Credits and Delegate Usage

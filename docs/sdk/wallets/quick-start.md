@@ -178,61 +178,58 @@ const siweMessage = new siwe.SiweMessage({
 });
 const messageToSign = siweMessage.prepareMessage();
   
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
-	
-  const authSig = {
-    sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
-    signedMessage: messageToSign,
-    address: address,
-  };
+// Sign the message and format the authSig
+const signature = await wallet.signMessage(messageToSign);
 
-  console.log(authSig);
-  
-  // Form the authNeededCallback to create a session with
-  // the wallet signature.
-  const authNeededCallback = async (params) => {
-    const response = await client.signSessionKey({
-      statement: params.statement,
-      authMethods: [
-        {
-          authMethodType: 1,
-          // use the authSig created above to authenticate
-          // allowing the pkp to sign on behalf.
-          accessToken: JSON.stringify(authSig),
-        },
-      ],
-      pkpPublicKey: `<your pkp public key>`,
-      expiration: params.expiration,
-      resources: params.resources,
-      chainId: 1,
-    });
-    return response.authSig;
-  };
-	
-	// Set resources to allow for signing of any message.
-  const resourceAbilities = [
-    {
-      resource: new LitActionResource('*'),
-      ability: LitAbility.PKPSigning,
-    },
-  ];
-  // Get the session key for the session signing request
-  // will be accessed from local storage or created just in time.
-  const sessionKeyPair = client.getSessionKey();
-  
-  // Request a session with the callback to sign
-  // with an EOA wallet from the custom auth needed callback created above.
-  const sessionSigs = await client.getSessionSigs({
-	  chain: "ethereum",
-	  expiration:  new Date(Date.now() + 60_000 * 60).toISOString(),
-    resourceAbilityRequests: resourceAbilities,
-    authNeededCallback,
-  });
-}
+const authSig = {
+ sig: signature,
+ derivedVia: 'web3.eth.personal.sign',
+ signedMessage: messageToSign,
+ address: address,
+};
 
-main();
+console.log(authSig);
+
+// Form the authNeededCallback to create a session with
+// the wallet signature.
+const authNeededCallback = async (params) => {
+ const response = await client.signSessionKey({
+   statement: params.statement,
+   authMethods: [
+     {
+       authMethodType: 1,
+       // use the authSig created above to authenticate
+       // allowing the pkp to sign on behalf.
+       accessToken: JSON.stringify(authSig),
+     },
+   ],
+   pkpPublicKey: `<your pkp public key>`,
+   expiration: params.expiration,
+   resources: params.resources,
+   chainId: 1,
+ });
+ return response.authSig;
+};
+
+// Set resources to allow for signing of any message.
+const resourceAbilities = [
+ {
+   resource: new LitActionResource('*'),
+   ability: LitAbility.PKPSigning,
+ },
+];
+// Get the session key for the session signing request
+// will be accessed from local storage or created just in time.
+const sessionKeyPair = client.getSessionKey();
+
+// Request a session with the callback to sign
+// with an EOA wallet from the custom auth needed callback created above.
+const sessionSigs = await client.getSessionSigs({
+   chain: "ethereum",
+   expiration:  new Date(Date.now() + 60_000 * 60).toISOString(),
+   resourceAbilityRequests: resourceAbilities,
+   authNeededCallback,
+});
 ```
 
 ## Mint a PKP and Add Permitted Scopes
