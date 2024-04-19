@@ -153,7 +153,7 @@ const config = {
               },
               {
                 label: 'API',
-                href: 'https://js-sdk.litprotocol.com/index.html',
+                href: 'https://v5.api-docs.getlit.dev/',
               },
             ],
           },
@@ -162,7 +162,7 @@ const config = {
             items: [
               {
                 label: 'Support',
-                to: '/support',
+                to: '/v3/support/intro',
               },
             ],
           },
