@@ -53,7 +53,7 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set
 `client.connect()` will return a promise that resolves when you are connected to the Lit Network.
 
 ```jsx
-const client =new LitJsSdk.LitNodeClient({
+const client = new LitJsSdk.LitNodeClient({
   litNetwork: 'habanero',
 });
 
