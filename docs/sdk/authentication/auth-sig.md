@@ -119,7 +119,7 @@ async function main() {
 	});
   await litNodeClient.connect();
 
-  let nonce = litNodeClient.getLatestBlockhash();
+  let nonce = await litNodeClient.getLatestBlockhash();
 
   // Initialize the signer
   const wallet = new ethers.Wallet('<Your private key>');

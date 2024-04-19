@@ -23,7 +23,7 @@ Lit supports the use of both on and [off-chain data](../access-control/lit-actio
 
 1. Access Control Conditions can be defined using state from most EVM chains, Cosmos, and Solana.. View the full list [here](../../resources/supported-chains.md).
 2. AND + OR operators ([boolean logic](../access-control/condition-types/boolean-logic)) can be used to combine any of the supported conditions listed above.
-3. Storage provider of choice: use your preferred storage solution, including [IPFS](https://spark.litprotocol.com/encrypttoipfs/), Arweave, Ceramic, or even a centralized provider, like AWS.
+3. Storage provider of choice: use your preferred storage solution, including IPFS, Arweave, Ceramic, or even a centralized provider, like AWS.
 
 ## Resources
 

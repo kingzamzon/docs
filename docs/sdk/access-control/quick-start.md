@@ -120,7 +120,7 @@ In order to interact with the nodes in the Lit Network, you will need to generat
 The Lit SDK `checkAndSignAuthMessage()` function provides a convenient way to obtain an `AuthSig` from an externally-owned account in a browser environment.
 
 ```jsx
-const nonce = litNodeClient.getLatestBlockhash();
+const nonce = await litNodeClient.getLatestBlockhash();
 
 const authSig = await checkAndSignAuthMessage({
   chain: "ethereum",
@@ -147,7 +147,7 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = litNodeClient.getLatestBlockhash();
+  let nonce = await litNodeClient.getLatestBlockhash();
 
   // Initialize the signer
   const wallet = new ethers.Wallet('<Your private key>');
@@ -303,7 +303,7 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = litNodeClient.getLatestBlockhash();
+  let nonce = await litNodeClient.getLatestBlockhash();
 
   // Initialize the signer
   const wallet = new ethers.Wallet('<Your private key>');

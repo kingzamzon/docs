@@ -144,7 +144,7 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-let nonce = litNodeClient.getLatestBlockhash();
+let nonce = await litNodeClient.getLatestBlockhash();
 
 // Initialize the signer
 const wallet = new ethers.Wallet('<Your private key>');
