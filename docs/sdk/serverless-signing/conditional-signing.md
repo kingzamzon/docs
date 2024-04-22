@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 ## Prerequisites
 
 - Familiarity with JavaScript
-- Basic understanding of [severless signing](../serverless-signing/quick-start.md)
+- Basic understanding of [serverless signing](../serverless-signing/quick-start.md)
 
 ## Overview
 Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs. This system can be used to uphold the integrity of data on the open web, in its function as a decentralized notary.

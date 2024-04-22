@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 ## Prerequisites
 
 - Familiarity with JavaScript
-- Basic understanding of [severless signing](../serverless-signing/quick-start.md)
+- Basic understanding of [serverless signing](../serverless-signing/quick-start.md)
 
 ## Overview
 
