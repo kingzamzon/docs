@@ -38,7 +38,7 @@ If you are using `NodeJS` you should install `@lit-protocol/lit-node-client-node
 Use the **Lit JS SDK V4**:
 
 ```jsx
-import * as LitJsSdkfrom "@lit-protocol/lit-node-client";
+import * as LitJsSdk from "@lit-protocol/lit-node-client";
 
 ```
 
@@ -53,7 +53,7 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set
 `client.connect()` will return a promise that resolves when you are connected to the Lit Network.
 
 ```jsx
-const client =new LitJsSdk.LitNodeClient({
+const client = new LitJsSdk.LitNodeClient({
   litNetwork: 'habanero',
 });
 
