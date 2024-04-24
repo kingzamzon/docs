@@ -1,5 +1,9 @@
 
-# Lit v0 Migration Guide
+# Migrating to Lit v0
+
+:::info
+Read the full announcement [here](https://spark.litprotocol.com/introducing-decentralized-key-management-with-lit-v0/).
+:::
 
 The launch of Lit v0 introduces the [Habanero Mainnet](../network/networks/mainnet.md) and the [Manzano Testnet](../network/networks/testnet.md). 
 
