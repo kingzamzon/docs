@@ -12,7 +12,7 @@ Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: http
 
 You can use Lit to build seamless, non-custodial wallets and onboarding experiences using Programmable Key Pairs (PKPs). Each PKP is an ECDSA public / private key pair created by the Lit network using a Distributed Key Generation (DKG). Each Lit node holds a share, and more than two-thirds of these shares must be collected to execute a given action (i.e. a signed transaction). You can read more about how Lit works [here](../../resources/how-it-works.md).
 
-When used to build a wallet, PKPs can make onboarding into and interacting with web3 significantly simpler and more secure. You can hook up web2-style authentication (i.e. Google oAuth, Passkeys, etc) to these keys to abstract away the complexities of seed phrases and self-custody. Since PKPs are decentralized, you don't have to worry about the inherent risks associated with key custodians, ensuring no one but your user can control their wallet and manage the assets within. 
+When used to build a wallet, PKPs can make onboarding into and interacting with web3 significantly simpler and more secure. You can hook up web2-style authentication (i.e. Google OAuth, Passkeys, etc) to these keys to abstract away the complexities of seed phrases and self-custody. Since PKPs are decentralized, you don't have to worry about the inherent risks associated with key custodians, ensuring no one but your user can control their wallet and manage the assets within. 
 
 ## Features and Examples
 
