@@ -49,6 +49,7 @@ const sidebars = {
         'intro/overview',
         'intro/what-is-lit-protocol',
         'resources/how-it-works',
+        'network/migration-guide',
       ],
     },
     {
@@ -103,6 +104,35 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Authentication',
+          link: {
+            type: 'doc',
+            id: 'sdk/authentication/overview',
+          },
+          collapsed: true,
+          items: [
+            'sdk/authentication/auth-sig',
+            {
+              type: 'category',
+              label: 'Session Signatures',
+              link: {
+                type: 'doc',
+                id: 'sdk/authentication/session-sigs/intro',
+              },
+              collapsed: true,
+              items: [
+                'sdk/authentication/session-sigs/resources-and-abilities',
+                'sdk/authentication/session-sigs/capability-objects',
+                'sdk/capacity-credits',
+                'sdk/authentication/session-sigs/get-session-sigs',
+                'sdk/authentication/session-sigs/usage',
+              ],
+            },
+            'sdk/authentication/security',
+          ],
+        },
+        {
+          type: 'category',
           label: 'User Wallets',
           link: {
             type: 'doc',
@@ -122,36 +152,6 @@ const sidebars = {
                 keywords: ['user wallets'],
               },
               items:[
-                {
-                  type: 'category',
-                  label: 'Authentication',
-                  link: {
-                    type: 'doc',
-                    id: 'sdk/authentication/overview',
-                  },
-                  collapsed: true,
-                  items: [
-                    'sdk/authentication/auth-sig',
-                    {
-                      type: 'category',
-                      label: 'Session Signatures',
-                      link: {
-                        type: 'doc',
-                        id: 'sdk/authentication/session-sigs/intro',
-                      },
-                      collapsed: true,
-                      items: [
-                        'sdk/authentication/session-sigs/resources-and-abilities',
-                        'sdk/authentication/session-sigs/capability-objects',
-                        'sdk/capacity-credits',
-                        'sdk/authentication/session-sigs/get-session-sigs',
-                        'sdk/authentication/session-sigs/usage',
-                        'sdk/authentication/session-sigs/walletless-sigs',
-                      ],
-                    },
-                    'sdk/authentication/security',
-                  ],
-                },
                 {
                   type: 'category',
                   label: 'Auth Methods',
@@ -226,7 +226,6 @@ const sidebars = {
                 keywords: ['encryption', 'decryption'],
               },
               items:[
-                'sdk/access-control/encryption',
                 'sdk/access-control/jwt-auth',
                 {
                   type: 'category',
@@ -270,7 +269,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Private Compute (Lit Actions)',
+          label: 'Decentralized Compute (Lit Actions)',
           link: {
             type: 'doc',
             id: 'sdk/serverless-signing/overview',
@@ -329,9 +328,6 @@ const sidebars = {
               collapsed: true,
               items: ['network/networks/testnet', 'network/networks/mainnet'],
             },
-            'network/feature-matrix',
-            'network/rollup',
-            'network/migration-guide',
           ],
         },
         {
@@ -388,23 +384,6 @@ const sidebars = {
             },
           ],
         },
-        {
-          type: 'category',
-          label: 'Concepts',
-          collapsed: true,
-          link: {
-            type: 'generated-index',
-            title: 'Quick Concepts',
-            description: 'Learn about the different quick concepts that can help you with Lit SDK!',
-            keywords: ['concepts'],
-          },
-          items: [
-            'concepts/access-control-concept',
-            'concepts/programmable-signing-concept',
-            'concepts/pkps-as-wallet',
-            'concepts/capacity-credits-concept',
-          ],
-        },
         'sdk/tests',
       ],
     },
@@ -418,11 +397,12 @@ const sidebars = {
       },
       items: [
         'intro/usecases',
+        'network/rollup',
         'resources/supported-chains',
         'resources/contracts',
         'resources/glossary',
         'support/faq', 
-        'support/bug-bounty'
+        'support/bug-bounty',
       ],
     },
     {
@@ -455,7 +435,14 @@ const sidebars = {
         },
       ]
     },
-    'additional-examples',
+    {
+      type: 'category',
+      label: 'Additional Examples',
+      collapsed: true,
+      items: [
+        'additional-examples/intro',
+      ],
+    },
   ],
 };
 
