@@ -80,7 +80,7 @@ The current node operators active on the Habanero Mainnet Beta include:
 
 ### The Lit Protocol Token (LPX)
 
-The Lit Protocol token, LPX, will be used by node operator to meet their staking requirement, as well as a reward token to pay node operators for their service.  Developers using Lit will also use the token to pay for transacting on the network.
+The Lit Protocol token, LPX, will be used by node operators to meet their staking requirement, as well as a reward token to pay node operators for their service.  Developers using Lit will also use the token to pay for transacting on the network.
     
 :::info
 The LPX token is NOT live, and currently a test token (testLPX) is being used for staking and payment. The official LPX token will be released when the v1 network launches later this year. You can subscribe to updates [here](https://spark.litprotocol.com/).
