@@ -384,22 +384,6 @@ const sidebars = {
             },
           ],
         },
-        // {
-        //   type: 'category',
-        //   label: 'Concepts',
-        //   collapsed: true,
-        //   link: {
-        //     type: 'generated-index',
-        //     title: 'Quick Concepts',
-        //     description: 'Learn about the different quick concepts that can help you with Lit SDK!',
-        //     keywords: ['concepts'],
-        //   },
-        //   items: [
-        //     'concepts/access-control-concept',
-        //     'concepts/programmable-signing-concept',
-        //     'concepts/pkps-as-wallet',
-        //   ],
-        // },
         'sdk/tests',
       ],
     },
