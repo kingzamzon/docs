@@ -14,7 +14,7 @@ You can use Lit for encryption to store data privately on the open web. The Lit 
 
 Each Lit node holds a share of a shared BLS key. The signature from this BLS key serves as the decryption key for a particular set of [Access Control Conditions](../access-control/evm/basic-examples.md) and private data. The user will only be able to decrypt the data if they can prove that they satisfy the corresponding conditions.
 
-Lit's encryption scheme is highly efficient, as encryption is a entirely a client-side operation. Only one round of network interactivity (between the Lit nodes) is required for decryption in order to request the signature shares and assemble a decryption key.
+Lit's encryption scheme is highly efficient, as encryption is entirely a client-side operation. Only one round of network interactivity (between the Lit nodes) is required for decryption in order to request the signature shares and assemble a decryption key.
 
 The identity-based encryption scheme necessitates the construction of an identity parameter, and it is this parameter that the BLS network is producing signature shares over. In order to prevent the same network signature (decryption key) to be used for multiple distinct ciphertexts, we choose this identity parameter to be a combination of the hash of the Access Control Conditions and the hash of the private data itself.
 
