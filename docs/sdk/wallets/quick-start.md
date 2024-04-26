@@ -34,7 +34,7 @@ yarn add @lit-protocol/lit-node-client
 Use the **Lit JS SDK V4**:
 
 ```jsx
-import * as LitJsSdkfrom "@lit-protocol/lit-node-client";
+import * as LitJsSdk from "@lit-protocol/lit-node-client";
 ```
 
 :::note
