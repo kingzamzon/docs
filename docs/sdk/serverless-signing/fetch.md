@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 ## Prerequisites
 
 - Familiarity with JavaScript
-- Basic understanding of [severless signing](../serverless-signing/quick-start.md)
+- Basic understanding of [serverless signing](../serverless-signing/quick-start.md)
 
 ## Overview
 Unlike traditional smart contract ecosystems, Lit Actions can natively talk to the external world. This is useful for things like fetching data from the web, or sending API requests to other services.

@@ -11,7 +11,7 @@ Ensure you have the following requirements in place:
 
 1. Operating System: Linux, Mac OS, or Windows.
 2. Development Environment: You'll need an Integrated Development Environment (IDE) installed. We recommend Visual Studio Code.
-3. Languages: The Lit JS SDK V4 supports JavaScript. Make sure you have the appropriate language environment set up.
+3. Languages: The Lit JS SDK supports JavaScript. Make sure you have the appropriate language environment set up.
 4. Internet Connection: A stable internet connection is required for installation, updates, and interacting with the Lit nodes.
 
 ## Installing And Importing The SDK
@@ -30,7 +30,7 @@ Install the `@lit-protocol/lit-node-client` package, which can be used in both b
 yarn add @lit-protocol/lit-node-client
 ```
 
-Use the **Lit JS SDK V4**:
+Use the **Lit JS SDK**:
 
 ```js
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
@@ -46,7 +46,7 @@ Install the `@lit-protocol/lit-node-client-nodejs`, which is for Node environmen
 yarn add @lit-protocol/lit-node-client-nodejs
 ```
 
-Use the **Lit JS SDK V4**:
+Use the **Lit JS SDK**:
 
 ```js
 import * as LitJsSdk from "@lit-protocol/lit-node-client-nodejs";
@@ -116,6 +116,6 @@ await client.disconnect();
 
 ## Debug Logging and Lit Node Client configuration
 
-The `LitNodeClient` object has a number of config params you can pass, documented here: https://lit-js-sdk-v3-api-docs.vercel.app/interfaces/types_src.LitNodeClientConfig.html
+The `LitNodeClient` object has a number of config params you can pass, documented here: https://v5.api-docs.getlit.dev/
 
 For example, to turn off logging, you could set `debug` to `false` like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`

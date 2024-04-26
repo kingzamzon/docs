@@ -103,8 +103,6 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
   });
   await litNodeClient.connect();
   
-  let nonce = litNodeClient.getLatestBlockhash();
-  
   const authNeededCallback = async ({ resources, expiration, uri }) => {
     // you can change this resource to anything you would like to specify
     const litResource = new LitActionResource('*');
@@ -128,6 +126,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
       throw new Error('Failed to verify capabilities for resource');
     }
 
+    let nonce = await litNodeClient.getLatestBlockhash();
     let siweMessage = new siwe.SiweMessage({
       domain: 'localhost:3000', // change to your domain ex: example.app.com
       address: DELEGATEE_WALLET.address,

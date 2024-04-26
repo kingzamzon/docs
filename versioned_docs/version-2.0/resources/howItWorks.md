@@ -45,7 +45,7 @@ As mentioned above, Access Control Conditions are not limited to "on-chain" data
 
 This feature empowers individuals to securely store data on the open Web and offers organizations a convenient method for sharing and distributing content across entire communities. For instance, employing NFTs to designate roles and access levels within a DAO, or using token ownership to grant exclusive discounts to users on an e-commerce platform such as Shopify. The capacity to gate access based on any arbitrary data via Lit Actions expands these possibilities even further, allowing the creation of decryption rules based on any accessible state.
 
-Lit exclusively manages and provisions decryption keys, remaining entirely impartial to the storage provider. This means that **Lit does not store any encrypted content directly**, and developers integrating this service can choose a storage provider of their preference. Options include blockchains like Ethereum, open storage networks such as [IPFS](https://spark.litprotocol.com/encrypttoipfs/) or [Ceramic](https://github.com/LIT-Protocol/CeramicIntegration), or centralized providers like AWS or Google Cloud.
+Lit exclusively manages and provisions decryption keys, remaining entirely impartial to the storage provider. This means that **Lit does not store any encrypted content directly**, and developers integrating this service can choose a storage provider of their preference. Options include blockchains like Ethereum, open storage networks such as IPFS or [Ceramic](https://github.com/LIT-Protocol/CeramicIntegration), or centralized providers like AWS or Google Cloud.
 
 The comprehensive process for encryption and decryption with Lit is as follows:
 
