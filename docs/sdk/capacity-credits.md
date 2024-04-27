@@ -147,7 +147,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
     const signature = await DELEGATEE_WALLET.signMessage(messageToSign);
 
     const authSig = {
-      sig: signature.replace('0x', ''),
+      sig: signature,
       derivedVia: 'web3.eth.personal.sign',
       signedMessage: messageToSign,
       address: DELEGATEE_WALLET.address,

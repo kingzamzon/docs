@@ -94,7 +94,7 @@ You can read more about Session Signatures [here](../sdk/authentication/session-
     const signature = await dAppOwnerWallet.signMessage(messageToSign);
 
     const authSig = {
-      sig: signature.replace('0x', ''),
+      sig: signature,
       derivedVia: 'web3.eth.personal.sign',
       signedMessage: messageToSign,
       address: dAppOwnerWallet_address,
