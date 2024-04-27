@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Wallet Signatures
 
 An `AuthSig` is a wallet signature obtained from a user. Wallet signatures are required to communicate with the Lit Nodes and authorize requests.
@@ -163,3 +165,5 @@ async function main() {
 
 main();
 ```
+
+<FeedbackComponent/>

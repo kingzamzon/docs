@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -499,4 +501,4 @@ By now you should have successfully written a Lit Action, minted a PKP, and used
 3. [Using Dependencies](../serverless-signing/dependencies.md).
 4. [Creating Blockchain Transactions](../serverless-signing/processing-validation.md).
 
-Did you find this guide helpful? If not, please [get in touch](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform?usp=send_form).
+<FeedbackComponent/>

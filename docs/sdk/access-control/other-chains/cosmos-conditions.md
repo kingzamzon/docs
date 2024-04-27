@@ -2,6 +2,8 @@
 sidebar_position: 5
 ---
 
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Cosmos Examples
 
 :::danger
@@ -97,3 +99,5 @@ var unifiedAccessControlConditions = [
   },
 ];
 ```
+
+<FeedbackComponent/>

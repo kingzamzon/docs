@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -117,3 +119,5 @@ const signatures =await litNodeClient.executeJs({
 
 runLitAction();
 ```
+
+<FeedbackComponent/>

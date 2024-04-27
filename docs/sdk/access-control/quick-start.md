@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Quick Start
 
 ## Start Here
@@ -491,4 +493,4 @@ By now you should have successfully created an Access Control Condition and perf
 3. [Off-Chain Conditions](../access-control/lit-action-conditions.md).
 4. [Custom Contract Calls](../access-control/evm/custom-contract-calls.md).
 
-Did you find this guide helpful? If not, please [get in touch](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform?usp=send_form).
+<FeedbackComponent/>

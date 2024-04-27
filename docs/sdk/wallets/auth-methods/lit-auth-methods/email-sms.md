@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Stytch OTP / TOTP
 
 Email and SMS authentication provides users with a convenient way to verify their identity using one-time passwords (OTP) sent to their registered email address or phone number.
@@ -223,3 +225,5 @@ console.log("session signatures: ", sessionSigs);
 const authSig = sessionSigs[Object.keys(sessionSigs)[0]];
 console.log("authSig", authSig);
 ```
+
+<FeedbackComponent/>

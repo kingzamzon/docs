@@ -6,6 +6,8 @@ Learn how to encrypt data before storing on-chain on [Irys](https://irys.xyz/).
 
 ---
 
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 ## Objectives
 
 At completion of this reading you should be able to:
@@ -369,3 +371,5 @@ main();
 If you have questions while building, make sure to reach out to the Lit development team on [Discord](https://litgateway.com/discord).
 
 Questions about Irys? Go to the [Irys Discord](https://discord.irys.xyz) to get in touch.
+
+<FeedbackComponent/>

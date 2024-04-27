@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Custom Auth Methods
 
 If you would like further customization over your PKP auth methods, or want to add a new one not yet supported by Lit, you can do auth yourself with a Lit Action, using the auth helpers we provide (see below). In this scenario, after you give your Lit Action permission to use the PKP, the typical flow is to burn the PKP NFT or send it to itself. It is important to note, if you do decide to burn the PKP, you will be unable to add additional auth methods in the future. 
@@ -141,3 +143,4 @@ Next, you need to authorize your user and that they are permitted to use the PKP
 At this point, you should check the array returned by `getPermittedAuthMethods()` to see if your user's identity material (for example, a Roblox user id) is present.  Remember - you should have hashed their user id when you minted the PKP, so you should hash it here too before comparing it to the elements in the `getPermittedAuthMethods()` array.  
 
 If you find a match in the array, then you know the user is permitted to use the PKP, and you can proceed with signing or whatever else you want to do.
+<FeedbackComponent/>

@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Mint via Social or Email/SMS (OTP) 
 
 ## Social
@@ -180,3 +182,4 @@ async function authenticateWithStytch(method, code, methodId) {
 ```
 
 Read more about this process [here](../auth-methods).
+<FeedbackComponent/>

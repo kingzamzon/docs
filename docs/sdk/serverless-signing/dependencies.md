@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Dependencies in Lit Actions
 
 We preload some dependencies for you: 
@@ -13,3 +15,4 @@ To add your own dependencies, you'll have to use a bundler, and provide the bund
 ## Built in functions
 
 We provide a number of functions in the Lit.Actions.* namespace, to do things like call a contract or check an access control condition.  The API docs for this are located here: https://actions-docs.litprotocol.com/
+<FeedbackComponent/>

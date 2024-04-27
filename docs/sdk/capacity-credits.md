@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Capacity Credits
 
 :::info
@@ -253,3 +255,5 @@ For more information on session signatures and pkps see [here](./authentication/
   console.log("signature result ", res);
 
 ```
+
+<FeedbackComponent/>

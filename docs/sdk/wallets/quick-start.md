@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Quick Start
 
 ## Start Here
@@ -553,4 +555,4 @@ By now you should have successfully minted a PKP, assigned an auth method and pe
 3. [Running Custom Authentication](../wallets/auth-methods/custom-auth.md).
 4. [Connecting PKPs to dApps with WalletConnect](../wallets/walletconnect.md).
 
-Did you find this guide helpful? If not, please [get in touch](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform?usp=send_form).
+<FeedbackComponent/>

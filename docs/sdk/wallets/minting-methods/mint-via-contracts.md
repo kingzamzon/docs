@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 # Mint via Contracts
 
 You can mint a PKP NFT from the PKP contract on Chronicle - Lit's custom EVM rollup testnet - using 
@@ -125,3 +127,4 @@ const mintTx = await authProvider.mintPKPThroughRelayer(
 3. [Minting a PKP with no permissions, then add permitted scopes](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-then-set-scope-1.mjs)
 
 4. [Minting a PKP using the relayer, adding permitted scopes, and getting session sigs](https://github.com/LIT-Protocol/js-sdk/tree/feat/SDK-V3/e2e-nodejs/group-pkp-session-sigs)
+<FeedbackComponent/>

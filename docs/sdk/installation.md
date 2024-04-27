@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/components/FeedbackComponent";
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -119,3 +121,5 @@ await client.disconnect();
 The `LitNodeClient` object has a number of config params you can pass, documented here: https://v5.api-docs.getlit.dev/
 
 For example, to turn off logging, you could set `debug` to `false` like this: `const client = new LitJsSdk.LitNodeClient({debug: false})`
+
+<FeedbackComponent/>
