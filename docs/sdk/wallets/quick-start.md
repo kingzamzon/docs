@@ -94,8 +94,8 @@ await app.locals.litNodeClient.disconnect();
 ## Install the Required Packages
 
 ```jsx
-yarn add @lit-protocol/lit-auth-client
 yarn add @lit-protocol/contracts-sdk
+yarn add @lit-protocol/lit-auth-client
 ```
 
 ### Set up a controller wallet
@@ -105,6 +105,8 @@ To initialize a LitContracts client you need an Ethereum Signer. This can be a s
 ### Initialize the `contracts-sdk`
 
 ```jsx
+import { LitContracts } from '@lit-protocol/contracts-sdk';
+
 const contractClient = new LitContracts({
   signer: wallet,
   network: 'habanero',
@@ -279,6 +281,8 @@ const mintInfo = await contractClient.mintWithAuth({
 You should now have successfully minted a PKP! You can verify that the PKP has the necessary permissions for signing by calling the following function:
 
 ```jsx
+import { LitAuthClient } from '@lit-protocol/lit-auth-client';
+
 const authId = await LitAuthClient.getAuthIdByAuthMethod(authMethod);
 await contractClient.pkpPermissionsContract.read.getPermittedAuthMethodScopes(
   mintInfo.pkp.tokenId,
@@ -305,6 +309,7 @@ The first step is to initialize a signer. This should be a wallet controlled by 
 
 ```jsx
 const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
+
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
   network: 'habanero',

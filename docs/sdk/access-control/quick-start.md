@@ -354,7 +354,7 @@ const authSig = {
 console.log(authSig);
 ```
 
-## Mint Capacity Credits and Delegate Usage
+### Mint Capacity Credits
 
 In order to execute a transaction with Lit, you’ll need to reserve capacity on the network using Capacity Credits. These allow holders to reserve a set number of requests (requests per second) over a desired period of time (i.e. one week). You can mint a Capacity Credit NFT using the `contracts-sdk` in a couple of easy steps.
 
@@ -362,7 +362,6 @@ First, ensure you have the `@lit-protocol/contracts-sdk` package installed, whi
 
 ```jsx
 yarn add @lit-protocol/contracts-sdk
-
 ```
 
 OR
@@ -375,6 +374,7 @@ The next step is to initialize a signer. This should be a wallet controlled by y
 
 ```jsx
 const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
+
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
   network: 'habanero',
