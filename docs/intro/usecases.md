@@ -3,7 +3,7 @@ slug: /usecases
 sidebar_position: 4
 ---
 
-import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Use Cases
 

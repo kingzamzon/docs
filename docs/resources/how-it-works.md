@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # How Does Lit Protocol Work
 

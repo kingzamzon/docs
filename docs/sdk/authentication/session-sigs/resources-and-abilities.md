@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Lit Resources and Abilities
 

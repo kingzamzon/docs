@@ -1,4 +1,4 @@
-import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Mint via multiple Auth Methods
 You can also mint a PKP using [multiple Auth Methods](../auth-methods#existing-supported-auth-methods) (i.e. Multi-Factor Authentication). This can be done in two different ways:

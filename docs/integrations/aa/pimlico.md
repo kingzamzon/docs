@@ -9,7 +9,7 @@ Learn how to use Lit Protocol's one time password (OTP) sign-in (email, SMS, and
 
 ---
 
-import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/feedback.md";
 
 ## Objectives
 At completion of this reading you should be able to:
