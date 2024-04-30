@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
 
 # Sign In With Ethereum Parameters
 

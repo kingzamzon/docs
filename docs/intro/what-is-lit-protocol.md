@@ -3,7 +3,7 @@ slug: /what-is-lit
 sidebar_position: 2
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
 
 # What is Lit Protocol
 

@@ -4,7 +4,7 @@ Learn how to use Lit Protocol with account abstraction providers to streamline h
 
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
 
 ## Objectives
 At completion of this reading you should be able to:

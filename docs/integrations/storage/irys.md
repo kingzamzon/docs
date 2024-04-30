@@ -6,7 +6,7 @@ Learn how to encrypt data before storing on-chain on [Irys](https://irys.xyz/).
 
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
 
 ## Objectives
 

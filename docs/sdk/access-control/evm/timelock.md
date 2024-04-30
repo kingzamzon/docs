@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
+import FeedbackComponent from "@site/src/pages/FeedbackComponent.md";
 
 # Timelock Example
 
