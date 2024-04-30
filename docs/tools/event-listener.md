@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Event Listener
 
  <iframe width="640" 
@@ -31,3 +33,5 @@ Looking to automate signing with Lit Actions, without minimal code? Check out [t
 
 
 Event listener SDK brought to you by [DIGITALAX](https://github.com/DIGITALAX). Read the [documentation](https://docs.irrevocable.dev/) to learn more.
+
+<FeedbackComponent/>

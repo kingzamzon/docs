@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Quick Start
 
 ## Start Here
@@ -23,7 +25,6 @@ Install the `@lit-protocol/lit-node-client` package, which can be used in both
 
 ```jsx
 yarn add @lit-protocol/lit-node-client
-
 ```
 
 OR
@@ -31,6 +32,7 @@ OR
 ```jsx
 npm i @lit-protocol/lit-node-client
 ```
+
 :::note
 If you are using `NodeJS` you should install `@lit-protocol/lit-node-client-nodejs`
 :::
@@ -39,7 +41,6 @@ Use the **Lit JS SDK V4**:
 
 ```jsx
 import * as LitJsSdk from "@lit-protocol/lit-node-client";
-
 ```
 
 :::note
@@ -60,6 +61,16 @@ const client = new LitJsSdk.LitNodeClient({
 await client.connect();
 ```
 
+:::note
+To avoid errors from Lit nodes due to stale `authSig`, make sure to clear the local storage for `authSig` before reconnecting or restarting the client. One way to do this is to disconnect the client first and then reconnect.
+:::
+
+The client listens to network state, and those listeners will keep your client running until you explicitly disconnect from the Lit network. To stop the client listeners and allow the browser to disconnect gracefully, call:
+
+```jsx
+await client.disconnect();
+```
+
 ### Server-Side Usage
 
 In this example stub, the litNodeClient is stored in a global variable `app.locals.litNodeClient` so that it can be used throughout the server. `app.locals` is provided by **[Express](https://expressjs.com/)** for this purpose. You may have to use what your own server framework provides for this purpose, instead.
@@ -68,7 +79,7 @@ In this example stub, the litNodeClient is stored in a global variable `app.loc
 Keep in mind that in the server-side implementation, the client class is named LitNodeClientNodeJs.
 :::
 
-`client.connect()` returns a promise that resolves when you are connected to the Lit network.
+`app.locals.litNodeClient.connect()` returns a promise that resolves when you are connected to the Lit network.
 
 ```jsx
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
@@ -76,12 +87,13 @@ app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   litNetwork: 'habanero',
 });
 await app.locals.litNodeClient.connect();
-
 ```
 
-The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call `client.disconnect()` and
+The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call: 
 
-`await app.locals.litNodeClient.disconnect()` .
+```jsx
+await app.locals.litNodeClient.disconnect();
+```
 
 ## Performing Encryption
 
@@ -147,49 +159,46 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = await litNodeClient.getLatestBlockhash();
+let nonce = litNodeClient.getLatestBlockhash();
 
-  // Initialize the signer
-  const wallet = new ethers.Wallet('<Your private key>');
-  const address = ethers.getAddress(await wallet.getAddress());
+// Initialize the signer
+const wallet = new ethers.Wallet('<Your private key>');
+const address = ethers.getAddress(await wallet.getAddress());
 
-  // Craft the SIWE message
-  const domain = 'localhost';
-  const origin = 'https://localhost/login';
-  const statement =
-    'This is a test statement.  You can put anything you want here.';
-    
-  // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-  const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
-  ).toISOString();
-  
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: '1',
-    chainId: 1,
-    nonce,
-    expirationTime,
-  });
-  const messageToSign = siweMessage.prepareMessage();
-  
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
+// Craft the SIWE message
+const domain = 'localhost';
+const origin = 'https://localhost/login';
+const statement =
+ 'This is a test statement.  You can put anything you want here.';
+ 
+// expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
+const expirationTime = new Date(
+ Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+).toISOString();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
-    signedMessage: messageToSign,
-    address: address,
-  };
+const siweMessage = new siwe.SiweMessage({
+ domain,
+ address: address,
+ statement,
+ uri: origin,
+ version: '1',
+ chainId: 1,
+ nonce,
+ expirationTime,
+});
+const messageToSign = siweMessage.prepareMessage();
 
-  console.log(authSig);
-}
+// Sign the message and format the authSig
+const signature = await wallet.signMessage(messageToSign);
 
-main();
+const authSig = {
+ sig: signature,
+ derivedVia: 'web3.eth.personal.sign',
+ signedMessage: messageToSign,
+ address: address,
+};
+
+console.log(authSig);
 ```
 
 ### Encryption
@@ -303,52 +312,49 @@ const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
 const { ethers } = require("ethers");
 const siwe = require('siwe');
 
-  let nonce = await litNodeClient.getLatestBlockhash();
+let nonce = litNodeClient.getLatestBlockhash();
 
-  // Initialize the signer
-  const wallet = new ethers.Wallet('<Your private key>');
-  const address = ethers.getAddress(await wallet.getAddress());
+// Initialize the signer
+const wallet = new ethers.Wallet('<Your private key>');
+const address = ethers.getAddress(await wallet.getAddress());
 
-  // Craft the SIWE message
-  const domain = 'localhost';
-  const origin = 'https://localhost/login';
-  const statement =
-    'This is a test statement.  You can put anything you want here.';
-    
-  // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-  const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
-  ).toISOString();
-  
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: '1',
-    chainId: 1,
-    nonce,
-    expirationTime,
-  });
-  const messageToSign = siweMessage.prepareMessage();
-  
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
+// Craft the SIWE message
+const domain = 'localhost';
+const origin = 'https://localhost/login';
+const statement =
+ 'This is a test statement.  You can put anything you want here.';
+ 
+// expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
+const expirationTime = new Date(
+ Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+).toISOString();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: 'web3.eth.personal.sign',
-    signedMessage: messageToSign,
-    address: address,
-  };
+const siweMessage = new siwe.SiweMessage({
+ domain,
+ address: address,
+ statement,
+ uri: origin,
+ version: '1',
+ chainId: 1,
+ nonce,
+ expirationTime,
+});
+const messageToSign = siweMessage.prepareMessage();
 
-  console.log(authSig);
-}
+// Sign the message and format the authSig
+const signature = await wallet.signMessage(messageToSign);
 
-main();
+const authSig = {
+ sig: signature,
+ derivedVia: 'web3.eth.personal.sign',
+ signedMessage: messageToSign,
+ address: address,
+};
+
+console.log(authSig);
 ```
 
-## Mint Capacity Credits and Delegate Usage
+### Mint Capacity Credits
 
 In order to execute a transaction with Lit, you’ll need to reserve capacity on the network using Capacity Credits. These allow holders to reserve a set number of requests (requests per second) over a desired period of time (i.e. one week). You can mint a Capacity Credit NFT using the `contracts-sdk` in a couple of easy steps.
 
@@ -356,7 +362,6 @@ First, ensure you have the `@lit-protocol/contracts-sdk` package installed, whi
 
 ```jsx
 yarn add @lit-protocol/contracts-sdk
-
 ```
 
 OR
@@ -369,6 +374,7 @@ The next step is to initialize a signer. This should be a wallet controlled by y
 
 ```jsx
 const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
+
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
   network: 'habanero',
@@ -380,7 +386,6 @@ await contractClient.connect();
 After you’ve set your wallet, your next step is to mint the NFT:
 
 ```jsx
-
 // this identifier will be used in delegation requests. 
 const { capacityTokenIdStr } = await contractClient.mintCapacityCreditsNFT({
   requestsPerKilosecond: 80,
@@ -452,7 +457,6 @@ const decryptedString =await LitJsSdk.decryptToString(
   },
   litNodeClient
 );
-
 ```
 
 ### Putting it all together
@@ -489,4 +493,4 @@ By now you should have successfully created an Access Control Condition and perf
 3. [Off-Chain Conditions](../access-control/lit-action-conditions.md).
 4. [Custom Contract Calls](../access-control/evm/custom-contract-calls.md).
 
-Did you find this guide helpful? If not, please [get in touch](https://docs.google.com/forms/d/e/1FAIpQLScBVsg-NhdMIC1H1mozh2zaVX0V4WtmEPSPrtmqVtnj_3qqNw/viewform?usp=send_form).
+<FeedbackComponent/>

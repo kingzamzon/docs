@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Capacity Credits
 
 :::info
@@ -145,7 +147,7 @@ Here we are delegating usage of `Capacity Credit` from a wallet which posseses t
     const signature = await DELEGATEE_WALLET.signMessage(messageToSign);
 
     const authSig = {
-      sig: signature.replace('0x', ''),
+      sig: signature,
       derivedVia: 'web3.eth.personal.sign',
       signedMessage: messageToSign,
       address: DELEGATEE_WALLET.address,
@@ -253,3 +255,5 @@ For more information on session signatures and pkps see [here](./authentication/
   console.log("signature result ", res);
 
 ```
+
+<FeedbackComponent/>

@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 
 # Migrating to Lit v0
 
@@ -275,3 +277,4 @@ A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For mi
 You’ll also need some 'testLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Habanero. `testLPX` should only be claimed from the verified faucet, linked [here](https://faucet.litprotocol.com/).
 
 For more information on Capacity Credits and network rate limiting see [here](../concepts/capacity-credits-concept)
+<FeedbackComponent/>

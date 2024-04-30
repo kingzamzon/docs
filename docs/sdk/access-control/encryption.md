@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Encryption
 
 The Lit network uses an identity (ID) based encryption scheme to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity.
@@ -217,3 +219,5 @@ async decrypt(ciphertext: string, dataToEncryptHash: string, accessControlCondit
 ```
 
 Check out [this example](https://github.com/LIT-Protocol/js-sdk/tree/feat/SDK-V3/apps/demo-encrypt-decrypt-react) for a full-fledged **React** application that encrypts and decrypts a **string** using the Lit JS SDK V3.
+
+<FeedbackComponent/>

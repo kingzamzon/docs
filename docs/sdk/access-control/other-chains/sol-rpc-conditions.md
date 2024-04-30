@@ -2,6 +2,8 @@
 sidebar_position: 4
 ---
 
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Solana Examples
 
 :::danger
@@ -149,3 +151,5 @@ The condition below will derive a PDA using pdaParams, pdaInterface, and pdaKey.
   },
 ];
 ```
+
+<FeedbackComponent/>

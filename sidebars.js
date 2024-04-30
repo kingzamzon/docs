@@ -148,7 +148,6 @@ const sidebars = {
               link:{
                 type: 'generated-index',
                 title: 'Advanced Topics',
-                description: 'Learn about the advanced topics for User Wallets in Lit SDK!',
                 keywords: ['user wallets'],
               },
               items:[
@@ -222,7 +221,6 @@ const sidebars = {
               link:{
                 type: 'generated-index',
                 title: 'Advanced Topics',
-                description: 'Learn about the advanced topics for Encryption/Decryption in Lit SDK!',
                 keywords: ['encryption', 'decryption'],
               },
               items:[
@@ -284,7 +282,6 @@ const sidebars = {
               link:{
                 type: 'generated-index',
                 title: 'Advanced Topics',
-                description: 'Learn about the advanced topics for Compute (Lit Actions) in Lit SDK!',
                 keywords: ['compute', 'lit actions'],
               },
               items: [

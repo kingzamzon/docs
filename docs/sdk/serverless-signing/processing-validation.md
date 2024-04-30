@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # Processing & Validation
 
 ## Generating Signed Transactions
@@ -213,3 +215,4 @@ const runLitAction = async () => {
 
 runLitAction();
 ```
+<FeedbackComponent/>

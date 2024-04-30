@@ -1,3 +1,5 @@
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 # JWT Auth
 
 Access control conditions can be used to "gate" the signing of JWTs that are used to load dynamic content from a server.
@@ -106,3 +108,5 @@ const jwt = await litNodeClient.getSignedToken({
 ```
 
 You can then present this JWT to a server, which can verify it using the [`verifyJwt` function](https://js-sdk.litprotocol.com/functions/encryption_src.verifyJwt.html).
+
+<FeedbackComponent/>

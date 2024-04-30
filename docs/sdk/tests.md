@@ -2,6 +2,8 @@
 sidebar_position: 5
 ---
 
+import FeedbackComponent from "@site/src/pages/feedback.md";
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -126,3 +128,5 @@ values={[
 ## Wallet Error Handling
 
 MetaMask and other wallets throw errors themselves. The format for those exceptions can be found [here](https://docs.metamask.io/guide/ethereum-provider.html#errors).
+
+<FeedbackComponent/>
