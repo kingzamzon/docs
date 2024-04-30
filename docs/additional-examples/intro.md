@@ -1,4 +1,4 @@
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Overview
 

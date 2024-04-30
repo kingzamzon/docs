@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Authenticate with SessionSigs
 

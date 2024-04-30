@@ -8,7 +8,7 @@ Learn how Lit [Programmable Key Pairs](../../sdk/wallets/intro.md) can be a sign
 
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 ## Objectives
 At completion of this reading you should be able to:

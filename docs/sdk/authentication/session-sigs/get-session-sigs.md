@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Generating SessionSigs
 

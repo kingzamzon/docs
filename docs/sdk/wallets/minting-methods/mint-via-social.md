@@ -1,4 +1,4 @@
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Mint via Social or Email/SMS (OTP) 
 

@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Lit Action Conditions
 

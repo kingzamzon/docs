@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-import FeedbackComponent from "@site/src/components/FeedbackComponent";
+import FeedbackComponent from "@site/src/components/FeedbackComponent.md";
 
 # Unified Access Control Conditions
 
