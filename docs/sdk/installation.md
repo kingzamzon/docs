@@ -65,7 +65,7 @@ The SDK requires an active connection to the Lit nodes to perform most functions
 
 In web apps, this is typically done on first page load and can be shared between all your pages. In NodeJS apps, this is done when when the server starts.
 
-Calling `connect()` on the `litNodeClient`` returns a promise that resolves when you are connected to the Lit network.
+Calling `connect()` on the `litNodeClient` returns a promise that resolves when you are connected to the Lit network.
 
 ### SDK installed via NodeJS / serverside usage
 
