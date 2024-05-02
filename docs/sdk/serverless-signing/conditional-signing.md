@@ -33,7 +33,7 @@ Set up the Lit Action code to be run on the Lit nodes.
 const litActionCode = `
 const go = async () => {
   // test an access control condition
-  const testResult = await Lit.Actions.checkConditions({conditions, authSig, chain})
+  const testResult = await Lit.Actions.checkConditions({conditions, sessionSigs, chain})
 
   console.log('testResult', testResult)
 
@@ -52,13 +52,11 @@ const go = async () => {
   const sigShare = await LitActions.signEcdsa({ toSign, publicKey: "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64", sigName: "sig1" });
 };
 
-
-
 go();
 `;
 ```
 
-Obtain a [SessionSig](../../sdk/authentication/session-sigs/get-session-sigs)
+Obtain a [SessionSig](../../sdk/authentication/session-sigs/get-session-sigs).
 
 Run the Lit Action code on the Lit nodes:
 
@@ -90,6 +88,7 @@ const signatures =await litNodeClient.executeJs({
           },
         },
       ],
+      sessionSigs,
       chain: "ethereum",
     },
   });
