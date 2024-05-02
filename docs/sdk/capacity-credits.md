@@ -61,7 +61,7 @@ To use your new Capacity Credits NFT you will have to sign an `Auth Signature` w
 ## **Delegating Access to your Capacity Credits NFT**
 
 Usage of your Capacity Credits NFT may be delegated to other wallets. To create a `Capacity Credits NFT delegation` you can do so with the following example
-Here we use the `capacityTokenId` we recieved when minting our Capacity Credit.
+Here we use the `capacityTokenId` we received when minting our Capacity Credit.
 
 ```javascript
 const litNodeClient = new LitNodeClient({

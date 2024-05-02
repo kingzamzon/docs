@@ -31,7 +31,7 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
 
 ```jsx
   const res = await client.executeJs({
-    authSig,
+    sessionSigs,
     code: `(async () => {
       Lit.Actions.claimKey({keyId: userId});
     })();`,
@@ -49,7 +49,7 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
 ```jsx
   const authMethod = {
     authMethodType: AuthMethodType.EthWallet,
-    accessToken: JSON.stringify(authSig),
+    accessToken: JSON.stringify(sessionSigs),
   };
 
   const authMethodId = LitAuthClient.getAuthMethodId(authMethod);
@@ -57,7 +57,7 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
   const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLitAction_yourUserId"))
 
   const res = await client.executeJs({
-    authSig,
+    sessionSigs,
     code: `(async () => {
       Lit.Actions.claimKey({keyId: userId});
     })();`,
