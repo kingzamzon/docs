@@ -33,7 +33,7 @@ Set up the Lit Action code to be run on the Lit nodes.
 const litActionCode = `
 const go = async () => {
   // test an access control condition
-  const testResult = await Lit.Actions.checkConditions({conditions, sessionSigs, chain})
+  const testResult = await Lit.Actions.checkConditions({conditions, authSig, chain})
 
   console.log('testResult', testResult)
 
@@ -52,11 +52,31 @@ const go = async () => {
   const sigShare = await LitActions.signEcdsa({ toSign, publicKey: "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64", sigName: "sig1" });
 };
 
+
+
 go();
 `;
 ```
 
-Obtain a [SessionSig](../../sdk/authentication/session-sigs/get-session-sigs).
+Obtain an AuthSig
+
+This AuthSig is used for the conditional check in our Lit Action. The address of the key that signed the message to produce this AuthSig will be used as the `:userAddress` when we check that the balance is greater than 1 Wei.
+
+```jsx
+// you need an AuthSig to auth with the nodes
+// normally you would obtain an AuthSig by calling LitJsSdk.checkAndSignAuthMessage({chain})
+
+const authSig = {
+  sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
+  derivedVia: "web3.eth.personal.sign",
+  signedMessage:
+    "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
+  address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
+};
+
+```
+
+Obtain a [SessionSigs](../../sdk/authentication/session-sigs/get-session-sigs) to be used for authenticating with the Lit network. Without a `SessionSigs`, you will not be able to make requests to the network.
 
 Run the Lit Action code on the Lit nodes:
 
@@ -88,7 +108,13 @@ const signatures =await litNodeClient.executeJs({
           },
         },
       ],
-      sessionSigs,
+      authSig: {
+        sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
+        derivedVia: "web3.eth.personal.sign",
+        signedMessage:
+          "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
+        address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
+      },
       chain: "ethereum",
     },
   });
