@@ -60,7 +60,7 @@ go();
 
 Obtain an AuthSig
 
-This AuthSig is used for the conditional check in our Lit Action. The address of the key that signed the message to produce this AuthSig will be used as the `:userAddress` when we check that the balance is greater than 1 Wei.
+This AuthSig is used for the conditional check in our Lit Action. The address of the key that signed the message to produce this AuthSig will be used as the `:userAddress` when the Lit Action checks that the balance is greater than 1 Wei.
 
 ```jsx
 // you need an AuthSig to auth with the nodes
