@@ -118,7 +118,7 @@ async getSessionSignatures(){
     );
 
     // Get the latest blockhash
-    const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
+    const latestBlockhash = await litNodeClient.getLatestBlockhash();
 
     // Define the authNeededCallback function
     const authNeededCallback = async(params) => {
@@ -140,7 +140,7 @@ async getSessionSignatures(){
         resources: params.resourceAbilityRequests,
         walletAddress: ethWallet.address,
         nonce: latestBlockhash,
-        litNodeClient: this.litNodeClient,
+        litNodeClient,
       });
 
       // Generate the authSig
@@ -156,8 +156,8 @@ async getSessionSignatures(){
     const litResource = new LitAccessControlConditionResource('*');
 
     // Get the session signatures
-    const sessionSigs = await this.litNodeClient.getSessionSigs({
-        chain: this.chain,
+    const sessionSigs = await litNodeClient.getSessionSigs({
+        chain: "ethereum",
         resourceAbilityRequests: [
             {
                 resource: litResource,

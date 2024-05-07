@@ -706,7 +706,6 @@ class Lit {
       // Return the decrypted string
       return { decryptedString };
     }
-  }
 
     ...
 }

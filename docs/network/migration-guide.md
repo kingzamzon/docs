@@ -108,6 +108,14 @@ async decrypt(encryptedString, encryptedSymmetricKey) {
 ```
 ### 3. Connect to `Habanero` or `Manzano` and encrypt it again
 ```js
+import {ethers} from "ethers";
+import {
+  LitAccessControlConditionResource,
+  LitAbility,
+  createSiweMessageWithRecaps,
+  generateAuthSig,
+} from "@lit-protocol/auth-helpers";
+
 class LitV3 {  // or Class LitV4
   private litNodeClient;
 
@@ -119,12 +127,70 @@ class LitV3 {  // or Class LitV4
     this.litNodeClient = client;
   }
 
+  async getSessionSignatures(){
+      // Connect to the wallet
+      const ethWallet = new ethers.Wallet(
+        "<your private key>"
+      );
+
+      // Get the latest blockhash
+      const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
+
+      // Define the authNeededCallback function
+      const authNeededCallback = async(params) => {
+        if (!params.uri) {
+          throw new Error("uri is required");
+        }
+        if (!params.expiration) {
+          throw new Error("expiration is required");
+        }
+
+        if (!params.resourceAbilityRequests) {
+          throw new Error("resourceAbilityRequests is required");
+        }
+
+        // Create the SIWE message
+        const toSign = await createSiweMessageWithRecaps({
+          uri: params.uri,
+          expiration: params.expiration,
+          resources: params.resourceAbilityRequests,
+          walletAddress: ethWallet.address,
+          nonce: latestBlockhash,
+          litNodeClient: this.litNodeClient,
+        });
+
+        // Generate the authSig
+        const authSig = await generateAuthSig({
+          signer: ethWallet,
+          toSign,
+        });
+
+        return authSig;
+      }
+
+      // Define the Lit resource
+      const litResource = new LitAccessControlConditionResource('*');
+
+      // Get the session signatures
+      const sessionSigs = await this.litNodeClient.getSessionSigs({
+          chain: 'ethereum',
+          resourceAbilityRequests: [
+              {
+                  resource: litResource,
+                  ability: LitAbility.AccessControlConditionDecryption,
+              },
+          ],
+          authNeededCallback,
+      });
+      return sessionSigs;
+  }
+
   async encrypt(message) {
     if (!this.litNodeClient) {
       await this.connect();
     }
   
-    const authSig = await LitJsSdk.checkAndSignAuthMessage({ chain: 'ethereum' });
+    const sessionSigs = await this.getSessionSignatures();
     const accessControlConditions = [
       {
         contractAddress: "",
