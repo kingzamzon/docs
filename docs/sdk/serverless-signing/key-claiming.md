@@ -49,7 +49,7 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
 ```jsx
   const authMethod = {
     authMethodType: AuthMethodType.EthWallet,
-    accessToken: JSON.stringify(sessionSigs),
+    accessToken: JSON.stringify(authSig),
   };
 
   const authMethodId = LitAuthClient.getAuthMethodId(authMethod);
