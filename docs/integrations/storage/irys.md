@@ -60,61 +60,113 @@ dotenv.config();
 
 There are three steps to encrypting data
 
-- Obtain a wallet signature ([authSig](../../sdk/authentication/overview.md)), which proves you own a wallet
+- Connect to Lit nodes
+- Obtain [Session signatures](../../sdk/authentication/session-sigs/intro), which authenticates you with the Lit network
 - Define [access control conditions](../../sdk/access-control/intro.md) for who can decrypt your data
-- Connect to a Lit node and request that it encrypt your data
+- Request Lit nodes to encrypt your data
 
 :::info
-
 Lit Protocol supports both wallet signatures and [session
 signatures](../../sdk/authentication/session-sigs/intro). This guide focuses solely
 on wallet signatures, as session signatures are currently in development and only available for Ethereum.
-
 :::
 
-### Wallet signature
+### Connecting to Lit nodes
 
-A wallet signature (`authSig`) demonstrates true ownership of a wallet. By signing a basic transaction, regardless of its contents, you verify access to the wallet.
-
-First, create a file called `.env` with a single value, and include your private key.
-
-```json
-PRIVATE_KEY=
-```
-
-Then, create a helper function that creates a message and signs it using your private key.
+Write a helper function to connect to a Lit node:
 
 ```js
-async function getAuthSig() {
-  // Initialize the signer
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY);
-  const address = ethers.utils.getAddress(await wallet.getAddress());
-
-  // Craft the SIWE message
-  const domain = "localhost";
-  const origin = "https://localhost/login";
-  const statement =
-    "This is a test statement. You can put anything you want here.";
-  const siweMessage = new siwe.SiweMessage({
-    domain,
-    address: address,
-    statement,
-    uri: origin,
-    version: "1",
-    chainId: "1",
+async function getLitNodeClient() {
+  // Initialize LitNodeClient
+  const litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
+    alertWhenUnauthorized: false,
+    litNetwork: "cayenne",
   });
-  const messageToSign = siweMessage.prepareMessage();
+  await litNodeClient.connect();
 
-  // Sign the message and format the authSig
-  const signature = await wallet.signMessage(messageToSign);
-  const authSig = {
-    sig: signature,
-    derivedVia: "web3.eth.personal.sign",
-    signedMessage: messageToSign,
-    address: address,
-  };
+  return litNodeClient;
+}
+```
 
-  return authSig;
+### Obtain a Session Sigs
+
+In order to interact with the nodes in the Lit Network, you will need to generate and present session signatures. The easiest way to do this is to generate a `SessionSigs`. 
+
+`SessionSigs` are produced by a ed25519 keypair that is generated randomly on the browser and stored in local storage. We need to obtain an `AuthSig` through an authentication method like Ethereum wallet in order to get a `SessionSigs` from Lit Nodes.
+
+The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
+
+
+
+:::note
+Be sure to use the latest block hash from the `litNodeClient` as the nonce. You can get it from the `litNodeClient.getLatestBlockhash()`. Without the block hash SessionSigs will not be validated.
+:::
+
+```jsx
+import {ethers} from "ethers";
+import {
+  LitAccessControlConditionResource,
+  LitAbility,
+  createSiweMessageWithRecaps,
+  generateAuthSig,
+} from "@lit-protocol/auth-helpers";
+
+async getSessionSignatures(){
+    // Connect to the wallet
+    const ethWallet = new ethers.Wallet(
+      "<your private key>"
+    );
+
+    // Get the latest blockhash
+    const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
+
+    // Define the authNeededCallback function
+    const authNeededCallback = async(params) => {
+      if (!params.uri) {
+        throw new Error("uri is required");
+      }
+      if (!params.expiration) {
+        throw new Error("expiration is required");
+      }
+
+      if (!params.resourceAbilityRequests) {
+        throw new Error("resourceAbilityRequests is required");
+      }
+
+      // Create the SIWE message
+      const toSign = await createSiweMessageWithRecaps({
+        uri: params.uri,
+        expiration: params.expiration,
+        resources: params.resourceAbilityRequests,
+        walletAddress: ethWallet.address,
+        nonce: latestBlockhash,
+        litNodeClient: this.litNodeClient,
+      });
+
+      // Generate the authSig
+      const authSig = await generateAuthSig({
+        signer: ethWallet,
+        toSign,
+      });
+
+      return authSig;
+    }
+
+    // Define the Lit resource
+    const litResource = new LitAccessControlConditionResource('*');
+
+    // Get the session signatures
+    const sessionSigs = await this.litNodeClient.getSessionSigs({
+        chain: this.chain,
+        resourceAbilityRequests: [
+            {
+                resource: litResource,
+                ability: LitAbility.AccessControlConditionDecryption,
+            },
+        ],
+        authNeededCallback,
+    });
+    return sessionSigs;
 }
 ```
 
@@ -158,30 +210,13 @@ timestamps. The bids remain encrypted up to this deadline, aiding in preventing 
 inaccessible to all parties until the designated time.
 :::
 
-### Connecting to a Lit node
-
-Write a helper function to connect to a Lit node:
-
-```js
-async function getLitNodeClient() {
-  // Initialize LitNodeClient
-  const litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
-    alertWhenUnauthorized: false,
-    litNetwork: "cayenne",
-  });
-  await litNodeClient.connect();
-
-  return litNodeClient;
-}
-```
-
 ### Encrypt data
 
 Finally, write a function that accepts a string and uses the code we wrote earlier to encrypt it. In this guide we're using the Lit function [`encryptString()`](https://lit-js-sdk-v3-api-docs.vercel.app/functions/encryption_src.encryptString.html) which encrypts a string and returns both the encrypted string and a hash of the original string. Lit also has[`encryptFile()`](https://lit-js-sdk-v3-api-docs.vercel.app/functions/encryption_src.encryptFile.html) for encrypting files directly.
 
 ```js
 async function encryptData(dataToEncrypt) {
-  const authSig = await getAuthSig();
+  const sessionSigs = await getSessionSignatures();
   const accessControlConditions = getAccessControlConditions();
   const litNodeClient = await getLitNodeClient();
 
@@ -264,9 +299,10 @@ async function storeOnIrys(cipherText, dataToEncryptHash) {
 
 There are three steps to decrypting data:
 
-- Obtain a wallet signature ([AuthSig](../../sdk/authentication/overview.md)), which proves you own a wallet
+- Connect to Lit nodes
+- Obtain [Session signatures](../../sdk/authentication/session-sigs/intro), which authenticates you with the Lit network
 - Retrieve data stored on Arweave
-- Connect to a Lit node and request that it decrypt your data
+- Request Lit nodes to decrypt your data
 
 ### Retrieving data from Arweve using the Irys gatway
 
@@ -308,7 +344,7 @@ async function decryptData(
   dataToEncryptHash,
   accessControlConditions
 ) {
-  const authSig = await getAuthSig();
+  const sessionSigs = await getSessionSignatures();
   const litNodeClient = await getLitNodeClient();
 
   let decryptedString;

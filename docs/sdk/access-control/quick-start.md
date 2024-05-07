@@ -176,8 +176,6 @@ In order to interact with the nodes in the Lit Network, you will need to generat
 
 The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
 
-
-
 :::note
 Be sure to use the latest block hash from the `litNodeClient` as the nonce. You can get it from the `litNodeClient.getLatestBlockhash()`. Without the block hash SessionSigs will not be validated.
 :::
@@ -199,7 +197,7 @@ import {
 class Lit {
   ...
 
-  async getSessionSigs(){
+  async getSessionSignatures(){
      // Connect to the wallet
      const provider = new ethers.providers.Web3Provider(window.ethereum);
      await provider.send("eth_requestAccounts", []);
@@ -279,7 +277,7 @@ import {
 class Lit {
   ...
 
-  async getSessionSigs(){
+  async getSessionSignatures(){
       // Connect to the wallet
       const ethWallet = new ethers.Wallet(
         "<your private key>"
@@ -374,7 +372,7 @@ class Lit {
 
     async encrypt(message) {
       // Get the session signatures
-      const sessionSigs = await this.getSessionSigs();
+      const sessionSigs = await this.getSessionSignatures();
 
       // Encrypt the message
       const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
@@ -495,8 +493,6 @@ In order to interact with the nodes in the Lit Network, you will need to generat
 
 The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
 
-
-
 :::note
 Be sure to use the latest block hash from the `litNodeClient` as the nonce. You can get it from the `litNodeClient.getLatestBlockhash()`. Without the block hash SessionSigs will not be validated.
 :::
@@ -518,7 +514,7 @@ import {
 class Lit {
   ...
 
-  async getSessionSigs(){
+  async getSessionSignatures(){
      // Connect to the wallet
      const provider = new ethers.providers.Web3Provider(window.ethereum);
      await provider.send("eth_requestAccounts", []);
@@ -599,7 +595,7 @@ import {
 class Lit {
   ...
 
-  async getSessionSigs(){
+  async getSessionSignatures(){
       // Connect to the wallet
       const ethWallet = new ethers.Wallet(
         "<your private key>"
@@ -693,7 +689,7 @@ class Lit {
 
     async decrypt(ciphertext, dataToEncryptHash) {
       // Get the session signatures
-      const sessionSigs = await this.getSessionSigs();
+      const sessionSigs = await this.getSessionSignatures();
 
       // Decrypt the message
       const decryptedString = await LitJsSdk.decryptToString(
