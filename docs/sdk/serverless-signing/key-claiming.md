@@ -73,7 +73,7 @@ const keyId = ethers.utils.keccak256(ethers.utils.toUtf8Bytes("theIPFSIdOfYourLi
     keyType: 2,
     permittedIpfsCIDs: [],
     permittedIpfsCIDScopes: [],
-    permittedAddresses:: [],
+    permittedAddresses: [],
     permittedAddressScopes: [],
     permittedAuthMethodTypes: [AuthMethodType.EthWallet],
     permittedAuthMethodIds: [`0x${authMethodId}`],
