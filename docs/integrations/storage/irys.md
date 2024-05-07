@@ -190,7 +190,7 @@ async function encryptData(dataToEncrypt) {
   // <Uint8Array(32)> dataToEncryptHash
   const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
     {
-      authSig,
+      sessionSigs,
       accessControlConditions,
       dataToEncrypt: dataToEncrypt,
       chain: "ethereum",
@@ -315,7 +315,7 @@ async function decryptData(
   try {
     decryptedString = await LitJsSdk.decryptToString(
       {
-        authSig,
+        sessionSigs,
         accessControlConditions,
         ciphertext,
         dataToEncryptHash,

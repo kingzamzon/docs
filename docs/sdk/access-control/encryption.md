@@ -186,7 +186,7 @@ const decryptedString = await LitJsSdk.decryptToString(
     accessControlConditions,
     ciphertext,
     dataToEncryptHash,
-    authSig,
+    sessionSigs,
     chain: "ethereum",
   },
   litNodeClient
@@ -209,7 +209,7 @@ async decrypt(ciphertext: string, dataToEncryptHash: string, accessControlCondit
       accessControlConditions,
       ciphertext,
       dataToEncryptHash,
-      authSig,
+      sessionSigs,
       chain: 'ethereum',
     },
     litNodeClient,

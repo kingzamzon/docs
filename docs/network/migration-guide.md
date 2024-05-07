@@ -142,7 +142,7 @@ class LitV3 {  // or Class LitV4
     const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
       {
         accessControlConditions,
-        authSig,
+        sessionSigs,
         chain: 'ethereum',
         dataToEncrypt: message,
       },

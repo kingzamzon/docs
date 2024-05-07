@@ -40,6 +40,7 @@ var kyveAuthSig = await LitJsSdk.checkAndSignAuthMessage({
 // now, when you want to use the auth sigs, pass them as an object, with the key being the chain name.
 await litNodeClient.encryptString({
   unifiedAccessControlConditions,
+  sessionSigs,
   authSig: {
     cosmos: cosmosAuthSig,
     kyve: kyveAuthSig,
