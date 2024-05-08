@@ -125,10 +125,10 @@ LitJsSdk.disconnectWeb3();
 
 #### Server-Side Usage
 
-In this example stub, the litNodeClient is stored in a global variable `app.locals.litNodeClient` so that it can be used throughout the server. Note that `app.locals` is provided by **[Express](https://expressjs.com/)** for this purpose. You may have to use what your own server framework provides for this purpose, instead.
+In this example stub, the `litNodeClient` is stored in a global variable `app.locals.litNodeClient` so that it can be used throughout the server. Note that `app.locals` is provided by **[Express](https://expressjs.com/)** for this purpose. You may have to use what your own server framework provides for this purpose, instead.
 
 :::note
-If you are using `NodeJS` you should install `@lit-protocol/lit-node-client-nodejs`. Moreover, the server-side implementation, the litNodeClient class is named `LitNodeClientNodeJs`.
+If you are using `NodeJS` you should install `@lit-protocol/lit-node-client-nodejs`. Moreover, the server-side implementation, the `litNodeClient` class is named `LitNodeClientNodeJs`.
 :::
 
 Running `litNodeClient.connect()` will return a promise that resolves when you are connected to the Lit network.
@@ -163,7 +163,7 @@ let myLit = new Lit(chain);
 await myLit.connect();
 ```
 
-The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call: 
+The `litNodeClient` listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the `litNodeClient` listeners and allow node to exit gracefully, call: 
 
 ```jsx
 await this.litNodeClient.disconnect();
@@ -173,7 +173,7 @@ await this.litNodeClient.disconnect();
 
 To encrypt something with Lit, you’ll need to follow these steps:
 
-1. Obtain a `sessionSigs` to authenticate with Lit nodes and create an access control condition.
+1. Create an access control condition.
 2. Encrypt the static content (string, file, zip, etc...) using `LitJsSdk.encryptString` to get the `ciphertext` and `dataToEncryptHash`.
 3. Finally, store the `ciphertext`, `dataToEncryptHash` and other metadata (`accessControlConditions` or other conditions such as`evmContractConditions`) and `chain` using your storage provider of choice. 
 
@@ -195,177 +195,6 @@ const accessControlConditions = [
     },
   },
 ];
-```
-
-#### Obtain a Session Sigs
-
-In order to interact with the nodes in the Lit Network, you will need to generate and present session signatures. The easiest way to do this is to generate a `SessionSigs`. 
-
-`SessionSigs` are produced by a ed25519 keypair that is generated randomly on the browser and stored in local storage. We need to obtain an `AuthSig` through an authentication method like Ethereum wallet in order to get a `SessionSigs` from Lit Nodes.
-
-The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
-
-:::note
-Be sure to use the latest block hash from the `litNodeClient` as the nonce. You can get it from the `litNodeClient.getLatestBlockhash()`. Without the block hash SessionSigs will not be validated.
-:::
-
-##### Obtain a `SessionSigs` in the browser
-
-If you want to obtain a `SessionSigs` in the browser, you can instantiate an `ethers.Signer` to sign a SIWE message and then generate an `AuthSig` to get the `SessionSigs` as shown below:
-
-
-```jsx
-import {ethers} from "ethers";
-import {
-  LitAccessControlConditionResource,
-  LitAbility,
-  createSiweMessageWithRecaps,
-  generateAuthSig,
-} from "@lit-protocol/auth-helpers";
-
-class Lit {
-  ...
-
-  async getSessionSignatures(){
-     // Connect to the wallet
-     const provider = new ethers.providers.Web3Provider(window.ethereum);
-     await provider.send("eth_requestAccounts", []);
-     const signer = provider.getSigner();
-     const walletAddress = await signer.getAddress();
-     console.log("Connected account:", walletAddress);
-  
-     // Get the latest blockhash
-     const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
-  
-     // Define the authNeededCallback function
-     const authNeededCallback = async(params) => {
-       if (!params.uri) {
-         throw new Error("uri is required");
-       }
-       if (!params.expiration) {
-         throw new Error("expiration is required");
-       }
-  
-       if (!params.resourceAbilityRequests) {
-         throw new Error("resourceAbilityRequests is required");
-       }
-   
-       // Create the SIWE message
-       const toSign = await createSiweMessageWithRecaps({
-         uri: params.uri,
-         expiration: params.expiration,
-         resources: params.resourceAbilityRequests,
-         walletAddress: walletAddress,
-         nonce: latestBlockhash,
-         litNodeClient: this.litNodeClient,
-       });
-  
-       // Generate the authSig
-       const authSig = await generateAuthSig({
-         signer: signer,
-         toSign,
-       });
-  
-       return authSig;
-     }
-  
-     // Define the Lit resource
-     const litResource = new LitAccessControlConditionResource('*');
-
-     // Get the session signatures
-     const sessionSigs = await this.litNodeClient.getSessionSigs({
-         chain: this.chain,
-         resourceAbilityRequests: [
-             {
-                 resource: litResource,
-                 ability: LitAbility.AccessControlConditionDecryption,
-             },
-         ],
-         authNeededCallback,
-     });
-     return sessionSigs;
-  }
-
-  ...
-}
-```
-
-##### Obtain a `SessionSigs` on the server-side
-
-If you want to obtain a `SessionSigs` on the server-side, you can instantiate an `ethers.wallet` to sign a SIWE message and then generate an `AuthSig` to get the `SessionSigs` as shown below:
-
-```jsx
-import {ethers} from "ethers";
-import {
-  LitAccessControlConditionResource,
-  LitAbility,
-  createSiweMessageWithRecaps,
-  generateAuthSig,
-} from "@lit-protocol/auth-helpers";
-
-class Lit {
-  ...
-
-  async getSessionSignatures(){
-      // Connect to the wallet
-      const ethWallet = new ethers.Wallet(
-        "<your private key>"
-      );
-
-      // Get the latest blockhash
-      const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
-
-      // Define the authNeededCallback function
-      const authNeededCallback = async(params) => {
-        if (!params.uri) {
-          throw new Error("uri is required");
-        }
-        if (!params.expiration) {
-          throw new Error("expiration is required");
-        }
-
-        if (!params.resourceAbilityRequests) {
-          throw new Error("resourceAbilityRequests is required");
-        }
-
-        // Create the SIWE message
-        const toSign = await createSiweMessageWithRecaps({
-          uri: params.uri,
-          expiration: params.expiration,
-          resources: params.resourceAbilityRequests,
-          walletAddress: ethWallet.address,
-          nonce: latestBlockhash,
-          litNodeClient: this.litNodeClient,
-        });
-
-        // Generate the authSig
-        const authSig = await generateAuthSig({
-          signer: ethWallet,
-          toSign,
-        });
-
-        return authSig;
-      }
-
-      // Define the Lit resource
-      const litResource = new LitAccessControlConditionResource('*');
-
-      // Get the session signatures
-      const sessionSigs = await this.litNodeClient.getSessionSigs({
-          chain: this.chain,
-          resourceAbilityRequests: [
-              {
-                  resource: litResource,
-                  ability: LitAbility.AccessControlConditionDecryption,
-              },
-          ],
-          authNeededCallback,
-      });
-      return sessionSigs;
-  }
-
-  ...
-}
 ```
 
 #### Encryption
@@ -400,16 +229,12 @@ class Lit {
     ...
 
     async encrypt(message) {
-      // Get the session signatures
-      const sessionSigs = await this.getSessionSignatures();
-
       // Encrypt the message
       const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
         {
           accessControlConditions,
           chain: this.chain,
           dataToEncrypt: message,
-          sessionSigs,
         },
         this.litNodeClient,
       );
@@ -437,7 +262,7 @@ Make sure we have `accessControlConditions`, `ciphertext`, and the `dataToEnc
 
 There is just one step:
 
-1. Obtain the decrypted data in plaintext using the `sessionSigs`, `accessControlConditions`, `ciphertext`, and `dataToEncryptHash` by calling `LitJsSdk.decryptToString`.
+1. Obtain the decrypted data in plaintext using the `accessControlConditions`, `ciphertext`, and `dataToEncryptHash` by calling `LitJsSdk.decryptToString`.
 
 #### Mint Capacity Credits
 
@@ -622,14 +447,17 @@ import {
 } from "@lit-protocol/auth-helpers";
 
 class Lit {
+  private ethersWallet;
+
+  constructor(yourPrivateKey) {
+    this.ethersWallet = new ethers.Wallet(
+      "<your private key>"
+    );
+  }
+
   ...
 
   async getSessionSignatures(){
-      // Connect to the wallet
-      const ethWallet = new ethers.Wallet(
-        "<your private key>"
-      );
-
       // Get the latest blockhash
       const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
 
@@ -651,14 +479,14 @@ class Lit {
           uri: params.uri,
           expiration: params.expiration,
           resources: params.resourceAbilityRequests,
-          walletAddress: ethWallet.address,
+          walletAddress: this.ethersWallet.address,
           nonce: latestBlockhash,
           litNodeClient: this.litNodeClient,
         });
 
         // Generate the authSig
         const authSig = await generateAuthSig({
-          signer: ethWallet,
+          signer: this.ethersWallet,
           toSign,
         });
 
