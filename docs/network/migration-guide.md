@@ -117,7 +117,14 @@ import {
 } from "@lit-protocol/auth-helpers";
 
 class LitV3 {  // or Class LitV4
+  private ethersWallet;
   private litNodeClient;
+
+  constructor(yourPrivateKey) {
+    this.ethersWallet = new ethers.Wallet(
+      yourPrivateKey
+    );
+  }
 
   async connect() {
     const client = new LitJsSdk.LitNodeClient({
@@ -128,11 +135,6 @@ class LitV3 {  // or Class LitV4
   }
 
   async getSessionSignatures(){
-      // Connect to the wallet
-      const ethWallet = new ethers.Wallet(
-        "<your private key>"
-      );
-
       // Get the latest blockhash
       const latestBlockhash = await this.litNodeClient.getLatestBlockhash();
 
@@ -154,14 +156,14 @@ class LitV3 {  // or Class LitV4
           uri: params.uri,
           expiration: params.expiration,
           resources: params.resourceAbilityRequests,
-          walletAddress: ethWallet.address,
+          walletAddress: this.ethersWallet.address,
           nonce: latestBlockhash,
           litNodeClient: this.litNodeClient,
         });
 
         // Generate the authSig
         const authSig = await generateAuthSig({
-          signer: ethWallet,
+          signer: this.ethersWallet,
           toSign,
         });
 
