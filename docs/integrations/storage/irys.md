@@ -61,15 +61,8 @@ dotenv.config();
 There are three steps to encrypting data
 
 - Connect to Lit nodes
-- Obtain [Session signatures](../../sdk/authentication/session-sigs/intro), which authenticates you with the Lit network
 - Define [access control conditions](../../sdk/access-control/intro.md) for who can decrypt your data
 - Request Lit nodes to encrypt your data
-
-:::info
-Lit Protocol supports both wallet signatures and [session
-signatures](../../sdk/authentication/session-sigs/intro). This guide focuses solely
-on wallet signatures, as session signatures are currently in development and only available for Ethereum.
-:::
 
 ### Connecting to Lit nodes
 
@@ -87,16 +80,6 @@ async function getLitNodeClient() {
   return litNodeClient;
 }
 ```
-
-### Obtain a Session Sigs
-
-In order to interact with the nodes in the Lit Network, you will need to generate and present session signatures. The easiest way to do this is to generate a `SessionSigs`. 
-
-`SessionSigs` are produced by a ed25519 keypair that is generated randomly on the browser and stored in local storage. We need to obtain an `AuthSig` through an authentication method like Ethereum wallet in order to get a `SessionSigs` from Lit Nodes.
-
-The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
-
-Please refer to the [Get Session Sigs](../../sdk/authentication/session-sigs/get-session-sigs.md) documentation to see how to obtain a Session Sig.
 
 ### Access control conditions
 
@@ -144,7 +127,6 @@ Finally, write a function that accepts a string and uses the code we wrote earli
 
 ```js
 async function encryptData(dataToEncrypt) {
-  const sessionSigs = await getSessionSignatures();
   const accessControlConditions = getAccessControlConditions();
   const litNodeClient = await getLitNodeClient();
 
@@ -153,7 +135,6 @@ async function encryptData(dataToEncrypt) {
   // <Uint8Array(32)> dataToEncryptHash
   const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
     {
-      sessionSigs,
       accessControlConditions,
       dataToEncrypt: dataToEncrypt,
       chain: "ethereum",
@@ -225,14 +206,14 @@ async function storeOnIrys(cipherText, dataToEncryptHash) {
 
 ![Decrypting data with Irys and Lit](/img/irys-images/decrypting.png)
 
-There are three steps to decrypting data:
+There are four steps to decrypting data:
 
+- Retrieve data stored on Arweave
 - Connect to Lit nodes
 - Obtain [Session signatures](../../sdk/authentication/session-sigs/intro), which authenticates you with the Lit network
-- Retrieve data stored on Arweave
 - Request Lit nodes to decrypt your data
 
-### Retrieving data from Arweve using the Irys gatway
+### Retrieving data from Arweave using the Irys gateway
 
 To download data stored on Arweave, the easiest way is to connect to a [gateway](https://docs.irys.xyz/overview/gateways) and request the data using your transaction ID. In this example, we'll use the Irys gateway.
 
@@ -261,6 +242,16 @@ async function retrieveFromIrys(id) {
   }
 }
 ```
+
+### Obtain a Session Sigs
+
+In order to interact with the nodes in the Lit Network, you will need to generate and present session signatures. The easiest way to do this is to generate a `SessionSigs`. 
+
+`SessionSigs` are produced by a ed25519 keypair that is generated randomly on the browser and stored in local storage. We need to obtain an `AuthSig` through an authentication method like Ethereum wallet in order to get a `SessionSigs` from Lit Nodes.
+
+The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
+
+Please refer to the [Get Session Sigs](../../sdk/authentication/session-sigs/get-session-sigs.md) documentation to see how to obtain a Session Sig.
 
 ### Decrypting data
 
