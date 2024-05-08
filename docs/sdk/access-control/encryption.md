@@ -202,6 +202,7 @@ const accessControlConditions = [
 To encrypt a string, use one of the following functions:
 
 - [encryptString()](https://v3.api-docs.getlit.dev/functions/encryption_src.encryptString.html) - Used to encrypt the raw string.
+- - [encryptString()](../../) - Used to encrypt the raw string.
 - [zipAndEncryptString()](https://v3.api-docs.getlit.dev/functions/encryption_src.zipAndEncryptString.html) - Compresses the string (using [JSZip](https://www.npmjs.com/package/jszip)) before encrypting it. This is useful for saving space, but takes additional time to perform the zip.
 
 To encrypt a file, use:
@@ -336,8 +337,6 @@ To delegate your Rate Limit NFT there are 4 properties to configure:
 :::note
 The `delegateeAddress` parameter is optional. If omitted, anyone can use your `capacityDelegationAuthSig` to use your app without restrictions. In this case, you can utilize other restrictions like the `uses` param to limit the amount of usage by your users.
 :::
-
-Check out a complete example [here](https://github.com/LIT-Protocol/js-sdk/blob/1286138adc09ac2d34371f3ac12a9088ada367ec/e2e-nodejs/group-rli/test-rli-from-lit-node-client-diff-delegatee.mjs).
 
 #### Obtain a Session Sigs
 
