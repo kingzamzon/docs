@@ -204,7 +204,6 @@ class Lit {
       const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
         {
           accessControlConditions,
-          chain: this.chain,
           dataToEncrypt: message,
         },
         this.litNodeClient,
