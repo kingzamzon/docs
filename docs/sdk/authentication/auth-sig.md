@@ -8,6 +8,10 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 An `AuthSig` is a wallet signature obtained from a user. Wallet signatures are required to communicate with the Lit Nodes and authorize requests.
 
+:::warning
+The SDK v6.x.x and above will only accept SessionSigs to authenticate with the Lit Nodes. The Wallet Signatures or AuthSigs will no longer be accepted as a form of authentication.
+:::
+
 ## Format of an `AuthSig`
 
 You can use any signature compliant with EIP-4361, also known as Sign in with Ethereum (SIWE), for the `AuthSig`. However, the signature must be presented in an `AuthSig` object formatted like so:
