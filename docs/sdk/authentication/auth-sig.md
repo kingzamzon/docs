@@ -139,7 +139,7 @@ async function main() {
     
   // expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
   const expirationTime = new Date(
-    Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
+    Date.now() + 1000 * 60 * 60 * 24 * 7
   ).toISOString();
   
   const siweMessage = new siwe.SiweMessage({
