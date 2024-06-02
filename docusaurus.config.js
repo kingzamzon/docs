@@ -29,14 +29,13 @@ const config = {
           // Please change this to your repo.
           editUrl: 'https://github.com/LIT-Protocol/docs/tree/main',
           routeBasePath: '/',
-          disableVersioning: true,
           versions: {
-            // '2.0': {
-            //   badge: true,
-            //   label: 'v2.x.x',
-            //   path: 'v2',
-            //   banner: 'none',
-            // },
+            '2.0': {
+              badge: true,
+              label: 'v2.x.x',
+              path: 'v2',
+              banner: 'none',
+            },
             current: {
               badge: true,
               label: 'v3.x.x',
@@ -110,10 +109,10 @@ const config = {
             position: 'left',
             label: 'Ecosystem',
           },
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'docsVersionDropdown',
+          //   position: 'right',
+          // },
           {
             href: 'https://github.com/LIT-Protocol/js-sdk',
             position: 'right',
