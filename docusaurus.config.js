@@ -96,7 +96,7 @@ const config = {
           alt: 'Lit Protocol',
           src: 'brand/lit-logo-black.svg',
           srcDark: 'brand/lit-logo-white.svg',
-          href: 'https://developer.litprotocol.com/v3/',
+          href: 'https://developer.litprotocol.com/',
         },
         items: [
           {
@@ -163,7 +163,7 @@ const config = {
             items: [
               {
                 label: 'Support',
-                to: '/v3/support/intro',
+                to: '/support/intro',
               },
             ],
           },
