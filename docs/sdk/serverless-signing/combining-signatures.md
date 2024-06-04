@@ -19,8 +19,10 @@ const code = `(async () => {
   // sign "hello world" and allow all the nodes to combine the signature and return it to the action.
   const utf8Encode = new TextEncoder();
   const toSign = utf8Encode.encode('Hello World');
-
-  // Will use the authentication provided to the `executeJs` call from the sdk on the client.
+  ethers.utils.arrayify(
+    ethers.utils.keccak256(toSign)
+  );
+  // Will use the authentication provided to the "executeJs" call from the sdk on the client.
   const signature = await Lit.Actions.signAndCombineEcdsa({
     toSign,
     publicKey,
@@ -64,7 +66,7 @@ const code = `(async () => {
   // using ether's serializeTransaction
   // https://docs.ethers.org/v5/api/utils/transactions/#transactions--functions
   const serializedTx = ethers.utils.serializeTransaction(txn);
-  let hash = utils.keccak256(ethers.utils.toUtf8Bytes(serializedTx));
+  let hash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(serializedTx));
   // encode the message into an uint8array for signing
   const toSign = await new TextEncoder().encode(hash);
   const signature = await Lit.Actions.signAndCombineEcdsa({
