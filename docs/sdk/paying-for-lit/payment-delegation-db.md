@@ -5,10 +5,10 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 # Payment Delegation Database
 
 :::info
-Currently the Payment Delegation Database is only supported on the `habanero` and `manzano` Lit networks. Payment for usage is **not** currently required on the `cayenne` network.
+Currently the Payment Delegation Database is only supported on the `habanero` and `manzano` Lit networks. Payment for usage is **not** required on the `cayenne` network.
 :::
 
-The Payment Delegation Database is a [smart contract](https://github.com/LIT-Protocol/lit-assets/blob/develop/blockchain/contracts/contracts/lit-node/PaymentDelegation/PaymentDelegationFacet.sol) deployed on Lit's rollup, [Chronicle](../../network/rollup.mdx). Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server) has been updated to provide two new API routes to interface with the Payment Delegation Database contract:
+The Payment Delegation Database is a [smart contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PaymentDelegation/PaymentDelegationFacet.sol) deployed on Lit's rollup, [Chronicle](../../network/rollup.mdx). Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server) has been updated to provide two new API routes to interface with the Payment Delegation Database contract:
 
 - `POST` `/register-payer`: This route is used to register a new `payer` and will have a [Capacity Credit](../capacity-credits.md) minted for it which can be delegated to `payees` to pay for their usage of Lit
 - `POST` `/add-users`: This route is used to add users (as Ethereum addresses) as `payees` for a specific `payer`. This allows the `payer` to pay for the usage of Lit for each user, without each user having to own a Capacity Credit
@@ -23,8 +23,7 @@ Before continuing with this guide, you should have an understanding of:
 - Lit's [Chronicle rollup](../../network/rollup.mdx)
 - Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server)
 - You must have a valid Lit Relayer API key
-<!-- TODO Get Google form for applying for API key -->
-  - This can be obtained by filling out this form
+  - This can be obtained by filling out [this form](https://docs.google.com/forms/d/e/1FAIpQLSeVraHsp1evK_9j-8LpUBiEJWFn4G5VKjOWBmHFjxFRJZJdrg/viewform)
 - You should know which paid Lit network you're going to use: `habanero` or `manzano`
 
 This guide doesn't have any external dependencies, but relies on `fetch` being natively available in Node.js, which means the minimum supported version is `v18`.
@@ -42,12 +41,11 @@ To simplify this process of delegating Capacity Credits, we've implemented the P
 ## Registering a Payer Wallet
 
 :::info
-<!-- TODO Get Google form for applying for API key -->
-Registering a payer using Lit's Relayer server requires an API key, if you don't already have one, you can apply for one here.
+Registering a payer using Lit's Relayer server requires an API key, if you don't already have one, you can apply for one [here](https://docs.google.com/forms/d/e/1FAIpQLSeVraHsp1evK_9j-8LpUBiEJWFn4G5VKjOWBmHFjxFRJZJdrg/viewform).
 :::
 
 :::warning
-After successfully registering a `payer` with the Relayer server, you will receive a `payerSecretKey` as part of the API response. This secret key is essentially the **private key** of your new `payer` wallet and should be treated as any other private key would.
+After successfully registering a `payer` with the Relayer server, you will receive a `payerSecretKey` as part of the API response. This secret key is essentially the **private key** of your new `payer` wallet and should be treated as any other private key would. API request using the `payerSecretKey` requires secure context, meaning it should not be used from a browser context where it would be leaked to the end user.
 
 It's also important to note that Lit **never** has access to this secret key and will **not** be able to recover it for you if you loose access to it. Please make sure this secret key is backed up securely, and refrain from leaking this key to unauthorized parties. Whomever has access to the key has the ability to modify the `delegatees` of your Capacity Credit.
 :::
@@ -65,8 +63,7 @@ To register a new `payer` wallet, you're going to need to decide which Lit netwo
     https://manzano-relayer.getlit.dev/register-payer
     ```
 
-<!-- TODO Get Google form for applying for API key -->
-You're also going to need a Lit Relayer API key, which you can request one here if you don't already have one.
+You're also going to need a Lit Relayer API key, which you can request one [here](https://docs.google.com/forms/d/e/1FAIpQLSeVraHsp1evK_9j-8LpUBiEJWFn4G5VKjOWBmHFjxFRJZJdrg/viewform) if you don't already have one.
 
 To make the request, we'll being using Node.js' builtin `fetch` API, and we'll being by specifying the request headers like so:
 
@@ -166,8 +163,7 @@ To add users as `payees` for your `payer` wallet, you're going to need the Relay
       https://manzano-relayer.getlit.dev/add-users
       ```
 
-<!-- TODO Get Google form for applying for API key -->
-You're also going to need a Lit Relayer API key, which you can request one here if you don't already have one.
+You're also going to need a Lit Relayer API key, which you can request one [here](https://docs.google.com/forms/d/e/1FAIpQLSeVraHsp1evK_9j-8LpUBiEJWFn4G5VKjOWBmHFjxFRJZJdrg/viewform) if you don't already have one.
 
 Lastly, you'll need the `payerSecretKey` generated for you by the Lit Relayer when you registered a `payer` wallet.
 
