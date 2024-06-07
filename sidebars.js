@@ -103,6 +103,12 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Paying for Lit',
+          collapsed: true,
+          items: ['sdk/paying-for-lit/payment-delegation-db'],
+        },
+        {
+          type: 'category',
           label: 'Authentication',
           link: {
             type: 'doc',
