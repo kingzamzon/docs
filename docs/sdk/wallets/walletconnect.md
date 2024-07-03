@@ -21,7 +21,7 @@ import { PKPClient } from "@lit-protocol/pkp-client";
 
 // If you haven't done before, create a LitNodeClient instance
 const litNodeClient = new LitNodeClient({
-  litNetwork: "cayenne",
+  litNetwork: "datil-dev",
 });
 await litNodeClient.connect();
 

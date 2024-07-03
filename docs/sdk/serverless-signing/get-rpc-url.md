@@ -3,7 +3,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 # Get Chain RPC URLs Within an Action
 
 :::info
-    Only available on the `cayenne` network
+    Only available on the `datil-dev` network
 :::
 
 ## Overview
@@ -23,7 +23,7 @@ code = `(async () => {
 `;
 
 const client = new LitNodeClient({
-litNetwork: 'cayenne'
+litNetwork: "datil-dev"
 });
 await client.connect();
 
@@ -51,7 +51,7 @@ code = `(async () => {
 })();
 `;
 const client = new LitNodeClient({
-litNetwork: 'cayenne'
+litNetwork: "datil-dev"
 });
 await client.connect();
 

@@ -21,7 +21,7 @@ import { PKPEthersWallet } from "@lit-protocol/pkp-ethers";
 
 // If you haven't done before, create a LitNodeClient instance
 const litNodeClient = new LitNodeClient({
-  litNetwork: "cayenne",
+  litNetwork: "datil-dev",
 });
 await litNodeClient.connect();
 

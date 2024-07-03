@@ -63,7 +63,7 @@ const runLitAction = async () => {
 
   const litNodeClient = new LitJsSdk.LitNodeClient({
     alertWhenUnauthorized: false,
-    litNetwork: "cayenne",
+    litNetwork: "datil-dev",
     debug: true,
   });
   await litNodeClient.connect();

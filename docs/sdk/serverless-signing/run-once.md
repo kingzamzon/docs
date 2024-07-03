@@ -57,7 +57,7 @@ const code = `
 })()
 `
 const client = new LitNodeClient({
-    litNetwork: 'cayenne',
+    litNetwork: "datil-dev",
 });
 
 await client.connect();

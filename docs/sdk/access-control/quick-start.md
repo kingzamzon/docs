@@ -77,7 +77,7 @@ class Lit {
 
    async connect() {
       this.litNodeClient = new LitJsSdk.LitNodeClient({
-        litNetwork: LitNetwork.Cayenne,
+        litNetwork: "datil-dev",
       });
       await this.litNodeClient.connect();
    }
@@ -134,7 +134,7 @@ class Lit {
    async connect() {
       app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
         alertWhenUnauthorized: false,
-        litNetwork: LitNetwork.Cayenne,
+        litNetwork: "datil-dev",
         debug: true,
       });
 

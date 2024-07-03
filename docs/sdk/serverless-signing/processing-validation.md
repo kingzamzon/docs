@@ -48,7 +48,7 @@ const go = async () => {
     alertWhenUnauthorized: false,
     minNodeCount: 6,
     debug: true,
-    litNetwork: "cayenne",
+    litNetwork: "datil-dev",
   });
   await litNodeClient.connect();
   const results = await litNodeClient.executeJs({
