@@ -73,6 +73,10 @@ const sidebars = {
             keywords: ['migrations'],
           },
           items: [
+            'sdk/migrations/datil-dev',
+            'sdk/migrations/6.0.0',
+            'sdk/migrations/4.0.0',
+            'sdk/migrations/3.2.0',
             {
               type: 'category',
               label: 'Migrating from 2.x.x to 3.x.x',
@@ -83,9 +87,6 @@ const sidebars = {
               collapsed: true,
               items: ['network/feature-matrix', 'sdk/migrations/3.0.0/changes'],
             },
-            'sdk/migrations/3.2.0',
-            'sdk/migrations/4.0.0',
-            'sdk/migrations/6.0.0',
           ],
         },
       ],
