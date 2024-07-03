@@ -131,7 +131,7 @@ Initalize an instance of the `LitNodeClient` and connect to the network
 
 ```javascript
 const litNodeClient: LitNodeClientNodeJs = new LitNodeClientNodeJs({
-    litNetwork: "datil-dev",
+    litNetwork: 'cayenne',
     debug: true
 });
 await litNodeClient.connect();
