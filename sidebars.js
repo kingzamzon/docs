@@ -73,7 +73,7 @@ const sidebars = {
             keywords: ['migrations'],
           },
           items: [
-            'sdk/migrations/datil-dev',
+            'sdk/migrations/datil',
             'sdk/migrations/6.0.0',
             'sdk/migrations/4.0.0',
             'sdk/migrations/3.2.0',
