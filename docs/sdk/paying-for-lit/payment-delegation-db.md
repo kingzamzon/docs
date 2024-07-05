@@ -17,7 +17,7 @@ To simplify this process of delegating Capacity Credits, we've implemented the P
 ## The Payment Delegation Database
 
 :::info
-Currently the Payment Delegation Database is only supported on the `habanero` and `manzano` Lit networks. Payment for usage is **not** required on the `cayenne` network.
+Currently the Payment Delegation Database is only supported on the `habanero` and `manzano` Lit networks. Payment for usage is **not** required on the `datil-dev` network.
 :::
 
 The Payment Delegation Database is a [smart contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PaymentDelegation/PaymentDelegationFacet.sol) deployed on Lit's rollup, [Chronicle](../../network/rollup.mdx). Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server) has been updated to provide two new API routes to interface with the Payment Delegation Database contract:

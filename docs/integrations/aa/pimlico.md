@@ -176,7 +176,7 @@ const pkps = await session.fetchPKPsThroughRelayer(authMethod)
 
 ```js
 const litNodeClient = new LitNodeClientNodeJs({
-    litNetwork: 'cayenne',
+    litNetwork: "datil-dev",
     debug: false,
 })
 await litNodeClient.connect();

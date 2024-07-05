@@ -13,7 +13,7 @@ Ready to jump right in? Quickly learn how you can integrate claimable keys into 
 
 When creating a new Programmable Key Pair (PKP) it is now possible to deterministically derive keys so the public portion of the key pair is known **before** creating the key. We're going to abbreviate claimable keys as HD keys, short for homogeneous derived keys. 
 
-With the release of the test network `cayenne` we are introducing a new concept to Programmable Key Pairs (PKP) - claimable keys (what will be referred to as Homogenous Derivation - HD keys).
+With the release of the test network `datil-dev` we are introducing a new concept to Programmable Key Pairs (PKP) - claimable keys (what will be referred to as Homogenous Derivation - HD keys).
 
 HD keys work off a set of `root keys` which combined with a `key identifier` allow the deterministic generation of new key pairs.
 

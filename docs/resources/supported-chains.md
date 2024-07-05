@@ -22,7 +22,7 @@ defaultValue="habanero"
 values={[
 {label: 'Habanero', value: 'habanero'},
 {label: 'Manzano', value: 'manzano'},
-{label: 'Cayenne', value: 'cayenne'},
+{label: 'DatilDev', value: 'datil-dev'},
 {label: 'Jalapeno', value: 'jalapeno'},
 ]}>
 
@@ -112,7 +112,7 @@ values={[
 
 </TabItem>
 
-<TabItem value="cayenne">
+<TabItem value="datil-dev">
 
 - alfajores
 - anvil
