@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Migrating from Cayenne to Datil-dev
 
-Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../../network/rollup.mdx). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new network, Chronicle Vesuvius, powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
+Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../../network/rollup.mdx). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new network, Vesuvius, powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
 
 Like `cayenne`, `datil-dev` is a centralized DevNet intended to be used for application prototyping/getting familiar with Lit. Unlike the existing chains `manzano` and `habanero`, payment is not required for usage of the Lit network.
 
