@@ -17,6 +17,10 @@ Like their counterparts, `datil` and `datil-test` require payment for usage of t
 
 ## Breaking Changes and Important Updates
 
+### Datil Resources
+
+Datil has a new [block explorer](https://vesuvius-explorer.litprotocol.com/), and Lit test tokens can be received from [this faucet](https://datil-dev-faucet.vercel.app/).
+
 ### New Network, New PKPs
 
 Because existing PKPs were minted on the old Chronicle chain, migration from `cayenne` to `datil-dev` requires re-minting of all PKPs. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Vesuvius.
