@@ -32,6 +32,10 @@ If you do run into issues after migrating from `cayenne` to `datil-dev`, please 
 
 ### Upgrading the Lit Packages
 
+```note
+The version of the Lit SDK that supports `datil-dev` is still in beta. Once the package version is fully release, the `datil-dev` NPM tag will no longer be required, as it will be installed from NPM by default.
+```
+
 The `datil-dev` NPM tag can be used to install any of the Lit packages like so:
 
 <Tabs
