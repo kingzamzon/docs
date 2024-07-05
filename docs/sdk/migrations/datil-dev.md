@@ -15,7 +15,7 @@ Because existing PKPs were minted on the old Chronicle chain, migration from `ca
 
 ### Encrypted Data
 
-Because Chronicle Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
+Because Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
 
 To migrate existing encrypted data, you will need to decrypt it using `cayenne`, then re-encrypt the data using the `datil-dev` network.
 
