@@ -25,6 +25,14 @@ Datil has a new [block explorer](https://vesuvius-explorer.litprotocol.com/), an
 
 Because existing PKPs were minted on the old Chronicle chain, migration from `cayenne` to `datil-dev` requires re-minting of all PKPs. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Vesuvius.
 
+To reduce the friction of migrating PKPs to Datil, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/pkp-migration-script/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
+
+:::note
+The migration script **will not** handle migration of any assets the existing PKPs own such as tokens.
+
+Additionally, the newly minted PKPs on the target Lit network will have new Ethereum addresses, so anything that uses the existing PKP's Ethereum address for things like permissions, will need to be manually updated to us the new PKP's Ethereum address.
+:::
+
 ### Encrypted Data
 
 Because Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
