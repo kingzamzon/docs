@@ -2,10 +2,6 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Get Chain RPC URLs Within an Action
 
-:::info
-    Only available on the `datil-dev` network
-:::
-
 ## Overview
 
 You can use the `getRpcUrl` function within a Lit Action to call make an RPC call to a given blockchain. This can be useful for sending transactions, calling contract methods, pulling block data, and other related use cases.
