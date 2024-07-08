@@ -58,6 +58,15 @@ The only code changes required to make use of the new Datil networks are as foll
 - Upgrade the Lit packages to the latest version that supports Datil
   - `6.1.0` is the minimum version of the packages that supports `datil-dev`
 - Specify the Datil network when instantiating Lit node clients from the SDK
+  - This is done by specifying the `litNetwork` property when [connecting a Lit client](https://github.com/LIT-Protocol/docs/pull/306/commits/7d9a7eed182666fa88b28d9a5e032db651e01d91) to a network:
+    ```ts
+    import { LitNodeClient } from "@lit-protocol/lit-node-client";
+
+    const litNodeClient = new LitNodeClient({
+        litNetwork: 'datil-dev'
+    });
+    await litNodeClient.connect();
+    ```
 
 Making these changes shouldn't cause your existing implementations to break, assuming you've handled migration of PKPs and encrypted data as mentioned above.
 
