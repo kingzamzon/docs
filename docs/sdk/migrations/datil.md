@@ -7,11 +7,11 @@ Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called 
 
 Depending on the existing Lit network you are using, you should migrate to it's corresponding Datil network:
 
-| Currently Available | Requires Payment | Your Current Network | Network to Migrate to | Description                                                 |
-| --------------------| ---------------- | -------------------- | -------------------- | ------------------------------------------------------------ |
-|          ❌         |          ✅      | `habanero`           | `datil`               | Decentralized mainnet designed for production use cases      |
-|          ❌         |          ✅      | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
-|          ✅         |          ❌      | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
+| Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                 |
+| --------------------| ---------------- | -------------------- | -------------------- | -------------------- | ------------------------------------------------------------ |
+|          ❌         |          ✅      | n/a     | `habanero`           | `datil`               | Decentralized mainnet designed for production use cases      |
+|          ❌         |          ✅      | n/a     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
+|          ✅         |          ❌      | `6.1.0` | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
 Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits.md); however, `datil-dev` does not.
 
@@ -56,6 +56,7 @@ Currently only the `datil-dev` network is live and available to connect to. This
 The only code changes required to make use of the new Datil networks are as follows:
 
 - Upgrade the Lit packages to the latest version that supports Datil
+  - `6.1.0` is the minimum version of the packages that supports `datil-dev`
 - Specify the Datil network when instantiating Lit node clients from the SDK
 
 Making these changes shouldn't cause your existing implementations to break, assuming you've handled migration of PKPs and encrypted data as mentioned above.
@@ -64,11 +65,7 @@ If you do run into issues after migrating from an existing network to a Datil ne
 
 ### Upgrading the Lit Packages
 
-:::note
-The version of the Lit SDK that supports `datil-dev` is still in beta. Once the package version is fully released, the `datil-dev` NPM tag will no longer be required, as it will be installed from NPM by default.
-:::
-
-The `datil-dev` NPM tag can be used to install any of the Lit packages like so:
+The minimum version of the Lit SDK that supports `datil-dev` is `6.1.0`, and it will be installed from NPM by default:
 
 <Tabs
 defaultValue="npm"
@@ -79,7 +76,7 @@ values={[
 <TabItem value="npm">
 
 ```bash
-npm install @lit-protocol/lit-node-client@datil-dev
+npm install @lit-protocol/lit-node-client
 ```
 
 </TabItem>
@@ -87,7 +84,7 @@ npm install @lit-protocol/lit-node-client@datil-dev
 <TabItem value="yarn">
 
 ```bash
-yarn add @lit-protocol/lit-node-client@datil-dev
+yarn add @lit-protocol/lit-node-client
 ```
 
 </TabItem>
