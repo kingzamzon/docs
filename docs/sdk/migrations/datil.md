@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Migrating to Datil
 
-Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../../network/rollup.mdx). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new network, Vesuvius, powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
+Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../../network/rollup.mdx). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new network, Chronicle Vesuvius Testnet, powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
 
 Depending on the existing Lit network you are using, you should migrate to it's corresponding Datil network:
 
@@ -35,7 +35,7 @@ Additionally, the newly minted PKPs on the target Lit network will have new Ethe
 
 ### Encrypted Data
 
-Because Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
+Because Chronicle Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
 
 Each Lit network has it's own BLS root key that's used for encrypting data. To migrate existing encrypted data, you will need to decrypt it using the Lit network it was encrypted with. Then re-encrypt it using one of the new Datil networks.
 
