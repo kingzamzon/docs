@@ -13,7 +13,7 @@ Depending on the existing Lit network you are using, you should migrate to it's 
 |          ❌         |          ✅      | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
 |          ✅         |          ❌      | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
-Like their counterparts, `datil` and `datil-test` require payment for usage of the Lit network via [Capacity Credits](../capacity-credits.md); however, `datil-dev` does not.
+Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits.md); however, `datil-dev` does not.
 
 ## Breaking Changes and Important Updates
 
