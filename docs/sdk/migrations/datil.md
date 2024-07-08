@@ -41,7 +41,7 @@ Additionally, the newly minted PKPs on the target Lit network will have new Ethe
 
 ### Encrypted Data
 
-Because Chronicle Vesuvius is a new Lit network, a new round of Distributed Key Generation (DKG) has been done, resulting in new BLS root keys for the network. This means all previously encrypted data using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
+Because each Lit network undergoes it's own Distributed Key Generation (DKG), and therefore has it's own BLS root key, any encrypted data on one Lit network is **not** able to be decrypted using a different Lit network. For example, data encrypted using `cayenne`'s public BLS key, will **not** be able to be decrypted using the `datil-dev` network.
 
 Each Lit network has it's own BLS root key that's used for encrypting data. To migrate existing encrypted data, you will need to decrypt it using the Lit network it was encrypted with. Then re-encrypt it using one of the new Datil networks.
 
