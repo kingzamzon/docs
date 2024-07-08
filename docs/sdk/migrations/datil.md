@@ -17,9 +17,15 @@ Like their counterparts, `datil` and `datil-test` require payment for usage of t
 
 ## Breaking Changes and Important Updates
 
-### Datil Resources
+### Chronicle Vesuvius Testnet Resources
 
-Datil has a new [block explorer](https://vesuvius-explorer.litprotocol.com/), and Lit test tokens can be received from [this faucet](https://datil-dev-faucet.vercel.app/).
+The following are useful resources for the Chronicle Vesuvius Testnet:
+
+- [Chain facts](https://app.conduit.xyz/published/view/vesuvius-as793xpg5g)
+- [Block explorer](https://vesuvius-explorer.litprotocol.com/)
+- A new Lit test token has been deployed for the testnet, and previous Lit test token balances from Chronicle will **not** be carried over.
+  - The new Lit test token address, deployed on Chronicle Vesuvius Testnet, is: `0x7FC23B31E9f262329cbc83c293a93b4e7176807E`
+  - Lit test tokens can be received from [this faucet](https://datil-dev-faucet.vercel.app/)
 
 ### New Network, New PKPs
 
