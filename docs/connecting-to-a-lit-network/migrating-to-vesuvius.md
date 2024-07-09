@@ -25,6 +25,8 @@ PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` e
 
 To reduce the friction of re-minting PKPs on Chronicle Vesuvius, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/pkp-migration-script/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
 
+After re-minting PKPs on Chronicle Vesuvius, your users could use both the old Chronicle based network PKPs and the new Chronicle Vesuvius PKPs with the same auth methods. However, the corresponding Ethereum address for each PKP will be different. Your users may have things tied to the old PKP Ethereum address, like assets, or Account Abstraction wallets that see that PKP as an authorized signer. So the next step is to migrate these items for your users, or notify them they need to migrate to the new Ethereum address themselves.
+
 :::caution
 The migration script **will not** handle migration of any assets the existing PKPs own such as tokens. Assets held by existing PKPs will need to be manually transferred to a new PKP's Ethereum address (or some another address of your choosing) using a blockchain transaction.
 
