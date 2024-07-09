@@ -49,7 +49,6 @@ const sidebars = {
         'intro/overview',
         'intro/what-is-lit-protocol',
         'resources/how-it-works',
-        'network/migration-guide',
       ],
     },
     {
@@ -73,6 +72,9 @@ const sidebars = {
             keywords: ['migrations'],
           },
           items: [
+            'sdk/migrations/6.0.0',
+            'sdk/migrations/4.0.0',
+            'sdk/migrations/3.2.0',
             {
               type: 'category',
               label: 'Migrating from 2.x.x to 3.x.x',
@@ -83,9 +85,28 @@ const sidebars = {
               collapsed: true,
               items: ['network/feature-matrix', 'sdk/migrations/3.0.0/changes'],
             },
-            'sdk/migrations/3.2.0',
-            'sdk/migrations/4.0.0',
-            'sdk/migrations/6.0.0',
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Connecting to a Lit Network',
+      collapsed: true,
+      link: {
+        type: 'doc',
+        id: 'connecting-to-a-lit-network/connecting',
+      },
+      items: [
+        'connecting-to-a-lit-network/testnets',
+        'connecting-to-a-lit-network/migrating-to-vesuvius',
+        {
+          type: 'category',
+          label: 'Lit Blockchains',
+          collapsed: true,
+          items: [
+            'connecting-to-a-lit-network/lit-blockchains/chronicle-vesuvius',
+            'connecting-to-a-lit-network/lit-blockchains/chronicle',
           ],
         },
       ],
@@ -424,7 +445,6 @@ const sidebars = {
       },
       items: [
         'intro/usecases',
-        'network/rollup',
         'resources/supported-chains',
         'resources/contracts',
         'resources/glossary',

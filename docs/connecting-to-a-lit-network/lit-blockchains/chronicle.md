@@ -2,10 +2,12 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 import AddRollupButton from "@site/src/components/AddRollupButton";
 
-# Chronicle: The Lit Rollup
+# Chronicle
 
-:::info
-[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
+:::warning
+With the release of [Chronicle Vesuvius](./chronicle-vesuvius), Chronicle is going to be deprecated, and **should no longer be used.**
+
+Please check out the [Migrating From Chronicle to Chronicle Vesuvius](./migrations/migrating-to-vesuvius) guide if you need to migrate you application to Chronicle Vesuvius.
 :::
 
 Chronicle is Lit Protocol's custom EVM rollup testnet, which enhances the performance and scalability of our programmable decentralized threshold cryptography system.
@@ -14,7 +16,7 @@ Chronicle is Lit Protocol's custom EVM rollup testnet, which enhances the perfor
 
 ## About Chronicle
 
-Chronicle is a custom EVM rollup testnet based on the OP Stack, designed specifically for Lit Protocol. Anchored in the Polygon network, this rollup is the primary platform for coordination, minting PKPs (programmable key pairs), and managing PKP Permissions. Notee that PKPs minted on Chronicle can still sign transactions on any chain supported by Lit, including EVM, Cosmos, and Bitcoin.
+Chronicle is a custom EVM rollup testnet based on the OP Stack, designed specifically for Lit Protocol. Anchored in the Polygon network, this rollup is the primary platform for coordination, minting PKPs (programmable key pairs), and managing PKP Permissions. Note that PKPs minted on Chronicle can still sign transactions on any chain supported by Lit, including EVM, Cosmos, and Bitcoin.
 
 ## `testLPX` Test Token
 
@@ -55,6 +57,6 @@ We are also working on a decentralized sequencer for the rollup, such that all C
 
 ## Next Steps
 
-Now that you've learned about Chronicle, you can write your first Lit Action that uses a PKP to sign! Learn how to do that [here](../sdk/serverless-signing/conditional-signing).
+Now that you've learned about Chronicle, you can write your first Lit Action that uses a PKP to sign! Learn how to do that [here](../../sdk/serverless-signing/conditional-signing).
 
 <FeedbackComponent/>

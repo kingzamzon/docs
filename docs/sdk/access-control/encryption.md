@@ -1,12 +1,11 @@
+import StateOfTheNetwork from "@site/src/pages/state-of-the-network.md";
 import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Encryption
 
 The Lit network uses an identity (ID) based encryption scheme to encrypt data, which means that decryption is only permitted to those who satisfy a certain identity.
 
-:::info
-Habanero Mainnet and Manzano Testnet are now live. Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
-:::
+<StateOfTheNetwork/>
 
 ### How Does ID Encrypt Work
 

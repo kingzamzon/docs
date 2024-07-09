@@ -3,13 +3,12 @@ slug: /what-is-lit
 sidebar_position: 2
 ---
 
+import StateOfTheNetwork from "@site/src/pages/state-of-the-network.md";
 import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # What is Lit Protocol
 
-:::info
-[Habanero Mainnet](network/networks/mainnet) and [Manzano Testnet](network/networks/testnet) are now live. Check out the [docs on migration](network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
-:::
+<StateOfTheNetwork/>
 
 Lit is a decentralized key management and compute network. Builders of apps, wallets, protocols, and AI agents use Lit to advance digital ownership with decentralized keys and private, immutable programs.
 

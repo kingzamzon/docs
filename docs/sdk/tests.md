@@ -2,6 +2,7 @@
 sidebar_position: 5
 ---
 
+import StateOfTheNetwork from "@site/src/pages/state-of-the-network.md";
 import FeedbackComponent from "@site/src/pages/feedback.md";
 
 import Tabs from '@theme/Tabs';
@@ -9,9 +10,7 @@ import TabItem from '@theme/TabItem';
 
 # Testing and Error Handling
 
-:::info
-[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
-:::
+<StateOfTheNetwork/>
 
 Currently we have manual tests that you can run in the browser in `manual_tests.html`. To run these, set up a HTTP server in the build folder. We use python for this with the built in SimpleHTTPServer module by running `python2 -m SimpleHTTPServer` and then going to `http://localhost:8000/manual_tests.html` in a browser.
 
