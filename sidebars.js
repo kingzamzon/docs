@@ -49,7 +49,6 @@ const sidebars = {
         'intro/overview',
         'intro/what-is-lit-protocol',
         'resources/how-it-works',
-        // 'network/migration-guide',
       ],
     },
     {
