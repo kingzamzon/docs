@@ -21,7 +21,7 @@ The below example will check if the user has at least 1 Wei on Ethereum, only re
 The `ethers.utils.arrayify(ethers.utils.keccak256(...)` can be used to convert the `toSign` data to the correct format.
 :::
 
-Installed the latest client on `cayenne`
+Installed the latest client on `datil-dev`
 
 ```bash
 yarn install @lit-protocol/lit-node-client
@@ -85,7 +85,7 @@ Run the Lit Action code on the Lit nodes:
 const runLitAction = async () => {
 
 const litNodeClient = new LitJsSdk.LitNodeClient({
-    litNetwork: "cayenne",
+    litNetwork: "datil-dev",
   });
 
 await litNodeClient.connect();

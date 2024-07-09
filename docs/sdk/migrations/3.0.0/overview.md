@@ -190,7 +190,7 @@ V3 includes the following breaking changes from V2.
 
 ### Supported Lit Networks
 
-Both `jalapeno` and `serrano` will no longer be supported. Now, `cayenne`, `manzano` and `habanero` are the only supported networks and we will be moving forward with them.
+Both `jalapeno` and `serrano` will no longer be supported. Now, `datil-dev`, `manzano` and `habanero` are the only supported networks and we will be moving forward with them.
 
 ### Types
 

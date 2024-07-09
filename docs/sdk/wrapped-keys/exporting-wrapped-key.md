@@ -156,14 +156,14 @@ const ethersSigner = new ethers.Wallet(
 
 ### Instantiating a `LitNodeClient`
 
-Here we are instantiating an instance of `LitNodeClient` and connecting it to the `cayenne` Lit network.
+Here we are instantiating an instance of `LitNodeClient` and connecting it to the `datil-dev` Lit network.
 
 ```ts
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitNetwork } from "@lit-protocol/constants";
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Cayenne,
+    litNetwork: "datil-dev",
     debug: false,
 });
 await litNodeClient.connect();

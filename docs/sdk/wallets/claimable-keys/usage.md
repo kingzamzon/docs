@@ -22,7 +22,7 @@ Below is an example of claiming a key with the `LitNodeClient` using the default
 
 ```jsx
 const client = new LitNodeClient({
-	litNetwork: "cayenne",
+	litNetwork: "datil-dev",
 	debug: false
 });
 await client.connect();
@@ -43,7 +43,7 @@ import { LitContracts } from '@lit-protocol/contracts-sdk';
 import { ClaimRequest, ClaimResult, ClientClaimProcessor } from "@lit-protocol/types"
 
 const client = new LitNodeClient({
-	litNetwork: "cayenne",
+	litNetwork: "datil-dev",
 	debug: false
 });
 await client.connect();
@@ -68,7 +68,7 @@ An example of deriving a `key id` to its public key, this operation does not per
 
 ```jsx
 const client = new LitNodeClient({
-	litNetwork: "cayenne",
+	litNetwork: "datil-dev",
 	debug: false
 });
 
@@ -83,7 +83,7 @@ An example of claiming with a customized `ClaimProcessor` making a call to the `
 
 ```jsx
 const client = new LitNodeClient({
-	litNetwork: "cayenne",
+	litNetwork: "datil-dev",
 	debug: false
 });
 await client.connect();

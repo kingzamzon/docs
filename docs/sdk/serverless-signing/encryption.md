@@ -3,7 +3,10 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 # Decrypting and Combining Within an Action
 
 :::info
-    Only available on the `cayenne` network
+    Only available on the Lit networks:
+        - `habanero`
+        - `manzano`
+        - `datil-dev` 
 :::
 
 ## Overview
@@ -52,7 +55,7 @@ The ID will be included in the access control check when you use `decryptAndComb
     ];
     const message = 'Hello world';
     const client = new LitNodeClient({
-        litNetwork: 'cayenne'
+        litNetwork: "datil-dev"
     });
     
     await client.connect();

@@ -33,7 +33,7 @@ We will start by performing an `encrypt` operation as shown below using the `Lit
   ];
   const message = 'Hello world';
   const client = new LitNodeClient({
-    litNetwork: 'cayenne'
+    litNetwork: "datil-dev"
   });
   await client.connect();
   const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(

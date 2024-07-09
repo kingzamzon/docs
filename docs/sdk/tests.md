@@ -24,7 +24,7 @@ Errors are thrown as exceptions when something has gone wrong. Errors are object
 defaultValue="jalapeno"
 values={[
 {label: 'jalapeno', value: 'jalapeno'},
-{label: 'serrano, cayenne', value: 'serrano, cayenne'},
+{label: 'serrano, datil-dev', value: 'serrano, datil-dev'},
 ]}>
 
 <TabItem value="jalapeno">
@@ -48,7 +48,7 @@ values={[
 | unknown_error                          | An unknown error has occurred. Please contact us on Discord to report this error.                                                                                                                                                                                                                                         |
 
 </TabItem>
-<TabItem value="serrano, cayenne">
+<TabItem value="serrano, datil-dev">
 
 | error code                                 | reason                                                                                                                                                                                                                                                                           |
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

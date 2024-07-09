@@ -32,7 +32,7 @@ const code = `(async () => {
 `;
 
 const client = new LitNodeClient({
-    litNetwork: 'cayenne',
+    litNetwork: "datil-dev",
 });
 await client.connect();
 const res = await client.executeJs({

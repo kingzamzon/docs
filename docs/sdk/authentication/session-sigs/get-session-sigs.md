@@ -87,7 +87,7 @@ const sessionSigs = await litNodeClient.getSessionSigs({
  ```javascript
  const LocalStorage = require('node-localstorage').LocalStorage;
  const litNodeClient = new LitNodeClient({
-  litNetwork: "cayenne",
+  litNetwork: "datil-dev",
   debug: true,
   storageProvider: {
     provider: new LocalStorage('./storage.test.db'),

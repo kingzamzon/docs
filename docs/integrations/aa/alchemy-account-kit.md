@@ -66,7 +66,7 @@ values={[
 <TabItem value="npm">
 
 ```js
-npm i @lit-protocol/pkp-ethers@cayenne
+npm i @lit-protocol/pkp-ethers
 ```
 
 </TabItem>
@@ -74,7 +74,7 @@ npm i @lit-protocol/pkp-ethers@cayenne
 <TabItem value="yarn">
 
 ```js
-yarn add @lit-protocol/pkp-ethers@cayenne
+yarn add @lit-protocol/pkp-ethers
 ```
 
 </TabItem>
@@ -92,9 +92,9 @@ values={[
 <TabItem value="npm">
 
 ```js
-npm i @lit-protocol/lit-node-client@cayenne
-npm i @lit-protocol/crypto@cayenne
-npm i @lit-protocol/auth-helpers@cayenne
+npm i @lit-protocol/lit-node-client
+npm i @lit-protocol/crypto
+npm i @lit-protocol/auth-helpers
 ```
 
 </TabItem>
@@ -102,9 +102,9 @@ npm i @lit-protocol/auth-helpers@cayenne
 <TabItem value="yarn">
 
 ```js
-yarn add @lit-protocol/lit-node-client@cayenne
-yarn add @lit-protocol/crypto@cayenne
-yarn add @lit-protocol/auth-helpers@cayenne
+yarn add @lit-protocol/lit-node-client
+yarn add @lit-protocol/crypto
+yarn add @lit-protocol/auth-helpers
 ```
 </TabItem>
 </Tabs>
@@ -161,7 +161,7 @@ const PKP_PUBLIC_KEY = "<YOUR PKP PUBLIC KEY>";
 const litSigner = new LitSigner<LitAuthMethod>({
   pkpPublicKey: PKP_PUBLIC_KEY,
   rpcUrl: POLYGON_MUMBAI_RPC_URL,
-  network: "cayenne"
+  network: "datil-dev"
 });
 ```
 
