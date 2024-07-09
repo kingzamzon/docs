@@ -3,7 +3,10 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 # Decrypting and Combining Within an Action
 
 :::info
-    Only available on the `datil-dev` network
+    Only available on the Lit networks:
+        - `habanero`
+        - `manzano`
+        - `datil-dev` 
 :::
 
 ## Overview
