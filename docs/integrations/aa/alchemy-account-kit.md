@@ -92,9 +92,9 @@ values={[
 <TabItem value="npm">
 
 ```js
-npm i @lit-protocol/lit-node-client@datil-dev
-npm i @lit-protocol/crypto@datil-dev
-npm i @lit-protocol/auth-helpers@datil-dev
+npm i @lit-protocol/lit-node-client
+npm i @lit-protocol/crypto
+npm i @lit-protocol/auth-helpers
 ```
 
 </TabItem>
