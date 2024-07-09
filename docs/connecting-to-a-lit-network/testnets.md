@@ -17,7 +17,7 @@ Here is an overview of the Lit testnets:
 
 The Lit network, Datil-dev, utilizes the Lit blockchain: Chronicle Vesuvius. It's a centralized testnet designed for early-stage development, and is superseding the Cayenne testnet. Like Cayenne, usage of the network does **not** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain, please refer to [this guide](./lit-blockchains/migrations/migrating-to-vesuvius) to learn how to migrate to Chronicle Vesuvius.
+If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./lit-blockchains/migrations/migrating-to-vesuvius) to learn how to migrate to Chronicle Vesuvius.
 
 The minimum version of the Lit SDK that supports `datil-dev` is `6.1.0`, and it will be installed from NPM by default:
 
