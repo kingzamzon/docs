@@ -73,7 +73,6 @@ const sidebars = {
             keywords: ['migrations'],
           },
           items: [
-            'sdk/migrations/datil',
             'sdk/migrations/6.0.0',
             'sdk/migrations/4.0.0',
             'sdk/migrations/3.2.0',
@@ -86,6 +85,35 @@ const sidebars = {
               },
               collapsed: true,
               items: ['network/feature-matrix', 'sdk/migrations/3.0.0/changes'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Connecting to a Lit Network',
+      collapsed: true,
+      link: {
+        type: 'doc',
+        id: 'connecting-to-a-lit-network/connecting',
+      },
+      items: [
+        'connecting-to-a-lit-network/testnets',
+        {
+          type: 'category',
+          label: 'Lit Blockchains',
+          collapsed: true,
+          items: [
+            'connecting-to-a-lit-network/lit-blockchains/chronicle-vesuvius',
+            'connecting-to-a-lit-network/lit-blockchains/chronicle',
+            {
+              type: 'category',
+              label: 'Migrations',
+              collapsed: true,
+              items: [
+                'connecting-to-a-lit-network/lit-blockchains/migrations/migrating-to-vesuvius',
+              ],
             },
           ],
         },
