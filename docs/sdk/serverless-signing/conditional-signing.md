@@ -24,7 +24,7 @@ The `ethers.utils.arrayify(ethers.utils.keccak256(...)` can be used to convert t
 Installed the latest client on `datil-dev`
 
 ```bash
-yarn install @lit-protocol/lit-node-client@datil-dev
+yarn install @lit-protocol/lit-node-client
 ```
 
 Set up the Lit Action code to be run on the Lit nodes.
