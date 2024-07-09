@@ -74,7 +74,7 @@ npm i @lit-protocol/pkp-ethers@datil-dev
 <TabItem value="yarn">
 
 ```js
-yarn add @lit-protocol/pkp-ethers@datil-dev
+yarn add @lit-protocol/pkp-ethers
 ```
 
 </TabItem>
