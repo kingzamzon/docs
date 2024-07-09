@@ -102,9 +102,9 @@ npm i @lit-protocol/auth-helpers
 <TabItem value="yarn">
 
 ```js
-yarn add @lit-protocol/lit-node-client@datil-dev
-yarn add @lit-protocol/crypto@datil-dev
-yarn add @lit-protocol/auth-helpers@datil-dev
+yarn add @lit-protocol/lit-node-client
+yarn add @lit-protocol/crypto
+yarn add @lit-protocol/auth-helpers
 ```
 </TabItem>
 </Tabs>
