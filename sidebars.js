@@ -100,6 +100,7 @@ const sidebars = {
       },
       items: [
         'connecting-to-a-lit-network/testnets',
+        'connecting-to-a-lit-network/migrating-to-vesuvius',
         {
           type: 'category',
           label: 'Lit Blockchains',
@@ -107,14 +108,6 @@ const sidebars = {
           items: [
             'connecting-to-a-lit-network/lit-blockchains/chronicle-vesuvius',
             'connecting-to-a-lit-network/lit-blockchains/chronicle',
-            {
-              type: 'category',
-              label: 'Migrations',
-              collapsed: true,
-              items: [
-                'connecting-to-a-lit-network/lit-blockchains/migrations/migrating-to-vesuvius',
-              ],
-            },
           ],
         },
       ],

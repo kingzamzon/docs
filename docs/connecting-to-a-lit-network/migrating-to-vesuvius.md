@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Migrating From Chronicle to Chronicle Vesuvius
+# Migrating To Datil From Earlier Networks
 
 Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../chronicle). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new blockchain network, [Chronicle Vesuvius](../chronicle-vesuvius), powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
 
