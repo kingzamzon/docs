@@ -66,7 +66,7 @@ values={[
 <TabItem value="npm">
 
 ```js
-npm i @lit-protocol/pkp-ethers@datil-dev
+npm i @lit-protocol/pkp-ethers
 ```
 
 </TabItem>
