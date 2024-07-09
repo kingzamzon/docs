@@ -1,3 +1,4 @@
+import StateOfTheNetwork from "@site/src/pages/state-of-the-network.md";
 import FeedbackComponent from "@site/src/pages/feedback.md";
 
 import Tabs from '@theme/Tabs';
@@ -5,9 +6,7 @@ import TabItem from '@theme/TabItem';
 
 # Installation
 
-:::info
-[Habanero Mainnet](../network/networks/mainnet) and [Manzano Testnet](../network/networks/testnet) are now live. Check out the [docs on migration](../network/migration-guide) to learn how you can start building on Habanero and Manzano today. 
-:::
+<StateOfTheNetwork/>
 
 Ensure you have the following requirements in place:
 

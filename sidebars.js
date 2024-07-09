@@ -445,7 +445,6 @@ const sidebars = {
       },
       items: [
         'intro/usecases',
-        'network/rollup',
         'resources/supported-chains',
         'resources/contracts',
         'resources/glossary',
