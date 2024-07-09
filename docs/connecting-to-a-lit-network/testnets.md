@@ -7,11 +7,11 @@ Test networks are designed for early-stage application development. Storing asse
 
 Here is an overview of the Lit testnets:
 
-| Name      | Lit Blockchain                                             | Minimum Lit SDK Version | Lit SDK Network Identifier | Requires Payment |
-|-----------|------------------------------------------------------------|-------------------------|----------------------------|------------------|
-| Datil-dev | [Chronicle Vesuvius](./lit-blockchains/chronicle-vesuvius) | `^6.1.0`                | `datil-dev`                | ❌                |
-| Cayenne   | [Chronicle](./lit-blockchains/chronicle)                   | `^4.0.0`                | `cayenne`                  | ❌                |
-| Manzano   | [Chronicle](./lit-blockchains/chronicle)                   | `^4.0.0`                | `manzano`                  | ✅                |
+| Name      | Lit Blockchain                                             | Description                                                                                                                                                                         | Minimum Lit SDK Version | Lit SDK Network Identifier | Requires Payment |
+|-----------|------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------|------------------|
+| Datil-dev | [Chronicle Vesuvius](./lit-blockchains/chronicle-vesuvius) | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^6.1.0`                | `datil-dev`                | ❌                |
+| Cayenne   | [Chronicle](./lit-blockchains/chronicle)                   | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^4.0.0`                | `cayenne`                  | ❌                |
+| Manzano   | [Chronicle](./lit-blockchains/chronicle)                   | Decentralized test network. No persistency guarantees. Mirrors Habanero code and configuration. Payment is enforced.                                                                | `^4.0.0`                | `manzano`                  | ✅                |
 
 ## Datil-dev
 

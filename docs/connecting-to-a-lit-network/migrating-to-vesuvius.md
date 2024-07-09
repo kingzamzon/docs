@@ -3,9 +3,11 @@ import TabItem from '@theme/TabItem';
 
 # Migrating To Datil From Earlier Networks
 
-Previously Lit networks were powered by a pre-Bedrock Optimism L2 rollup called [Chronicle](../chronicle). In our effort to deliver a more performant and stable backend for Lit's infrastructure, we're launching a new blockchain network, [Chronicle Vesuvius](../chronicle-vesuvius), powered by [Arbitrum Orbit](https://arbitrum.io/orbit).
+Lit is launching three new networks, Datil-dev, Datil-test, and Datil, to improve performance and stability for production users compared to previous Lit networks like Cayenne, Manzano, and Habanero.
 
-Chronicle Vesuvius will support three new Lit networks, and depending on the existing Lit network you are using, you should migrate to it's corresponding Datil network:
+The Datil networks use a new rollup blockchain called [Chronicle Vesuvius](./lit-blockchains/chronicle-vesuvius), which replaces the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
+
+Depending on the existing Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
 
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
