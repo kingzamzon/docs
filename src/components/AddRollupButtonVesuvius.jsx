@@ -7,11 +7,11 @@ export default function AddRollupButton() {
         chainId: '0x907',
         chainName: 'Chronicle Vesuvius - Lit Protocol Testnet',
         nativeCurrency: {
-          name: 'LIT',
-          symbol: 'LIT',
+          name: 'Lit Protocol - Chronicle Vesuvius Testnet Token (tstLPX)',
+          symbol: 'tstLPX',
           decimals: 18,
         },
-        rpcUrls: ['https://rpc-vesuvius-as793xpg5g.t.conduit.xyz'],
+        rpcUrls: ['https://vesuvius-rpc.litprotocol.com'],
         blockExplorerUrls: [
           'https://explorer-vesuvius-as793xpg5g.t.conduit.xyz',
         ],
