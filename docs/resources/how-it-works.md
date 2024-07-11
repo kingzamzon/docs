@@ -80,14 +80,14 @@ The current node operators active on the Habanero Mainnet Beta include:
 - [01node](https://01node.com/?ref=spark.litprotocol.com)
 - [CMT Digital](https://cmt.digital/?ref=spark.litprotocol.com)
 
-### The Lit Protocol Token (LPX)
+### The Lit Protocol Token (LITKEY)
 
-The Lit Protocol token, LPX, will be used by node operators to meet their staking requirement, as well as a reward token to pay node operators for their service.  Developers using Lit will also use the token to pay for transacting on the network.
+The Lit Protocol token, LITKEY, will be used by node operators to meet their staking requirement, as well as a reward token to pay node operators for their service.  Developers using Lit will also use the token to pay for transacting on the network.
     
 :::info
-The LPX token is NOT live, and currently a test token (testLPX) is being used for staking and payment. The official LPX token will be released when the v1 network launches later this year. You can subscribe to updates [here](https://spark.litprotocol.com/).
+The LITKEY token is NOT live, and currently a test token (tstLPX) is being used for staking and payment. The official LITKEY token will be released when the v1 network launches later this year. You can subscribe to updates [here](https://spark.litprotocol.com/).
 
-If you're a developer building on Lit, test tokens can be claimed from the [verified faucet](https://faucet.litprotocol.com/).
+If you're a developer building on Lit, test tokens can be claimed from the [verified faucet](https://chronicle-vesuvius-faucet.getlit.dev/).
 :::
     
 
@@ -95,8 +95,8 @@ If you're a developer building on Lit, test tokens can be claimed from the [veri
 
 Learn more about how Lit Protocol works by checking out the resources below:
 
-- About [user wallets](../concepts/pkps-as-wallet.md).
-- About [encryption and access control](../concepts/access-control-concept.md).
-- About [decentralized compute](../concepts/programmable-signing-concept.md).
+- About [user wallets](../sdk/wallets/intro).
+- About [encryption and access control](../sdk/access-control/intro).
+- About [decentralized compute](../sdk/serverless-signing/overview).
 
 <FeedbackComponent/>
