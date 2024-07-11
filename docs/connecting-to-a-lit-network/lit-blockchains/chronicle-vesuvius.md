@@ -32,8 +32,8 @@ The below and additional chain facts are available [here](https://app.conduit.xy
 |--------------------|----------------------------------------------------|
 | Chain ID           | 2311                                               |
 | Name               | Chronicle Vesuvius - Lit Protocol Testnet          |
-| RPC URL            | https://rpc-vesuvius-as793xpg5g.t.conduit.xyz      |
-| Block Explorer URL | https://explorer-vesuvius-as793xpg5g.t.conduit.xyz |
+| RPC URL            | https://vesuvius-rpc.litprotocol.com/              |
+| Block Explorer URL | https://vesuvius-explorer.litprotocol.com/         |
 | Currency Symbol    | tstLPX                                             |
 | Currency Decimals  | 18                                                 |
 
