@@ -13,69 +13,70 @@ In order to generate `SessionSigs`, you need a `capacityDelegationAuthSig` in si
 You can generate a `SessionSig` with the help of `capacityDelegationAuthSig` object in the following way:
 
 ```javascript
-import { LitNodeClient } from '@lit-protocol/lit-node-client';
-import { LitAccessControlConditionResource, LitAbility } from '@lit-protocol/auth-helpers';
+const { LitNodeClient } = require('@lit-protocol/lit-node-client');
+const { LitNetwork } = require('@lit-protocol/constants');
+const { LitAbility, LitActionResource, createSiweMessageWithRecaps } = require('@lit-protocol/auth-helpers');
+const { ethers } = require('ethers');
 
 // Create a new ethers.js Wallet instance
-const wallet = new Wallet(process.env.YOUR_PRIVATE_KEY);
+const wallet = new ethers.Wallet(process.env.YOUR_PRIVATE_KEY);
 
-// Instantiate a LitNodeClient
-const litNodeClient = new LitNodeClient({
-  litNetwork: "manzano",
-  debug: true,
-});
-await litNodeClient.connect();
-
-let nonce = await litNodeClient.getLatestBlockhash();
-
-/**
- * When the getSessionSigs function is called, it will generate a session key
- * and sign it using a callback function. The authNeededCallback parameter
- * in this function is optional. If you don't pass this callback,
- * then the user will be prompted to authenticate with their wallet.
- */
-const authNeededCallback = async ({ chain, resources, expiration, uri }) => {
-  const domain = "localhost:3000";
-  const message = new SiweMessage({
-    domain,
-    address: wallet.address,
-    statement: "Sign a session key to use with Lit Protocol",
-    uri,
-    version: "1",
-    chainId: "1",
-    expirationTime: expiration,
-    resources,
-    nonce,
+const sessionSigsFunction = async() => {
+  // Instantiate a LitNodeClient
+  const litNodeClient = new LitNodeClient({
+    litNetwork: LitNetwork.DatilDev,
+    debug: true,
   });
-  const toSign = message.prepareMessage();
-  const signature = await wallet.signMessage(toSign);
+  await litNodeClient.connect();
 
-  const authSig = {
-    sig: signature,
-    derivedVia: "web3.eth.personal.sign",
-    signedMessage: toSign,
-    address: wallet.address,
+  /*
+  * When the getSessionSigs function is called, it will generate a session key
+  * and sign it using a callback function. The authNeededCallback parameter
+  * in this function is optional. If you don't pass this callback,
+  * then the user will be prompted to authenticate with their wallet.
+  */
+  const authNeededCallback = async ({
+    uri,
+    expiration,
+    resourceAbilityRequests,
+  }) => {
+    // Prepare the SIWE message for signing
+    const toSign = await createSiweMessageWithRecaps({
+      uri: uri,
+      expiration: expiration,
+      resources: resourceAbilityRequests,
+      walletAddress: wallet.address,
+      nonce: await litNodeClient.getLatestBlockhash(),
+      litNodeClient: litNodeClient,
+    });
+    // Use the Ethereum wallet to sign the message, return the digital signature
+    const signature = await wallet.signMessage(toSign);
+
+    // Create an AuthSig using the derived signature, the message, and wallet address
+    const authSig = {
+      sig: signature,
+      derivedVia: "web3.eth.personal.sign",
+      signedMessage: toSign,
+      address: wallet.address,
+    };
+
+    return authSig;
   };
 
-  return authSig;
+  // Create a session key and sign it using the authNeededCallback defined above
+  const sessionSigs = await litNodeClient.getSessionSigs({
+    chain: "ethereum",
+    resourceAbilityRequests: [
+      {
+        resource: new LitActionResource("*"),
+        ability: LitAbility.LitActionExecution,
+      },
+    ],
+    authNeededCallback,
+    });
+
+  return sessionSigs;
 };
-
-// Create an access control condition resource
-const litResource = new LitAccessControlConditionResource(
-  hashedEncryptedSymmetricKeyString
-);
-
-const sessionSigs = await litNodeClient.getSessionSigs({
-  chain: "ethereum",
-  resourceAbilityRequests: [
-    {
-      resource: litResource,
-      ability: LitAbility.AccessControlConditionDecryption
-    }
-  ],
-  authNeededCallback,
-  capacityDelegationAuthSig,  // here is where we add the delegation to our session request
-});
 ```
 
 **Note:** The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
