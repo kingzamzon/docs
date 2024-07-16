@@ -163,7 +163,7 @@ const config = {
             items: [
               {
                 label: 'Terms of Service',
-                to: 'https://www.litprotocol.com/legal/terms-of-service',
+                href: 'https://www.litprotocol.com/legal/terms-of-service',
               },
               {
                 label: 'Privacy Policy',
