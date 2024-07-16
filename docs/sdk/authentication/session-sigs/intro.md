@@ -12,11 +12,12 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 :::
 
-We refer to a session signature obtained from the user via session keys as a `SessionSig`.
+Session keys are a unique string of data generated during a specific online session between two or more entities. In our case, the keypair is a ed25519 keypair. It serves as a protective layer for identity verification by incorporating unique session-specific details such as date, time, and other contextual factors to generate a signature. A signature, known as a `SessionSig`, is obtained from the user through the session keys.
 
-`SessionSigs` are produced by a ed25519 keypair that is generated randomly on the browser and stored in local storage. The first step to producing `SessionSigs` is to first obtain an `AuthSig` through an authentication method like Google OAuth (example [here](https://github.com/LIT-Protocol/oauth-pkp-signup-example/blob/main/src/App.tsx#L398)). By specifying the session keypair's public key in the signature payload of the `AuthSig` - the `uri` field of the SIWE - users can choose which specific actions to delegate to the session keypair for operating upon certain resources.
+The Lit SDK uses the session keypair to sign all requests to the Lit Nodes. Each node in the Lit Network receives a unique signature for each request and can verify that the user owns the wallet address that signed the capability. The user’s `AuthSig` is sent along with the `SessionSig` as an attached "capability" to introduce capability to the `SessionSig`.
 
-The session keypair is used to sign all requests to the Lit Nodes, and the user's `AuthSig` is sent along with the request, attached as a "capability" to the session signature. Each node in the Lit Network receives a unique signature for each request, and can verify that the user owns the wallet address that signed the capability.
+Attaching capability is done by specifying the session keypair's public key as the `address` field of the `AuthSig` and the `capabilities` field. The `capabilities` field is an array of one or more signatures which authorize the `AuthSig` address (also our session keypair public key) to utilize the resources specified in the capabilities of the SIWE messages. These signatures contain the `AuthSig` `address` in their URI field, which can be seen in the example below.
+
 
 ## Capability Objects
 
@@ -110,14 +111,6 @@ Here is what each field in `signedMessage` means:
 - `issuedAt` is the time the SessionSig was issued.
 - `expiration` is the time the SessionSig becomes invalid.
 - `nodeAddress` is the specific URL the SessionSig is meant for.
-
-#### Capabilities
-
-The `capabilities` field is an array of one or more signatures. These capabilities authorize this AuthSig address to utilize the resources specified in the capabilities SIWE messages. These signatures would have the address from the top level AuthSig in their URI field. For example, notice the following in the AuthSig above:
-
-```
-URI: lit:session:6a1f1e8a00b61867b85eaf329d6fdf855220ac3e32f44ec13e4db0dd303dea6a
-```
 
 #### Node Address
 
