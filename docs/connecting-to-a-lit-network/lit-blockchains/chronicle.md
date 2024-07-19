@@ -7,7 +7,7 @@ import AddRollupButton from "@site/src/components/AddRollupButton";
 :::warning
 With the release of [Chronicle Vesuvius](./chronicle-vesuvius), Chronicle is going to be deprecated, and **should no longer be used.**
 
-Please check out the [Migrating From Chronicle to Chronicle Vesuvius](./migrations/migrating-to-vesuvius) guide if you need to migrate you application to Chronicle Vesuvius.
+Please check out the [Migrating From Chronicle to Chronicle Vesuvius](./migrations/migrating-to-datil) guide if you need to migrate you application to Chronicle Vesuvius.
 :::
 
 Chronicle is Lit Protocol's custom EVM rollup testnet, which enhances the performance and scalability of our programmable decentralized threshold cryptography system.

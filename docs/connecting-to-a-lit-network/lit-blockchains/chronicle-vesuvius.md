@@ -41,7 +41,7 @@ The below and additional chain facts are available [here](https://app.conduit.xy
 
 ## Block Explorer
 
-A block explorer is available for Chronicle Vesuvius, providing valuable insights into the network. You can access it [here](https://explorer-vesuvius-as793xpg5g.t.conduit.xyz). The explorer allows you to track transactions, addresses, and other essential data on the rollup.
+A block explorer is available for Chronicle Vesuvius, providing valuable insights into the network. You can access it [here](https://vesuvius-explorer.litprotocol.com/). The explorer allows you to track transactions, addresses, and other essential data on the rollup.
 
 ## Special Features
 
