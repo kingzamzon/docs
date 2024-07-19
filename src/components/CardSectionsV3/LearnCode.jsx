@@ -13,9 +13,9 @@ export default function LearnCodeSection({ title, className }) {
         to="https://github.com/LIT-Protocol/awesome/blob/main/README.md"
       />
       <Card
-        title="📖 SDK V3 API Documentation"
+        title="📖 SDK API Documentation"
         description="Discover all the functions available in the Lit SDK."
-        to="https://lit-js-sdk-v3-api-docs.vercel.app/"
+        to="https://v6-api-doc-lit-js-sdk.vercel.app/"
       />
       <Card
         title="📃 Lit Actions SDK Documentation"
