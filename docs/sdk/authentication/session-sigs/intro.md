@@ -12,11 +12,19 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 :::
 
-Session keys are a unique string of data generated during a specific online session between two or more entities. In our case, the keypair is a ed25519 keypair. It serves as a protective layer for identity verification by incorporating unique session-specific details such as date, time, and other contextual factors to generate a signature. A signature, known as a `SessionSig`, is obtained from the user through the session keys.
+To communicate with a Lit network, you must first authenticate yourself using session signatures.
 
-The Lit SDK uses the session keypair to sign all requests to the Lit Nodes. Each node in the Lit Network receives a unique signature for each request and can verify that the user owns the wallet address that signed the capability. The user’s `AuthSig` is sent along with the `SessionSig` as an attached "capability" to introduce capability to the `SessionSig`.
+Session signatures are created with session keys, which are generated when you initiate a session through a request to a Lit network using the Lit SDK. These session keys are unique `ed25519` keypairs generated locally by the Lit SDK and are used to sign all requests to the Lit Network during the current session. Think of them as a temporary ID badge for signing all your requests to Lit during the session.
 
-Attaching capability is done by specifying the session keypair's public key as the `address` field of the `AuthSig` and the `capabilities` field. The `capabilities` field is an array of one or more signatures which authorize the `AuthSig` address (also our session keypair public key) to utilize the resources specified in the capabilities of the SIWE messages. These signatures contain the `AuthSig` `address` in their URI field, which can be seen in the example below.
+While session signatures facilitate ongoing communication, more secure access requires an `AuthSig` (Authentication Signature) to verify your identity and authorization to the Lit Nodes.
+An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message that specifies:
+- The Lit resources you're requesting access to (e.g., PKPs, Lit Actions).
+- The specific [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) you're requesting for the session keys (e.g., signing transactions with a particular PKP, executing a specified Lit Action).
+
+The `AuthSig` allows Lit Nodes to verify your authorization for requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. This ensures that only authorized users can perform specific actions within the Lit Network.
+When you make a request, each Lit Node checks your Auth Sig to confirm that your request aligns with the capabilities you previously defined. 
+
+This authentication system ensures that the Lit Network remains secure, verifying that you are genuinely making the request and that you have the necessary authorization.
 
 
 ## Capability Objects
