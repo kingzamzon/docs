@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 Lit is launching three new networks, Datil-dev, Datil-test, and Datil, to improve performance and stability for production users compared to previous Lit networks like Cayenne, Manzano, and Habanero.
 
-The Datil-dev and Datil-test networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone.md). This new blockchains replaces the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
+The Datil-dev and Datil-test networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone.md). These new blockchains replace the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
 
 Depending on the existing Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
 
