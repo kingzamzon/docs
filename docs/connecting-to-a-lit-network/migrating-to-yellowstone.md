@@ -19,7 +19,7 @@ Like their counterparts, `datil` and `datil-test` require developers to pay for 
 
 ## Breaking Changes and Important Updates
 
-Chronicle Yellowstone's chain facts are available [here](../chronicle-yellowstone#connecting-to-chronicle-yellowstone).
+Chronicle Yellowstone's chain facts are available [here](./lit-blockchains/chronicle-yellowstone#connecting-to-chronicle-yellowstone).
 
 ### New Network, New PKPs
 
