@@ -4,16 +4,16 @@ export default function AddRollupButton() {
   const addNetwork = () => {
     const params = [
       {
-        chainId: '0x907',
-        chainName: 'Chronicle Vesuvius - Lit Protocol Testnet',
+        chainId: '175188',
+        chainName: 'Chronicle Yellowstone - Lit Protocol Testnet',
         nativeCurrency: {
-          name: 'Lit Protocol - Chronicle Vesuvius Testnet Token (tstLPX)',
+          name: 'Lit Protocol - Chronicle Yellowstone Testnet Token (tstLPX)',
           symbol: 'tstLPX',
           decimals: 18,
         },
-        rpcUrls: ['https://vesuvius-rpc.litprotocol.com'],
+        rpcUrls: ['https://yellowstone-rpc.litprotocol.com'],
         blockExplorerUrls: [
-          'https://explorer-vesuvius-as793xpg5g.t.conduit.xyz',
+          'https://yellowstone-explorer.litprotocol.com',
         ],
       },
     ];
@@ -25,6 +25,6 @@ export default function AddRollupButton() {
   };
 
   return (
-    <button onClick={addNetwork}>Add Chronicle Vesuvius to Metamask</button>
+    <button onClick={addNetwork}>Add Chronicle Yellowstone to Metamask</button>
   );
 }

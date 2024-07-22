@@ -99,13 +99,13 @@ const sidebars = {
       },
       items: [
         'connecting-to-a-lit-network/testnets',
-        'connecting-to-a-lit-network/migrating-to-vesuvius',
+        'connecting-to-a-lit-network/migrating-to-datil',
         {
           type: 'category',
           label: 'Lit Blockchains',
           collapsed: true,
           items: [
-            'connecting-to-a-lit-network/lit-blockchains/chronicle-vesuvius',
+            'connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone',
             'connecting-to-a-lit-network/lit-blockchains/chronicle',
           ],
         },
