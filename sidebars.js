@@ -99,7 +99,7 @@ const sidebars = {
       },
       items: [
         'connecting-to-a-lit-network/testnets',
-        'connecting-to-a-lit-network/migrating-to-yellowstone',
+        'connecting-to-a-lit-network/migrating-to-datil',
         {
           type: 'category',
           label: 'Lit Blockchains',

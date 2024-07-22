@@ -17,21 +17,21 @@ await litNodeClient.connect();
 :::warning
 With the release of [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) and the Datil networks, the [Chronicle](./lit-blockchains/chronicle) based Lit networks: `habanero`, `manzano`, and `cayenne` are going to be deprecated.
 
-If you are currently using these networks, please review the [Migrating From Chronicle to Chronicle Yellowstone](./migrating-to-yellowstone) guide to migrate your application and Lit assets to a Datil network.
+If you are currently using these networks, please review the [Migrating to Datil](./migrations/migrating-to-datil) guide to migrate your application and Lit assets to a Datil network.
 :::
 
 ### Mainnets
 
-| Name     | Lit SDK Network Identifier | Doc Page Link | Network is Live           |
-|----------|----------------------------|---------------|---------------------------|
-| Datil    | `datil`                    | n/a           | ❌                         |
-| Habanero | `habanero`                 | n/a           | ⚠️ Going to be deprecated |
+| Name       | Lit SDK Network Identifier | Doc Page Link | Network is Live           |
+|------------|----------------------------|---------------|---------------------------|
+| Datil-prod | `datil-prod`               | n/a           | ❌                        |
+| Habanero   | `habanero`                 | n/a           | ⚠️ Going to be deprecated |
 
 ### Testnets
 
-| Name      | Lit SDK Network Identifier | Doc Page Link                | Network is Live           |
-|-----------|----------------------------|------------------------------|---------------------------|
-| Datil-dev | `datil-dev`                | [Link](./testnets#datil-dev) | ✅                         |
-| Datil     | `datil-test`               | n/a                          | ❌                         |
-| Cayenne   | `cayenne`                  | n/a                          | ⚠️ Going to be deprecated |
-| Manzano   | `manzano`                  | n/a                          | ⚠️ Going to be deprecated |
+| Name       | Lit SDK Network Identifier | Doc Page Link                 | Network is Live           |
+|------------|----------------------------|-------------------------------|---------------------------|
+| Datil-test | `datil-test`               | [Link](./testnets#datil-test) | ✅                        |
+| Datil-dev  | `datil-dev`                | [Link](./testnets#datil-dev)  | ✅                        |
+| Manzano    | `manzano`                  | n/a                           | ⚠️ Going to be deprecated |
+| Cayenne    | `cayenne`                  | n/a                           | ⚠️ Going to be deprecated |

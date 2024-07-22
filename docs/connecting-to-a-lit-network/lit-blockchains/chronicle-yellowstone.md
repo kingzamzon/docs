@@ -32,8 +32,8 @@ The below and additional chain facts are available [here](https://app.conduit.xy
 |--------------------|----------------------------------------------------|
 | Chain ID           | 175188                                             |
 | Name               | Chronicle Yellowstone - Lit Protocol Testnet       |
-| RPC URL            | https://yellowstone-rpc.litprotocol.com            |
-| Block Explorer URL | https://yellowstone-explorer.litprotocol.com       |
+| RPC URL            | https://yellowstone-rpc.litprotocol.com/           |
+| Block Explorer URL | https://yellowstone-explorer.litprotocol.com/      |
 | Currency Symbol    | tstLPX                                             |
 | Currency Decimals  | 18                                                 |
 
