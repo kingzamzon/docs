@@ -9,8 +9,8 @@ Here is an overview of the Lit testnets:
 
 | Name       | Lit Blockchain                                                   | Description                                                                                                                                                                         | Minimum Lit SDK Version | Lit SDK Network Identifier | Requires Payment |
 |------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------|------------------|
-| Datil-test | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized testnet designed for pre-production development. No persistency guarantees. Payment is enforced.                                                                        | `^6.2.0`                | `datil-test`               | ✅                |
-| Datil-dev  | [Chronicle Vesuvius](./lit-blockchains/chronicle-vesuvius)       | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^6.1.0`                | `datil-dev`                | ❌                |
+| Datil-test | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized testnet designed for pre-production development. No persistency guarantees. Payment is enforced.                                                                        | `^6.2.2`                | `datil-test`               | ✅                |
+| Datil-dev  | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^6.2.2`                | `datil-dev`                | ❌                |
 | Cayenne    | [Chronicle](./lit-blockchains/chronicle)                         | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^4.0.0`                | `cayenne`                  | ❌                |
 | Manzano    | [Chronicle](./lit-blockchains/chronicle)                         | Decentralized test network. No persistency guarantees. Mirrors Habanero code and configuration. Payment is enforced.                                                                | `^4.0.0`                | `manzano`                  | ✅                |
 
@@ -18,9 +18,9 @@ Here is an overview of the Lit testnets:
 
 The Lit network, Datil-test, utilizes the Lit blockchain: Chronicle Yellowstone. It's a centralized testnet designed for pre-production development, and is superseding the Manzano testnet. Like Manzano, usage of the network **does** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), or are migrating from Datil-dev which uses the Chronicle Vesuvius blockchain, please refer to [this guide](./migrating-to-yellowstone) to learn how to migrate to Chronicle Yellowstone.
+If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
 
-The minimum version of the Lit SDK that supports `datil-test` is `6.2.0`, and the latest SDK version will be installed from NPM by default:
+The minimum version of the Lit SDK that supports `datil-test` is `6.2.2`, and the latest SDK version will be installed from NPM by default:
 
 <Tabs
 defaultValue="npm"
@@ -51,11 +51,11 @@ To connect to Datil-test, please follow the [Connecting to a Lit Network](./conn
 
 ## Datil-dev
 
-The Lit network, Datil-dev, utilizes the Lit blockchain: Chronicle Vesuvius. It's a centralized testnet designed for early-stage development, and is superseding the Cayenne testnet. Like Cayenne, usage of the network does **not** require payment using [Capacity Credits](../sdk/capacity-credits).
+The Lit network, Datil-dev, utilizes the Lit blockchain: Chronicle Yellowstone. It's a centralized testnet designed for early-stage development, and is superseding the Cayenne testnet. Like Cayenne, usage of the network does **not** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Vesuvius.
+If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
 
-The minimum version of the Lit SDK that supports `datil-dev` is `6.1.0`, and a latest SDK version will be installed from NPM by default:
+The minimum version of the Lit SDK that supports `datil-dev` is `6.2.2`, and a latest SDK version will be installed from NPM by default:
 
 <Tabs
 defaultValue="npm"

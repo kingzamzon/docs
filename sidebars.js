@@ -106,7 +106,6 @@ const sidebars = {
           collapsed: true,
           items: [
             'connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone',
-            'connecting-to-a-lit-network/lit-blockchains/chronicle-vesuvius',
             'connecting-to-a-lit-network/lit-blockchains/chronicle',
           ],
         },

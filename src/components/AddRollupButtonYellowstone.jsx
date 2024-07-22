@@ -4,16 +4,16 @@ export default function AddRollupButton() {
   const addNetwork = () => {
     const params = [
       {
-        chainId: '0x2ac54',
+        chainId: '175188',
         chainName: 'Chronicle Yellowstone - Lit Protocol Testnet',
         nativeCurrency: {
-          name: 'Lit Protocol - Chronicle Vesuvius Testnet Token (tstLPX)',
+          name: 'Lit Protocol - Chronicle Yellowstone Testnet Token (tstLPX)',
           symbol: 'tstLPX',
           decimals: 18,
         },
         rpcUrls: ['https://yellowstone-rpc.litprotocol.com'],
         blockExplorerUrls: [
-          'https://explorer-chronicle-yellowstone-testnet-9qgmzfcohk.t.conduit.xyz',
+          'https://yellowstone-explorer.litprotocol.com',
         ],
       },
     ];

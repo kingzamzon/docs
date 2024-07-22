@@ -87,7 +87,7 @@ The Lit Protocol token, LITKEY, will be used by node operators to meet their sta
 :::info
 The LITKEY token is NOT live, and currently a test token (tstLPX) is being used for staking and payment. The official LITKEY token will be released when the v1 network launches later this year. You can subscribe to updates [here](https://spark.litprotocol.com/).
 
-If you're a developer building on Lit, test tokens can be claimed from the [verified faucet](https://chronicle-vesuvius-faucet.getlit.dev/).
+If you're a developer building on Lit, test tokens can be claimed from the [verified faucet](https://chronicle-yellowstone-faucet.getlit.dev/).
 :::
     
 
