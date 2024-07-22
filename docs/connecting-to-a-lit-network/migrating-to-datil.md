@@ -57,8 +57,7 @@ For latest on which Datil networks are available to connect to, please refer to 
 The only code changes required to make use of the new Datil networks are as follows:
 
 - Upgrade the Lit packages to the latest version that supports Datil
-  - `6.2.2` is the minimum version of the packages that supports `datil-test`
-  - `6.2.2` is the minimum version of the packages that supports `datil-dev`
+  - `6.2.2` is the minimum version of the packages that support `datil-test` and `datil-dev`
 - Specify the Datil network when instantiating Lit node clients from the SDK
   - This is done by specifying the `litNetwork` property when [connecting a Lit client](./connecting) to one of the following Datil networks:
     - `datil-prod`
