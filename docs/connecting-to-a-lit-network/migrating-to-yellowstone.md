@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 Lit is launching three new networks, Datil-dev, Datil-test, and Datil, to improve performance and stability for production users compared to previous Lit networks like Cayenne, Manzano, and Habanero.
 
-The Datil networks use a new rollup blockchain called [Chronicle Vesuvius](./lit-blockchains/chronicle-vesuvius), which replaces the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
+The Datil networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone), which replaces the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
 
 Depending on the existing Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
 
@@ -19,15 +19,15 @@ Like their counterparts, `datil` and `datil-test` require developers to pay for 
 
 ## Breaking Changes and Important Updates
 
-Chronicle Vesuvius' chain facts are available [here](../chronicle-vesuvius#connecting-to-chronicle-vesuvius).
+Chronicle Yellowstone's chain facts are available [here](../chronicle-yellowstone#connecting-to-chronicle-yellowstone).
 
 ### New Network, New PKPs
 
-PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil`, your PKPs will need to be re-minted on the Chronicle Vesuvius blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Vesuvius.
+PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil`, your PKPs will need to be re-minted on the Chronicle Yellowstone blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Yellowstone.
 
-To reduce the friction of re-minting PKPs on Chronicle Vesuvius, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/pkp-migration-script/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
+To reduce the friction of re-minting PKPs on Chronicle Yellowstone, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/pkp-migration-script/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
 
-After re-minting PKPs on Chronicle Vesuvius, your users could use both the old Chronicle based network PKPs and the new Chronicle Vesuvius PKPs with the same auth methods. However, the corresponding Ethereum address for each PKP will be different. Your users may have things tied to the old PKP Ethereum address, like assets, or Account Abstraction wallets that see that PKP as an authorized signer. So the next step is to migrate these items for your users, or notify them they need to migrate to the new Ethereum address themselves.
+After re-minting PKPs on Chronicle Yellowstone, your users could use both the old Chronicle based network PKPs and the new Chronicle Yellowstone PKPs with the same auth methods. However, the corresponding Ethereum address for each PKP will be different. Your users may have things tied to the old PKP Ethereum address, like assets, or Account Abstraction wallets that see that PKP as an authorized signer. So the next step is to migrate these items for your users, or notify them they need to migrate to the new Ethereum address themselves.
 
 :::caution
 The migration script **will not** handle migration of any assets the existing PKPs own such as tokens. Assets held by existing PKPs will need to be manually transferred to a new PKP's Ethereum address (or some another address of your choosing) using a blockchain transaction.
