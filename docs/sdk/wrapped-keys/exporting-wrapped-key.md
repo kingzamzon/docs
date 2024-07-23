@@ -145,11 +145,12 @@ The `ETHEREUM_PRIVATE_KEY` environment variable is required. The corresponding E
 
 ```ts
 import * as ethers from 'ethers';
+import { LIT_RPC } from "@lit-protocol/constants";
 
 const ethersSigner = new ethers.Wallet(
     process.env.ETHEREUM_PRIVATE_KEY,
     new ethers.providers.JsonRpcProvider(
-        "https://chain-rpc.litprotocol.com/http"
+        LIT_RPC.CHRONICLE_YELLOWSTONE
     )
 );
 ```
@@ -163,7 +164,7 @@ import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitNetwork } from "@lit-protocol/constants";
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: "datil-dev",
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();

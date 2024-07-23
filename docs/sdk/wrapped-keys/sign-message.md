@@ -140,7 +140,7 @@ import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitNetwork } from "@lit-protocol/constants";
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: "datil-dev",
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();
