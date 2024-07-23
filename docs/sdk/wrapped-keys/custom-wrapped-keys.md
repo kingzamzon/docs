@@ -127,7 +127,7 @@ After generating and encrypting the private key, the resulting encryption metada
 
 ### Decrypting a Wrapped Key
 
-Decrypting a Wrapped Key, typically to be used for signing, can be done using the Lit Action SDK's[decryptToSingleNode](https://actions-docs.litprotocol.com/#decrypttosinglenode) method.
+Decrypting a Wrapped Key, typically to be used for signing, can be done using the Lit Action SDK's [decryptToSingleNode](https://actions-docs.litprotocol.com/#decrypttosinglenode) method.
 
 In order to call `decryptToSingleNode`, you will need to provide the following arguments:
 

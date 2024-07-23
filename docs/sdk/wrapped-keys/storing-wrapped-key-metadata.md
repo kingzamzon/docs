@@ -87,7 +87,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 import { encryptString } from '@lit-protocol/lit-node-client';
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Cayenne,
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();
@@ -130,7 +130,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 import { encryptString } from '@lit-protocol/lit-node-client';
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Cayenne,
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();
@@ -221,7 +221,7 @@ import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitNetwork } from "@lit-protocol/constants";
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Cayenne,
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();
@@ -284,7 +284,7 @@ import { api } from "@lit-protocol/wrapped-keys";
 const { storeEncryptedKeyMetadata } = api;
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Cayenne,
+    litNetwork: LitNetwork.DatilDev,
     debug: false,
 });
 await litNodeClient.connect();
