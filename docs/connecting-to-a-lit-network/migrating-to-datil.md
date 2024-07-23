@@ -5,7 +5,7 @@ import TabItem from '@theme/TabItem';
 
 Lit is launching three new networks, Datil-dev, Datil-test, and Datil, to improve performance and stability for production users compared to previous Lit networks like Cayenne, Manzano, and Habanero.
 
-The Datil-dev and Datil-test networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone.md). This new blockchains replaces the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
+The Datil-dev and Datil-test networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone.md). These new blockchains replace the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
 
 Depending on the existing Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
 
@@ -57,8 +57,7 @@ For latest on which Datil networks are available to connect to, please refer to 
 The only code changes required to make use of the new Datil networks are as follows:
 
 - Upgrade the Lit packages to the latest version that supports Datil
-  - `6.2.2` is the minimum version of the packages that supports `datil-test`
-  - `6.2.2` is the minimum version of the packages that supports `datil-dev`
+  - `6.2.2` is the minimum version of the packages that support `datil-test` and `datil-dev`
 - Specify the Datil network when instantiating Lit node clients from the SDK
   - This is done by specifying the `litNetwork` property when [connecting a Lit client](./connecting) to one of the following Datil networks:
     - `datil-prod`
