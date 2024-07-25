@@ -223,7 +223,7 @@ Now that we hall all that we need, we can call `listEncryptedKeyMetadata` to lis
 ```ts
 import { api } from "@lit-protocol/wrapped-keys";
 
-const {  } = api;
+const { listEncryptedKeyMetadata } = api;
 
 const wrappedKeyMetadatas = await listEncryptedKeyMetadata({
     pkpSessionSigs,
