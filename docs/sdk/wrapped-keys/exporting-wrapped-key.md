@@ -75,10 +75,14 @@ This is an instance of the [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.
 
 #### `network`
 
-This parameter dictates what elliptic curve is used to generate the private key. It must be one of the supported Wrapped Keys [Networks](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L10) which currently consists of:
+This parameter dictates what Lit Action is used to decrypt the private key. It must be one of the supported Wrapped Keys [Networks](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L10) which currently consists of:
 
-  - `evm` This will generate a private key using the ECDSA curve.
-  - `solana` This will generate a private key using the Ed25519 curve.
+:::note
+Currently no matter what network is specified, this [Lit Action code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/common/src/exportPrivateKey.js) will be used to decrypt the private key, regardless if the underlying private key is derived via `K256` or `ed25519`.
+:::
+
+- `evm`
+- `solana`
 
 #### `id`
 
