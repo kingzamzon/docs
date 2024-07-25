@@ -340,6 +340,7 @@ const sidebars = {
             'sdk/wrapped-keys/exporting-wrapped-key',
             'sdk/wrapped-keys/getting-wrapped-key-metadata',
             'sdk/wrapped-keys/storing-wrapped-key-metadata',
+            'sdk/wrapped-keys/listing-wrapped-keys',
             'sdk/wrapped-keys/sign-message',
             'sdk/wrapped-keys/sign-transaction',
             'sdk/wrapped-keys/custom-wrapped-keys',
