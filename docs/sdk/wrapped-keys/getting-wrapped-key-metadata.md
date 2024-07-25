@@ -126,8 +126,7 @@ Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to 
 
 Now that we know what the `getEncryptedKey` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/getWrappedKey.ts).
 
 ### Installing the Required Dependencies
 
@@ -238,10 +237,7 @@ const pkpSessionSigs = await litNodeClient.getPkpSessionSigs({
 
 ### Getting a Wrapped Key's Metadata
 
-Now that we know what the `getEncryptedKey` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
-
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+Now that we hall all that we need, we can call `getEncryptedKey` to get the metadata for the Wrapped key.
 
 ```ts
 import { api } from "@lit-protocol/wrapped-keys";
