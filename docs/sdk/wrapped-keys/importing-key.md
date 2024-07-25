@@ -248,6 +248,14 @@ const pkpSessionSigs = await litNodeClient.getPkpSessionSigs({
 
 Now that we have all that we need, we can call `importPrivateKey` to import our key as a Wrapped Key.
 
+<Tabs
+defaultValue="eth"
+values={[
+{label: 'Importing an Ethereum Key', value: 'eth'},
+{label: 'Importing a Solana Key', value: 'sol'},
+]}>
+<TabItem value="eth">
+
 ```ts
 import { importPrivateKey } from "@lit-protocol/wrapped-keys";
 
@@ -260,6 +268,26 @@ const { pkpAddress, id } = await importPrivateKey({
     memo: "This is an arbitrary string you can replace with whatever you'd like",
 });
 ```
+
+</TabItem>
+
+<TabItem value="sol">
+
+```ts
+import { importPrivateKey } from "@lit-protocol/wrapped-keys";
+
+const { pkpAddress, id } = await importPrivateKey({
+    pkpSessionSigs,
+    litNodeClient,
+    privateKey: process.env.SOLANA_PRIVATE_KEY,
+    publicKey: process.env.SOLANA_PUBLIC_KEY,
+    keyType: 'ed25519',
+    memo: "This is an arbitrary string you can replace with whatever you'd like",
+});
+```
+
+</TabItem>
+</Tabs>
 
 ### Summary
 
