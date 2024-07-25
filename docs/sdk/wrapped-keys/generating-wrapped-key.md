@@ -91,7 +91,6 @@ This parameter is an arbitrary string that can be used as an additional identifi
 
 ### Return Value
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
 `generatePrivateKey` will return a [GeneratePrivateKeyResult](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L147-L156) object after it successfully generates and encrypts the private key and stores the encryption metadata.
 
 ```ts
