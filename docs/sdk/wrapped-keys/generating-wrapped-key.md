@@ -3,10 +3,6 @@ import TabItem from '@theme/TabItem';
 
 # Generating a New Key
 
-:::warning
-Wrapped Key are under active development please do **not** use it for production i.e. do not use it on Habanero. It will be available for production very soon.
-:::
-
 This guide covers the `generatePrivateKey` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
 
 Using the `generatePrivateKey` function, you can request a Lit node to generate a new private key within it's trusted execution environment (TEE). Once generated, the private key will be encrypted using Lit network's BLS key, and the resulting encryption metadata (`ciphertext` and `dataToEncryptHash`) will be returned and stored by Lit on your behalf in a private DynamoDB instance.
