@@ -66,7 +66,7 @@ The Wrapped Keys SDK methods for:
 expect a Wrapped Key ID as part of their parameters. This ID is generated for each Wrapped Key by the backend service, and is returned by the SDK methods for:
 
 - Generating a Wrapped Key
-- Importing a private key as a Wrapped Ke
+- Importing a private key as a Wrapped Key
 - Storing Wrapped Key Metadata
 
 You can also obtain the IDs for all the Wrapped Keys associated with a specific PKP by using the SDK's [listEncryptedKeyMetadata](./listing-wrapped-keys.md) SDK's method.
