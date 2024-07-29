@@ -184,7 +184,7 @@ So, you can see, the nodes don't talk to each other when decrypting the content.
 
 ### 4. How do new nodes that come online discover the key shares they need to help decrypt previously-encrypted data?
 
-Right now, Manzano and Habanero are federated networks being run by named 3rd party operators. The ultimate goal is to transition to a fully permissionless network. Root keys are updated every epoch, rendering old shares functionally useless. New shares are shared with new operators through proactive secret sharing. The network uses threshold encryption with a 2/3 threshold, providing redundancy and security.
+Right now, Datil-test and Datil-prod are federated networks being run by named 3rd party operators. The ultimate goal is to transition to a fully permissionless network. Root keys are updated every epoch, rendering old shares functionally useless. New shares are shared with new operators through proactive secret sharing. The network uses threshold encryption with a 2/3 threshold, providing redundancy and security.
 
 ### 5. What's to prevent one person from running many Lit Protocol nodes so as to acquire sufficient key fragments across their nodes to be able to reconstitute the decryption key for some pieces of content?
 

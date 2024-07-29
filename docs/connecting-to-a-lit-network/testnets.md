@@ -11,8 +11,7 @@ Here is an overview of the Lit testnets:
 |------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------|------------------|
 | Datil-test | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized testnet designed for pre-production development. No persistency guarantees. Payment is enforced.                                                                        | `^6.2.2`                | `datil-test`               | ✅                |
 | Datil-dev  | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^6.2.2`                | `datil-dev`                | ❌                |
-| Cayenne    | [Chronicle](./lit-blockchains/chronicle)                         | Centralized testnet designed for early-stage development. Keys are not persistent and will be deleted. This network does not enforce payment and can be used for free, for testing. | `^4.0.0`                | `cayenne`                  | ❌                |
-| Manzano    | [Chronicle](./lit-blockchains/chronicle)                         | Decentralized test network. No persistency guarantees. Mirrors Habanero code and configuration. Payment is enforced.                                                                | `^4.0.0`                | `manzano`                  | ✅                |
+| 
 
 ## Datil-test
 
@@ -45,7 +44,7 @@ yarn add @lit-protocol/lit-node-client
 </TabItem>
 </Tabs>
 
-There were no breaking changes to the API for `v6` of the Lit SDK, so the code you were using for Habanero should work without issue on Datil-test. If you do run into issues after migrating to Datil-test, please reach out to us on our [Telegram](https://t.me/+aa73FAF9Vp82ZjJh) for support.
+There were no breaking changes to the API for `v6` of the Lit SDK, so the code you were using for Manzano should work without issue on Datil-test. If you do run into issues after migrating to Datil-test, please reach out to us on our [Telegram](https://t.me/+aa73FAF9Vp82ZjJh) for support.
 
 To connect to Datil-test, please follow the [Connecting to a Lit Network](./connecting) guide using `datil-test` for the `litNetwork` property when instantiating an instance of the `LitNodeClient`.
 

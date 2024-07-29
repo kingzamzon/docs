@@ -6,7 +6,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 <StateOfTheNetwork/>
 
 :::info
-Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: https://faucet.litprotocol.com/
+Need some `tstLPX` test tokens to mint a PKP on Chronicle? Use the faucet: https://faucet.litprotocol.com/
 :::
 
 ## Introduction

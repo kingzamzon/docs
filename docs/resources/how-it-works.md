@@ -67,7 +67,7 @@ Currently, the Lit network is in [Mainnet Beta](../network/migration-guide.md) a
 
 ### Node Operators
 
-The current node operators active on the Habanero Mainnet Beta include:
+The current node operators active on the Datil-prod Mainnet Beta include:
 
 - Lit Protocol (our node)
 - [Collab.Land](https://www.collab.land/?ref=spark.litprotocol.com)

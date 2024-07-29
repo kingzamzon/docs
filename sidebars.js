@@ -83,7 +83,7 @@ const sidebars = {
                 id: 'sdk/migrations/3.0.0/overview',
               },
               collapsed: true,
-              items: ['network/feature-matrix', 'sdk/migrations/3.0.0/changes'],
+              items: ['sdk/migrations/3.0.0/changes'],
             },
           ],
         },

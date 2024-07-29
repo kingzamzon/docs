@@ -18,15 +18,14 @@ You can learn more about compatible chains [here.](http://ethanfast.com/top-cryp
 ## Supported Chains (Access Control & PKP)
 
 <Tabs
-defaultValue="habanero"
+defaultValue="datil-prod"
 values={[
-{label: 'Habanero', value: 'habanero'},
-{label: 'Manzano', value: 'manzano'},
+{label: 'DatilProd', value: 'datil-prod'},
+{label: 'DatilTest', value: 'datil-test'},
 {label: 'DatilDev', value: 'datil-dev'},
-{label: 'Jalapeno', value: 'jalapeno'},
 ]}>
 
-<TabItem value="habanero">
+<TabItem value="datil-prod">
 
 - ethereum
 - polygon
@@ -69,7 +68,7 @@ values={[
 
 </TabItem>
 
-<TabItem value="manzano">
+<TabItem value="datil-test">
 
 - ethereum
 - polygon
@@ -177,60 +176,6 @@ values={[
 - klaytn
 - publicGoodsNetwork
 - waevEclipseTestnet
-
-</TabItem>
-
-<TabItem value="jalapeno">
-
-- ethereum
-- polygon
-- xdai
-- bsc
-- bscTestnet
-- base
-- baseGoerli
-- fantom
-- arbitrum
-- avalanche
-- harmony
-- mumbai
-- goerli
-- ropsten
-- kovan
-- rinkeby
-- cronos
-- optimism
-- celo
-- fuji
-- aurora
-- eluvio
-- alfajores
-- xdc
-- evmos
-- evmosTestnet
-- moonbeam
-- moonriver
-- moonbaseAlpha
-- filecoin
-- hyperspace
-- scrollAlphaTestnet
-- scroll
-- lineaGoerli
-- lukso
-- luksoTestnet
-- chiado
-- zora
-- zoraGoerli
-- zkEvm
-- zkSync
-- zksyncTestnet
-- mantleTestnet
-- mantle
-- klaytn
-- publicGoodsNetwork
-- waevEclipseTestnet
-- waevEclipseDevnet
-- verifyTestnet
 
 </TabItem>
 
