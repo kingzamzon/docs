@@ -250,4 +250,9 @@ When session capability objects are omitted from functions generating session si
 
 If you want to clear the session key stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).
 
+## Summary
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
+
+After executing the example implementation above, you will have generated and stored your session public and secret keys, and the `AuthSig` signed for the session signatures. 
+
 <FeedbackComponent/>
