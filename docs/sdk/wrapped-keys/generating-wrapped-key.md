@@ -11,6 +11,21 @@ Afterwards, you will be able to make use of the SDK's signing methods (`signTran
 
 Below we will walk through an implementation of `generatePrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
+2. The SDK then generates the encryption Access Control Conditions using the derived Ethereum address
+   - See the [Encrypting the Private Key](#encrypting-the-private-key) section for more info on this process
+3. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the Generate Private Key Lit Action
+   - Depending on the provided `network`, one of the following Lit Actions will be executed:
+     - If `network` is `ethereum`, then the [generateEncryptedEthereumPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/ethereum/src/generateEncryptedEthereumPrivateKey.js) Lit Action is executed
+     - If `network` is `solana`, then the [generateEncryptedSolanaPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/solana/src/generateEncryptedSolanaPrivateKey.js) Lit Action is executed
+4. The Lit Action uses a third-party library (either [ethers.js](https://docs.ethers.org/v5/) or [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/)) to generate a private key withing a single Lit node's TEE
+5. The generated private key is then encrypted using the previously generated Access Control Conditions
+6. The encryption metadata is returned from the Lit Action
+7. The Wrapped Keys SDK then stores the private key encryption metadata to the Wrapped Keys backend service, associating it with the PKP's Ethereum address
+8. The SDK returns a [GeneratePrivateKeyResult](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.GeneratePrivateKeyResult.html) object containing the generated Wrapped Key ID, the PKP Ethereum address the Wrapped Key is associated with, and the public key of the generated private key
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

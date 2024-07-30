@@ -9,6 +9,11 @@ The `getEncryptedKey` function allows you to request a Wrapped Key's metadata st
 
 Below we will walk through an implementation of `getEncryptedKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/getWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will use the provided Wrapped Key ID and PKP Session Signatures to fetch the stored metadata for a specific Wrapped Key from the Wrapped Keys backend service
+2. The stored metadata is returned as a [StoredKeyData](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.StoredKeyData.html) object
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

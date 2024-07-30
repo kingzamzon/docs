@@ -9,6 +9,13 @@ Using the `exportPrivateKey` function, you can export existing Wrapped Keys to d
 
 Below we will walk through an implementation of `exportPrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/exportWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will use the provided Wrapped Key ID and PKP Session Signatures to fetch the encryption metadata for a specific Wrapped Key
+2. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the [exportPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/common/src/exportPrivateKey.js) Lit Action
+3. The Lit Action will check the Access Control Conditions used to encrypt the plaintext private key to verify whether the PKP is authorized to decrypt the private key
+4. If authorized, the unencrypted plaintext private key will be returned. If not authorized, an error will be returned
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

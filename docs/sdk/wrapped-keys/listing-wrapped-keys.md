@@ -9,6 +9,11 @@ The `listEncryptedKeyMetadata` function allows you to request the Wrapped Key me
 
 Below we will walk through an implementation of `listEncryptedKeyMetadata`. The full code implementation can be found [here](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/list-encrypted-key-metadata.ts).
 
+## Overview of How it Works
+
+1.  The Wrapped Keys SDK will derive the PKP Ethereum address from the provided PKP Session Signatures
+2.  The SDK will submit the Ethereum address to the Wrapped Keys backend service to fetch and return all the associated Wrapped Keys
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:
