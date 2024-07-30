@@ -5,9 +5,9 @@ import TabItem from '@theme/TabItem';
 
 Wrapped Keys are private keys that are encrypted and stored using Lit's Wrapped Keys backend service. They can be initialized by [importing](./importing-key.md) or [storing](./storing-wrapped-key-metadata.md) an existing private key, or can be [generated](./generating-wrapped-key.md) within a Lit node's trusted execution environment (TEE), meaning the clear text private key never exists outside of the TEE.
 
-Regardless of how the Wrapped Keys is initialized, each Wrapped Key is associated with an existing [Programmable Keypair (PKP)](../../sdk/wallets/minting.md) and given a unique ID by Lit.
+Regardless of how the Wrapped Key is initialized, each Wrapped Key is associated with an existing [Programmable Keypair (PKP)](../../sdk/wallets/minting.md) and given a unique ID by Lit.
 
-Using the unique ID and [Session Signatures](../authentication/session-sigs/intro.md) from the PKP the Wrapped Key is associated with, you can leverage the Lit network to perform signatures on arbitrary data and transactions (optionally sending the signed transaction to a network) using your encrypted private key.
+Using the unique ID and [Session Signatures](../authentication/session-sigs/intro.md) from the PKP the Wrapped Key is associated with, you can leverage the Lit network to generate signatures for arbitrary data and transactions (optionally sending the signed transaction to a network) using your encrypted private key.
 
 ## Getting Started
 
@@ -42,7 +42,7 @@ yarn add @lit-protocol/wrapped-keys
 
 ## How it Works
 
-Currently the available actions of the Wrapped Keys SDK are:
+The current functionality offered by the Wrapped Keys SDK includes:
 
 - [Generating a Wrapped Key](./generating-wrapped-key.md)
 - [Importing a private key as a Wrapped Key](./importing-key.md)
@@ -50,8 +50,13 @@ Currently the available actions of the Wrapped Keys SDK are:
 - [Getting Wrapped Key Metadata](./getting-wrapped-key-metadata.md)
 - [Storing Wrapped Key Metadata](./storing-wrapped-key-metadata.md)
 - [Listing all Wrapped Keys associated with a PKP](./listing-wrapped-keys.md)
-- [Signing an arbitrary message with a Wrapped Key](./sign-message.md)
-- [Signing an Ethereum or Solana transaction with a Wrapped Key](./sign-transaction.md)
+- [Signing an arbitrary message/data with a Wrapped Key](./sign-message.md)
+  - Useful for non transactional data such as:
+    - Creating a digital signature of data to verify it hasn't been tampered with
+    - Proving ownership (authenticating) of a specific blockchain address
+    - Creating and verifying credentials or attestations in decentralized identity systems
+- [Signing a blockchain transaction with a Wrapped Key](./sign-transaction.md)
+  - Currently Ethereum and Solana transactions are supported out-of-the-box using the Wrapped Keys SDK, however, you can implement your own custom Wrapped Keys Lit Action to support other transaction types and/or signature schemes. For more information on how to do this, please refer to [this guide](./custom-wrapped-keys.md).
 
 Below are high-level overviews of how each SDK method works.
 
@@ -69,7 +74,7 @@ expect a Wrapped Key ID as part of their parameters. This ID is generated for ea
 - Importing a private key as a Wrapped Ke
 - Storing Wrapped Key Metadata
 
-You can also obtain the IDs for all the Wrapped Keys associated with a specific PKP by using the SDK's [listEncryptedKeyMetadata](./listing-wrapped-keys.md) SDK's method.
+You can also obtain the IDs for all the Wrapped Keys associated with a specific PKP by using the SDK's [listEncryptedKeyMetadata](./listing-wrapped-keys.md) method.
 :::
 
 ### Generating a Wrapped Key
@@ -178,8 +183,8 @@ where `pkpAddress` is the Ethereum address that's derived from the PKP that was 
 
 ### Decrypting the Private Key
 
-When you submit a request to the Wrapped Keys backend service via one of the SDK methods, you must provide PKP Session Signatures. From these Session Signatures, an Ethereum address corresponding to the PKP can be derived. It's this address that the Lit Action submits as part of it's request to the Lit network to decrypt the Wrapped Key.
+When you submit a request to the Wrapped Keys backend service via one of the SDK methods, you must provide PKP Session Signatures. From these Session Signatures, an Ethereum address corresponding to the PKP can be derived. It's this address that the Lit Action submits as part of its request to the Lit network to decrypt the Wrapped Key.
 
 If the derived Ethereum address from the PKP Session Signatures matches the address used to encrypt the Wrapped Key, then decryption is authorized and the Lit Action is able to collect and combine the decryption shares from the Lit nodes and obtain the plaintext private key.
 
-The plaintext private key only exists within the TEE of a single Lit node that is executing the Lit Action. This is enforced using the [decryptToSingleNode](https://actions-docs.litprotocol.com/#decrypttosinglenode) Lit Action method. This single Lit node executing the Lit Action is then able to use the plaintext private to perform signing operations. After the Lit Action is finished executing, the TEE memory is wiped and the plaintext private key seizes to exist.
+The plaintext private key only exists within the TEE of a single Lit node that is executing the Lit Action. This is enforced using the [decryptToSingleNode](https://actions-docs.litprotocol.com/#decrypttosinglenode) Lit Action method. This single Lit node executing the Lit Action is then able to use the plaintext private to perform signing operations. After the Lit Action is finished executing, the TEE memory is wiped and the plaintext private key ceases to exist.
