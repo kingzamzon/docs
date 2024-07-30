@@ -21,7 +21,7 @@ Before continuing this guide, you should have an understanding of:
 - [Lit Resources and Abilities](./resources-and-abilities.md)
 
 ## `getSessionSigs`' Interface
-[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/types/src/lib/interfaces.ts#L1057-L1106)
+[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/types/src/lib/interfaces.ts#L1057-L1131)
 
 ```ts
 interface CommonGetSessionSigsProps {
@@ -58,7 +58,7 @@ type SessionSigsMap = Record<string, AuthSig>;
 ## Parameters
 
 ### `pkpPublicKey`
-If you want to delegate abilities and resources to a PKP using this function, you would define the public key here.
+If you want to pass the `authNeededCallback`, having a PKP public key is necessary. Can be used if you do not have a wallet and wish to authenticate with your PKP.
 
 ### `expiration`
  When this session signature will expire. After this time is up, you will need to reauthenticate using the same authentication method, generating a new session signature. The default time until expiration is 24 hours.
@@ -80,13 +80,16 @@ If you want to request the ability to decrypt an access control condition, then 
   For example, if you passed nothing, and you're requesting to perform a decryption operation for an access control condition, then the session capability object will be a wildcard for the access control condition, which grants this session signature the ability to decrypt this access control condition.
 
 ### `switchChain`
-If you want to ask Metamask to try and switch the user's chain, you may pass true here.  This will only work if the user is using Metamask.  If the user is not using Metamask, then this will be ignored.
+If you want to ask MetaMask to try and switch the user's chain, you may pass true here.  This will only work if the user is using MetaMask.  If the user is not using MetaMask, then this will be ignored.
 
 ### `sessionKey`
 The serialized session key pair to sign. If not provided, a session key pair will be fetched from localStorage or generated.
 
 ### `capabilityAuthSigs`
 Not limited to capacityDelegationAuthSig, we want to be able to pass in any other authSigs for other purposes.
+
+### `authNededCallback`
+This is a callback that will be called if you need to authenticate using a PKP. If you don't pass this callback, then the user will be prompted to authenticate with their wallet, like MetaMask.
 
 ## Return Value
 
