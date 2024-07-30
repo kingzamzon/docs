@@ -3,6 +3,8 @@ sidebar_position: 2
 ---
 
 import FeedbackComponent from "@site/src/pages/feedback.md";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Generating SessionSigs: `getSessionSigs`
 
@@ -155,6 +157,8 @@ ethers@v5
 
 </TabItem>
 </Tabs>
+
+
 
 ### Instantiating an Ethers Signer
 The `ETHEREUM_PRIVATE_KEY` environment variable is required.
