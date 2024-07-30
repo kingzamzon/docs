@@ -11,7 +11,7 @@ Depending on the existing Lit network you are using, you should migrate to its c
 
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
-| ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil`          | Decentralized mainnet designed for production use cases      |
+| ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil`               | Decentralized mainnet designed for production use cases      |
 | ✅                   | ✅                | `6.2.2`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
 | ✅                   | ❌                | `6.2.2`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
@@ -58,6 +58,7 @@ The only code changes required to make use of the new Datil networks are as foll
 
 - Upgrade the Lit packages to the latest version that supports Datil
   - `6.2.2` is the minimum version of the packages that support `datil-test` and `datil-dev`
+  - `6.4.0` is the minimum version of the packages that supports `datil`
 - Specify the Datil network when instantiating Lit node clients from the SDK
   - This is done by specifying the `litNetwork` property when [connecting a Lit client](./connecting) to one of the following Datil networks:
     - `datil`
