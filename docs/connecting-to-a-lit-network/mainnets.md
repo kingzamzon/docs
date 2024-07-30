@@ -10,7 +10,7 @@ Here is an overview of the Lit mainnets:
 
 | Name       | Lit Blockchain                                                   | Description                                                                                                                                                                         | Minimum Lit SDK Version | Lit SDK Network Identifier | Requires Payment |
 |------------|------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------|----------------------------|------------------|
-| Datil-prod | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized mainnet designed for production deployment. Guaranteed real world asset transferability onto new mainnets. Payment is enforced.                                                                        | `^6.2.2`                | `datil-prod`               | ✅                |
+| Datil-prod | [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone) | Centralized mainnet designed for production deployment. Guaranteed real world asset transferability onto new mainnets. Payment is enforced.                                                                        | `^6.4.0`                | `datil-prod`               | ✅                |
 |
 ## Datil-prod
 
@@ -18,7 +18,7 @@ The Lit network, Datil-prod, utilizes the Lit blockchain: Chronicle Yellowstone.
 
 If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
 
-The minimum version of the Lit SDK that supports `datil-prod` is `6.2.2`, and the latest SDK version will be installed from NPM by default:
+The minimum version of the Lit SDK that supports `datil-prod` is `6.4.0`, and the latest SDK version will be installed from NPM by default:
 
 <Tabs
 defaultValue="npm"
