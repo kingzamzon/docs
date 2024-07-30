@@ -17,7 +17,7 @@ Here is an overview of the Lit testnets:
 
 The Lit network, Datil-test, utilizes the Lit blockchain: Chronicle Yellowstone. It's a centralized testnet designed for pre-production development, and is superseding the Manzano testnet. Like Manzano, usage of the network **does** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
+If your application is currently deployed to a v0 Lit network (Cayenne, Manzano, and/or Habanero) please refer to [this guide](migrating-to-datil) to learn how to migrate to the new Datil networks.
 
 The minimum version of the Lit SDK that supports `datil-test` is `6.2.2`, and the latest SDK version will be installed from NPM by default:
 
@@ -52,7 +52,7 @@ To connect to Datil-test, please follow the [Connecting to a Lit Network](./conn
 
 The Lit network, Datil-dev, utilizes the Lit blockchain: Chronicle Yellowstone. It's a centralized testnet designed for early-stage development, and is superseding the Cayenne testnet. Like Cayenne, usage of the network does **not** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
+If your application is currently deployed to a v0 Lit network (Cayenne, Manzano, and/or Habanero) please refer to [this guide](migrating-to-datil) to learn how to migrate to the new Datil networks.
 
 The minimum version of the Lit SDK that supports `datil-dev` is `6.2.2`, and a latest SDK version will be installed from NPM by default:
 

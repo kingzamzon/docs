@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Mainnets
 
-Main networks are designed for late-stage application deployment. If you are implementing storing assets with real world value, it should be done on the main networks and not the test networks. While main networks may be deprecated in the future, assets will be transferable onto new networks.
+Lit mainnets are designed for late-stage development and production deployment. If you are implementing storing assets with real world value, it should be done on the main networks and not the test networks. While main networks may be deprecated in the future, assets will be transferable onto new networks.
 
 
 Here is an overview of the Lit mainnets:
@@ -16,7 +16,7 @@ Here is an overview of the Lit mainnets:
 
 The Lit network, Datil-prod, utilizes the Lit blockchain: Chronicle Yellowstone. It's a centralized mainnet designed for production deployment, and is superseding the Habanero mainnet. Like Habanero, usage of the network **does** require payment using [Capacity Credits](../sdk/capacity-credits).
 
-If you are currently on one of the Lit networks that utilize the Chronicle blockchain (i.e. Cayenne, Manzano, and/or Habanero), please refer to [this guide](./migrating-to-datil) to learn how to migrate to Chronicle Yellowstone.
+If your application is currently deployed to a v0 Lit network (Cayenne, Manzano, and/or Habanero) please refer to [this guide](migrating-to-datil) to learn how to migrate to the new Datil networks.
 
 The minimum version of the Lit SDK that supports `datil-prod` is `6.4.0`, and the latest SDK version will be installed from NPM by default:
 
