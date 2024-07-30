@@ -13,7 +13,7 @@ Lit Actions are JavaScript functions that can be used read and write data across
 
 In the following guide, we will write a simple Lit Action that requests a signature from the Lit nodes and signs the message "Hello World".
 
-This guide uses Lit's [Datil-prod Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
+This guide uses Lit's [Datil Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
 
 For developers looking to explore beyond the basics, check out Advanced Topics. 
 
@@ -56,7 +56,7 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set
 import { LitNetwork } from "@lit-protocol/constants";
 
 const client = new LitJsSdk.LitNodeClient({
-  litNetwork: LitNetwork.DatilProd,
+  litNetwork: LitNetwork.Datil,
 });
 
 await client.connect();
@@ -87,7 +87,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   alertWhenUnauthorized: false,
-  litNetwork: LitNetwork.DatilProd,
+  litNetwork: LitNetwork.Datil,
 });
 await app.locals.litNodeClient.connect();
 ```
@@ -122,7 +122,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 
 const contractClient = new LitContracts({
   signer: wallet,
-  network: LitNetwork.DatilProd,
+  network: LitNetwork.Datil,
 });
 
 await contractClient.connect();
@@ -157,7 +157,7 @@ await provider.send("eth_requestAccounts", []);
 const ethersSigner = provider.getSigner();
 
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.DatilProd,
+    litNetwork: LitNetwork.Datil,
   });
 await litNodeClient.connect();
 
@@ -365,7 +365,7 @@ const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
 
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
-  network: LitNetwork.DatilProd,
+  network: LitNetwork.Datil,
 });
 
 await contractClient.connect();

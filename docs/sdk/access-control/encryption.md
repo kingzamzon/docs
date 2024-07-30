@@ -288,7 +288,7 @@ const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
 
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
-  network: LitNetwork.DatilProd,
+  network: LitNetwork.Datil,
 });
 
 await contractClient.connect();

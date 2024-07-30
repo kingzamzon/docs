@@ -25,7 +25,7 @@ If you are currently using these networks, please review the [Migrating to Datil
 
 | Name       | Lit SDK Network Identifier | Doc Page Link                | Network is Live           |
 |------------|----------------------------|------------------------------|---------------------------|
-| Datil-prod | `datil-prod`               | [Link](./mainnets#datil-prod)| ✅                        |
+| Datil | `datil`               | [Link](./mainnets#datil)| ✅                        |
 | Habanero   | `habanero`                 | n/a                          | ⚠️ Going to be deprecated |
 
 ### Testnets

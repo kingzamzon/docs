@@ -8,7 +8,7 @@ You can use the Lit network to encrypt your data and store it privately on the o
 
 Lit can only be used to generate and store encryption keys, so you will need to store the ciphertext and metadata yourself using your storage provider of choice (such as IPFS, Arweave, or even a centralized storage solution). Once your data has been encrypted, the Lit network will enforce who is allowed to decrypt it.
 
-This guide uses Lit's [Datil-prod Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
+This guide uses Lit's [Datil Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
 
 For developers looking to explore beyond the basics, check out Advanced Topics.
 
@@ -274,7 +274,7 @@ const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
 
 let contractClient = new LitContracts({
   signer: dAppOwnerWallet,
-  network: LitNetwork.DatilProd,
+  network: LitNetwork.Datil,
 });
 
 await contractClient.connect();

@@ -18,14 +18,14 @@ You can learn more about compatible chains [here.](http://ethanfast.com/top-cryp
 ## Supported Chains (Access Control & PKP)
 
 <Tabs
-defaultValue="datil-prod"
+defaultValue="datil"
 values={[
-{label: 'DatilProd', value: 'datil-prod'},
+{label: 'Datil', value: 'datil'},
 {label: 'DatilTest', value: 'datil-test'},
 {label: 'DatilDev', value: 'datil-dev'},
 ]}>
 
-<TabItem value="datil-prod">
+<TabItem value="datil">
 
 - ethereum
 - polygon

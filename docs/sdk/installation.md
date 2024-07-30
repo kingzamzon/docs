@@ -81,7 +81,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 
 app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
   alertWhenUnauthorized: false,
-  litNetwork: LitNetwork.DatilProd,
+  litNetwork: LitNetwork.Datil,
 });
 await app.locals.litNodeClient.connect();
 ```
@@ -103,7 +103,7 @@ Within a file (in the Lit example repos it will likely be called `lit.js`), set 
 import { LitNetwork } from "@lit-protocol/constants";
 
 const client = new LitJsSdk.LitNodeClient({
-  litNetwork: LitNetwork.DatilProd,
+  litNetwork: LitNetwork.Datil,
 });
 
 await client.connect();

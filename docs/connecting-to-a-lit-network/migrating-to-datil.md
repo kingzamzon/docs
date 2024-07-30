@@ -11,11 +11,11 @@ Depending on the existing Lit network you are using, you should migrate to its c
 
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
-| ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil-prod`          | Decentralized mainnet designed for production use cases      |
+| ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil`          | Decentralized mainnet designed for production use cases      |
 | ✅                   | ✅                | `6.2.2`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
 | ✅                   | ❌                | `6.2.2`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
-Like their counterparts, `datil-prod` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits); however, `datil-dev` does not.
+Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits); however, `datil-dev` does not.
 
 ## Breaking Changes and Important Updates
 
@@ -23,7 +23,7 @@ Like their counterparts, `datil-prod` and `datil-test` require developers to pay
 
 ### New Network, New PKPs
 
-PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil-prod`, your PKPs will need to be re-minted on the Chronicle Yellowstone blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Yellowstone.
+PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil`, your PKPs will need to be re-minted on the Chronicle Yellowstone blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Yellowstone.
 
 :::info
 If you're migrating from `habanero`, `manzano`, or `cayenne` to any of the Datil networks, you will be migrating from Chronicle to Chronicle Yellowstone.
@@ -60,7 +60,7 @@ The only code changes required to make use of the new Datil networks are as foll
   - `6.2.2` is the minimum version of the packages that support `datil-test` and `datil-dev`
 - Specify the Datil network when instantiating Lit node clients from the SDK
   - This is done by specifying the `litNetwork` property when [connecting a Lit client](./connecting) to one of the following Datil networks:
-    - `datil-prod`
+    - `datil`
     - `datil-test`
     - `datil-dev`
 

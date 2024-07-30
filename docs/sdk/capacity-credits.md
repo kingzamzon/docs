@@ -3,7 +3,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 # Capacity Credits
 
 :::info
-Currently Rate Limiting is only enabled on `Datil-prod` and `Datil-test`.
+Currently Rate Limiting is only enabled on `Datil` and `Datil-test`.
 See [here](../network/networks/testnet.md) for a list of test networks.
 See [here](../network/networks/mainnet.md) for a list of mainnet networks.
 :::
@@ -22,7 +22,7 @@ In order to increase your rate limit, you'll need to mint a `Capacity Credits NF
 
 A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. So, here we will show how you can mint it using `contracts-sdk`. You can download the `contracts-sdk` from `npm` [here](https://www.npmjs.com/package/@lit-protocol/contracts-sdk).
 
-You’ll also need some `tstLPX` tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Datil-test and Datil-prod. `tstLPX` should only be claimed from the verified faucet, linked [here](https://chronicle-yellowstone-faucet.getlit.dev/).
+You’ll also need some `tstLPX` tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on Datil-test and Datil. `tstLPX` should only be claimed from the verified faucet, linked [here](https://chronicle-yellowstone-faucet.getlit.dev/).
 
 ```javascript
 import { LitNetwork } from "@lit-protocol/constants";
