@@ -11,7 +11,7 @@ Depending on the existing Lit network you are using, you should migrate to its c
 
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
-| ✅                   | ✅                | `6.4.0`                         | `habanero`           | `datil-prod`          | Decentralized mainnet designed for production use cases      |
+| ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil-prod`          | Decentralized mainnet designed for production use cases      |
 | ✅                   | ✅                | `6.2.2`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
 | ✅                   | ❌                | `6.2.2`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
