@@ -28,9 +28,9 @@ This authentication system ensures that the Lit Network remains secure, verifyin
 
 ## Paying for Usage of the Lit Network
 
-The correct code implementation will depend on whether you're using the free-to-use `datil-dev` network, or one of the "paid" networks: `habanero` or `datil-test`.
+The correct code implementation will depend on whether you're using the free-to-use `datil-dev` network, or one of the "paid" networks: `datil` or `datil-test`.
 
-Usage of the `habanero` and `datil-test` networks require the use of [Lit Capacity Credits](../../../sdk/capacity-credits.md). Currently, Capacity Credits are paid for using the `tstLPX` token and don't require any real-world money. However, in the future you will need to pay real-world money for usage of Lit networks, and `habanero` and `datil-test` are the Lit networks where this functionality is being tested and refined.
+Usage of the `datil` and `datil-test` networks require the use of [Lit Capacity Credits](../../../sdk/capacity-credits.md). Currently, Capacity Credits are paid for using the `tstLPX` token and don't require any real-world money. However, in the future you will need to pay real-world money for usage of Lit networks, and `datil` and `datil-test` are the Lit networks where this functionality is being tested and refined.
 
 ## Storing `SessionSigs`
 
@@ -42,17 +42,16 @@ import { LocalStorage } from "node-localstorage";
 
 When running code within a browser, this import is not needed, as the session keys will be stored within the browser's local storage. However, when running this code in an environment such as Node.js where browser local storage is not available, the `LocalStorage` module is used to provide file-based storage for our generated session keys and metadata. 
 
-All functions for generating session signatures will try to create a session key for you and store it in the local storage. The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session key as the optional `sessionKey` parameter when generating session signatures.
-
 ```javascript
 litNodeClient = new LitNodeClient({
     litNetwork: LitNetwork.DatilDev,
     // This storageProvider object can be omitted if executing in a browser
     storageProvider: {
-    provider: new LocalStorage("./lit_storage.db"),
+        provider: new LocalStorage("./lit_storage.db"),
     },
 });
 ```
+All functions for generating session signatures will try to create a session key for you and store it in the local storage. The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session key as the optional `sessionKey` parameter when generating session signatures.
 
 If you do not provide an instance of `LocalStorage` as the `provider`, then new session keys will be generated every time you run this code instead of one set of keys being reused.
 
