@@ -22,7 +22,7 @@ Chronicle is a custom EVM rollup testnet based on the OP Stack, designed specifi
 
 The `tstLPX` test token serves as the gas for transactions on Chronicle. Please note that this is a test token with no real-world value. Its purpose is exclusively for testing and development on the Lit Protocol platform.
 
-To obtain the `tstLPX` test token, please use the faucet at https://faucet.litprotocol.com/. The `tstLPX` test token will be sent to your wallet address, allowing you to perform transactions on the rollup.
+To obtain the `tstLPX` test token, please use the faucet at this [link](https://chronicle-yellowstone-faucet.getlit.dev/). The `tstLPX` test token will be sent to your wallet address, allowing you to perform transactions on the rollup.
 
 Keep in mind that the official Lit Protocol token is scheduled to launch sometime in the future. This will be the actual token with real-world utility within the ecosystem.
 

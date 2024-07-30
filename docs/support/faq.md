@@ -70,7 +70,7 @@ const pkpBTCAddress = bitcoinjs.payments.p2pkh({
 
 ### 4. "Internal JSON-RPC error" When attempting to mint a PKP
 
-Make sure that you have some LPX test tokens in your wallet before minting a PKP in order to pay for gas. You can use the faucet to claim test tokens: https://faucet.litprotocol.com/.
+Make sure that you have some LPX test tokens in your wallet before minting a PKP in order to pay for gas. You can claim test tokens at the [faucet](https://chronicle-yellowstone-faucet.getlit.dev/).
 
 ### 5. “Error: Invalid arrayify value” upon passing an IPFS CID to a function (e.g. isPermittedActions) while interacting with the PKPPermissions contract?
 

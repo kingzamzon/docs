@@ -127,7 +127,7 @@ await contractClient.connect();
 ```
 
 :::note
-You’ll need to ensure you have some test tokens to pay for gas fees. You can claim test tokens from our verified faucet: https://faucet.litprotocol.com/
+You’ll need to ensure you have some test tokens to pay for gas fees. You can claim test tokens from our verified [faucet](https://chronicle-yellowstone-faucet.getlit.dev/).
 :::
 
 ## Authenticate with the Lit Network
