@@ -8,7 +8,7 @@ Main networks should be used by applications that are currently live in producti
 
 You can set your Lit Network in the [LitNodeClient config of the Lit SDK](../../sdk/installation.md), by passing the network name to the `litNetwork` parameter.
 
-<div class="testnet-networks-table">
+<div class="mainnet-networks-table">
 
 | Name | Description | Supported Algorithms | Supported Features | Status | SDK Version | Development status | Contracts |
 | ---- | ----------- | -------------------- | ------------------ | ------ | ----------- | -------------------- | --------------- |
