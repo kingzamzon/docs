@@ -71,7 +71,7 @@ The Wrapped Keys SDK methods for:
 expect a Wrapped Key ID as part of their parameters. This ID is generated for each Wrapped Key by the backend service, and is returned by the SDK methods for:
 
 - Generating a Wrapped Key
-- Importing a private key as a Wrapped Ke
+- Importing a private key as a Wrapped Key
 - Storing Wrapped Key Metadata
 
 You can also obtain the IDs for all the Wrapped Keys associated with a specific PKP by using the SDK's [listEncryptedKeyMetadata](./listing-wrapped-keys.md) method.
@@ -106,7 +106,7 @@ You can also obtain the IDs for all the Wrapped Keys associated with a specific 
   
 1. The Wrapped Keys SDK will use the provided Wrapped Key ID and PKP Session Signatures to fetch the encryption metadata for a specific Wrapped Key
 2. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the [exportPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/common/src/exportPrivateKey.js) Lit Action
-3. The Lit Action will check the Access Control Conditions the plaintext private key was encrypted with to verify the PKP is authorized to decrypt the private key
+3. The Lit Action will check the Access Control Conditions used to encrypt the plaintext private key to verify whether the PKP is authorized to decrypt the private key
 4. If authorized, the unencrypted plaintext private key will be returned. If not authorized, an error will be returned
 
 ### Getting Wrapped Key Metadata
