@@ -196,7 +196,9 @@ await litNodeClient.connect();
 ```
 
 ### Generating Session Signatures
-The session signatures generated in this example provide unrestricted access to all resources. However, in real-world applications, it's more common and secure to limit access. Typically, you would use the specific hash of the encrypted access control condition resource key, granting access only to particular resources rather than everything. To this resource, we then give it the ability to decrypt an encryption access control condition. 
+In this example, we're granting the capability to request to decrypt any data that we may be authorized to decrypt (i.e. we satisfy the Access Control Conditions the data was encrypted with). We could, however, specify the [LitAccessControlConditionResource](https://v6-api-doc-lit-js-sdk.vercel.app/classes/auth_helpers_src.LitAccessControlConditionResource.html) for specific encrypted data we're permitting the decryption capability for. In real-world applications, it's more common and secure to limit access to specific Lit resources instead of specifying the wildcard (`"*"`) identifier.
+
+To get the Lit resource identifier for other resources, you can use the other methods included in [@lit-protocol/auth-helpers](https://v6-api-doc-lit-js-sdk.vercel.app/modules/auth_helpers_src.html) package.
 
 ```ts
 import {
