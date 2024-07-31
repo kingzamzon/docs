@@ -26,7 +26,7 @@ The Lit development team will not be migrating the access control conditions tha
 
 :::
 
-If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK. But we strongly recommend users to migrate to V3 SDK as it supports our new networks, `Datil` and `Datil-test`, which are not supported by V2 SDK.
+If you wish to continue using these access control conditions for encryption or signing JWTs, please continue using the V2 SDK. But we strongly recommend users to migrate to V6.4 SDK as it supports our new networks, `Datil` and `Datil-test`, which are not supported by V2 SDK.
 
 Alternatively, here are some general instructions for migrating to use the new encryption scheme:
 

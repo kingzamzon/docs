@@ -7,7 +7,7 @@ Lit is launching three new networks, Datil-dev, Datil-test, and Datil, to improv
 
 The Datil-dev and Datil-test networks use a new rollup blockchain called [Chronicle Yellowstone](./lit-blockchains/chronicle-yellowstone.md). These new blockchains replace the [Chronicle](./lit-blockchains/chronicle) blockchain that powered Lit's earlier networks. You will learn how to migrate data between these chains below.
 
-Depending on the existing Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
+Depending on the Lit network you are using, you should migrate to its corresponding Datil network to take advantage of these improvements:
 
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
@@ -23,7 +23,7 @@ Like their counterparts, `datil` and `datil-test` require developers to pay for 
 
 ### New Network, New PKPs
 
-PKPs minted on the existing Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil`, your PKPs will need to be re-minted on the Chronicle Yellowstone blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Yellowstone.
+PKPs minted on earlier Lit networks: `cayenne`, `manzano`, and `habanero` exist on the Chronicle blockchain. Because of this, when migrating to the new Datil networks: `datil-dev`, `datil-test`, and `datil`, your PKPs will need to be re-minted on the Chronicle Yellowstone blockchain. This also means transferring ownership of assets owned by PKPs minted on Chronicle, to the newly minted ones on Chronicle Yellowstone.
 
 :::info
 If you're migrating from `habanero`, `manzano`, or `cayenne` to any of the Datil networks, you will be migrating from Chronicle to Chronicle Yellowstone.
