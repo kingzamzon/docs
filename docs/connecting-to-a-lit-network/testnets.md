@@ -53,7 +53,7 @@ The Lit network, Datil-dev, utilizes the Lit blockchain: Chronicle Yellowstone. 
 
 If your application is currently deployed to a v0 Lit network (Cayenne, Manzano, and/or Habanero) please refer to [this guide](migrating-to-datil) to learn how to migrate to the new Datil networks.
 
-The minimum version of the Lit SDK that supports `datil-dev` is `6.3.0`, and a latest SDK version will be installed from NPM by default:
+The minimum version of the Lit SDK that supports `datil-dev` is `6.3.0`, and the latest SDK version will be installed from NPM by default:
 
 <Tabs
 defaultValue="npm"
