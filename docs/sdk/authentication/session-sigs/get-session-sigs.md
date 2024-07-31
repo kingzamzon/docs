@@ -240,7 +240,9 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
 ```
 
 
-**Note:** The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
+:::note
+The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
+:::
 
 ## Resources You Can Request
 
