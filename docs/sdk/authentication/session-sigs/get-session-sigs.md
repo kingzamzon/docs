@@ -176,7 +176,7 @@ const ethersSigner = new ethers.Wallet(
 ```
 
 ### Instantiating a `LitNodeClient`
-Here we are instantiating an instance of `LitNodeClient` and connecting it to the `datil-dev` Lit network. To simulate a Node.js environment, we use `LocalStorage` from the `node-localstorage` module to store our session keys and metadata.
+Here we are instantiating an instance of `LitNodeClient` and connecting it to the `datil-dev` Lit network. Because we're executing within a Node.js environment, we use `LocalStorage` from the `node-localstorage` module to store our session keys and metadata.
 
 ```ts
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
