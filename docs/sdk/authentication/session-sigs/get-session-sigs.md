@@ -20,110 +20,11 @@ Before continuing this guide, you should have an understanding of:
 - [Session Signatures](./intro)
 - [Lit Resources and Abilities](./resources-and-abilities.md)
 
-## `getSessionSigs`' Interface
-[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/types/src/lib/interfaces.ts#L1057-L1131)
+## Parameters and Returns
 
-```ts
-interface CommonGetSessionSigsProps {
-  pkpPublicKey?: string;
-  expiration?: any;
-  chain?: Chain;
-  resourceAbilityRequests: LitResourceAbilityRequest[];
-  sessionCapabilityObject?: ISessionCapabilityObject;
-  switchChain?: boolean;
-  sessionKey?: SessionKeyPair;
-  capabilityAuthSigs?: AuthSig[];
-}
-
-interface GetSessionSigsProps
-  extends CommonGetSessionSigsProps,
-    LitActionSdkParams {
-  authNeededCallback: AuthCallback;
-}
-
-getSessionSigs = async (
-    params: GetSessionSigsProps
-  ): Promise<SessionSigsMap>
-
-interface AuthSig {
-  sig: any;
-  derivedVia: string;
-  signedMessage: string;
-  address: string;
-}
-
-type SessionSigsMap = Record<string, AuthSig>;
-```
-
-## Parameters
-
-### `pkpPublicKey`
-If you want to pass the `authNeededCallback`, having a PKP public key is necessary. Can be used if you do not have a wallet and wish to authenticate with your PKP.
-
-### `expiration`
- When this session signature will expire. After this time is up, you will need to reauthenticate using the same authentication method, generating a new session signature. The default time until expiration is 24 hours.
-
-### `chain`
- The chain to use for the session signature and sign the session key. If you're using EVM, this parameter isn't very important.
-
-### `resourceAbilityRequests`
-An array of resource abilities that you want to request for this session. These will be signed with the session key.
-  
-If you want to request the ability to decrypt an access control condition, then you would pass:
-   ```ts
-   [{ resource: new LitAccessControlConditionResource('someResource'), ability: LitAbility.AccessControlConditionDecryption }]
-   ```
-  
-### `sessionCapabilityObjects`
-  The session capability object that you want to request for this session. If you pass nothing, then this will default to
-  wildcard for each type of resource you're accessing.
-  For example, if you passed nothing, and you're requesting to perform a decryption operation for an access control condition, then the session capability object will be a wildcard for the access control condition, which grants this session signature the ability to decrypt this access control condition.
-
-### `switchChain`
-If you want to ask MetaMask to try and switch the user's chain, you may pass true here.  This will only work if the user is using MetaMask.  If the user is not using MetaMask, then this will be ignored.
-
-### `sessionKey`
-The serialized session key pair to sign. If not provided, a session key pair will be fetched from localStorage or generated.
-
-### `capabilityAuthSigs`
-Not limited to capacityDelegationAuthSig, we want to be able to pass in any other authSigs for other purposes.
-
-### `authNededCallback`
-This is a callback that will be called if you need to authenticate using a PKP. If you don't pass this callback, then the user will be prompted to authenticate with their wallet, like MetaMask.
-
-## Return Value
-
-### `sig`
-The signature produced by the ed25519 key pair signing the `signedMessage` payload.
-
-### `derivedVia`
-Should be `litSessionSignViaNacl`, specifies that the session signature object was created via the `NaCl` library.
-
-### `signedMessage`
-The payload signed by the session key pair. This is the signed `AuthSig`, which includes the fields:
-
-- #### `sessionKey`
-   The session key pair public key.
-- #### `resourceAbilityRequests`
-   An array of resource abilities that you have requested for the session.
-- #### `capabilities` <- Needs a fact check
-   An array of one or more `AuthSig`. The `capabilities` authorize the `AuthSig` address(es) to utilize the resources specified. in the `resourceAbilityRequests`
-- #### `issuedAt`
-   The time the session signature was issued.
-- #### `expiration`
-   The time the session signature becomes invalid.
-- #### `nodeAddress`
-   The specific URL the session signature is meant for.
-
-### `address`
-The session key pair public key.
-
-### `algo`
-The signing algorithm used to generate the session signature.
+To see the parameters and return of `getSessionSigs`, please visit our [API Docs](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClientNodeJs.html#getSessionSigs).
 
 ## Example Implementation
-
-Now that we know what the `getSessionSigs` function does, it's parameters, and it's return values, let's dig into a complete implementation.
 
 The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
 
@@ -141,7 +42,6 @@ npm install \
 @lit-protocol/auth-helpers \
 @lit-protocol/constants \
 @lit-protocol/lit-node-client \
-node-localstorage \
 ethers@v5
 ```
 
@@ -154,14 +54,13 @@ yarn add \
 @lit-protocol/auth-helpers \
 @lit-protocol/constants \
 @lit-protocol/lit-node-client \
-node-localstorage \
 ethers@v5
 ```
 
 </TabItem>
 </Tabs>
 
-
+The `node-localstorage` dependency is only required when executing code outside a browser environment. The SDK will use the native browser storage when in a browser environment.
 
 ### Instantiating an Ethers Signer
 The `ETHEREUM_PRIVATE_KEY` environment variable is required.
@@ -170,7 +69,7 @@ import { LIT_RPC } from "@lit-protocol/constants";
 import * as ethers from "ethers";
 
 const ethersSigner = new ethers.Wallet(
-  ETHEREUM_PRIVATE_KEY,
+  process.env.ETHEREUM_PRIVATE_KEY,
   new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
 );
 ```
@@ -224,7 +123,7 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
       uri,
       expiration,
       resources: resourceAbilityRequests,
-      walletAddress: await ethersSigner.getAddress(),
+      walletAddress: ethersSigner.address,
       nonce: await litNodeClient.getLatestBlockhash(),
       litNodeClient,
     });
@@ -240,12 +139,6 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
 
 **Note:** The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
 
-## Resources You Can Request
-
-You can pass an array of `resourceAbilityRequests` to the above functions, which will be presented to the user in the SIWE message - read more [here](resources-and-abilities) about Lit resources and abilities. The resources and abilities requested by the session key must be narrower or equal to the capabilities granted to it per the session capability object specified in the inner `AuthSig`. 
-
-When session capability objects are omitted from functions generating session signatures, the SDK will generate a session capability object with **wildcard permissions against all of the resources in that category by default**, i.e. ability to perform operations against all access control conditions. Read more [here](capability-objects) about how to create custom session capability objects.
-
 ## Clearing Local Storage
 
 If you want to clear the session key stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).
@@ -253,6 +146,6 @@ If you want to clear the session key stored in the browser local storage, you ca
 ## Summary
 The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
 
-After executing the example implementation above, you will have generated and stored your session public and secret keys, and the `AuthSig` signed for the session signatures. 
+After executing the example implementation above, you will have generated and stored session signatures that allow you to request decrypting data that you satisfied the Access Control Conditions for.
 
 <FeedbackComponent/>

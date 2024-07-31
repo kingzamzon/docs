@@ -142,6 +142,12 @@ Here is what each field in `signedMessage` means:
 - `expiration` is the time the SessionSig becomes invalid.
 - `nodeAddress` is the specific URL the SessionSig is meant for.
 
+### Resources you can Request
+
+You can pass an array of `resourceAbilityRequests` to the above functions, which will be presented to the user in the SIWE message - read more [here](resources-and-abilities) about Lit resources and abilities. The resources and abilities requested by the session key must be narrower or equal to the capabilities granted to it per the session capability object specified in the inner `AuthSig`. 
+
+When session capability objects are omitted from functions generating session signatures, the SDK will generate a session capability object with **wildcard permissions against all of the resources in that category by default**, i.e. ability to perform operations against all access control conditions. This should only be done when debugging, as allowing unspecified access control conditions is a security vulnerability. Read more [here](capability-objects) about how to create custom session capability objects.
+
 #### Node Address
 
 The `nodeAddress` will be different for each node, which means that, for a 30-node network, the SDK will generate 30 different `sig` and `signedMessage` parameters.
