@@ -12,8 +12,8 @@ Depending on the Lit network you are using, you should migrate to its correspond
 | Currently Available | Requires Payment | Minimum Lit Package Version | Your Current Network | Network to Migrate to | Description                                                  |
 |---------------------|------------------|-----------------------------|----------------------|-----------------------|--------------------------------------------------------------|
 | ✅                   | ✅                | `6.4.0`                     | `habanero`           | `datil`               | Decentralized mainnet designed for production use cases      |
-| ✅                   | ✅                | `6.2.2`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
-| ✅                   | ❌                | `6.2.2`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
+| ✅                   | ✅                | `6.3.0`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
+| ✅                   | ❌                | `6.3.0`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
 Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits); however, `datil-dev` does not.
 
@@ -57,7 +57,7 @@ For latest on which Datil networks are available to connect to, please refer to 
 The only code changes required to make use of the new Datil networks are as follows:
 
 - Upgrade the Lit packages to the latest version that supports Datil
-  - `6.2.2` is the minimum version of the packages that support `datil-test` and `datil-dev`
+  - `6.3.0` is the minimum version of the packages that support `datil-test` and `datil-dev`
   - `6.4.0` is the minimum version of the packages that supports `datil`
 - Specify the Datil network when instantiating Lit node clients from the SDK
   - This is done by specifying the `litNetwork` property when [connecting a Lit client](./connecting) to one of the following Datil networks:
