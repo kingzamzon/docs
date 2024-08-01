@@ -117,15 +117,17 @@ const sidebars = {
       collapsed: true,
       link: {
         type: 'doc',
-        id: 'paying-for-lit/intro',
+        id: 'paying-for-lit/overview',
       },
       items: [
-        'paying-for-lit/lit-relayer',
-        'paying-for-lit/payment-delegation-db',
         {
           type: 'category',
           label: 'Capacity Credits',
           collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'paying-for-lit/capacity-credit-intro',
+          },
           items: [
             {
               type: 'category',
@@ -136,12 +138,13 @@ const sidebars = {
                 'paying-for-lit/minting-capacity-credit/lit-contracts',
               ],
             },
-            'paying-for-lit/payer-wallet',
-            'paying-for-lit/creating-session-with-credit',
+            'paying-for-lit/creating-session-signatures',
             'paying-for-lit/delegating-credit',
-            'paying-for-lit/paying-for-usage',
+            'paying-for-lit/usage-examples',
           ],
         },
+        'paying-for-lit/lit-relayer',
+        'paying-for-lit/payment-delegation-db',
       ],
     },
     {
