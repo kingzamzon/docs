@@ -13,7 +13,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 :::
 Session signatures are how the Lit network authenticates your connection, verifies your identity, and confirms your capabilities. 
 
-Session signatures are necessary to generate whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g., signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
+Generating session signatures is necessary whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g., signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
 
 Session signatures are created with session keys, which are generated when you initiate a session through a request to a Lit network using the Lit SDK. Session keys are unique [`ed25519`](https://ed25519.cr.yp.to/) keypairs generated locally by the Lit SDK and are used to sign all requests to the Lit Network during the current session. 
 
@@ -30,9 +30,13 @@ This authentication system enhances the security of the Lit network. For detaile
 
 ## Paying for Usage of the Lit Network
 
+You can facilitate payment for the Lit network within session signatures.
+
 The correct code implementation will depend on whether you're using the free-to-use `datil-dev` network, or one of the "paid" networks: `datil` or `datil-test`.
 
 Usage of the `datil` and `datil-test` networks require the use of [Lit Capacity Credits](../../../sdk/capacity-credits.md). Currently, Capacity Credits are paid for using the `tstLPX` token and don't require any real-world money. However, in the future you will need to pay real-world money for usage of Lit networks, and `datil` and `datil-test` are the Lit networks where this functionality is being tested and refined.
+
+To implement payments correctly, include a [`capacityDelegationAuthSig`](https://developer.litprotocol.com/sdk/capacity-credits#createcapacitydelegationauthsig) within the `capabilityAuthSigs` array when generating session signatures.
 
 ## Storing `SessionSigs`
 
