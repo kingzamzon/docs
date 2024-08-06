@@ -162,69 +162,68 @@ const sidebars = {
           label: 'User Wallets',
           link: {
             type: 'doc',
-            id: 'sdk/wallets/intro',
+            id: 'user-wallets/overview',
           },
           collapsed: true,
           items: [
-            'sdk/wallets/quick-start',
             {
               type: 'category',
-              label: 'Advanced Topics',
+              label: 'Programmable Key Pairs (PKPs)',
               collapsed: true,
-              link: {
-                type: 'generated-index',
-                title: 'Advanced Topics',
-                keywords: ['user wallets'],
-              },
               items: [
-                {
-                  type: 'category',
-                  label: 'Auth Methods',
-                  link: {
-                    type: 'doc',
-                    id: 'sdk/wallets/auth-methods',
-                  },
-                  collapsed: true,
-                  items: [
-                    {
-                      type: 'category',
-                      label: 'Lit Auth Methods',
-                      collapsed: true,
-                      items: [
-                        'sdk/wallets/auth-methods/lit-auth-methods/add-remove-auth-methods',
-                        'sdk/wallets/auth-methods/lit-auth-methods/social-login',
-                        'sdk/wallets/auth-methods/lit-auth-methods/web-authn',
-                        'sdk/wallets/auth-methods/lit-auth-methods/email-sms',
-                      ],
-                    },
-                    'sdk/wallets/auth-methods/custom-auth',
-                  ],
-                },
+                'user-wallets/pkps/quick-start',
                 {
                   type: 'category',
                   label: 'Minting a PKP',
                   link: {
                     type: 'doc',
-                    id: 'sdk/wallets/minting',
+                    id: 'user-wallets/pkps/minting/overview',
                   },
                   collapsed: true,
                   items: [
-                    'sdk/wallets/minting-methods/mint-via-contracts',
-                    'sdk/wallets/minting-methods/mint-via-social',
-                    'sdk/wallets/minting-methods/mint-via-web-authn',
-                    'sdk/wallets/minting-methods/mint-via-multiple-auth-methods',
+                    'user-wallets/pkps/minting/via-contracts',
+                    'user-wallets/pkps/minting/via-social',
+                    'user-wallets/pkps/minting/via-web-authn',
+                    'user-wallets/pkps/minting/via-multiple-auth-methods',
                   ],
                 },
-                'sdk/wallets/walletconnect',
+                'user-wallets/pkps/walletconnect',
                 {
                   type: 'category',
-                  label: 'Claimable Keys (HD Keys)',
+                  label: 'Advanced Topics',
                   link: {
                     type: 'doc',
-                    id: 'sdk/wallets/claimable-keys/intro',
+                    id: 'user-wallets/pkps/advanced-topics/overview',
                   },
                   collapsed: true,
-                  items: ['sdk/wallets/claimable-keys/usage'],
+                  items: [
+                    {
+                      type: 'category',
+                      label: 'Auth Methods',
+                      collapsed: true,
+                      link: {
+                        type: 'doc',
+                        id: 'user-wallets/pkps/advanced-topics/auth-methods/overview',
+                      },
+                      items: [
+                        'user-wallets/pkps/advanced-topics/auth-methods/add-remove-auth-methods',
+                        'user-wallets/pkps/advanced-topics/auth-methods/social-login',
+                        'user-wallets/pkps/advanced-topics/auth-methods/web-authn',
+                        'user-wallets/pkps/advanced-topics/auth-methods/email-sms',
+                        'user-wallets/pkps/advanced-topics/auth-methods/custom-auth',
+                      ],
+                    },
+                    {
+                      type: 'category',
+                      label: 'Claimable Keys (HD Keys)',
+                      link: {
+                        type: 'doc',
+                        id: 'user-wallets/pkps/claimable-keys/intro',
+                      },
+                      collapsed: true,
+                      items: ['user-wallets/pkps/claimable-keys/usage'],
+                    },
+                  ],
                 },
               ],
             },
