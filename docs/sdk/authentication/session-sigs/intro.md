@@ -26,6 +26,7 @@ When you make a request, each Lit Node checks your `AuthSig` to confirm that you
 
 This authentication system enhances the security of the Lit network. For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
 
+## SessionSigs Generation Diagram
 ![Session Signatures Diagram](../../../../static/img//SessionSigs.png)
 
 ## Paying for Usage of the Lit Network
@@ -40,13 +41,13 @@ To implement payments correctly, include a [`capacityDelegationAuthSig`](https:/
 
 ## Storing `SessionSigs`
 
-When running code to generate session signatures, storing them can be done by using the `LocalStorage` imported from the `node-localstorage` package. 
+When running code to generate session signatures, you can store the session signatures and session keys using `LocalStorage` from the `node-localstorage` package.
 
 ```javascript
 import { LocalStorage } from "node-localstorage";
 ```
 
-When running code within a browser, this import is not needed, as the session keys will be stored within the browser's local storage. However, when running this code in an environment such as Node.js where browser local storage is not available, the `LocalStorage` module is used to provide file-based storage for our generated session keys and metadata. 
+When running code within a browser, this import is not needed, as the session signatures and keys will be stored within the browser's local storage. However, when running this code in an environment such as Node.js where browser local storage is not available, the `LocalStorage` module can be used to provide file-based storage. 
 
 ```javascript
 litNodeClient = new LitNodeClient({
@@ -57,18 +58,16 @@ litNodeClient = new LitNodeClient({
     },
 });
 ```
-All functions for generating session signatures will try to create a session key for you and store it in the local storage. The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session key as the optional `sessionKey` parameter when generating session signatures.
+When a `storageProvider` is added to the `LitNodeClient` instance, all functions for generating session signatures will try to create a session keypair for you and store it in the local storage. 
 
-If you do not provide an instance of `LocalStorage` as the `provider`, then new session keys will be generated every time you run this code instead of one set of keys being reused.
+The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session keypair as the optional `sessionKey` parameter when generating session signatures.
+
+If an instance of `LocalStorage` is not provided as the `storageProvider`, a new session keypair will be generated each time the code runs, instead of reusing a single set of keys.
 
 ### Resources you can Request
 
-You can pass an array of `resourceAbilityRequests` to the above functions, which will be presented to the user in the SIWE message - read more [here](resources-and-abilities) about Lit resources and abilities. The resources and abilities requested by the session key must be narrower or equal to the capabilities granted to it per the session capability object specified in the inner `AuthSig`. 
+You can pass an array of `resourceAbilityRequests` to any of the functions that generate session signatures. These will be presented to the user in the SIWE message - read more [here](resources-and-abilities) about Lit resources and abilities. The resources and abilities requested by the session key must be narrower or equal to the capabilities granted to it per the session capability object specified in the inner `AuthSig`. 
 
 When session capability objects are omitted from functions generating session signatures, the SDK will generate a session capability object with **wildcard permissions against all of the resources in that category by default**, i.e. ability to perform operations against all access control conditions. This should only be done when debugging, as allowing unspecified access control conditions is a security vulnerability. Read more [here](capability-objects) about how to create custom session capability objects.
-
-#### Node Address
-
-The `nodeAddress` will be different for each node, which means that, for a 30-node network, the SDK will generate 30 different `sig` and `signedMessage` parameters.
 
 <FeedbackComponent/>
