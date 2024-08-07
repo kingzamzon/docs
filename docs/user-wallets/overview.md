@@ -11,32 +11,70 @@ Need some `testLPX` test tokens to mint a PKP on Chronicle? Use the faucet: http
 
 ## Introduction
 
-You can use Lit to build seamless, non-custodial wallets and onboarding experiences using Programmable Key Pairs (PKPs). Each PKP is an ECDSA public / private key pair created by the Lit network using Distributed Key Generation (DKG). Each Lit node holds a share, and more than two-thirds of these shares must be collected to execute a given action (i.e. a signed transaction). You can read more about how Lit works [here](../../resources/how-it-works.md).
+The Lit Protocol offers two novel ways of managing private keys with [Programmable Key Pairs (PKPs)](./pkps/overview.md) and [Wrapped Keys](./wrapped-keys/overview.md). Using either of these two methods, you can provide your users with a seamless onboarding experience to your decentralized application, all while offering them non-custodial wallets with strict access control.
 
-When used to build a wallet, PKPs can make onboarding into and interacting with web3 significantly simpler and more secure. You can hook up web2-style authentication (i.e. Google OAuth, Passkeys, etc) to these keys to abstract away the complexities of seed phrases and self-custody. Since PKPs are decentralized, you don't have to worry about the inherent risks associated with key custodians, ensuring no one but your user can control their wallet and manage the assets within. 
+When used to build a wallet, both PKPs and Wrapped Keys can make onboarding into and interacting with web3 significantly simpler and more secure. You can hook up web2-style authentication (i.e. Google OAuth, Passkeys, etc) to these keys to abstract away the complexities of seed phrases and self-custody. Since both PKPs and Wrapped Keys leverage the decentralized Lit network, you don't have to worry about the inherent risks associated with key custodians, ensuring no one but your user can control their wallet and manage the assets within.
 
-## Features and Examples
+## PKPs v.s. Wrapped Keys
 
-### Features
+Programmable Key Pairs (PKPs) and Wrapped Keys are both solutions offered by Lit for managing private keys, but they serve different purposes and have distinct characteristics.
 
-- **[Blockchain Agnostic](../../resources/supported-chains#programmable-key-pairs)**: PKPs can be used to sign transactions on any blockchain or state machine supported by Lit. Currently, the [SDK](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/pkp-client) provides easy-to-use methods for creating wallets on EVM and Cosmos-based chains. 
-- **Programmable**: [Lit Actions](../serverless-signing/overview) can be used to automate signing with PKPs.
-- **Non-Custodial**: Each PKP is generated collectively by the Lit nodes using a process called [Distributed Key Generation](../../resources/how-it-works.md) (DKG). As a network, this allows Lit to generate a new wallet where the private key never exists in its entirety. 
+PKPs are ECDSA public/private key pairs created by the Lit network using Distributed Key Generation (DKG). Each Lit node holds a share, and more than two-thirds of these shares must be collected to execute a given action (i.e. signing a transaction).
 
-### Examples
+Wrapped Keys are private keys that are encrypted and stored using Lit's Wrapped Keys backend service. They can be initialized by [importing](./importing-key.md) or [storing](./storing-wrapped-key-metadata.md) an existing private key, or can be [generated](./generating-wrapped-key.md) within a Lit node's trusted execution environment (TEE), meaning the clear text private key never exists outside of a Lit node's TEE.
 
-- [Minting a PKP](../wallets/minting.md): Learn about the various methods you can use to create PKPs.
-- [Assigning an Authentication Method](../wallets/auth-methods.md): Authentication methods have the ability to "control" the underlying key pair.
-- [Signing Transactions](../serverless-signing/processing-validation.md): You can use [Lit Actions](../serverless-signing/overview.md) to sign transactions with PKPs.
-- [Connecting to dApps](../wallets/walletconnect.md): Use WalletConnect to connect your PKP wallet to all of your favorite dApps.
+### PKPs
 
-## Getting Started
+- Generated and managed through Distributed Key Generation (DKG) across the Lit network
+- Rely on threshold cryptography and Multi-Party Computation (MPC) for generation and usage
+- Support specific cryptographic curves (e.g. `secp256k1` used by Ethereum)
+- Keys never exist in full on any single node, reducing the risk of compromise
+- Ideal for applications requiring high security on supported blockchains
 
-You can get started with user wallets following this [quick start](../wallets/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
+#### Why Use Them
 
-1. [Seed-Phraseless Onboarding](../wallets/minting-methods/mint-via-social.md)
-2. [Use a PKP as a Signer on a Smart Account](https://spark.litprotocol.com/account-abstraction-and-mpc/)
-3. [Using the Lit Explorer](../../tools/pkpexplorer.md)
-4. [Working with Claimable Keys](../wallets/claimable-keys/intro.md)
+- Enhanced Security: PKPs leverage MPC and threshold cryptography, providing a higher level of security as the key is never fully reconstructed on a single node
+- Distributed Trust: The key generation and management process is distributed across the network, reducing single points of failure
+- Programmability: PKPs can be controlled by [Lit Actions](../sdk/serverless-signing/overview.md), enabling advanced use cases and key management
+
+### Wrapped Keys
+
+- Generated within a single Lit node's TEE, or imported from an existing private key
+- Encrypted via the MPC Lit network, and stored within Lit's private Dynamo DB instance
+- Support a wider range of cryptographic curves, enabling interaction with more blockchains
+- Allow for private key import and export, providing flexibility for users with existing keys
+- Fully decrypted within a single node's TEE when used
+
+#### Why Use Them
+
+- Blockchain Compatibility: Wrapped Keys support signing with curves not currently supported by PKPs, allowing interaction with a broader range of blockchains
+- Key Import/Export: Users can import existing private keys or export keys for use in other systems, offering greater flexibility and interoperability
+- Legacy System Integration: Wrapped Keys may be easier to integrate with existing systems that expect traditional private key management
+
+### Security Considerations
+
+While Wrapped Keys offer flexibility, they have different security characteristics compared to PKPs:
+
+- Wrapped Keys are fully decrypted within a single node's TEE during use, relying on the security of the sealed TEE
+- PKPs, in contrast, leverage the more robust security of the MPC network, never existing in full on any single node
+
+In summary, PKPs offer a highly secure solution for supported blockchains, while Wrapped Keys provide greater flexibility and compatibility at the cost of a slightly different security model. The choice between them depends on the specific requirements of your application, the blockchains you need to interact with, and your security priorities.
+
+## Resources and Examples
+
+### PKPs
+
+- [Overview](./pkps/overview.md)
+- [Quick Start Guide](./pkps/quick-start.md)
+- [Seed-Phraseless Onboarding](./pkps/minting/via-social.md)
+- [Use a PKP as a Signer on a Smart Account](https://spark.litprotocol.com/account-abstraction-and-mpc/)
+- [Working with Claimable Keys](./pkps/claimable-keys/intro.md)
+
+### Wrapped Keys
+
+- [Overview](./wrapped-keys/overview.md)
+- [Generating a Wrapped Key](./wrapped-keys/generating-wrapped-key.md)
+- [Importing an Existing Private Key](./wrapped-keys/importing-key.md)
+- [Signing Transactions](./wrapped-keys/sign-transaction.md)
 
 <FeedbackComponent/>
