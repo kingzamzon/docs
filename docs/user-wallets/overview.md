@@ -15,7 +15,7 @@ The Lit Protocol offers two novel ways of managing private keys with [Programmab
 
 When used to build a wallet, both PKPs and Wrapped Keys can make onboarding into and interacting with web3 significantly simpler and more secure. You can hook up web2-style authentication (i.e. Google OAuth, Passkeys, etc) to these keys to abstract away the complexities of seed phrases and self-custody. Since both PKPs and Wrapped Keys leverage the decentralized Lit network, you don't have to worry about the inherent risks associated with key custodians, ensuring no one but your user can control their wallet and manage the assets within.
 
-## PKPs v.s. Wrapped Keys
+## PKPs vs. Wrapped Keys
 
 Programmable Key Pairs (PKPs) and Wrapped Keys are both solutions offered by Lit for managing private keys, but they serve different purposes and have distinct characteristics.
 
