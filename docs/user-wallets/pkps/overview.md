@@ -11,18 +11,6 @@ Please refer to the [Quick Start Guide](./quick-start.md) for how to get started
 
 ## How it Works
 
-<!-- When a PKP is created, the Lit network uses Distributed Key Generation (DKG) to generate the key pair. This process ensures that no single node has access to the entire private key. Instead, each node holds a share of the key.
-
-To use a PKP for signing transactions or executing programmed logic:
-
-1. **Request Initiation**: A Lit node client sends a request to the Lit network to use a specific PKP.
-
-2. **Share Collection**: The network collects shares from more than two-thirds of the nodes.
-
-3. **Threshold Signing**: Using threshold cryptography, the network combines these shares to perform the requested action (e.g., signing a transaction) without ever reconstructing the full private key.
-
-4. **Programmed Logic Execution**: If the PKP has associated programmed logic (a Lit Action), this logic is executed within the network's secure environment. -->
-
 ### Key Generation and Storage
 
 PKPs are created using Distributed Key Generation (DKG) across the Lit network. This process ensures that the private key is never assembled in one place, and is instead split into shares with each node in the Lit network holding a share. Consequently, no single entity, including Lit Protocol itself, has access to the full private key. The public key, however, is publicly available and can be used to derive the corresponding blockchain address.
