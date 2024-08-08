@@ -61,7 +61,7 @@ When defining your Access Control Conditions rules you may wish to use `currentA
   parameters: [':currentActionIpfsId'],
   returnValueTest: {
     comparator: '=',
-    value: 'Lit Action IPFS CID',
+    value: '<YOUR_LIT_ACTION_IPFS_CID>',
   },
 }
 ```
