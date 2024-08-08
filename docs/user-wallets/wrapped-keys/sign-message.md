@@ -9,6 +9,17 @@ Using the `signMessageWithEncryptedKey` function, you can sign an arbitrary mess
 
 Below we will walk through an implementation of `signMessageWithEncryptedKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/signMessageWithWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will use the provided Wrapped Key ID and PKP Session Signatures to fetch the encryption metadata for a specific Wrapped Key
+2. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the Sign Message Lit Action
+   - Depending on the provided `network`, one of the following Lit Actions will be executed:
+     - If `network` is `ethereum`, then the [signMessageWithEthereumEncryptedKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/ethereum/src/signMessageWithEthereumEncryptedKey.js) Lit Action is executed
+     - If `network` is `solana`, then the [signMessageWithSolanaEncryptedKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/solana/src/signMessageWithSolanaEncryptedKey.js) Lit Action is executed
+3. The Lit Action will check the Access Control Conditions the plaintext private key was encrypted with to verify the PKP is authorized to decrypt the private key
+4. If authorized, the Wrapped Key will be decrypted within a Lit node's TEE. If not authorized, an error will be returned
+5. The Lit Action will use the decrypted Wrapped Key and the provided [SignMessageWithEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.SignMessageWithEncryptedKeyParams.html) to sign the arbitrary message, returning the signed message
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

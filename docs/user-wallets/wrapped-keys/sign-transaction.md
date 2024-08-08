@@ -9,6 +9,19 @@ Using the `signTransactionWithEncryptedKey` function, you can sign a transaction
 
 Below we will walk through an implementation of `signTransactionWithEncryptedKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/signTransactionWithWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will use the provided Wrapped Key ID and PKP Session Signatures to fetch the encryption metadata for a specific Wrapped Key
+2. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the Sign Transaction Lit Action
+   - Depending on the provided `network`, one of the following Lit Actions will be executed:
+     - If `network` is `ethereum`, then the [signTransactionWithEthereumEncryptedKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/ethereum/src/signTransactionWithEthereumEncryptedKey.js) Lit Action is executed
+     - If `network` is `solana`, then the [signTransactionWithSolanaEncryptedKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/solana/src/signTransactionWithSolanaEncryptedKey.js) Lit Action is executed
+3. The Lit Action will verify the required transaction parameters were provided in order to sign the transaction
+4. The Lit Action will check the Access Control Conditions the plaintext private key was encrypted with to verify the PKP is authorized to decrypt the private key
+5. If authorized, the Wrapped Key will be decrypted within a Lit node's TEE. If not authorized, an error will be returned
+6. The Lit Action will use the decrypted Wrapped Key and the provided [SignTransactionWithEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.SignTransactionWithEncryptedKeyParams.html) to sign the transaction
+7. If the `broadcast` parameter was set to `true`, the Lit Action will then broadcast the signed transaction to the specified `network`, returning the transaction hash. Otherwise, the signed transaction will be returned
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

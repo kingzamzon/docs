@@ -11,6 +11,16 @@ Afterwards, you will be able to make use of the SDK's signing methods (`signTran
 
 Below we will walk through an implementation of `importPrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
 
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
+2. The SDK then generates the encryption Access Control Conditions using the derived Ethereum address
+   - See the [Encrypting the Private Key](#encrypting-the-private-key) section for more info on this process
+3. Using the generated Access Control Conditions, the SDK will encrypt the provided private key using the [encryptString](https://v6-api-doc-lit-js-sdk.vercel.app/functions/encryption_src.encryptString.html) Lit SDK method
+   - This encrypts your provided plaintext private key using the Lit network's public BLS key
+4. The SDK then stores the private key encryption metadata to the Wrapped Keys backend service, associating it with the PKP's Ethereum address
+5. The SDK returns a [ImportPrivateKeyResult](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.ImportPrivateKeyResult.html) object containing the generated Wrapped Key ID, and the PKP Ethereum address the Wrapped Key is associated with
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:

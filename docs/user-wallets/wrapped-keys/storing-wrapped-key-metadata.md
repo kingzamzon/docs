@@ -11,6 +11,16 @@ This method is useful for when you would like to implement your own method of ge
 
 Below we will walk through an implementation of `storeEncryptedKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/storeWrappedKey.ts).
 
+## Overview of How it Works
+
+:::note
+The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) required for this method include the encryption metadata of the private key that will be turned into a Wrapped Key. For more information on how to obtain the encryption metadata, please refer to this guide on [encrypting data using the Lit SDK](../../sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key), and this guide on [Custom Wrapped Keys](http://localhost:3000/sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key).
+:::
+
+1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
+2. The SDK stores the provided [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) using the Wrapped Keys backend service, associating the resulting Wrapped Key with the PKP's Ethereum address
+3. The SDK returns a [StoreEncryptedKeyResult](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.StoreEncryptedKeyResult.html) object containing the generated Wrapped Key ID, and the PKP Ethereum address the Wrapped Key is associated with
+
 ## Prerequisites
 
 Before continuing with this guide, you should have an understanding of:
