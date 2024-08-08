@@ -7,7 +7,7 @@ This guide covers the `exportPrivateKey` function from the Wrapped Keys SDK. For
 
 Using the `exportPrivateKey` function, you can export existing Wrapped Keys to decrypt and obtain their underlying private keys. The Wrapped Keys SDK will look up the corresponding encryption metadata (`ciphertext` and `dataToEncryptHash`) for your PKP in Lit's private DynamoDB instance. If found, it well then use your provided PKP Session Signatures to authorize decryption of the private key, and will return it to you in clear text.
 
-Below we will walk through an implementation of `exportPrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/exportWrappedKey.ts).
+Below we will walk through an implementation of `exportPrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/exportWrappedKey.ts).
 
 ## Overview of How it Works
 
