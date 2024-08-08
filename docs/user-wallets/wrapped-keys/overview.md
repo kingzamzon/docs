@@ -103,7 +103,7 @@ yarn add @lit-protocol/wrapped-keys
 </TabItem>
 </Tabs>
 
-### SDK Methods
+### Overview
 
 For more information on what's offered by the Wrapped Keys SDK, please refer to the following doc pages:
 
