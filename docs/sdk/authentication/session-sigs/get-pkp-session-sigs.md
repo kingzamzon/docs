@@ -31,11 +31,7 @@ To see the parameters and return of `getPkpSessionSigs`, please visit our [API D
 
 ## Example Implementation
 
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getPkpSessionSigs).
-
-## Example Implementation
-
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getPkpSessionSigs). 
 
 ### Installing the Required Dependencies
 <Tabs

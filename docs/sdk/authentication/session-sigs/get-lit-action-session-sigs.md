@@ -23,7 +23,7 @@ This function uses the [`signSessionKey`](https://v6-api-doc-lit-js-sdk.vercel.a
 Once the `AuthSig` has been created, it is then signed by the session keypair. Signing the `AuthSig` with the session keypair creates the session signatures.
 
 :::note
-This Lit Action is defined with the `litActionCode` or `litActionIpfsId` parameter , and `jsParams` must be provided.
+The Lit Action is defined with the `litActionCode` or `litActionIpfsId` parameter, and `jsParams` must be provided for executing the action.
 :::
 
 ## Prerequisites
