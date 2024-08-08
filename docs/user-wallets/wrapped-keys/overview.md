@@ -1,3 +1,6 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Overview
 
 Wrapped Keys are a secure and flexible key management solution provided by Lit Protocol. They offer a unique approach to handling private keys, combining the security of encryption with the programmability of [Lit Actions](../../sdk/serverless-signing/overview.md) to offer private key signing to a broader range of blockchain networks.
@@ -70,6 +73,37 @@ Wrapped Keys leverage the programmability of Lit Actions, which are JavaScript s
 - Implementing custom signing algorithms for specialized blockchain projects
 
 ## Wrapped Keys SDK
+
+### Installing the SDK
+
+:::info
+The minimum version of the Lit SDK that supports Wrapped Keys is `6.4.0`.
+:::
+
+<Tabs
+defaultValue="npm"
+values={[
+{label: 'npm', value: 'npm'},
+{label: 'yarn', value: 'yarn'},
+]}>
+<TabItem value="npm">
+
+```bash
+npm i @lit-protocol/wrapped-keys
+```
+
+</TabItem>
+
+<TabItem value="yarn">
+
+```bash
+yarn add @lit-protocol/wrapped-keys
+```
+
+</TabItem>
+</Tabs>
+
+### SDK Methods
 
 For more information on what's offered by the Wrapped Keys SDK, please refer to the following doc pages:
 
