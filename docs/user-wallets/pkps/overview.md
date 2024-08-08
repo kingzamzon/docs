@@ -9,6 +9,13 @@ PKPs can be programmed with custom logic to automate on-chain actions and implem
 
 Please refer to the [Quick Start Guide](./quick-start.md) for how to get started with PKPs.
 
+## Key Features
+
+- **Distributed Security**: No single point of failure in key management.
+- **Programmable Logic**: Automate on-chain actions with custom logic.
+- **Flexible Permissions**: Implement sophisticated access rules for key usage.
+- **Non-Custodial**: Users maintain control over their assets without managing private keys directly, and don't have to trust any single party to manage keys for them.
+
 ## How it Works
 
 ### Key Generation and Storage
@@ -21,22 +28,22 @@ When a signing operation is requested, a Lit node client sends the request to th
 
 This threshold signing process ensures that the full private key is never reconstructed at any point, maintaining security while producing a signature with the PKP.
 
-### Programmability and Access Control
+### Programmability and Key Management
 
-A key feature of PKPs is their programmability. Each PKP can be authorized to execute specific [Lit Actions](../../sdk/serverless-signing/overview.md), which are JavaScript scripts that define the conditions and logic for key usage. This programmability allows for things like access control, where the use of a PKP can be gated by various on-chain conditions like token ownership, or off-chain conditions such as OAuth verification. Additionally, because a Lit Action is just a JavaScript script, you have a lot of flexibility on what your Lit Action does and how it makes use of the PKP.
+A key feature of PKPs is their programmability through [Lit Actions](../../sdk/serverless-signing/overview.md), which are JavaScript scripts that define the conditions and logic for key usage. This programmability enables several advanced capabilities such as:
+
+- **Transaction Automation:** PKPs can be programmed to automatically sign and execute transactions based on various conditions, streamlining complex on-chain operations.
+- **Conditional Signatures:** Implement custom logic for when and how a PKP can sign transactions, based on various on-chain and off-chain factors.
+**- Off-chain Data Attestation:** Use PKPs to cryptographically sign and attest to off-chain data, allowing for the secure integration of real-world information into blockchain systems.
+- **Sophisticated Permission Systems:** Define granular and context aware permissions for key usage, allowing for fine-tuned control over who can use the PKP, and under what circumstances.
+
+The flexibility of Lit Actions, being JavaScript-based, allows you to create complex and tailored solutions for managing and utilizing PKPs for you application.
 
 ### Interoperability and Upgradability
 
-PKPs are designed with interoperability in mind, capable of interacting with various blockchains and Web3 protocols. This makes them suitable for cross-chain operations and interoperability solutions. Furthermore, the logic associated with PKPs (in the form of Lit Actions) can be updated without changing the key pair itself, allowing for evolving functionality while maintaining a consistent blockchain identity.
+PKPs are designed with interoperability in mind, capable of interacting with various blockchains and Web3 protocols. This makes them suitable for executing cross-chain operations and implementing [chain abstraction](https://blockworks.co/news/definitive-guide-chain-abstraction). Furthermore, the logic associated with PKPs (in the form of Lit Actions) can be updated without changing the key pair itself, allowing for evolving functionality.
 
-By leveraging these features, PKPs enable developers to create sophisticated, secure, and user-friendly blockchain applications with programmable, non-custodial key management. This approach opens up new possibilities for decentralized applications, automated transactions, and complex on-chain logic execution.
-
-## Key Features
-
-- **Distributed Security**: No single point of failure in key management.
-- **Programmable Logic**: Automate on-chain actions with custom logic.
-- **Flexible Access Control**: Implement sophisticated access rules for key usage.
-- **Non-Custodial**: Users maintain control over their assets without managing private keys directly.
+By leveraging these features, PKPs enable you to create sophisticated, secure, and user-friendly blockchain applications with programmable, non-custodial key management. This approach opens up new possibilities for decentralized applications, automated transactions, and complex on-chain logic execution.
 
 ## Use Cases
 
