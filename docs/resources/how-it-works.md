@@ -72,13 +72,16 @@ The full list of Datil node operators includes:
 - Lit Protocol (our node)
 - [Hypha](https://hypha.coop/?ref=spark.litprotocol.com)
 - [Thunderhead](https://thunderhead.xyz/?ref=spark.litprotocol.com)
-- [Zeiron](https://zerion.io/?ref=spark.litprotocol.com)
-- [HireNodes](https://hirenodes.io/?ref=spark.litprotocol.com)
-- [ETHGlobal](https://ethglobal.com/?ref=spark.litprotocol.com)
 - [Terminal3](https://www.terminal3.io/?ref=spark.litprotocol.com)
 - [Imperator](https://www.imperator.co/?ref=spark.litprotocol.com)
 - [01node](https://01node.com/?ref=spark.litprotocol.com)
 - [Cheqd](https://cheqd.io/?ref=spark.litprotocol.com)
+
+The following operators will be joining the network after launch:
+
+- [HireNodes](https://hirenodes.io/?ref=spark.litprotocol.com)
+- [ETHGlobal](https://ethglobal.com/?ref=spark.litprotocol.com)
+- [Zerion](https://zerion.io/?ref=spark.litprotocol.com)
 
 ### The Lit Protocol Token (LITKEY)
 
