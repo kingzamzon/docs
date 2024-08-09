@@ -122,7 +122,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 ### **Best Practices**
 
 - **Capacity Management**: Keep an eye on your usage limit and expiration date.
-- **Understanding Limits**: Be aware that there are no free requests on `Datil` mainnet. On `Datil-test` testnet, free tier rate limit is set to three free requests per day. You can use Capacity credits to reserve more usage on these networks.
+- **Understanding Limits**: Be aware that there are no free requests on `Datil` mainnet or the `Datil-test` testnet. You must use Capacity credits to reserve usage on these networks.
 - **Delegation**: You can create restrictions on your delegations to ensure that your users don't take your `capacityDelegationAuthSig` and use it for other apps.
 
 <FeedbackComponent/>
