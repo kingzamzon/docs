@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Mainnets
 
-Lit mainnets are designed for late-stage development and production deployment. If you are storing assets with real world value, it should be done on the mainnets and not the testnets. While mainnets may be deprecated in the future, assets will be transferable to newer networks.
+Lit mainnets are designed for late-stage development and production deployment. If you are storing assets with real world value, it should be done on the mainnets and not the testnets. While mainnets may be deprecated in the future, assets will be transferable to new networks.
 
 
 Here is an overview of the Lit mainnets:
