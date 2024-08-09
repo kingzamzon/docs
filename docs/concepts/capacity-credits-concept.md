@@ -44,7 +44,6 @@ Lit employs `SessionSig` as a secure method for session management, utilizing ed
 
 You can read more about Session Signatures [here](../sdk/authentication/session-sigs/intro.md).
 
->**Note**: With the migration to SDK v3, the use of `AuthSigs` is no longer recommended for various tasks such as access control, encryption, minting PKPs, Lit Action signing with the PKP, etc. This change is due to the requirement for `capacityDelegationAuthSig` in signatures, as capacity credits are now required on both `Datil` and `Datil-test` networks. We strongly advise users to transition to using `SessionSigs` alongside `capacityDelegationAuthSig`, as `AuthSigs` lack the necessary capabilities to delegate capacity credits moving forward.  You may continue to use `AuthSigs` for the time being, but the limitation is that the `AuthSig` must have capacity credits to use the service.  This means every one of your users must buy capacity credits from Lit.  Instead, you can buy capacity credits centrally and delegate their use to your users. You can generate a `SessionSig` with the help of `capacityDelegationAuthSig` object in the following way (and replace it with `AuthSig` in your project):
 
 
 ```javascript
