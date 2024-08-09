@@ -118,7 +118,7 @@ In this example, we're granting the capability to request to decrypt any data th
 
 To get the Lit resource identifier for other resources, you can use the other methods included in [@lit-protocol/auth-helpers](https://v6-api-doc-lit-js-sdk.vercel.app/modules/auth_helpers_src.html) package.
 
-If you would like to use this function on the `datil` or `datil-test` networks, a `capacityDelegationAuthSig` is required. Please also keep in mind that implementing this requires owning or minting a PKP. How this is done can be found in the full code example.
+If you would like to use this function on the `datil` or `datil-test` networks, a `capacityDelegationAuthSig` is required. Please also keep in mind that implementing this requires owning or minting a PKP and some form of authentication (e.g. a custom Lit Action, Auth Method, or AuthSig). How this is done can be found in the full code example.
 
 
 ```ts
