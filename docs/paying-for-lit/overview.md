@@ -4,6 +4,42 @@ Like other decentralized networks, Lit has a certain amount of computation avail
 
 In order to use the paid pre-production ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) and production ([Datil](../connecting-to-a-lit-network/mainnets#datil)) Lit networks, you must reserve capacity on the network. This is done using by minting Capacity Credits, and by making use of the Lit Relayer and/or the Payment Delegation Database.
 
+## Overview of What Requires Payment
+
+:::note
+Currently requests requiring payment of Lit tokens is done only using the  `testLPX` test token. More information about the test token is available [here](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md#tstlpx-test-token)
+:::
+
+### General Lit Network Usage
+
+| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
+|---------------------------------------|------------------|----------------------------------|------------------|--------------|
+| Connecting to a Lit Network           | ❌                | n/a                              | n/a              | ❌            |
+| Generating Session Signatures         | ❌                | n/a                              | n/a              | ❌            |
+| Reading Data from Lit Contracts       | ❌                | n/a                              | n/a              | ❌            |
+| Minting a PKP                         | ✅                | ✅                                | Lit Tokens       | ✅            |
+| Adding/Removing PKP Auth Methods      | ✅                | ✅                                | Lit Tokens       | ✅            |
+| Encrypting Data                       | ❌                | n/a                              | n/a              | ❌            |
+| Decrypting Data                       | ✅                | ❌                                | Capacity Credits | ❌            |
+| Lit Action Execution                  | ✅                | ❌                                | Capacity Credits | ❌            |
+| Setting Up a Payment Delegation Payer | ✅                | ✅                                | Lit Tokens       | ✅            |
+| Payment Delegation Payees             | ✅                | ✅                                | Lit Tokens       | ✅            |
+
+### Wrapped Keys Usage
+
+| Request Type                           | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type                    | Requires Gas |
+|----------------------------------------|------------------|----------------------------------|---------------------------------|--------------|
+| Generating a Wrapped Key               | ✅                | ✅                                | Lit Tokens                      | ✅            |
+| Importing Wrapped Key                  | ❌                | n/a                              | n/a                             | ❌            |
+| Exporting Wrapped Key                  | ✅                | ✅                                | Capacity Credits                | ❌            |
+| Getting Wrapped Key Metadata           | ✅                | ✅                                | Capacity Credits                | ❌            |
+| Storing Wrapped Key Metadata           | ❌                | n/a                              | n/a                             | ❌            |
+| Listing Wrapped Keys for a PKP         | ❌                | n/a                              | n/a                             | ❌            |
+| Signing a Message with Wrapped Key     | ✅                | ✅                                | Capacity Credits                | ❌            |
+| Signing a transaction with Wrapped Key | ✅                | ✅                                | Capacity Credits                | ❌            |
+| Custom Wrapped Keys                    | ✅                | ❌                                | Lit Tokens and Capacity Credits | ✅            |
+
+
 ## Overview of Payment Methods
 
 ### Capacity Credits
