@@ -64,7 +64,7 @@ ethers@v5
 
 The `node-localstorage` dependency is only required when executing code outside a browser environment. The SDK will use the native browser storage when in a browser environment.
 
-### Instantiating an Ethers Signer
+### Initializing an Ethers Signer
 The `ETHEREUM_PRIVATE_KEY` environment variable is required.
 ```ts
 import { LIT_RPC } from "@lit-protocol/constants";
@@ -76,22 +76,18 @@ const ethersSigner = new ethers.Wallet(
 );
 ```
 
-### Instantiating a `LitNodeClient`
-Here we are instantiating an instance of `LitNodeClient` and connecting it to the `datil-dev` Lit network. Because we're executing within a Node.js environment, we use `LocalStorage` from the `node-localstorage` module to store our session keys and metadata.
+### Initializing a `LitNodeClient`
+Here we are initializing an instance of `LitNodeClient` and connecting it to the `datil-test` Lit network.
 
 ```ts
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitNetwork } from "@lit-protocol/constants";
-import { LocalStorage } from "node-localstorage";
 
 let litNodeClient: LitNodeClient;
 
 litNodeClient = new LitNodeClient({
-      litNetwork: LitNetwork.DatilDev,
+      litNetwork: LitNetwork.DatilTest,
       debug: false,
-      storageProvider: {
-        provider: new LocalStorage("./lit_storage.db"),
-      },
     });
 await litNodeClient.connect();
 ```
@@ -100,6 +96,8 @@ await litNodeClient.connect();
 In this example, we're granting the capability to request to decrypt any data that we may be authorized to decrypt (i.e. we satisfy the Access Control Conditions the data was encrypted with). We could, however, specify the [LitAccessControlConditionResource](https://v6-api-doc-lit-js-sdk.vercel.app/classes/auth_helpers_src.LitAccessControlConditionResource.html) for specific encrypted data we're permitting the decryption capability for. In real-world applications, it's more common and secure to limit access to specific Lit resources instead of specifying the wildcard (`"*"`) identifier.
 
 To get the Lit resource identifier for other resources, you can use the other methods included in [@lit-protocol/auth-helpers](https://v6-api-doc-lit-js-sdk.vercel.app/modules/auth_helpers_src.html) package.
+
+If you would like to use this function on the `datil` or `datil-test` networks, a `capacityDelegationAuthSig` is required. An example of how to generate one can be found in the full code example.
 
 ```ts
 import {
@@ -112,6 +110,7 @@ import {
 const sessionSignatures = await litNodeClient.getSessionSigs({
   chain: "ethereum",
   expiration: new Date(Date.now() + 1000 * 60 * 10 ).toISOString(), // 10 minutes
+  capabilityAuthSigs: [capacityDelegationAuthSig], // Unnecessary on datil-dev
   resourceAbilityRequests: [
     {
       resource: new LitAccessControlConditionResource("*"),
@@ -140,7 +139,6 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
 });
 ```
 
-
 :::note
 The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake.
 :::
@@ -152,6 +150,6 @@ If you want to clear the session key stored in the browser local storage, you ca
 ## Summary
 The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
 
-After executing the example implementation above, you will have generated and stored session signatures that allow you to request decrypting data that you have satisfied the Access Control Conditions for.
+After executing the example implementation above, you will have generated session signatures that allow you to request decrypting data that you have satisfied the Access Control Conditions for.
 
 <FeedbackComponent/>

@@ -35,7 +35,7 @@ Before continuing this guide, you should have an understanding of:
 
 ## Parameters and Returns
 
-To see the parameters and return of `getLitActionSessionSigs`, please visit our [API Docs](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClientNodeJs.html#getPkpSessionSigs).
+To see the parameters and return of `getLitActionSessionSigs`, please visit our [API Docs](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClientNodeJs.html#getLitActionSessionSigs).
 
 ## Example Implementation
 
@@ -78,3 +78,91 @@ ethers@v5
 </Tabs>
 
 The `node-localstorage` dependency is only required when executing code outside a browser environment. The SDK will use the native browser storage when in a browser environment.
+
+### Initializing an Ethers Signer
+The `ETHEREUM_PRIVATE_KEY` environment variable is required.
+```ts
+import { LIT_RPC } from "@lit-protocol/constants";
+import * as ethers from "ethers";
+
+const ethersSigner = new ethers.Wallet(
+  process.env.ETHEREUM_PRIVATE_KEY,
+  new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
+);
+```
+
+### Initializing a `LitNodeClient`
+Here we are initializing an instance of `LitNodeClient` and connecting it to the `datil-test` Lit network.
+```ts
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
+import { LitNetwork } from "@lit-protocol/constants";
+
+let litNodeClient: LitNodeClient;
+
+litNodeClient = new LitNodeClient({
+      litNetwork: LitNetwork.DatilTest,
+      debug: false,
+    });
+await litNodeClient.connect();
+```
+
+### Instantiating a `LitContracts` Instance
+Here we are initializing an instance of `LitContracts`. This allows us to interact with smart contracts on the Lit network. 
+
+```ts
+import { LitContracts } from "@lit-protocol/contracts-sdk";
+import { LitNetwork } from "@lit-protocol/constants";
+
+const litContracts = new LitContracts({
+    signer: ethersSigner,
+    network: LitNetwork.DatilTest,
+    debug: false,
+});
+await litContracts.connect();
+```
+
+### Generating Session Signatures
+In this example, we're granting the capability to request to decrypt any data that we may be authorized to decrypt (i.e. we satisfy the Access Control Conditions the data was encrypted with). We could, however, specify the [LitAccessControlConditionResource](https://v6-api-doc-lit-js-sdk.vercel.app/classes/auth_helpers_src.LitAccessControlConditionResource.html) for specific encrypted data we're permitting the decryption capability for. In real-world applications, it's more common and secure to limit access to specific Lit resources instead of specifying the wildcard (`"*"`) identifier.
+
+To get the Lit resource identifier for other resources, you can use the other methods included in [@lit-protocol/auth-helpers](https://v6-api-doc-lit-js-sdk.vercel.app/modules/auth_helpers_src.html) package.
+
+If you would like to use this function on the `datil` or `datil-test` networks, a `capacityDelegationAuthSig` is required. Please also keep in mind that implementing this requires owning or minting a PKP and defining a Lit Action. How this is done can be found in the full code example.
+
+```ts
+import {
+  LitAbility,
+  LitActionResource,
+  LitPKPResource,
+} from "@lit-protocol/auth-helpers";
+
+const sessionSignatures = await litNodeClient.getLitActionSessionSigs({
+    pkpPublicKey: pkp.publicKey,
+    capabilityAuthSigs: [capacityDelegationAuthSig],
+    chain: "ethereum",
+    resourceAbilityRequests: [
+    {
+        resource: new LitPKPResource("*"),
+        ability: LitAbility.PKPSigning,
+    },
+    {
+        resource: new LitActionResource("*"),
+        ability: LitAbility.LitActionExecution,
+    },
+    ],
+    // With this setup you could use either the litActionIpfsId or the litActionCode property
+    //litActionIpfsId: litActionCodeIpfsCid,
+    litActionCode: Buffer.from(litActionCode).toString("base64"),
+    jsParams: {
+    magicNumber: 42,
+    },
+});
+```
+
+## Clearing Local Storage
+
+If you want to clear the session key stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).
+
+## Summary
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getPkpSessionSigs). 
+
+After executing the example implementation above, you will have generated session signatures that allow you to request decrypting data that you have satisfied the Access Control Conditions for.
