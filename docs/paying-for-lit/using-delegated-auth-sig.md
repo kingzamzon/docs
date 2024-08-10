@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 When making requests to the Lit network, you must provide [Session Signatures](../sdk/authentication/session-sigs/intro.md). When making requests to the network that require payment, you must also attach a *Capacity Delegation Auth Signature* to your Session Signatures. This Auth Sig tells the Lit network which Capacity Credit to use for paying for your network usage, and also acts as proof that you have permission to use the Capacity Credit for payment.
 
 :::info
-To learn more about what a Capacity Credit is, and how they're used, go [here](../capacity-credit-intro.md).
+To learn more about what a Capacity Credit is, and how they're used, go [here](./capacity-credit-intro.md).
 
 To learn about how to obtain a Capacity Delegation Auth Signature, go [here](./delegating-credit.md).
 

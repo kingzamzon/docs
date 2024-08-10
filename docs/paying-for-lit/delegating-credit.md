@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 To use a Capacity Credit to pay for usage of the Lit network, you need to create a *Capacity Delegation Auth Sig*. This Auth Sig is used as proof you have authorization to use a specific Capacity Credit to pay for requests to the Lit network like: signing using a PKP, decrypting data, and executing a Lit Action.
 
 :::info
-To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credit-intro.md).
+To learn more about what a Capacity Credit is, and how they're used, please go [here](./capacity-credit-intro.md).
 
 For an overview of what requests to the Lit network require payment, go [here](./overview.md#overview-of-what-requires-payment).
 :::
@@ -139,4 +139,4 @@ Calling `litNodeClient.createCapacityDelegationAuthSig` will create a ERC-5573 S
 The full implementation of the code used in this guide can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/paying-for-lit/nodejs/src/delegateCapacityCredit.ts).
 :::
 
-After running the above code, you will have created a Capacity Delegation Auth Sig that authorizes use of a specific Capacity Credit to a specific set of addresses with restrictions. For an example of using the Auth Sig, go [here](./using-delegated-credit.md).
+After running the above code, you will have created a Capacity Delegation Auth Sig that authorizes use of a specific Capacity Credit to a specific set of addresses with restrictions. For an example of using the Auth Sig, go [here](./using-delegated-auth-sig.md).
