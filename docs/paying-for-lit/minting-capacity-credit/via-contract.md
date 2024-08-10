@@ -92,14 +92,20 @@ When minting a credit, the following parameters are required:
 
 #### `requestsPerX`
 
-This parameter is the capacity you're reserving on the Lit network. For convenience, any one of the following properties can be used: 
+This parameter is the capacity you're reserving on the Lit network. This value is the maximum number of requests your Capacity Credit can be used for in a given day. Once your credit has been used for this number of requests, you will receive a Rate Limit error if it's used again before midnight UTC time.
+
+For convenience, any one of the following properties can be used: 
   - `requestsPerKilosecond`
   - `requestsPerDay`
   - `requestsPerSecond`
 
 #### `daysUntilUTCMidnightExpiration`
 
-As the name implies, this is the number of days until the Capacity Credit expires, measured in days until midnight UTC time.
+This parameter sets the date the Capacity Credit will expire. The credit expires at 12:00 AM (midnight) Coordinated Universal Time (UTC) on the specified date.
+
+:::note
+The actual expiration time in your local timezone may be different due to the UTC conversion. For example, if you're in New York (ET), a credit set to expire on June 1st will actually expire on May 31st at 8:00 PM ET.
+:::
 
 ### Return Value
 
