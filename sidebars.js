@@ -134,8 +134,9 @@ const sidebars = {
               label: 'Minting a Capacity Credit',
               collapsed: true,
               items: [
-                'paying-for-lit/minting-capacity-credit/lit-explorer',
-                'paying-for-lit/minting-capacity-credit/lit-contracts',
+                'paying-for-lit/minting-capacity-credit/via-contract',
+                'paying-for-lit/minting-capacity-credit/via-explorer',
+                'paying-for-lit/minting-capacity-credit/via-relayer',
               ],
             },
             'paying-for-lit/delegating-credit',
