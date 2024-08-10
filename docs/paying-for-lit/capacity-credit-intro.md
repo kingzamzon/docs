@@ -11,4 +11,4 @@ Capacity credits are NFT tokens on the [Chronicle Yellowstone](../connecting-to-
 - [Minting via the NFT contract](./minting-capacity-credit/via-contract.md)
 - [Minting via the Lit Explorer](./minting-capacity-credit/via-explorer.md)
 
-After minting a Capacity Credit, you'll want to learn [how to delegate usage](./delegating-credit.md) of it to either your users, or yourself via a session.
+After minting a Capacity Credit, you'll want to learn [how to delegate usage](./delegating-credit.md) of it to either your users, or yourself via a Capacity Delegation Auth Sig.
