@@ -12,33 +12,40 @@ Currently requests requiring payment of Lit tokens is done only using the `testL
 
 ### General Lit Network Usage
 
-| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
-|---------------------------------------|------------------|----------------------------------|------------------|--------------|
-| Connecting to a Lit Network           | ❌                | n/a                              | n/a              | ❌            |
-| Generating Session Signatures         | ❌                | n/a                              | n/a              | ❌            |
-| Reading Data from Lit Contracts       | ❌                | n/a                              | n/a              | ❌            |
-| Lit Action Execution                  | ✅                | ❌                                | Capacity Credits | ❌            |
-| Setting Up a Payment Delegation Payer | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Adding / Removing Payment Delegation Payees             | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Request Type                                | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
+|---------------------------------------------|------------------|----------------------------------|------------------|--------------|
+| Connecting to a Lit Network                 | ❌                | n/a                              | n/a              | ❌            |
+| Generating Session Signatures               | ❌                | n/a                              | n/a              | ❌            |
+| Reading Data from Lit Contracts             | ❌                | n/a                              | n/a              | ❌            |
+| Lit Action Execution                        | ✅                | ❌                                | Capacity Credits | ❌            |
+| Setting Up a Payment Delegation Payer       | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Adding / Removing Payment Delegation Payees | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+
+### Capacity Credits
+
+| Request Type        | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type    | Requires Gas |
+|---------------------|------------------|----------------------------------|-----------------|--------------|
+| Minting a Credit    | ✅                | ❌                                | Lit Test Tokens | ✅            |
+| Delegating a Credit | ❌                | n/a                              | n/a             | ❌            |
 
 ### PKP Usage
 
-| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
-|---------------------------------------|------------------|----------------------------------|------------------|--------------|
-| Minting a PKP                         | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Adding / Removing PKP Auth Methods      | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Signing with a PKP                    | ✅                | ❌                                | Capacity Credits | ❌            |
+| Request Type                       | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
+|------------------------------------|------------------|----------------------------------|------------------|--------------|
+| Minting a PKP                      | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Adding / Removing PKP Auth Methods | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Signing with a PKP                 | ✅                | ❌                                | Capacity Credits | ❌            |
 
 ### Encrypting Data
 
-| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
-|---------------------------------------|------------------|----------------------------------|------------------|--------------|
-| Encrypting Data                       | ❌                | n/a                              | n/a              | ❌            |
-| Decrypting Data                       | ✅                | ❌                                | Capacity Credits | ❌            |
+| Request Type    | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
+|-----------------|------------------|----------------------------------|------------------|--------------|
+| Encrypting Data | ❌                | n/a                              | n/a              | ❌            |
+| Decrypting Data | ✅                | ❌                                | Capacity Credits | ❌            |
 
 ### Wrapped Keys Usage
 
-| Request Type                           | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type                         | Requires Gas |
+| Request Type                           | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type                         | Requires Gas |
 |----------------------------------------|------------------|----------------------------------|--------------------------------------|--------------|
 | Generating a Wrapped Key               | ✅                | ❌                                | Lit Test Tokens                      | ✅            |
 | Importing Wrapped Key                  | ❌                | n/a                              | n/a                                  | ❌            |

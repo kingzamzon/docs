@@ -7,6 +7,8 @@ Capacity Credits can be minted by making requests to the NFT contract that is de
 
 :::info
 To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credit-intro.md).
+
+The full implementation of the code used in this guide can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/paying-for-lit/nodejs/src/mintCapacityCredit.ts).
 :::
 
 ## Prerequisites
@@ -130,5 +132,9 @@ Where:
 You will use either `capacityTokenId` or `capacityTokenIdStr` to identify the Capacity Credit you would like use when paying for request to the Lit network.
 
 ## Summary
+
+:::info
+The full implementation of the code used in this guide can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/paying-for-lit/nodejs/src/mintCapacityCredit.ts).
+:::
 
 After running the above code, you will have minted a new Capacity Credit that can be used to pay for usage of the Lit network. To learn more about how to use this credit for payment, please go [here](../delegating-credit.md).

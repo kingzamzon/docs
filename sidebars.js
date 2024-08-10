@@ -137,11 +137,10 @@ const sidebars = {
               items: [
                 'paying-for-lit/minting-capacity-credit/via-contract',
                 'paying-for-lit/minting-capacity-credit/via-explorer',
-                'paying-for-lit/minting-capacity-credit/via-relayer',
               ],
             },
             'paying-for-lit/delegating-credit',
-            'paying-for-lit/usage-examples',
+            'paying-for-lit/using-delegated-auth-sig',
           ],
         },
         'paying-for-lit/lit-relayer',
