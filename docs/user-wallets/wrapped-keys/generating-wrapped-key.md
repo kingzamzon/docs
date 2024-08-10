@@ -3,18 +3,28 @@ import TabItem from '@theme/TabItem';
 
 # Generating a New Key
 
-:::warning
-Wrapped Key are under active development please do **not** use it for production i.e. do not use it on Habanero. It will be available for production very soon.
-:::
-
 This guide covers the `generatePrivateKey` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
 
 Using the `generatePrivateKey` function, you can request a Lit node to generate a new private key within it's trusted execution environment (TEE). Once generated, the private key will be encrypted using Lit network's BLS key, and the resulting encryption metadata (`ciphertext` and `dataToEncryptHash`) will be returned and stored by Lit on your behalf in a private DynamoDB instance.
 
 Afterwards, you will be able to make use of the SDK's signing methods (`signTransactionWithEncryptedKey` and `signMessageWithEncryptedKey`) to sign messages and transaction with the generated private key, all within a Lit node's TEE.
 
-<!-- TODO Update URL once this PR is merged: https://github.com/LIT-Protocol/developer-guides-code/pull/21 -->
-Below we will walk through an implementation of `generatePrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/generateWrappedKey.ts).
+Below we will walk through an implementation of `generatePrivateKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
+
+## Overview of How it Works
+
+1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
+2. The SDK then generates the encryption Access Control Conditions using the derived Ethereum address
+   - See the [Encrypting the Private Key](#encrypting-the-private-key) section for more info on this process
+3. Using the PKP Session Signatures, the SDK will make a request to the Lit network to execute the Generate Private Key Lit Action
+   - Depending on the provided `network`, one of the following Lit Actions will be executed:
+     - If `network` is `ethereum`, then the [generateEncryptedEthereumPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/ethereum/src/generateEncryptedEthereumPrivateKey.js) Lit Action is executed
+     - If `network` is `solana`, then the [generateEncryptedSolanaPrivateKey](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/litActions/solana/src/generateEncryptedSolanaPrivateKey.js) Lit Action is executed
+4. The Lit Action uses a third-party library (either [ethers.js](https://docs.ethers.org/v5/) or [@solana/web3.js](https://solana-labs.github.io/solana-web3.js/)) to generate a private key withing a single Lit node's TEE
+5. The generated private key is then encrypted using the previously generated Access Control Conditions
+6. The encryption metadata is returned from the Lit Action
+7. The Wrapped Keys SDK then stores the private key encryption metadata to the Wrapped Keys backend service, associating it with the PKP's Ethereum address
+8. The SDK returns a [GeneratePrivateKeyResult](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.GeneratePrivateKeyResult.html) object containing the generated Wrapped Key ID, the PKP Ethereum address the Wrapped Key is associated with, and the public key of the generated private key
 
 ## Prerequisites
 
@@ -25,7 +35,6 @@ Before continuing with this guide, you should have an understanding of:
 
 ## `generatePrivateKey`'s Interface
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
 [Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/generate-private-key.ts)
 
 ```ts
@@ -41,10 +50,12 @@ async function generatePrivateKey(
     pkpSessionSigs: SessionSigsMap;
     litNodeClient: ILitNodeClient;
     network: 'evm' | 'solana';
+    memo: string;
   }
 ): Promise<{
     pkpAddress: string;
     generatedPublicKey: string;
+    id: string;
 }>
 ```
 
@@ -80,16 +91,18 @@ This is an instance of the [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.
 
 #### `network`
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
-This parameter dictates what elliptic curve is used to generate the private key. It must be one of the supported Wrapped Keys [Networks](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L12) which currently consists of:
+This parameter dictates what elliptic curve is used to generate the private key. It must be one of the supported Wrapped Keys [Networks](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L10) which currently consists of:
 
   - `evm` This will generate a private key using the ECDSA curve.
   - `solana` This will generate a private key using the Ed25519 curve.
 
+#### `memo`
+
+This parameter is an arbitrary string that can be used as an additional identifier or descriptor of the encrypted private key.
+
 ### Return Value
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
-`generatePrivateKey` will return a [GeneratePrivateKeyResult](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L82-L90) object after it successfully generates and encrypts the private key and stores the encryption metadata.
+`generatePrivateKey` will return a [GeneratePrivateKeyResult](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L147-L156) object after it successfully generates and encrypts the private key and stores the encryption metadata.
 
 ```ts
 /** @typedef GeneratePrivateKeyResult
@@ -100,6 +113,7 @@ This parameter dictates what elliptic curve is used to generate the private key.
 interface GeneratePrivateKeyResult {
   pkpAddress: string;
   generatedPublicKey: string;
+  id: string;
 }
 ```
 
@@ -110,6 +124,12 @@ This address, derived from the `pkpSessionSigs`, is what was used for the Access
 #### `generatedPublicKey`
 
 This is the public key for the generated private key. The corresponding address, derived from the public key, can be obtained using the [getEncryptedKeyMetadata](./get-wrapped-key-metadata.md) function from the Wrapped Keys SDK.
+
+#### `id`
+
+This is a unique identifier (UUID v4) generated by Lit for the Wrapped Key.
+
+Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to identify which Wrapped Key to use when calling other Wrapped Key methods such as [signMessageWithEncryptedKey](./sign-message.md) and [signTransactionWithEncryptedKey](./sign-transaction.md).
 
 ## Example Implementation
 
@@ -129,10 +149,8 @@ values={[
 
 ```bash
 npm install \
-@lit-protocol/auth-browser \
 @lit-protocol/auth-helpers \
 @lit-protocol/constants \
-@lit-protocol/contracts-sdk \
 @lit-protocol/lit-auth-client \
 @lit-protocol/lit-node-client \
 @lit-protocol/wrapped-keys \
@@ -145,10 +163,8 @@ ethers@v5
 
 ```bash
 yarn add \
-@lit-protocol/auth-browser \
 @lit-protocol/auth-helpers \
 @lit-protocol/constants \
-@lit-protocol/contracts-sdk \
 @lit-protocol/lit-auth-client \
 @lit-protocol/lit-node-client \
 @lit-protocol/wrapped-keys \
@@ -168,9 +184,7 @@ import { LIT_RPC } from "@lit-protocol/constants";
 
 const ethersSigner = new ethers.Wallet(
     process.env.ETHEREUM_PRIVATE_KEY,
-    new ethers.providers.JsonRpcProvider(
-        LIT_RPC.CHRONICLE_YELLOWSTONE
-    )
+    new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
 );
 ```
 
@@ -243,16 +257,14 @@ values={[
 <TabItem value="evm">
 
 ```ts
-import {
-  api,
-  NETWORK_EVM,
-} from "@lit-protocol/wrapped-keys";
+import { api } from "@lit-protocol/wrapped-keys";
 
 const { generatePrivateKey } = api;
 
 const { pkpAddress, generatedPublicKey } = await generatePrivateKey({
     pkpSessionSigs,
     network: 'evm',
+    memo: "This is an arbitrary string you can replace with whatever you'd like",
     litNodeClient,
 });
 ```
@@ -262,16 +274,14 @@ const { pkpAddress, generatedPublicKey } = await generatePrivateKey({
 <TabItem value="sol">
 
 ```ts
-import {
-  api,
-  NETWORK_SOLANA,
-} from "@lit-protocol/wrapped-keys";
+import { api } from "@lit-protocol/wrapped-keys";
 
 const { generatePrivateKey } = api;
 
 const { pkpAddress, generatedPublicKey } = await generatePrivateKey({
     pkpSessionSigs,
     network: 'solana',
+    memo: "This is an arbitrary string you can replace with whatever you'd like",
     litNodeClient,
 });
 ```
@@ -281,9 +291,9 @@ const { pkpAddress, generatedPublicKey } = await generatePrivateKey({
 
 ### Summary
 
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/generateWrappedKey.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
 
-After executing the example implementation above, the `generatePrivateKey` function will return you an object containing the corresponding public key for your generated Wrapped Key, and the PKP address that is associated with it (and used to encrypt the Wrapped Key).
+After executing the example implementation above, the `generatePrivateKey` function will return you an object containing the corresponding public key and ID for your generated Wrapped Key, and the PKP address that is associated with it (and used to encrypt the Wrapped Key).
 
 With you new Wrapped Key, you can explore the additional guides in this section to sign messages and transactions:
 

@@ -3,14 +3,23 @@ import TabItem from '@theme/TabItem';
 
 # Storing Wrapped Key Metadata
 
-This guide covers the `storeEncryptedKeyMetadata` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
+This guide covers the `storeEncryptedKey` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
 
-The `storeEncryptedKeyMetadata` function allows you to manually initialize a Wrapped Key by providing the required Wrapped Key metadata. Lit will store the provided metadata in a private instance of DynamoDB, effectively registering the Wrapped Key for use.
+The `storeEncryptedKey` function allows you to manually initialize a Wrapped Key by providing the required Wrapped Key metadata. Lit will store the provided metadata in a private instance of DynamoDB, effectively registering the Wrapped Key for use.
 
 This method is useful for when you would like to implement your own method of generating a private key and encrypting it with Lit network's public BLS key. This could be code completely ran on your own infrastructure, or this could be a custom Lit Action that you've implemented. The stored metadata can then later be used with the other Wrapped Keys SDK methods (e.g. [signMessageWithEncryptedKey](./sign-message.md) or [signTransactionWithEncryptedKey](./sign-transaction.md)), or custom Lit Actions you create to sign data with a Wrapped Key.
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-Below we will walk through an implementation of `storeEncryptedKeyMetadata`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/storeWrappedKeyMetadata.ts).
+Below we will walk through an implementation of `storeEncryptedKey`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/storeWrappedKey.ts).
+
+## Overview of How it Works
+
+:::note
+The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) required for this method include the encryption metadata of the private key that will be turned into a Wrapped Key. For more information on how to obtain the encryption metadata, please refer to this guide on [encrypting data using the Lit SDK](../../sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key), and this guide on [Custom Wrapped Keys](http://localhost:3000/sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key).
+:::
+
+1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
+2. The SDK stores the provided [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) using the Wrapped Keys backend service, associating the resulting Wrapped Key with the PKP's Ethereum address
+3. The SDK returns a [StoreEncryptedKeyResult](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/wrapped_keys_src.StoreEncryptedKeyResult.html) object containing the generated Wrapped Key ID, and the PKP Ethereum address the Wrapped Key is associated with
 
 ## Prerequisites
 
@@ -20,16 +29,14 @@ Before continuing with this guide, you should have an understanding of:
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 - [Encrypting using the Lit SDK](../../sdk/access-control/quick-start#performing-encryption)
 
-## `storeEncryptedKeyMetadata`'s Interface
+## `storeEncryptedKey`'s Interface
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
-[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/store-encrypted-key-metadata.ts)
+[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/store-encrypted-key.ts)
 
 ```ts
-/** Get a previously encrypted and persisted private key and its metadata.
- * Note that this method does _not_ decrypt the private key; only the _encrypted_ key and its metadata will be returned to the caller.
+/** Stores an encrypted private key and its metadata to the wrapped keys backend service
  */
-export async function storeEncryptedKeyMetadata(
+export async function storeEncryptedKey(
   params: {
     pkpSessionSigs: SessionSigsMap;
     litNodeClient: ILitNodeClient;
@@ -37,8 +44,12 @@ export async function storeEncryptedKeyMetadata(
     dataToEncryptHash: string;
     publicKey: string;
     keyType: string;
+    memo: string;
   }
-): Promise<boolean>
+): Promise<{
+    id: string;
+    pkpAddress: string;
+}>
 ```
 
 ### Parameters
@@ -164,16 +175,43 @@ This is the corresponding public key for the private key you're encrypting and t
 
 This is the algorithm used to derive the private key you're importing. This might be `K256`, `ed25519`, or other key formats.
 
+#### `memo`
+
+This parameter is an arbitrary string that can be used as an additional identifier or descriptor of the encrypted private key.
+
 ### Return Value
 
-`storeEncryptedKeyMetadata` will return `Promise<boolean>` indicating the success of storing the Wrapped Key metadata within Lit's private instance of DynamoDB.
+`storeEncryptedKey` will return a [StoreEncryptedKeyResult](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L92-L102) object after it successfully stores the private key as a Wrapped Key.
+
+```ts
+/** Result of storing a private key in the wrapped keys backend service
+ * Includes the unique identifier which is necessary to get the encrypted ciphertext and dataToEncryptHash in the future
+ *
+ * @typedef StoreEncryptedKeyResult
+ * @property { string } pkpAddress The LIT PKP Address that the key was linked to; this is derived from the provided pkpSessionSigs
+ * @property { string } id The unique identifier (UUID V4) of the encrypted private key
+ */
+export interface StoreEncryptedKeyResult {
+  id: string;
+  pkpAddress: string;
+}
+```
+
+#### `id`
+
+This is a unique identifier (UUID v4) generated by Lit for the Wrapped Key.
+
+Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to identify which Wrapped Key to use when calling other Wrapped Key methods such as [signMessageWithEncryptedKey](./sign-message.md) and [signTransactionWithEncryptedKey](./sign-transaction.md).
+
+#### `pkpAddress`
+
+This address, derived from the `pkpSessionSigs`, is what was used for the Access Control Conditions when encrypting the private key.
 
 ## Example Implementation
 
-Now that we know what the `storeEncryptedKeyMetadata` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
+Now that we know what the `storeEncryptedKey` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/storeWrappedKeyMetadata.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/storeWrappedKey.ts).
 
 ### Installing the Required Dependencies
 
@@ -211,6 +249,20 @@ ethers@v5
 
 </TabItem>
 </Tabs>
+
+### Instantiating an Ethers Signer
+
+The `ETHEREUM_PRIVATE_KEY` environment variable is required. The corresponding Ethereum address needs to have ownership of the PKP we will be using to generate the `pkpSessionSigs`. 
+
+```ts
+import * as ethers from 'ethers';
+import { LIT_RPC } from "@lit-protocol/constants";
+
+const ethersSigner = new ethers.Wallet(
+    process.env.ETHEREUM_PRIVATE_KEY,
+    new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
+);
+```
 
 ### Instantiating a `LitNodeClient`
 
@@ -268,12 +320,9 @@ const pkpSessionSigs = await litNodeClient.getPkpSessionSigs({
 });
 ```
 
-### Getting a Wrapped Key's Metadata
+### Encrypting the Private Key
 
-Now that we know what the `storeEncryptedKeyMetadata` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
-
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/storeWrappedKeyMetadata.ts).
+In order to initialize a Wrapped Key, we need to store the encrypted underlying private key. This is done using the Lit SDK's [encryptString](https://v6-api-doc-lit-js-sdk.vercel.app/functions/encryption_src.encryptString.html) method.
 
 ```ts
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
@@ -281,7 +330,7 @@ import { LitNetwork } from "@lit-protocol/constants";
 import { encryptString } from '@lit-protocol/lit-node-client';
 import { api } from "@lit-protocol/wrapped-keys";
 
-const { storeEncryptedKeyMetadata } = api;
+const { storeEncryptedKey } = api;
 
 const litNodeClient = new LitNodeClient({
     litNetwork: LitNetwork.DatilDev,
@@ -308,23 +357,56 @@ const { ciphertext, dataToEncryptHash } = await encryptString(
     },
     litNodeClient,
 )
+```
 
-const successfullyStoredMetadata = await storeEncryptedKeyMetadata({
+### Storing the Encrypted Key
+
+Now that we have the private key encryption data, we can use the `storeEncryptedKey` method to initialize a Wrapped Key.
+
+<Tabs
+defaultValue="eth"
+values={[
+{label: 'Importing an Ethereum Key', value: 'eth'},
+{label: 'Importing a Solana Key', value: 'sol'},
+]}>
+<TabItem value="eth">
+
+```ts
+const successfullyStoredMetadata = await storeEncryptedKey({
     pkpSessionSigs,
     litNodeClient,
-    ciphertext;
-    dataToEncryptHash;
-    publicKey: process.env.PUBLIC_KEY;
-    keyType: `K256`;
+    ciphertext,
+    dataToEncryptHash,
+    publicKey: process.env.ETHEREUM_PUBLIC_KEY,
+    keyType: 'K256',
+    memo: "This is an arbitrary string you can replace with whatever you'd like",
 });
 ```
 
+</TabItem>
+
+<TabItem value="sol">
+
+```ts
+const successfullyStoredMetadata = await storeEncryptedKey({
+    pkpSessionSigs,
+    litNodeClient,
+    ciphertext,
+    dataToEncryptHash,
+    publicKey: process.env.SOLANA_PUBLIC_KEY,
+    keyType: 'ed25519',
+    memo: "This is an arbitrary string you can replace with whatever you'd like",
+});
+```
+
+</TabItem>
+</Tabs>
+
 ### Summary
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/storeWrappedKeyMetadata.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/storeWrappedKey.ts).
 
-After executing the example implementation above, you will have stored the metadata for a Wrapped Key and associated with the PKP that produced the provided `pkpSessionSigs`.
+After executing the example implementation above, you will have stored the metadata for a Wrapped Key and associated with the PKP that produced the provided `pkpSessionSigs`. The Wrapped Key backend will also have generated a unique ID for the Wrapped Key.
 
 With you new Wrapped Key, you can explore the additional guides in this section to sign messages and transactions:
 

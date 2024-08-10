@@ -1,14 +1,18 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Getting Wrapped Key Metadata
+# Listing Wrapped Keys for a PKP
 
-This guide covers the `getEncryptedKeyMetadata` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
+This guide covers the `listEncryptedKeyMetadata` function from the Wrapped Keys SDK. For an overview of what a Wrapped Key is and what can be done with it, please go [here](./overview.md).
 
-The `getEncryptedKeyMetadata` function allows you to request a Wrapped Key's metadata stored within Lit's private DynamoDB instance. Covered in detail [further in this guide](#return-value), the metadata includes properties such as the encrypted private key's `ciphertext` and `dataToEncryptHash` that could be used to decrypt the key outside of the Wrapped Key Lit Actions.
+The `listEncryptedKeyMetadata` function allows you to request the Wrapped Key metadata for all the Wrapped Keys associated with a PKP. Covered in detail [further in this guide](#return-value), the returned metadata does **not** include the `ciphertext` and `dataToEncryptHash` for any of the Wrapped Keys - to get this metadata you must use the [getEncryptedKey](./getting-wrapped-key-metadata.md) method for each Wrapped Key.
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-Below we will walk through an implementation of `getEncryptedKeyMetadata`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+Below we will walk through an implementation of `listEncryptedKeyMetadata`. The full code implementation can be found [here](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/list-encrypted-key-metadata.ts).
+
+## Overview of How it Works
+
+1.  The Wrapped Keys SDK will derive the PKP Ethereum address from the provided PKP Session Signatures
+2.  The SDK will submit the Ethereum address to the Wrapped Keys backend service to fetch and return all the associated Wrapped Keys
 
 ## Prerequisites
 
@@ -17,28 +21,29 @@ Before continuing with this guide, you should have an understanding of:
 - [Programmable Key Pairs (PKPs)](../../sdk/wallets/quick-start)
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 
-## `getEncryptedKeyMetadata`'s Interface
+## `listEncryptedKeyMetadata`'s Interface
 
-<!-- TODO Update URL once Wrapped Keys PR is merged: https://github.com/LIT-Protocol/js-sdk/pull/513 -->
-[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/get-encrypted-key-metadata.ts)
+[Source code](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/api/list-encrypted-key-metadata.ts)
 
 ```ts
+import { LIT_NETWORKS_KEYS } from '@lit-protocol/types';
+
 /** Get a previously encrypted and persisted private key and its metadata.
  * Note that this method does _not_ decrypt the private key; only the _encrypted_ key and its metadata will be returned to the caller.
  */
-export async function getEncryptedKeyMetadata(
+export async function getEncryptedKey(
   params: {
     pkpSessionSigs: SessionSigsMap;
     litNodeClient: ILitNodeClient;
   }
 ): Promise<{
-  ciphertext: string;
-  dataToEncryptHash: string;
   publicKey: string;
   pkpAddress: string;
   keyType: string;
   litNetwork: LIT_NETWORKS_KEYS;
-}> 
+  memo: string;
+  id: string;
+}[]> 
 ```
 
 ### Parameters
@@ -73,17 +78,7 @@ This is an instance of the [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.
 
 ### Return Value
 
-#### `ciphertext`
-
-This return value is the encrypted form of the underlying private key for the Wrapped Key associated with the PKP that produced `pkpSessionSigs`.
-
-Used with the `dataToEncryptHash`, Access Control Conditions, and `pkpSessionSigs`, [you can decrypt](../../sdk/access-control/quick-start#performing-decryption) the `ciphertext` to get the clear text private key.
-
-#### `dataToEncryptHash`
-
-This is the `SHA-256` hash of the `ciphertext`.
-
-Used with the `ciphertext`, Access Control Conditions, and `pkpSessionSigs`, [you can decrypt](../../sdk/access-control/quick-start#performing-decryption) the `ciphertext` to get the clear text private key.
+An array of [StoredKeyMetadata](https://github.com/LIT-Protocol/js-sdk/blob/master/packages/wrapped-keys/src/lib/types.ts#L48-L67) object for each Wrapped Key associated with the PKP from `pkpSessionSigs`.
 
 #### `publicKey`
 
@@ -101,12 +96,23 @@ This is the algorithm used to generate the underlying private key for the Wrappe
 
 This is the Lit network that the `LitNodeClient` was connected to when the Wrapped Key was created.
 
+#### `memo`
+
+This is the additional identifier/descriptor string set for the Wrapped key when it was [imported](./importing-key.md), [generated](./generating-wrapped-key.md), or [stored](./storing-wrapped-key-metadata.md).
+
+This parameter is an arbitrary string that can be used as an additional identifier or descriptor of the encrypted private key.
+
+#### `id`
+
+This is a unique identifier (UUID v4) generated by Lit for the Wrapped Key.
+
+Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to identify which Wrapped Key to use when calling other Wrapped Key methods such as [signMessageWithEncryptedKey](./sign-message.md) and [signTransactionWithEncryptedKey](./sign-transaction.md).
+
 ## Example Implementation
 
-Now that we know what the `getEncryptedKeyMetadata` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
+Now that we know what the `listEncryptedKeyMetadata` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/listWrappedKeys.ts).
 
 ### Installing the Required Dependencies
 
@@ -155,9 +161,7 @@ import { LIT_RPC } from "@lit-protocol/constants";
 
 const ethersSigner = new ethers.Wallet(
     process.env.ETHEREUM_PRIVATE_KEY,
-    new ethers.providers.JsonRpcProvider(
-        LIT_RPC.CHRONICLE_YELLOWSTONE
-    )
+    new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
 );
 ```
 
@@ -217,19 +221,16 @@ const pkpSessionSigs = await litNodeClient.getPkpSessionSigs({
 });
 ```
 
-### Getting a Wrapped Key's Metadata
+### Getting a list of Wrapped Key Metadata
 
-Now that we know what the `getEncryptedKeyMetadata` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
-
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+Now that we hall all that we need, we can call `listEncryptedKeyMetadata` to list all the stored metadata for all the Wrapped Keys associated with the PKP derived from the `pkpSessionSigs`.
 
 ```ts
 import { api } from "@lit-protocol/wrapped-keys";
 
-const { getEncryptedKeyMetadata } = api;
+const { listEncryptedKeyMetadata } = api;
 
-const wrappedKeyMetadata = await getEncryptedKeyMetadata({
+const wrappedKeyMetadatas = await listEncryptedKeyMetadata({
     pkpSessionSigs,
     litNodeClient,
 });
@@ -237,7 +238,6 @@ const wrappedKeyMetadata = await getEncryptedKeyMetadata({
 
 ### Summary
 
-<!-- TODO The dev guide code example doesn't currently exist. Currently blocked by the publishing of the updated Wrapped Keys SDK (https://github.com/LIT-Protocol/js-sdk/pull/513) -->
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/getWrappedKeyMetadata.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/listWrappedKeys.ts).
 
-After executing the example implementation above, you will have exported the metadata for the Wrapped Key associated with the PKP that produced the provided `pkpSessionSigs`.
+After executing the example implementation above, you will have exported the stored metadata for all the Wrapped Keys associated with the PKP derived from the provided `pkpSessionSigs`. Note that this metadata will **not** include the `ciphertext` and `dataToEncryptHash` properties that are needed to decrypt the underlying private keys for the Wrapped Keys. To get the encryption metadata, you must use the [getEncryptedKey](./getting-wrapped-key-metadata.md) method.
