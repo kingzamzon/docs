@@ -138,7 +138,6 @@ const sidebars = {
                 'paying-for-lit/minting-capacity-credit/lit-contracts',
               ],
             },
-            'paying-for-lit/creating-session-signatures',
             'paying-for-lit/delegating-credit',
             'paying-for-lit/usage-examples',
           ],

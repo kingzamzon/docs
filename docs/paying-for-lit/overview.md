@@ -2,12 +2,12 @@
 
 Like other decentralized networks, Lit has a certain amount of computation available for users that's metered to allow for a responsive network with nodes that are able to stay in-sync with one another.
 
-In order to use the paid pre-production ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) and production ([Datil](../connecting-to-a-lit-network/mainnets#datil)) Lit networks, you must reserve capacity on the network. This is done using by minting Capacity Credits, and by making use of the Lit Relayer and/or the Payment Delegation Database.
+In order to use the decentralized testnet ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) and production-ready mainnet beta ([Datil](../connecting-to-a-lit-network/mainnets#datil)) Lit networks, you will need to pay for usage of the network. This is done using Lit test tokens, Capacity Credits, the Lit Relayer, and the Payment Delegation Database.
 
 ## Overview of What Requires Payment
 
 :::note
-Currently requests requiring payment of Lit tokens is done only using the  `testLPX` test token. More information about the test token is available [here](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md#tstlpx-test-token)
+Currently requests requiring payment of Lit tokens is done only using the `testLPX` test token. More information about the test token is available [here](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md#tstlpx-test-token)
 :::
 
 ### General Lit Network Usage
@@ -17,34 +17,51 @@ Currently requests requiring payment of Lit tokens is done only using the  `test
 | Connecting to a Lit Network           | ❌                | n/a                              | n/a              | ❌            |
 | Generating Session Signatures         | ❌                | n/a                              | n/a              | ❌            |
 | Reading Data from Lit Contracts       | ❌                | n/a                              | n/a              | ❌            |
-| Minting a PKP                         | ✅                | ✅                                | Lit Tokens       | ✅            |
-| Adding/Removing PKP Auth Methods      | ✅                | ✅                                | Lit Tokens       | ✅            |
+| Lit Action Execution                  | ✅                | ❌                                | Capacity Credits | ❌            |
+| Setting Up a Payment Delegation Payer | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Adding / Removing Payment Delegation Payees             | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+
+### PKP Usage
+
+| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
+|---------------------------------------|------------------|----------------------------------|------------------|--------------|
+| Minting a PKP                         | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Adding / Removing PKP Auth Methods      | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Signing with a PKP                    | ✅                | ❌                                | Capacity Credits | ❌            |
+
+### Encrypting Data
+
+| Request Type                          | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type     | Requires Gas |
+|---------------------------------------|------------------|----------------------------------|------------------|--------------|
 | Encrypting Data                       | ❌                | n/a                              | n/a              | ❌            |
 | Decrypting Data                       | ✅                | ❌                                | Capacity Credits | ❌            |
-| Lit Action Execution                  | ✅                | ❌                                | Capacity Credits | ❌            |
-| Setting Up a Payment Delegation Payer | ✅                | ✅                                | Lit Tokens       | ✅            |
-| Payment Delegation Payees             | ✅                | ✅                                | Lit Tokens       | ✅            |
 
 ### Wrapped Keys Usage
 
-| Request Type                           | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type                    | Requires Gas |
-|----------------------------------------|------------------|----------------------------------|---------------------------------|--------------|
-| Generating a Wrapped Key               | ✅                | ✅                                | Lit Tokens                      | ✅            |
-| Importing Wrapped Key                  | ❌                | n/a                              | n/a                             | ❌            |
-| Exporting Wrapped Key                  | ✅                | ✅                                | Capacity Credits                | ❌            |
-| Getting Wrapped Key Metadata           | ✅                | ✅                                | Capacity Credits                | ❌            |
-| Storing Wrapped Key Metadata           | ❌                | n/a                              | n/a                             | ❌            |
-| Listing Wrapped Keys for a PKP         | ❌                | n/a                              | n/a                             | ❌            |
-| Signing a Message with Wrapped Key     | ✅                | ✅                                | Capacity Credits                | ❌            |
-| Signing a transaction with Wrapped Key | ✅                | ✅                                | Capacity Credits                | ❌            |
-| Custom Wrapped Keys                    | ✅                | ❌                                | Lit Tokens and Capacity Credits | ✅            |
+| Request Type                           | Requires Payment | Can Be Subsidized by Lit Relayer | Payment Type                         | Requires Gas |
+|----------------------------------------|------------------|----------------------------------|--------------------------------------|--------------|
+| Generating a Wrapped Key               | ✅                | ❌                                | Lit Test Tokens                      | ✅            |
+| Importing Wrapped Key                  | ❌                | n/a                              | n/a                                  | ❌            |
+| Exporting Wrapped Key                  | ✅                | ❌                                | Capacity Credits                     | ❌            |
+| Getting Wrapped Key Metadata           | ✅                | ❌                                | Capacity Credits                     | ❌            |
+| Storing Wrapped Key Metadata           | ❌                | n/a                              | n/a                                  | ❌            |
+| Listing Wrapped Keys for a PKP         | ❌                | n/a                              | n/a                                  | ❌            |
+| Signing a Message with Wrapped Key     | ✅                | ❌                                | Capacity Credits                     | ❌            |
+| Signing a transaction with Wrapped Key | ✅                | ❌                                | Capacity Credits                     | ❌            |
+| Custom Wrapped Keys                    | ✅                | ❌                                | Lit Test Tokens and Capacity Credits | ✅            |
 
 
 ## Overview of Payment Methods
 
+### Lit Test Token
+
+Currently the [`testLPX` test token](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md#tstlpx-test-token) is the native currency for the Lit [Chronicle Yellowstone](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md) rollup blockchain. It's currently used to pay for the gas of on-chain transactions, as well as for minting PKPs and Capacity Credits.
+
+To obtain the `tstLPX` test token, please use [the faucet](https://chronicle-yellowstone-faucet.getlit.dev/). The `tstLPX` test token will be sent to your wallet address, allowing you to perform transactions on the rollup.
+
 ### Capacity Credits
 
-Capacity Credits are NFT tokens that represent reserved computational capacity on the Lit network. When minting a credit, you specify and pay to reserve a specific amount of requests per second over a period of time. You'll then use these credits when making requests to the Lit network to perform actions such as decryption, executing Lit Actions, and using PKPs.
+Capacity Credits are NFT tokens that represent reserved computational capacity on the Lit network. When minting a credit, you specify and pay to reserve a specific amount of requests per second over a period of time. You'll then use these credits when making requests to the Lit network to perform actions such as decryption, executing Lit Actions, and signing transactions using PKPs and Wrapped Keys.
 
 For a deep dive into Capacity Credits, including minting and usage details, checkout the in-depth [documentation](./capacity-credit-intro.md).
 
@@ -54,7 +71,7 @@ The Lit Relayer is an [open-source service](https://github.com/LIT-Protocol/rela
 
 While the Relayer eases the onboarding process, it's important to note that its availability is not guaranteed. Users may experience rate limiting and/or congestion due to its shared nature.
 
-As you progress with your Lit integration, we recommend implementing Capacity Credits and/or the Payment Delegation Database in your application. These solutions offer more reliable and scalable options for managing your long-term usage of the Lit network.
+As your application moves into production, we recommend implementing this functionality directly into your own application instead of using the Lit Relayer. This will ensure that you can use the Lit network with minimal friction and disruptions in service, as your direct implementation will be much more reliable and scalable.
 
 For a deep dive into the Relayer, including its usage and offered services, checkout the in-depth [documentation](./lit-relayer.md).
 
@@ -68,17 +85,17 @@ For a deep dive into the Payment Delegation Database, including how to register 
 
 ### Choosing the Right Payment Method
 
-The Lit network offers multiple payment methods to suit various use cases and application scales. Consider the following guidelines when selecting the most appropriate option for your needs:
+The Lit network offers various ways to implement payment for usage of the network, suiting various use cases and application scales. Consider the following guidelines when selecting the most appropriate option for your needs:
 
 - Capacity Credits: Ideal for individual users or small-scale applications requiring direct control over their network resource allocation. This option is ideal when you don't have to manage payments for a large user base.
 - Lit Relayer: Best for initial testing and prototyping. It reduces onboarding friction by subsidizing some network interactions, but is subject to availability and potential rate limiting.
-- Payment Delegation Database: Suitable for larger applications or those with a large user base. It allows centralized management of payments, simplifying resource allocation for numerous users.
+- Payment Delegation Database: Suitable for larger applications or those with a large user base. It simplifies and centralizes the minting and delegation of Capacity Credits to your users, eliminating the need to manage individual Capacity Credits for each user.
 
 For optimal results:
 
-- New developers may start with the Lit Relayer for easy onboarding.
-- As your application grows, transition to Capacity Credits for more reliable resource allocation.
-- Large-scale applications should consider the Payment Delegation Database for efficient management of multiple users.
+- New developers may start with the Lit Relayer managing Capacity Credit on their behalf for easier onboarding.
+- As your application grows, transition to managing Capacity Credits yourself for more reliable resource allocation.
+- Large-scale applications should consider the Payment Delegation Database for managing payment on behalf of many users.
 
 ## Getting Started
 
