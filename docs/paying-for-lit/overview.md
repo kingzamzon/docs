@@ -103,8 +103,8 @@ To begin using the paid Lit networks:
 
 1. Assess your needs: Consider your expected usage, scale of operations, and whether you'll be managing payments for multiple users.
 2. Choose a payment method:
-    - For testing and prototyping, start with the Lit Relayer.
-    - For individual or small-scale use, consider Capacity Credits.
+    - For testing and prototyping, start with the Lit Relayer managing Capacity Credits.
+    - For individual or small-scale use, consider managing Capacity Credits yourself.
     - For applications with many users, look into the Payment Delegation Database.
 3. Set up your chosen method:
     - For the Lit Relayer, go [here](./lit-relayer.md) to begin integrating it into your application.
