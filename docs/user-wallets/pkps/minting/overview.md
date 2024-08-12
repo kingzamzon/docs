@@ -8,9 +8,9 @@ A PKP is represented as an ERC-721 NFT, and the owner of the NFT becomes the des
 
 This section will walk you through the process of creating PKPs using the [V3 SDK](../migrations/3.0.0/overview.md). You can mint PKPs using the following methods:
 
-- [Mint via Contracts](minting-methods/mint-via-contracts)
-- [Mint via Social or Email/SMS (OTP) ](minting-methods/mint-via-social)
-- [Mint via WebAuthn](minting-methods/mint-via-web-authn)
-- [Mint via Multiple Auth Methods](minting-methods/mint-via-multiple-auth-methods)
+- [Mint via Contracts](./via-contracts.md)
+- [Mint via Social or Email/SMS (OTP) ](./via-social.md)
+- [Mint via WebAuthn](./via-web-authn.md)
+- [Mint via Multiple Auth Methods](./via-multiple-auth-methods.md)
 
 <FeedbackComponent/>

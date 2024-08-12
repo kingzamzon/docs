@@ -15,7 +15,7 @@ Blockchains like Ethereum have smart contracts that let developers encode logic 
 
 This logic is encoded using a Lit Action, an immutable JavaScript program that can be "assigned" to the key pairs generated on Lit and used to dictate how they are used.
 
-A simple example would be a Lit Action that checks if a number is prime. To start, you would generate a [Programmable Key Pair](../wallets/intro.md) and assign it to your Lit Action so that it could use it to produce a signature. This signature would only be returned if the conditions defined within your Lit Action were met. In this case, the Lit Action would verify that the input was indeed a prime number. Every Lit node would execute your program independently and provision their key share down to the requesting client. Only after more than two-thirds of these shares have been collected can the complete signature be formed. You can read more about how Lit works [here](../../resources/how-it-works.md).
+A simple example would be a Lit Action that checks if a number is prime. To start, you would generate a [Programmable Key Pair](../../user-wallets/pkps/overview.md) and assign it to your Lit Action so that it could use it to produce a signature. This signature would only be returned if the conditions defined within your Lit Action were met. In this case, the Lit Action would verify that the input was indeed a prime number. Every Lit node would execute your program independently and provision their key share down to the requesting client. Only after more than two-thirds of these shares have been collected can the complete signature be formed. You can read more about how Lit works [here](../../resources/how-it-works.md).
 
 ## Features and Examples
 
