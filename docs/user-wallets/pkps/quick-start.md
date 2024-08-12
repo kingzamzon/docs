@@ -608,9 +608,9 @@ const signatures = await litNodeClient.executeJs({
 
 By now you should have successfully minted a PKP, assigned an auth method and permitted scopes, and used it to sign a message with a Lit Action. If you’d like to learn more about all of the available functionality provided by PKPs, please follow the links below:
 
-1. [Managing PKP Auth Methods](../wallets/auth-methods/lit-auth-methods/add-remove-auth-methods.md).
-2. [Minting PKPs with Social Auth](../wallets/minting.md).
-3. [Running Custom Authentication](../wallets/auth-methods/custom-auth.md).
-4. [Connecting PKPs to dApps with WalletConnect](../wallets/walletconnect.md).
+1. [Managing PKP Auth Methods](../pkps/advanced-topics/auth-methods/add-remove-auth-methods).
+2. [Minting PKPs with Social Auth](../pkps/minting/via-social.md).
+3. [Running Custom Authentication](../pkps/advanced-topics/auth-methods/custom-auth.md).
+4. [Connecting PKPs to dApps with WalletConnect](../pkps/walletconnect).
 
 <FeedbackComponent/>

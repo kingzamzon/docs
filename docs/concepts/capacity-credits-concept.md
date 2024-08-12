@@ -8,8 +8,8 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 :::info
 Currently Rate Limiting is only enabled on `Datil` and `Datil-test`.
-See [here](../network/networks/testnet) for a list of test networks.
-See [here](../network/networks/mainnet) for a list of mainnet networks.
+See [here](../connecting-to-a-lit-network/testnets) for a list of test networks.
+See [here](../connecting-to-a-lit-network/mainnets) for a list of mainnet networks.
 :::
 
 # Overview
