@@ -8,7 +8,7 @@ To write to the blockchain, the `LitContracts` instance must be created with a `
 
 ## Initialize `PKPEthersWallet`
 
-`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../authentication/overview).
+`PKPEthersWallet` must be instantiated with an `AuthSig`, `AuthenticationProps` or a `SessionSig` in order to authorize signing requests. To learn how to generate these signatures, refer to the [Authentication section](../../../../sdk/authentication/session-sigs/intro.md).
 
 Ideally you would want to pass `AuthenticationProps` as it will update `SessionSigs` for you based on current conditions while retaining the benefits of sessions.
 

@@ -100,5 +100,3 @@
 ### E-Commerce
 
 - **[Shopify](https://apps.shopify.com/lit-token-access)**: Blockchain-based access control for your online store.
-- **[Heirloom DAO](https://www.heirloomdao.com/)**: Subscriptions as NFTs.
-- **[Club Goods](https://www.clubgoods.xyz/)**: An e-commerce experiment at the intersection of storytelling, community tokens and physical goods.

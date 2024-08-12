@@ -135,7 +135,7 @@ Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to 
 
 Now that we know what the `generatePrivateKey` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
 
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/generateWrappedKey.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
 
 ### Installing the Required Dependencies
 

@@ -164,7 +164,6 @@ async function mintPKPWithMultipleAuthMethods(authMethodGoogle, authMethodSMS) {
 }
 ```
 
-View `Minting a PKP with multiple Auth Methods via LitAuthClient` example in our SDK [here](https://github.com/LIT-Protocol/js-sdk/blob/master/e2e-nodejs/group-pkp-auth-method/test-pkp-auth-method-multiple-auth-method-mint.mjs).
 
 ## Using `ContractsSDK`
 

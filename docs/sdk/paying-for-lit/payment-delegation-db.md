@@ -25,7 +25,7 @@ The Payment Delegation Database is a [smart contract](https://github.com/LIT-Pro
 - `POST` `/register-payer`: This route is used to register a new `payer` and will have a [Capacity Credit](../capacity-credits.md) minted for it which can be delegated to `payees` to pay for their usage of Lit
 - `POST` `/add-users`: This route is used to add users (as Ethereum addresses) as `payees` for a specific `payer`. This allows the `payer` to pay for the usage of Lit for each user, without each user having to own a Capacity Credit
 
-Below we will walk through an example of registering a `payer` and adding users as `payees` for a specific `payer`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/payment-delegation-relayer/payment-delegation-db-relayer/nodejs/src).
+Below we will walk through an example of registering a `payer` and adding users as `payees` for a specific `payer`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/payment-delegation-db-relayer/nodejs).
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ After successfully registering a `payer` with the Relayer server, you will recei
 It's also important to note that Lit **never** has access to this secret key and will **not** be able to recover it for you if you loose access to it. Please make sure this secret key is backed up securely, and refrain from leaking this key to unauthorized parties. Whomever has access to the key has the ability to modify the `delegatees` of your Capacity Credit.
 :::
 
-A full implementation of the code in this section can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/payment-delegation-relayer/payment-delegation-db-relayer/nodejs/src/registerPayer.ts).
+A full implementation of the code in this section can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/payment-delegation-db-relayer/nodejs/src/registerPayer.ts).
 
 To register a new `payer` wallet, you're going to need to decide which Lit network you'd like to use. Currently the Relayer server has two endpoints depending on the Lit network:
 
@@ -164,7 +164,7 @@ Now that we have `payerSecretKey`, we'll use it to add users as `payees` for our
 Remember that `payerSecretKey` is essentially the private key to your new `payer` wallet and should be handled securely. It **cannot** be recovered by Lit if you loose access to it, and you shouldn't make requests using it in a context like the browser where the end user would have access to it.
 :::
 
-A full implementation of this code for this section can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/payment-delegation-relayer/payment-delegation-db-relayer/nodejs/src/addUsers.ts).
+A full implementation of this code for this section can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/payment-delegation-db-relayer/nodejs/src/addUsers.ts).
 
 To add users as `payees` for your `payer` wallet, you're going to need the Relayer API URL for the same Lit network you registered your `payer` on:
   - For `datil`, we'll be making requests to:
