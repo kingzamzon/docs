@@ -22,7 +22,7 @@ At completion of this reading you should be able to:
 
 [Alchemy's Account Kit](https://www.alchemy.com/account-kit) is a complete toolkit to embed smart accounts in your app with social login, gas abstraction, batch transactions, and more.
 
-[Lit Protocol's AA signer](https://accountkit.alchemy.com/smart-accounts/signers/guides/lit.html) is a complete solution for powering AA with a Lit signer.
+[Lit Protocol's AA signer](https://accountkit.alchemy.com/packages/aa-signers/lit-protocol/introduction#lit-signer) is a complete solution for powering AA with a Lit signer.
 
 Powered by account abstraction (ERC-4337), Account Kit provides all the tools you need to onboard users with zero friction:
 

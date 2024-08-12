@@ -15,7 +15,7 @@ Lit is a decentralized key management and compute network. Builders of apps, wal
 
 The system builds off of contemporary work in applied cryptography, sealed confidential hardware, and peer-to-peer networking to provide the maximum amount of control and privacy to developers.
 
-Developers can use Lit to build apps with [private data](../sdk/access-control/quick-start.md), intuitive [onboarding and wallet management](../sdk/wallets/quick-start.md), and [private, immutable programs](../sdk/serverless-signing/quick-start.md) that run based on the rules you set.
+Developers can use Lit to build apps with [private data](../sdk/access-control/quick-start.md), intuitive [onboarding and wallet management](../user-wallets/overview.md), and [private, immutable programs](../sdk/serverless-signing/quick-start.md) that run based on the rules you set.
 
 Get started with the [Lit SDK](../sdk/installation.md).
 

@@ -91,7 +91,7 @@ Build powerful infrastructure that harnesses the power of Lit!
 
 Example Projects:
 
-- [Yacht Labs](https://yachtlabs.io/blog/yacht-lit-swap): Cross-chain atomic swaps with PKPs and Lit Actions
+- [Yacht Labs](https://spark.litprotocol.com/xchain-bridging-yacht-lit-swap/): Cross-chain atomic swaps with PKPs and Lit Actions
 - [Curve Labs](https://github.com/Curve-Labs/lit-privacy/tree/main): SDK for building privacy-preserving interactions on-chain
 
 **Web3 Social**

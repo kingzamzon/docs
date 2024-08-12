@@ -151,7 +151,7 @@ To use Irys to store data on Arweave, first connect to an [Irys node](https://do
 
 :::info
 This code is configured to MATIC to pay for uploads, and while working with the Irys Devnet, you need to fund your
-wallet with [free MUMBAI MATIC Devnet](https://mumbaifaucet.com/) tokens. Alternatively, you could use [any other
+wallet with [free MUMBAI MATIC Devnet](https://www.alchemy.com/dapps/mumbai-faucet) tokens. Alternatively, you could use [any other
 Devnet token](../../resources/supported-chains) supported by Irys.
 :::
 

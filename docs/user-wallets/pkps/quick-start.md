@@ -553,7 +553,7 @@ const result = await transaction.wait();
 
 ### Lit Action Signing
 
-You can use [Lit Actions](../serverless-signing/overview.md) to sign transactions. These are JavaScript programs that can be used to specify the signing and authentication logic for PKPs. 
+You can use [Lit Actions](../../sdk/serverless-signing/overview) to sign transactions. These are JavaScript programs that can be used to specify the signing and authentication logic for PKPs. 
 
 To sign a Lit Action with your PKP, we'll use the `litNodeClient` to call the `executeJs` parameter.
 
