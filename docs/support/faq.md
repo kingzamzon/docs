@@ -110,7 +110,7 @@ No, currently Web Assembly is not supported within Lit Actions.
 
 ### 12. I am getting the following error when connecting to the Lit nodes: "Error: Unable to verify the first certificate in nodejs". What may be causing this?
 
-If you're facing this error while using Node.js, please first verify that you don't have unnecessary firewalls on your network that are preventing you from connecting to the Lit network properly.  This is typically caused by some kind of man in the middle in your network, which could be something on your machine or something your ISP is doing.  You could try a VPN or software solution such as https://1.1.1.1/ to remove this man in the middle.  
+If you're facing this error while using Node.js, please first verify that you don't have unnecessary firewalls on your network that are preventing you from connecting to the Lit network properly.  This is typically caused by some kind of man in the middle in your network, which could be something on your machine or something your ISP is doing.  You could try a VPN or software solution such as [https://1.1.1.1/](https://one.one.one.one/) to remove this man in the middle.  
 
 <br />
 
@@ -144,7 +144,7 @@ Check out an example [here](../sdk/access-control/evm/timelock).
 
 You can use the `PKPPermission.addPermittedAddress()` function to give other users permission to sign using your PKP. Any Lit Actions assigned to that PKP can then be executed by those users.
 
-To configure other permissions, please use the contract [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol).
+To configure other permissions, please use the contract [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PKPPermissions.sol).
 
 ### 2. How to allow permitted users to execute only specific Lit Actions?
 

@@ -25,7 +25,7 @@ The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wra
 
 Before continuing with this guide, you should have an understanding of:
 
-- [Programmable Key Pairs (PKPs)](../../sdk/wallets/quick-start)
+- [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/overview.md)
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 - [Encrypting using the Lit SDK](../../sdk/access-control/quick-start#performing-encryption)
 
