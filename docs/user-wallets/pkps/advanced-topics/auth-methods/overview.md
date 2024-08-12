@@ -13,7 +13,7 @@ An authentication method refers to the specific credential (i.e a wallet address
 
 Right now, there are two main ways to do auth with Lit Actions. We will dive into these two methods below:
 1. [Using Lit Auth Directly](#using-lit-auth-directly)
-2. [Custom Auth / Adding new Auth Methods not yet supported by Lit](auth-methods/custom-auth)
+2. [Custom Auth / Adding new Auth Methods not yet supported by Lit](./custom-auth)
 
 ## Using Lit Auth Directly
 

@@ -14,7 +14,7 @@ Authentication refers to confirming a users identity.  This generally involves r
 
 Authorization refers to confirming that a user is allowed to use a PKP.  Specifically, it's checking the permissions of a PKP and making sure that the user that was Authenticated is also authorized to use a PKP.  
 
-Note: Currently, a [Session Signature](../../authentication/session-sigs/intro.md), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, a Session Sig will always be required.
+Note: Currently, a [Session Signature](../../../../sdk/authentication/session-sigs/intro.md), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, a Session Sig will always be required.
 
 The flow for using an auth method already supported by lit, with custom Authorization, is as follows:
 
@@ -117,7 +117,7 @@ If you use the deployed Lit PKPPermissions contract, then it is important to pic
 ## Steps to implement both custom authentication and authorization
 
 1. Get your user's identity material.  For example, if you were implementing Roblox Oauth, this would be your user's Roblox user id.  
-2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../minting/#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
+2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../../minting/via-contracts#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
 3. Write a Lit Action for your custom authentication and authorization, which is documented further below.
 
 ### Writing a Lit Action for custom authentication and authorization
