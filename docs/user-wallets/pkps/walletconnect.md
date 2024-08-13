@@ -61,13 +61,13 @@ const pkpClient = new PKPClient({
 await pkpClient.connect();
 ```
 
-The `getSessionSigsProps`, `controllerAuthSig` or `controllerSessionSigs` (this last one deprecated) are used to authorize requests to the Lit nodes. To learn how to leverage different authentication methods, refer to the [Authentication section](../authentication/overview).
+The `getSessionSigsProps`, `controllerAuthSig` or `controllerSessionSigs` (this last one deprecated) are used to authorize requests to the Lit nodes. To learn how to leverage different authentication methods, refer to the [Authentication section](./advanced-topics/auth-methods/overview).
 
 To view more constructor options, refer to the [API docs](https://js-sdk.litprotocol.com/interfaces/types_src.PKPClientProp.html).
 
 ## 2. Initialize `PKPWalletConnect` with the `PKPClient`
 
-`PKPWalletConnect` wraps [`@walletconnect/web3wallet`](https://docs.walletconnect.com/2.0/web/web3wallet/wallet-usage) to manage WalletConnect session proposals and requests using the given PKPClient.
+`PKPWalletConnect` wraps [`@walletconnect/web3wallet`](https://www.npmjs.com/package/@walletconnect/web3wallet) to manage WalletConnect session proposals and requests using the given PKPClient.
 
 ```js
 import { PKPWalletConnect } from "@lit-protocol/pkp-walletconnect";

@@ -18,7 +18,7 @@ If you are currently in early-stage research and development, you should be usin
 
 In order to deploy to Habanero or Manzano, you’ll first need to make sure you're using the v3 or v4 SDK. If you haven’t yet upgraded to v3 or v4, you can do so following these [upgrade instructions](../sdk/migrations/3.0.0/overview.md). Once you've upgraded, the next step will be to connect to the appropriate network branch in your SDK config, either [Habanero](../network/networks/mainnet.md) or [Manzano](../network/networks/testnet.md).
 
-Once your application is using v3 or v4, you can follow the following migration guide to learn how to perform re-encryption (if you're using [access control](../sdk/access-control/intro.md)) or re-mint PKPs (if you're building with [user wallets](../sdk/wallets/intro.md)) on Habanero or Manzano. 
+Once your application is using v3 or v4, you can follow the following migration guide to learn how to perform re-encryption (if you're using [access control](../sdk/access-control/intro.md)) or re-mint PKPs (if you're building with [user wallets](../user-wallets/overview)) on Habanero or Manzano. 
 
 ## Migrating From Jalapeno
 

@@ -30,7 +30,7 @@ Below we will walk through an implementation of `generatePrivateKey`. The full c
 
 Before continuing with this guide, you should have an understanding of:
 
-- [Programmable Key Pairs (PKPs)](../../sdk/wallets/quick-start)
+- [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/quick-start)
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 
 ## `generatePrivateKey`'s Interface
@@ -123,7 +123,7 @@ This address, derived from the `pkpSessionSigs`, is what was used for the Access
 
 #### `generatedPublicKey`
 
-This is the public key for the generated private key. The corresponding address, derived from the public key, can be obtained using the [getEncryptedKeyMetadata](./get-wrapped-key-metadata.md) function from the Wrapped Keys SDK.
+This is the public key for the generated private key. The corresponding address, derived from the public key, can be obtained using the [getEncryptedKeyMetadata](./getting-wrapped-key-metadata) function from the Wrapped Keys SDK.
 
 #### `id`
 
@@ -135,7 +135,7 @@ Because a PKP can have multiple Wrapped Keys attached to it, this ID is used to 
 
 Now that we know what the `generatePrivateKey` function does, it's parameters, and it's return values, let's now dig into a complete implementation.
 
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/wyatt/wrapped-keys/wrapped-keys/nodejs/src/generateWrappedKey.ts).
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/wrapped-keys/nodejs/src/generateWrappedKey.ts).
 
 ### Installing the Required Dependencies
 

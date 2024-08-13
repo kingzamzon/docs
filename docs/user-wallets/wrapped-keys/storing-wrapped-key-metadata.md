@@ -14,7 +14,7 @@ Below we will walk through an implementation of `storeEncryptedKey`. The full co
 ## Overview of How it Works
 
 :::note
-The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) required for this method include the encryption metadata of the private key that will be turned into a Wrapped Key. For more information on how to obtain the encryption metadata, please refer to this guide on [encrypting data using the Lit SDK](../../sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key), and this guide on [Custom Wrapped Keys](http://localhost:3000/sdk/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key).
+The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wrapped_keys_src.StoreEncryptedKeyParams.html) required for this method include the encryption metadata of the private key that will be turned into a Wrapped Key. For more information on how to obtain the encryption metadata, please refer to this guide on [encrypting data using the Lit SDK](../../user-wallets/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key), and this guide on [Custom Wrapped Keys](../../user-wallets/wrapped-keys/custom-wrapped-keys#generating-and-encrypting-a-private-key).
 :::
 
 1. The Wrapped Keys SDK will derive the PKP's Ethereum address from the provided PKP Session Signatures
@@ -25,7 +25,7 @@ The [StoreEncryptedKeyParams](https://v6-api-doc-lit-js-sdk.vercel.app/types/wra
 
 Before continuing with this guide, you should have an understanding of:
 
-- [Programmable Key Pairs (PKPs)](../../sdk/wallets/quick-start)
+- [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/overview.md)
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 - [Encrypting using the Lit SDK](../../sdk/access-control/quick-start#performing-encryption)
 

@@ -5,7 +5,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 You can mint a PKP NFT from the PKP contract on Chronicle Yellowstone - Lit's custom EVM rollup testnet - using:
 1. The [Lit explorer](https://explorer.litprotocol.com)
 2. The Lit relayer (sign up for an API key [here](https://forms.gle/RNZYtGYTY9BcD9MEA))
-3. The contracts directly using the [contracts-sdk](https://js-sdk.litprotocol.com/modules/contracts_sdk_src.html) ([Here](https://chain.litprotocol.com/address/0xDe905Fde36562270AA6FEeBAbC5aB1f440f733c2) is the handy helper contract on Chronicle Yellowstone to mint and assign auth methods. You can view all of the deployed contract addresses [here](https://github.com/LIT-Protocol/networks/tree/main/datil)).
+3. The contracts directly using the [contracts-sdk](https://js-sdk.litprotocol.com/modules/contracts_sdk_src.html) ([Here](https://chain.litprotocol.com/address/0xDe905Fde36562270AA6FEeBAbC5aB1f440f733c2) is the handy helper contract on Chronicle Yellowstone to mint and assign auth methods. You can view all of the deployed contract addresses [here](https://github.com/LIT-Protocol/networks/tree/main/)).
 
 The NFT represents root ownership of the PKP. The NFT owner can grant other users (via a wallet address) or grant Lit Actions the ability to use the PKP to sign and decrypt data. They also have the ability to assign additional authentication methods, described at the bottom of the page.
 
@@ -28,7 +28,7 @@ await contractClient.connect();
 ## Minting a PKP and adding permitted scopes
 Permitted scopes are a crucial part of defining the capabilities of authentication methods. They determine what actions an authentication method can perform within the system. For instance, the `SignAnything` scope allows an auth method to sign any data, while the `PersonalSign` scope restricts it to signing messages using the EIP-191 scheme. 
 
-You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages. You can read more about Auth Method scopes [here](../auth-methods/#auth-method-scopes).
+You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages. You can read more about Auth Method scopes [here](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.MintWithAuthParams.html#scopes).
 
 The following code block demonstrates how to mint a PKP with specific permitted scopes:
 

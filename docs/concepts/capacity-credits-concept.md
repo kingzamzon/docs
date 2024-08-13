@@ -8,8 +8,8 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 :::info
 Currently Rate Limiting is only enabled on `Datil` and `Datil-test`.
-See [here](../network/networks/testnet) for a list of test networks.
-See [here](../network/networks/mainnet) for a list of mainnet networks.
+See [here](../connecting-to-a-lit-network/testnets) for a list of test networks.
+See [here](../connecting-to-a-lit-network/mainnets) for a list of mainnet networks.
 :::
 
 # Overview
@@ -40,7 +40,7 @@ Alice can create a session capability object that specifies the ability to Authe
 
 Alice can generate an `AuthSig` by delegating equal rights to Bob's session keys, and attaching the capabilities granted to him by Alice as a proof in the session object. Bob can subsequently generate a `SessionSig` that requests for Alice's Capacity Credits NFT, specifying the Lit Action IPFS CID in the `resourceAbilityRequests` field.
 
-Lit employs `SessionSig` as a secure method for session management, utilizing ed25519 keypairs created randomly in the browser and stored locally. To generate a `SessionSig`, a user first needs to acquire an [AuthSig](../sdk/authentication/auth-sig.md) via an [authentication method](../sdk/wallets/auth-methods) like Google OAuth. This `AuthSig`, incorporating the session keypair's public key, allows users to delegate specific actions to the session keypair, enhancing security and control over [resource](../sdk/authentication/session-sigs/resources-and-abilities.md) access. The session keypair signs all requests to Lit Nodes, with the `AuthSig` attached as a [capability](../sdk/authentication/session-sigs/capability-objects.md) to ensure that each node can verify the user's ownership of the wallet address. This process not only secures session management but also streamlines user interactions with the Lit Network's resources. 
+Lit employs `SessionSig` as a secure method for session management, utilizing ed25519 keypairs created randomly in the browser and stored locally. To generate a `SessionSig`, a user first needs to acquire an [AuthSig](../sdk/authentication/auth-sig.md) via an [authentication method](../user-wallets/pkps/advanced-topics/auth-methods/overview) like Google OAuth. This `AuthSig`, incorporating the session keypair's public key, allows users to delegate specific actions to the session keypair, enhancing security and control over [resource](../sdk/authentication/session-sigs/resources-and-abilities.md) access. The session keypair signs all requests to Lit Nodes, with the `AuthSig` attached as a [capability](../sdk/authentication/session-sigs/capability-objects.md) to ensure that each node can verify the user's ownership of the wallet address. This process not only secures session management but also streamlines user interactions with the Lit Network's resources. 
 
 You can read more about Session Signatures [here](../sdk/authentication/session-sigs/intro.md).
 
