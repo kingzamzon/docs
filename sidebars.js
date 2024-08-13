@@ -143,7 +143,6 @@ const sidebars = {
             'paying-for-lit/using-delegated-auth-sig',
           ],
         },
-        'paying-for-lit/lit-relayer',
         'paying-for-lit/payment-delegation-db',
       ],
     },
