@@ -105,7 +105,7 @@ const authMethodId = utils.keccak256(
 
 ## Add an Auth Method
 
-Auth methods can be modified by interacting with the [PKPPermissions contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol). To add an auth method, call the `addPermittedAuthMethod` function on the `PKPPermissions` contract.
+Auth methods can be modified by interacting with the [PKPPermissions contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PKPPermissions.sol). To add an auth method, call the `addPermittedAuthMethod` function on the `PKPPermissions` contract.
 
 ```js
 const transaction =
