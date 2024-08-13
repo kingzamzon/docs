@@ -10,50 +10,50 @@ To streamline the payment process and facilitate integration into your apps, Lit
 
 ### General Lit Network Usage
 
-| Request Type                                | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
-|---------------------------------------------|------------------|----------------------------------|------------------|--------------|
-| Connecting to a Lit Network                 | ❌                | n/a                              | n/a              | ❌            |
-| Generating Session Signatures               | ❌                | n/a                              | n/a              | ❌            |
-| Reading Data from Lit Contracts             | ❌                | n/a                              | n/a              | ❌            |
-| Lit Action Execution                        | ✅                | ❌                                | Capacity Credits | ❌            |
-| Setting Up a Payment Delegation Payer       | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Adding / Removing Payment Delegation Payees | ✅                | ✅                                | Lit Test Tokens  | ✅            |
+| Request Type                                | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     |
+|---------------------------------------------|------------------|---------------------------------------|------------------|
+| Connecting to a Lit Network                 | ❌                | n/a                                   | n/a              |
+| Generating Session Signatures               | ❌                | n/a                                   | n/a              |
+| Reading Data from Lit Contracts             | ❌                | n/a                                   | n/a              |
+| Lit Action Execution                        | ✅                | ❌                                     | Capacity Credits |
+| Setting Up a Payment Delegation Payer       | ✅                | ✅                                     | Lit Test Tokens  |
+| Adding / Removing Payment Delegation Payees | ✅                | ✅                                     | Lit Test Tokens  |
 
 ### Capacity Credits
 
-| Request Type        | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type    | Requires Gas |
-|---------------------|------------------|----------------------------------|-----------------|--------------|
-| Minting a Credit    | ✅                | ❌                                | Lit Test Tokens | ✅            |
-| Delegating a Credit | ❌                | n/a                              | n/a             | ❌            |
+| Request Type        | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type    |
+|---------------------|------------------|---------------------------------------|-----------------|
+| Minting a Credit    | ✅                | ❌                                     | Lit Test Tokens |
+| Delegating a Credit | ❌                | n/a                                   | n/a             |
 
 ### PKP Usage
 
-| Request Type                       | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
-|------------------------------------|------------------|----------------------------------|------------------|--------------|
-| Minting a PKP                      | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Adding / Removing PKP Auth Methods | ✅                | ✅                                | Lit Test Tokens  | ✅            |
-| Signing with a PKP                 | ✅                | ❌                                | Capacity Credits | ❌            |
+| Request Type                       | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     |
+|------------------------------------|------------------|---------------------------------------|------------------|
+| Minting a PKP                      | ✅                | ✅                                     | Lit Test Tokens  |
+| Adding / Removing PKP Auth Methods | ✅                | ❌                                     | Lit Test Tokens  |
+| Signing with a PKP                 | ✅                | ❌                                     | Capacity Credits |
 
 ### Encrypting Data
 
-| Request Type    | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
-|-----------------|------------------|----------------------------------|------------------|--------------|
-| Encrypting Data | ❌                | n/a                              | n/a              | ❌            |
-| Decrypting Data | ✅                | ❌                                | Capacity Credits | ❌            |
+| Request Type    | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     |
+|-----------------|------------------|---------------------------------------|------------------|
+| Encrypting Data | ❌                | n/a                                   | n/a              |
+| Decrypting Data | ✅                | ❌                                     | Capacity Credits |
 
 ### Wrapped Keys Usage
 
-| Request Type                           | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type                         | Requires Gas |
-|----------------------------------------|------------------|----------------------------------|--------------------------------------|--------------|
-| Generating a Wrapped Key               | ✅                | ❌                                | Lit Test Tokens                      | ✅            |
-| Importing Wrapped Key                  | ❌                | n/a                              | n/a                                  | ❌            |
-| Exporting Wrapped Key                  | ✅                | ❌                                | Capacity Credits                     | ❌            |
-| Getting Wrapped Key Metadata           | ✅                | ❌                                | Capacity Credits                     | ❌            |
-| Storing Wrapped Key Metadata           | ❌                | n/a                              | n/a                                  | ❌            |
-| Listing Wrapped Keys for a PKP         | ❌                | n/a                              | n/a                                  | ❌            |
-| Signing a Message with Wrapped Key     | ✅                | ❌                                | Capacity Credits                     | ❌            |
-| Signing a transaction with Wrapped Key | ✅                | ❌                                | Capacity Credits                     | ❌            |
-| Custom Wrapped Keys                    | ✅                | ❌                                | Lit Test Tokens and Capacity Credits | ✅            |
+| Request Type                           | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type                         |
+|----------------------------------------|------------------|---------------------------------------|--------------------------------------|
+| Generating a Wrapped Key               | ✅                | ❌                                     | Lit Test Tokens                      |
+| Importing Wrapped Key                  | ❌                | n/a                                   | n/a                                  |
+| Exporting Wrapped Key                  | ✅                | ❌                                     | Capacity Credits                     |
+| Getting Wrapped Key Metadata           | ✅                | ❌                                     | Capacity Credits                     |
+| Storing Wrapped Key Metadata           | ❌                | n/a                                   | n/a                                  |
+| Listing Wrapped Keys for a PKP         | ❌                | n/a                                   | n/a                                  |
+| Signing a Message with Wrapped Key     | ✅                | ❌                                     | Capacity Credits                     |
+| Signing a transaction with Wrapped Key | ✅                | ❌                                     | Capacity Credits                     |
+| Custom Wrapped Keys                    | ✅                | ❌                                     | Lit Test Tokens and Capacity Credits |
 
 
 ## Overview of Payment Methods
