@@ -1,8 +1,10 @@
-# Paying for the Usage of the Lit Network
+# Paying for Usage of Lit
 
-Like other decentralized networks, Lit has a certain amount of computation available for users that's metered to allow for a responsive network with nodes that are able to stay in-sync with one another.
+The Lit networks, like other decentralized networks, manage their computational resources to ensure optimal performance and synchronization across their nodes. To maintain a responsive and balanced network, Lit implements a metering system for resource utilization.
 
-In order to use the decentralized testnet ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) and production-ready mainnet beta ([Datil](../connecting-to-a-lit-network/mainnets#datil)) Lit networks, you will need to pay for usage of the network. This is done using Lit test tokens, Capacity Credits, the Lit Relayer, and the Payment Delegation Database.
+When using the Lit networks, whether it's the decentralized testnet ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) or the production-ready mainnet beta ([Datil](../connecting-to-a-lit-network/mainnets#datil)) - you'll need to pay for and reserve your usage. This is accomplished using [Lit test tokens](#lit-test-token) and [Capacity Credits](#capacity-credits).
+
+To streamline the payment process and facilitate integration into your apps, Lit offers two tools: [the Lit Relayer](#lit-relayer) and [the Payment Delegation Database](#payment-delegation-database). These tools allow you to seamlessly incorporate Lit functionality without burdening your users with the need to acquire Lit test tokens or mint Capacity Credits on their own.
 
 ## Overview of What Requires Payment
 
@@ -74,7 +76,7 @@ For a deep dive into Capacity Credits, including minting and usage details, chec
 
 ### Lit Relayer
 
-The Lit Relayer is an [open-source service](https://github.com/LIT-Protocol/relay-server) currently hosted by Lit to facilitate onboarding into the Lit ecosystem. It helps reduce initial costs by covering or subsidizing certain interactions with the Lit network, such as minting PKPs and paying for network requests to perform actions like decryption, executing Lit Actions, and using PKPs.
+The Lit Relayer is an [open-source service](https://github.com/LIT-Protocol/relay-server) currently hosted by Lit to facilitate onboarding into the Lit ecosystem. It helps reduce initial costs by covering or subsidizing certain interactions with the Lit network, such as minting PKPs.
 
 While the Relayer eases the onboarding process, it's important to note that its availability is not guaranteed. Users may experience rate limiting and/or congestion due to its shared nature.
 
