@@ -138,9 +138,9 @@ yarn add @alchemy/aa-signers
 
 Get some tstLPX test tokens from Lit's [Chronicle Yellowstone network](https://chronicle-yellowstone-faucet.getlit.dev/).
 
-To obtain a PKP, [read more within the Lit docs](../../sdk/wallets/intro.md). 
+To obtain a PKP, [read more within the Lit docs](../../user-wallets/pkps/quick-start). 
 
-To define an Auth Method [read about Lit's authentication methods](../../user-wallets/pkps/advanced-topics/auth-methods/overview.md).
+To define an Auth Method [read about Lit's authentication methods](../../user-wallets/pkps/advanced-topics/auth-methods/overview).
 
 For Authentication
 
@@ -202,7 +202,7 @@ const provider = new AlchemyProvider({
 ### 5. Authenticating with the Lit Signer
 Before the `AlchemyProvider` can use the `LitSigner` we must `authenticate`
 
-To provide authentication `context` [read about Lit's authentication methods](../../sdk/wallets/auth-methods). 
+To provide authentication `context` [read about Lit's authentication methods](../../user-wallets/pkps/advanced-topics/auth-methods/overview). 
 
 ```js
 litSigner.authenticate({

@@ -148,7 +148,7 @@ To configure other permissions, please use the contract [here](https://github.co
 
 ### 2. How to allow permitted users to execute only specific Lit Actions?
 
-You can start by assigning the PKP to itself as we don't want the PKP owner to arbitrarily change the Lit Action. Check out the docs on doing so here: https://developer.litprotocol.com/v3/sdk/wallets/auth-methods#sending-the-pkp-to-itself. You can also use the PKPHelper.`mintNextAndAddAuthMethods()` function to do this by passing in a specific IPFS CIDs with permission to execute.
+You can start by assigning the PKP to itself as we don't want the PKP owner to arbitrarily change the Lit Action. Check out the docs on doing so [here](../user-wallets/pkps/advanced-topics/auth-methods/overview#sending-the-pkp-to-itself). You can also use the PKPHelper.`mintNextAndAddAuthMethods()` function to do this by passing in a specific IPFS CIDs with permission to execute.
 
 Note that now anyone call your Lit Action, so how should one add a permitted list of users? We can store the permitted list of users, either on-chain or in the Lit Action itself and, fetch it from there. If you decide to put the access list in the Lit Action itself, you can use `conditional-signing` to check whether the provided AuthSig is permitted to execute the Lit Action. Learn more [here](../sdk/serverless-signing/conditional-signing.md).
 

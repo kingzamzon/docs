@@ -17,7 +17,7 @@ Right now, there are two main ways to do auth with Lit Actions. We will dive int
 
 ## Using Lit Auth Directly
 
-Several auth methods are supported by Lit directly. These include methods configured using the [PKPPermissions](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol) contract, the user holding the PKP NFT, or assigned via a Lit Action with permission to sign using the PKP. If you use Lit auth directly, you are limited to the auth methods that we support. We provide an easy to use SDK to help you add auth methods to a PKP. You can find the SDK [here](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/lit-auth-client).
+Several auth methods are supported by Lit directly. These include methods configured using the [PKPPermissions](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PKPPermissions.sol) contract, the user holding the PKP NFT, or assigned via a Lit Action with permission to sign using the PKP. If you use Lit auth directly, you are limited to the auth methods that we support. We provide an easy to use SDK to help you add auth methods to a PKP. You can find the SDK [here](https://github.com/LIT-Protocol/js-sdk/tree/master/packages/lit-auth-client).
 
 ### Existing supported auth methods
 
