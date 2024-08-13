@@ -108,7 +108,7 @@ yarn add @lit-protocol/auth-helpers
 
 ### Set up a controller wallet
 
-To initialize a LitContracts client you need an Ethereum Signer. This can be a standard Ethereum wallet (ethers) or a PKP (more info on the latter **[here](../pkps/advanced-topics/auth-methods/add-remove-auth-methods)**). Here, we're going to use a standard Ethereum wallet.
+To initialize a LitContracts client you need an Ethereum Signer. This can be a standard Ethereum wallet (ethers) or a PKP (more info on the latter [here](../../user-wallets/pkps/advanced-topics/auth-methods/add-remove-auth-methods)). Here, we're going to use a standard Ethereum wallet.
 
 :::warning
 You'll need to use ethers.js v5 with the Lit SDK. The Lit SDK is not compatible with ethers.js v6 or higher.
