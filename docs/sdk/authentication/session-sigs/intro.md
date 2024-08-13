@@ -13,7 +13,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 :::
 Session signatures are how the Lit network authenticates your connection, verifies your identity, and confirms your capabilities. 
 
-Generating session signatures is necessary whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g., signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
+Generating session signatures is necessary whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g. signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
 
 Session signatures are created with session keys, which are generated when you initiate a session through a request to a Lit network using the Lit SDK. Session keys are unique [`ed25519`](https://ed25519.cr.yp.to/) keypairs generated locally by the Lit SDK and are used to sign all requests to the Lit Network during the current session. 
 
