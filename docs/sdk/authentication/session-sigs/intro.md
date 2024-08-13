@@ -21,7 +21,7 @@ While session signatures facilitate ongoing communication during a session, an `
 
 An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message that specifies the Lit Resources and Lit Abilities of the session.
 
-The `AuthSig` allows Lit Nodes to verify your authorization for requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. This ensures that only authorized users can perform specific actions within the Lit Network.
+The `AuthSig` allows Lit nodes to verify your authorization for requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. This ensures that only authorized users can perform specific actions within the Lit network.
 When you make a request, each Lit Node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. 
 
 This authentication system enhances the security of the Lit network. For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
