@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 Capacity Credits can be minted by making requests to the NFT contract that is deployed on the [Chronicle Yellowstone](../../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md) rollup blockchain. The following code will demonstrate how to connect to Chronicle Yellowstone via the Lit RPC URL, and send a transaction to the blockchain to mint a new Capacity Credit.
 
 :::info
-To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credit-intro.md).
+To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credits).
 
 The full implementation of the code used in this guide can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/paying-for-lit/nodejs/src/mintCapacityCredit.ts).
 :::

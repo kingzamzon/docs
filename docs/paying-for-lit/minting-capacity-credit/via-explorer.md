@@ -3,7 +3,7 @@
 Capacity Credits can be minted using the [Lit Explorer](https://explorer.litprotocol.com/) dApp. The following guide will demonstrate how to mint a new Capacity Credit.
 
 :::info
-To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credit-intro.md).
+To learn more about what a Capacity Credit is, and how they're used, please go [here](../capacity-credits).
 :::
 
 ## Prerequisites

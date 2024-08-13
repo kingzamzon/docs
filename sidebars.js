@@ -127,7 +127,7 @@ const sidebars = {
           collapsed: true,
           link: {
             type: 'doc',
-            id: 'paying-for-lit/capacity-credit-intro',
+            id: 'paying-for-lit/capacity-credits',
           },
           items: [
             {

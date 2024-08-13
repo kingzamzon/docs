@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 To use a Capacity Credit to pay for usage of the Lit network, you need to create a *Capacity Delegation Auth Sig*. This Auth Sig is used as proof you have authorization to use a specific Capacity Credit to pay for requests to the Lit network like: signing using a PKP, decrypting data, and executing a Lit Action.
 
 :::info
-To learn more about what a Capacity Credit is, and how they're used, please go [here](./capacity-credit-intro.md).
+To learn more about what a Capacity Credit is, and how they're used, please go [here](./capacity-credits).
 
 For an overview of what requests to the Lit network require payment, go [here](./overview.md#overview-of-what-requires-payment).
 :::

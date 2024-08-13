@@ -18,7 +18,7 @@ To obtain the `tstLPX` test token, please use [the faucet](https://chronicle-yel
 
 Capacity Credits are NFT tokens that represent reserved computational capacity on the Lit network. When minting a credit, you specify and pay to reserve a specific amount of requests per second over a period of time. You'll then use these credits when making requests to the Lit network to perform actions such as decryption, executing Lit Actions, and signing transactions using PKPs and Wrapped Keys.
 
-For a deep dive into Capacity Credits, including minting and usage details, checkout the in-depth [documentation](./capacity-credit-intro.md).
+For a deep dive into Capacity Credits, including minting and usage details, checkout the in-depth [documentation](./capacity-credits).
 
 ## Tools to Simplify Payment
 
@@ -124,6 +124,6 @@ To begin using the paid Lit networks:
     - For applications with many users, look into the Payment Delegation Database.
 3. Set up your chosen method:
     - For the Lit Relayer, go [here](./lit-relayer.md) to begin integrating it into your application.
-    - For Capacity Credits, go [here](./capacity-credit-intro.md) to learn how to mint and use them.
+    - For Capacity Credits, go [here](./capacity-credits) to learn how to mint and use them.
     - For the Payment Delegation Database, go [here](./payment-delegation-db.md) to learn how to register a Payer Wallet and add your users as Payees.
 4. Monitor your usage and adjust as needed.

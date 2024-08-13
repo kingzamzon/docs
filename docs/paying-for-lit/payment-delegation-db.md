@@ -22,7 +22,7 @@ Currently the Payment Delegation Database is only supported on the `datil` and `
 
 The Payment Delegation Database is a [smart contract](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PaymentDelegation/PaymentDelegationFacet.sol) deployed on Lit's rollup, [Chronicle Yellowstone](../../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone). Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server) has been updated to provide two new API routes to interface with the Payment Delegation Database contract:
 
-- `POST` `/register-payer`: This route is used to register a new `payer` and will have a [Capacity Credit](../capacity-credits.md) minted for it which can be delegated to `payees` to pay for their usage of Lit
+- `POST` `/register-payer`: This route is used to register a new `payer` and will have a [Capacity Credit](../capacity-credits) minted for it which can be delegated to `payees` to pay for their usage of Lit
 - `POST` `/add-users`: This route is used to add users (as Ethereum addresses) as `payees` for a specific `payer`. This allows the `payer` to pay for the usage of Lit for each user, without each user having to own a Capacity Credit
 
 Below we will walk through an example of registering a `payer` and adding users as `payees` for a specific `payer`. The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/payment-delegation-relayer/payment-delegation-db-relayer/nodejs/src).
@@ -31,7 +31,7 @@ Below we will walk through an example of registering a `payer` and adding users 
 
 Before continuing with this guide, you should have an understanding of:
 
-- [Capacity Credits](../capacity-credits.md)
+- [Capacity Credits](../capacity-credits)
 - Lit's [Relayer server](https://github.com/LIT-Protocol/relay-server)
   - The Relayer is a centrally ran service by the Lit Protocol team to facilitate and subsidize some interactions with the Lit Protocol smart contracts on Chronicle.
   - In this guide the Relayer does several things for you including:
