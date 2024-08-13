@@ -8,10 +8,6 @@ To streamline the payment process and facilitate integration into your apps, Lit
 
 ## Overview of What Requires Payment
 
-:::note
-Currently requests requiring payment of Lit tokens is done only using the `testLPX` test token. More information about the test token is available [here](../connecting-to-a-lit-network/lit-blockchains/chronicle-yellowstone.md#tstlpx-test-token)
-:::
-
 ### General Lit Network Usage
 
 | Request Type                                | Requires Payment | Can Be Paid for Using the Lit Relayer | Payment Type     | Requires Gas |
