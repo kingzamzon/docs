@@ -3,5 +3,5 @@ The [Datil-test](https://developer.litprotocol.com/connecting-to-a-lit-network/t
 
 The [Datil](https://developer.litprotocol.com/connecting-to-a-lit-network/mainnets#datil) mainnet is now live and superseding the Habanero mainnet, ready to store real world assets.
 
-Check out the [migration docs](/docs/docs/connecting-to-a-lit-network/migrating-to-datil) to learn how you can start building on the Datil networks today.
+Check out the [migration docs](https://developer.litprotocol.com/connecting-to-a-lit-network/migrating-to-datil) to learn how you can start building on the Datil networks today.
 :::
