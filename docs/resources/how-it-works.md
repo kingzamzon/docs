@@ -98,7 +98,7 @@ If you're a developer building on Lit, test tokens can be claimed from the [veri
 
 Learn more about how Lit Protocol works by checking out the resources below:
 
-- About [user wallets](../sdk/wallets/intro).
+- About [user wallets](../user-wallets/overview.md).
 - About [encryption and access control](../sdk/access-control/intro).
 - About [decentralized compute](../sdk/serverless-signing/overview).
 

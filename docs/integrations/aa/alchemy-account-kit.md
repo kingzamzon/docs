@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # Alchemy Account Kit
 
-Learn how Lit [Programmable Key Pairs](../../sdk/wallets/intro.md) can be a signer for Alchemy's Account Kit!
+Learn how Lit [Programmable Key Pairs](../../user-wallets/pkps/overview.md) can be a signer for Alchemy's Account Kit!
 
 
 ---
@@ -140,7 +140,7 @@ Get some tstLPX test tokens from Lit's [Chronicle Yellowstone network](https://c
 
 To obtain a PKP, [read more within the Lit docs](../../sdk/wallets/intro.md). 
 
-To define an Auth Method [read about Lit's authentication methods](../../sdk/wallets/auth-methods).
+To define an Auth Method [read about Lit's authentication methods](../../user-wallets/pkps/advanced-topics/auth-methods/overview.md).
 
 For Authentication
 
