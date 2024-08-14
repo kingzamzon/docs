@@ -23,6 +23,10 @@ The full implementation of the code used in this guide can be found [here](https
 
 Before continuing, you should have an understanding of:
 
+:::note
+The address we will be using to make a request to the Lit network **needs** to have been included in the `delegateeAddresses` for the Capacity Delegation Auth Signature used in this guide.
+:::
+
 - [How to obtain a Capacity Delegation Auth Signature](./delegating-credit.md)
 - [How to generate Session Signatures](../sdk/authentication/session-sigs/get-session-sigs.md)
 - How to execute a [Lit Action](../sdk/serverless-signing/overview)
