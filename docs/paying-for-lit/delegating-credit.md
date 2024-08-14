@@ -13,7 +13,7 @@ For an overview of what requests to the Lit network require payment, go [here](.
 
 As we'll see later in the guide, these Auth Sigs are scoped to specific addresses and will be used to delegate usage of the credit to both yourself and your users to pay for network usage.
 
-The following code will demonstrate how to produce the Capacity Delegation Auth Sig.
+The guide will demonstrate how to produce the Capacity Delegation Auth Sig. To learn how to use the Auth Sig, go [here](./using-delegated-auth-sig.md).
 
 :::info
 The full implementation of the code used in this guide can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/paying-for-lit/nodejs/src/delegateCapacityCredit.ts).
@@ -22,6 +22,10 @@ The full implementation of the code used in this guide can be found [here](https
 ## Prerequisites
 
 Before continuing, you'll need to have minted a Capacity Credit. This can be done by following these guides:
+
+:::note
+In order to delegate usage of the Capacity Credit, you'll need to be able to generate a signature from the Ethereum account that minted the credit.
+:::
 
 - [Minting via the NFT contract](./minting-capacity-credit/via-contract.md)
 - [Minting via the Lit Explorer](./minting-capacity-credit/via-explorer.md)
