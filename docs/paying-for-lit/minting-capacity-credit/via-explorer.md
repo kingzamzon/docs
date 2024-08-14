@@ -79,7 +79,7 @@ You can click the transaction hash in the notification to be taken to the Lit bl
 
 ### Getting the Credit Info
 
-In order to use your new Capacity Credit to pay for the usage of the Lit network, you need to know the *Token ID* of the credit. You find this for the new credit, as well as all other credits minted by your account, by navigating the the [Profile](https://explorer.litprotocol.com/profile) page.
+In order to use your new Capacity Credit to pay for the usage of the Lit network, you need to know the `Token ID` of the credit. You find this for the new credit, as well as all other credits minted by your account, by navigating the the [Profile](https://explorer.litprotocol.com/profile) page.
 
 On this page you will see all of the PKPs and RLI (Capacity Credit) tokens that are associated with your account.
 
