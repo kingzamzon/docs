@@ -1,8 +1,8 @@
 # Paying for Usage of Lit
 
-The Lit networks, like other decentralized networks, manage their computational resources to ensure optimal performance and synchronization across their nodes. To maintain a responsive and balanced network, Lit implements a metering system for resource utilization.
+Like other decentralized networks, Lit has a certain amount of computation available for users that's metered to allow for a responsive network with nodes that are able to stay in-sync with one another.
 
-When using the Lit networks, whether it's the decentralized testnet ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) or the production-ready mainnet beta ([Datil](../connecting-to-a-lit-network/mainnets#datil)) - you'll need to pay for and reserve your usage. This is accomplished using *Lit test tokens* and *Capacity Credits*.
+When using the Lit networks - whether it's the decentralized testnet ([Datil-test](../connecting-to-a-lit-network/testnets#datil-test)) or the production-ready mainnet beta ([Datil](../connecting-to-a-lit-network/mainnets#datil)) - you need to pay for and reserve your usage. This is accomplished using *Capacity Credits*.
 
 To streamline the payment process and facilitate integration into your apps, Lit offers two tools: the *Lit Relayer* and the *Payment Delegation Database*. These tools allow you to seamlessly incorporate Lit functionality without burdening your users with the need to acquire Lit test tokens or mint Capacity Credits on their own.
 
