@@ -6,48 +6,46 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Session Signatures
 
-:::note
+Session Signatures are used to authenticate with the Lit nodes and create a secure connection to the Lit network. 
 
-`SessionSigs` are only available on Ethereum and are heavily in development, so things may change. Be sure to use the latest version of the Lit JS SDK.
+Generating a Session Signature is required whenever you want to request a specific [Lit Ability](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g. signing a transaction) for a particular Lit Resource (e.g. a PKP).
 
-:::
-Session signatures are how the Lit network authenticates your connection, verifies your identity, and confirms your capabilities. 
+Session Signatures are created using session keys, which are generated for you when you initiate a connection with the Lit network via the Lit SDK. These session keys are unique [`ed25519`](https://ed25519.cr.yp.to/) keypairs generated locally by the Lit SDK. They are used to sign all requests to the Lit network during the current session.
 
-Generating session signatures is necessary whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g., signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
+While session keys and their signatures facilitate ongoing communication during a session, an `AuthSig` (Authentication Signature) is used to verify your identity and authorization to the Lit nodes.
 
-Session signatures are created with session keys, which are generated when you initiate a session through a request to a Lit network using the Lit SDK. Session keys are unique [`ed25519`](https://ed25519.cr.yp.to/) keypairs generated locally by the Lit SDK and are used to sign all requests to the Lit Network during the current session. 
+An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message. It specifies the authorized Lit Resources and Lit Abilities of the session.
 
-While session signatures facilitate ongoing communication during a session, an `AuthSig` (Authentication Signature) is used to verify your identity and authorization to the Lit Nodes.
+The `AuthSig` allows Lit nodes to verify your authorization to perform requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. When you make a request, each Lit node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. This ensures that only authorized users can perform specific actions within the Lit network. This authentication system maintains the security and integrity of the Lit network.
 
-An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message that specifies the Lit Resources and Lit Abilities of the session.
-
-The `AuthSig` allows Lit Nodes to verify your authorization for requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. This ensures that only authorized users can perform specific actions within the Lit Network.
-When you make a request, each Lit Node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. 
-
-This authentication system enhances the security of the Lit network. For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
+For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
 
 ## SessionSigs Generation Diagram
 ![Session Signatures Diagram](../../../../static/img//SessionSigs.png)
 
 ## Paying for Usage of the Lit Network
 
-You can facilitate payment for the Lit network within session signatures.
+You can facilitate payment for the Lit network within Session Signatures.
 
 The correct code implementation will depend on whether you're using the free-to-use `datil-dev` network, or one of the "paid" networks: `datil` or `datil-test`.
 
 Usage of the `datil` and `datil-test` networks require the use of [Lit Capacity Credits](../../../sdk/capacity-credits.md). Currently, Capacity Credits are paid for using the `tstLPX` token and don't require any real-world money. However, in the future you will need to pay real-world money for usage of Lit networks, and `datil` and `datil-test` are the Lit networks where this functionality is being tested and refined.
 
-To implement payments correctly, include a [`capacityDelegationAuthSig`](https://developer.litprotocol.com/sdk/capacity-credits#createcapacitydelegationauthsig) within the `capabilityAuthSigs` array when generating session signatures.
+To implement payments correctly, include a [`capacityDelegationAuthSig`](https://developer.litprotocol.com/sdk/capacity-credits#createcapacitydelegationauthsig) within the `capabilityAuthSigs` array when generating Session Signatures.
 
 ## Storing `SessionSigs`
 
-When running code to generate session signatures, you can store the session signatures and session keys using `LocalStorage` from the `node-localstorage` package.
+### Running in a Browser
+
+Session data is automatically stored in the browser's local storage, and no additional configuration is needed.
+
+### Running in a Node.js (or Similar) Environment
+
+A `storageProvider` needs to specified when creating an instance of the `LitNodeClient`. You decide how this implemented, but the following is an example of using `LocalStorage` from the `node-localstorage` package:
 
 ```javascript
 import { LocalStorage } from "node-localstorage";
 ```
-
-When running code within a browser, this import is not needed, as the session signatures and keys will be stored within the browser's local storage. However, when running this code in an environment such as Node.js where browser local storage is not available, the `LocalStorage` module can be used to provide file-based storage. 
 
 ```javascript
 litNodeClient = new LitNodeClient({
@@ -58,16 +56,20 @@ litNodeClient = new LitNodeClient({
     },
 });
 ```
-When a `storageProvider` is added to the `LitNodeClient` instance, all functions for generating session signatures will try to create a session keypair for you and store it in the local storage. 
 
-The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session keypair as the optional `sessionKey` parameter when generating session signatures.
+If an instance of `LocalStorage` is not provided as the `storageProvider`, a new session keypair will be generated each time the code runs instead of reusing previously generated signatures and keys.
 
-If an instance of `LocalStorage` is not provided as the `storageProvider`, a new session keypair will be generated each time the code runs, instead of reusing a single set of keys.
+#### Manually Generating Session Keys
+The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session keypair as the optional `sessionKey` parameter when generating Session Signatures.
 
 ### Resources you can Request
 
-You can pass an array of `resourceAbilityRequests` to any of the functions that generate session signatures. These will be presented to the user in the SIWE message - read more [here](resources-and-abilities) about Lit resources and abilities. The resources and abilities requested by the session key must be narrower or equal to the capabilities granted to it per the session capability object specified in the inner `AuthSig`. 
+You can pass an array of `resourceAbilityRequests` to any of the functions that generate Session Signatures. These requests define the scope of actions the session key can perform. 
 
-When session capability objects are omitted from functions generating session signatures, the SDK will generate a session capability object with **wildcard permissions against all of the resources in that category by default**, i.e. ability to perform operations against all access control conditions. This should only be done when debugging, as allowing unspecified access control conditions is a security vulnerability. Read more [here](capability-objects) about how to create custom session capability objects.
+The requested resources and abilities must be either equal to or a subset of the capabilities specified in the session capability object within the `AuthSig`. A session key cannot have more privileges than those originally granted by the authentication signature.
+
+When session capability objects are omitted from functions generating Session Signatures, the SDK defaults to creating a session capability object with maximum permissions (i.e. can use any Lit Resource with any Lit Ability that the signer of the AuthSig owns). This should only be done when debugging, as allowing unspecified access control conditions is a security vulnerability.
+
+Read more [here](capability-objects) about how to create custom session capability objects.
 
 <FeedbackComponent/>
