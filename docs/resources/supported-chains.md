@@ -16,7 +16,7 @@ PKPs rely on the [ECDSA](https://blog.cloudflare.com/ecdsa-the-digital-signature
 You can learn more about compatible chains [here.](http://ethanfast.com/top-crypto.html)
 
 :::note
-To sign on any chain not currently supported by Programmable Key Pairs, see [Wrapped Keys](../sdk/wrapped-keys/overview)
+To sign on any chain not currently supported by Programmable Key Pairs, see [Wrapped Keys](../user-wallets/wrapped-keys/overview)
 :::
 
 ## Supported Chains (Access Control & PKP)

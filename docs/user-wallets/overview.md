@@ -21,7 +21,7 @@ Programmable Key Pairs (PKPs) and Wrapped Keys are both solutions offered by Lit
 
 PKPs are ECDSA public/private key pairs created by the Lit network using Distributed Key Generation (DKG). Each Lit node holds a share, and more than two-thirds of these shares must be collected to execute a given action (i.e. signing a transaction).
 
-Wrapped Keys are private keys that are encrypted and stored using Lit's Wrapped Keys backend service. They can be initialized by [importing](./importing-key.md) or [storing](./storing-wrapped-key-metadata.md) an existing private key, or can be [generated](./generating-wrapped-key.md) within a Lit node's trusted execution environment (TEE), meaning the clear text private key never exists outside of a single Lit node's TEE.
+Wrapped Keys are private keys that are encrypted and stored using Lit's Wrapped Keys backend service. They can be initialized by [importing](./wrapped-keys/importing-key) or [storing](./wrapped-keys/storing-wrapped-key-metadata) an existing private key, or can be [generated](./wrapped-keys/generating-wrapped-key) within a Lit node's trusted execution environment (TEE), meaning the clear text private key never exists outside of a single Lit node's TEE.
 
 ### PKPs
 

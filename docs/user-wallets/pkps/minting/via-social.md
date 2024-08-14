@@ -181,5 +181,5 @@ async function authenticateWithStytch(method, code, methodId) {
 }
 ```
 
-Read more about this process [here](../auth-methods).
+Read more about this process [here](../advanced-topics/auth-methods/overview.md).
 <FeedbackComponent/>

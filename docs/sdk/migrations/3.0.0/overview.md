@@ -246,11 +246,11 @@ Currently Rate Limiting is enabled on `Datil` and `Datil-test`. In order to use 
 1. The [Lit  Explorer](https://explorer.litprotocol.com/get-credits) or,
 2. Our `contracts-sdk`.
 
-A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For minting Capacity Credits using `contracts-sdk` see [here](../sdk/capacity-credits).
+A `Capacity Credits NFT` can be very easily minted from the Lit Explorer. For minting Capacity Credits using `contracts-sdk` see [here](../../capacity-credits.md).
 
 You’ll also need some 'tstLPX' tokens for minting. These are test tokens that hold no real value and should only be used to pay for usage on `Datil` and `Datil-test`. `tstLPX` should only be claimed from the verified faucet, linked [here](https://chronicle-yellowstone-faucet.getlit.dev/).
 
-For more information on Capacity Credits and network rate limiting see [here](../concepts/capacity-credits-concept)
+For more information on Capacity Credits and network rate limiting see [here](../../../../docs/concepts/capacity-credits-concept.md)
 
 ## Troubleshooting
 

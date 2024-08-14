@@ -14,7 +14,7 @@ Authentication refers to confirming a users identity.  This generally involves r
 
 Authorization refers to confirming that a user is allowed to use a PKP.  Specifically, it's checking the permissions of a PKP and making sure that the user that was Authenticated is also authorized to use a PKP.  
 
-Note: Currently, a [Session Signature](../../authentication/session-sigs/intro.md), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, a Session Sig will always be required.
+Note: Currently, a [Session Signature](../../../../sdk/authentication/session-sigs/intro.md), is **always required** to communicate with the Lit nodes and make a request to the network. It doesn't matter if you are decrypting a piece of data or calling a Lit Action, a Session Sig will always be required.
 
 The flow for using an auth method already supported by lit, with custom Authorization, is as follows:
 
@@ -28,7 +28,7 @@ Inside of your Lit Actions, there is an object called `Lit.Auth` that will be pr
 
 - actionIpfsIds: An array of IPFS IDs that are being called by this Lit Action. This will typically only have a single item, but if you call multiple Lit Actions from inside your Lit Action, they will all be included here. For example, if you have two Lit Actions, A, and B, and A calls B, then the first item in the array will be A and the last item will be B. Therefore, the last item in the array is always the IPFS ID of the Lit Action that is currently running.
 - authSigAddress: A verified wallet address, if one was passed in. This is the address that was used to sign the AuthSig.
-- authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found [here](../auth-methods) in the docs and is used [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L14) in the PKPPermissions Contract.
+- authMethodContexts: An array of auth method contexts. Each entry will contain the following items: `userId`, `appId`, and `authMethodType`. A list of AuthMethodTypes can be found [here](./overview.md) in the docs.
 
 Important to note on Authentication Helpers: authorization is not included. This means that a user can present a Google oAuth JWT as an auth method to be resolved and validated by your Lit Action. The Action will then stick the result inside the Lit.Auth object. In this case, the result would be the users verified google account info like their user id, email address, and more.
 
@@ -111,13 +111,13 @@ Inside your Lit Action, you need to confirm that your user has permissions to us
 
 If you decide to use your own auth, you can still use the PKPPermissions contract to define your method(s) of choice, or deploy your own access control contract.  You could also use any centralized database or other blockchain as the "database" to store the permissions for the PKP.  Your permissions database must be accessible via fetch() or must live on-chain in one of the chains supported by Lit.
 
-If you use the deployed Lit PKPPermissions contract, then it is important to pick a unique authMethodType that isn't used by anyone else, ever. Since it can be a uint256, you should do something like `sha256("some unique or random string")` to pick a unique authMethodType number. You can find the current methods being used [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/PKPPermissions.sol#L25). If this is the route you choose, you could check the PKPPermissions contract in your Lit Action using [this function](https://actions-docs.litprotocol.com/#getpermittedauthmethods).
+If you use the deployed Lit PKPPermissions contract, then it is important to pick a unique authMethodType that isn't used by anyone else, ever. Since it can be a uint256, you should do something like `sha256("some unique or random string")` to pick a unique authMethodType number. You can find the current methods being used [here](https://github.com/LIT-Protocol/LitNodeContracts/blob/main/contracts/lit-node/PKPPermissions.sol). If this is the route you choose, you could check the PKPPermissions contract in your Lit Action using [this function](https://actions-docs.litprotocol.com/#getpermittedauthmethods).
 
 
 ## Steps to implement both custom authentication and authorization
 
 1. Get your user's identity material.  For example, if you were implementing Roblox Oauth, this would be your user's Roblox user id.  
-2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../minting/#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
+2. Get your user a PKP.  You can use the open source Lit relayer for this, which is documented [here](../../minting/via-contracts#minting-pkps-using-the-lit-relayer).  You can use our hosted relayer or run your own.  You will supply the identity material (like their Roblox user id, for example) when minting the PKP.  You should hash the identity material before sending it to the relayer, to provide some privacy for your users and prevent people from checking the chain to find your users.  Minting a PKP with the relayer will atomically mint a new PKP and create an entry in the PKPPermissions contract to authorize that user to use that PKP.
 3. Write a Lit Action for your custom authentication and authorization, which is documented further below.
 
 ### Writing a Lit Action for custom authentication and authorization

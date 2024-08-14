@@ -425,7 +425,7 @@ const sidebars = {
             'tools/access-control',
             'tools/getlit-cli',
             'tools/event-listener',
-            'tools/pkpexplorer',
+            'tools/litexplorer',
             'tools/searchlit',
           ],
         },

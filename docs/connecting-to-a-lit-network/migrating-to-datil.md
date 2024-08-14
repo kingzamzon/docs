@@ -15,7 +15,7 @@ Depending on the Lit network you are using, you should migrate to its correspond
 | ✅                   | ✅                | `6.4.0`                     | `manzano`            | `datil-test`          | Decentralized testnet designed for pre-production deployment |
 | ✅                   | ❌                | `6.4.0`                     | `cayenne`            | `datil-dev`           | Centralized testnet designed for early-stage development     |
 
-Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../capacity-credits); however, `datil-dev` does not.
+Like their counterparts, `datil` and `datil-test` require developers to pay for usage of the Lit network via [Capacity Credits](../sdk/capacity-credits.md); however, `datil-dev` does not.
 
 ## Breaking Changes and Important Updates
 
@@ -30,7 +30,7 @@ If you're migrating from `habanero`, `manzano`, or `cayenne` to any of the Datil
 
 :::
 
-To reduce the friction of re-minting PKPs on Chronicle Yellowstone, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/pkp-migration-script/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
+To reduce the friction of re-minting PKPs on Chronicle Yellowstone, we've written a [migration script](https://github.com/LIT-Protocol/developer-guides-code/tree/master/pkp-migration/nodejs) that will take a list of PKP public keys, fetch their configured Auth Methods and Scopes, and mint new PKPs on a target Lit Network, setting the same Auth Methods and Scopes for each PKP.
 
 After re-minting PKPs on Chronicle Yellowstone, your users could use both the old Chronicle based network PKPs and the new Chronicle Yellowstone PKPs with the same auth methods. However, the corresponding Ethereum address for each PKP will be different. Your users may have things tied to the old PKP Ethereum address, like assets, or Account Abstraction wallets that see that PKP as an authorized signer. So the next step is to migrate these items for your users, or notify them they need to migrate to the new Ethereum address themselves.
 

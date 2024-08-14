@@ -108,7 +108,7 @@ yarn add @lit-protocol/auth-helpers
 
 ### Set up a controller wallet
 
-To initialize a LitContracts client you need an Ethereum Signer. This can be a standard Ethereum wallet (ethers) or a PKP (more info on the latter **[here](https://developer.litprotocol.com/v3/sdk/wallets/auth-methods/lit-auth-methods/add-remove-auth-methods)**). Here, we're going to use a standard Ethereum wallet.
+To initialize a LitContracts client you need an Ethereum Signer. This can be a standard Ethereum wallet (ethers) or a PKP (more info on the latter [here](../../user-wallets/pkps/advanced-topics/auth-methods/add-remove-auth-methods)). Here, we're going to use a standard Ethereum wallet.
 
 :::warning
 You'll need to use ethers.js v5 with the Lit SDK. The Lit SDK is not compatible with ethers.js v6 or higher.
@@ -293,7 +293,7 @@ Now that we have installed all of the required packages and authenticated with t
 
 Permitted scopes are a crucial part of defining the capabilities of each authentication method you use. They determine what actions a given authentication method can perform with the PKP. For instance, the `SignAnything` scope allows an auth method to sign any data, while the `PersonalSign` scope restricts it to signing messages using the EIP-191 scheme.
 
-You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages. You can read more about Auth Method scopes **[here](https://developer.litprotocol.com/v3/sdk/wallets/auth-methods#auth-method-scopes)**.
+You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages. You can read more about Auth Method scopes [here](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.MintWithAuthParams.html#scopes).
 
 The following code block demonstrates how to mint a PKP with specific permitted scopes:
 
@@ -350,7 +350,7 @@ Additional Demos:
 
 1. **[Minting a PKP with an auth method and permitted scopes (Easy)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-2-easy.mjs)**
 2. **[Minting a PKP with an auth method and permitted scopes (Advanced)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-advanced.mjs)**
-3. **[Minting a PKP using social login](https://developer.litprotocol.com/v3/sdk/wallets/minting-methods/mint-via-social)**
+3. **[Minting a PKP using social login](../../user-wallets/pkps/minting/via-social.md)**
 
 ## Mint Capacity Credits and Delegate Usage
 

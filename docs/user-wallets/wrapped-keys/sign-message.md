@@ -24,7 +24,7 @@ Below we will walk through an implementation of `signMessageWithEncryptedKey`. T
 
 Before continuing with this guide, you should have an understanding of:
 
-- [Programmable Key Pairs (PKPs)](../../sdk/wallets/quick-start)
+- [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/quick-start)
 - [Session Signatures](../../sdk/authentication/session-sigs/intro)
 
 ## `signMessageWithEncryptedKey`'s Interface
