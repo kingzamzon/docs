@@ -12,13 +12,26 @@ Generating a Session Signature is required whenever you want to request a specif
 
 Session Signatures are created using session keys, which are generated for you when you initiate a connection with the Lit network via the Lit SDK. These session keys are unique [`ed25519`](https://ed25519.cr.yp.to/) keypairs generated locally by the Lit SDK. They are used to sign all requests to the Lit network during the current session.
 
+<<<<<<< HEAD
 While session keys and their signatures facilitate ongoing communication during a session, an `AuthSig` (Authentication Signature) is used to verify your identity and authorization to the Lit nodes.
+=======
+Generating session signatures is necessary whenever you want to request [Lit Abilities](https://v6-api-doc-lit-js-sdk.vercel.app/enums/types_src.LitAbility.html) (e.g. signing transactions with a particular PKP, executing a specified Lit Action) for your Lit Resources (e.g. PKPs, Lit Actions).
+>>>>>>> fff2e3032678a21085b71b84748cda684d7e3060
 
 An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message. It specifies the authorized Lit Resources and Lit Abilities of the session.
 
 The `AuthSig` allows Lit nodes to verify your authorization to perform requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. When you make a request, each Lit node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. This ensures that only authorized users can perform specific actions within the Lit network. This authentication system maintains the security and integrity of the Lit network.
 
+<<<<<<< HEAD
 For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
+=======
+An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message that specifies the Lit Resources and Lit Abilities of the session.
+
+The `AuthSig` allows Lit nodes to verify your authorization for requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. This ensures that only authorized users can perform specific actions within the Lit network.
+When you make a request, each Lit Node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. 
+
+This authentication system enhances the security of the Lit network. For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
+>>>>>>> fff2e3032678a21085b71b84748cda684d7e3060
 
 ## SessionSigs Generation Diagram
 ![Session Signatures Diagram](../../../../static/img//SessionSigs.png)
