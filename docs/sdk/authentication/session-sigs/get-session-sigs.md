@@ -148,8 +148,8 @@ The nonce should be the latest Ethereum blockhash returned by the nodes during t
 If you want to clear the session key stored in the browser local storage, you can call the [`disconnectWeb3` method](https://js-sdk.litprotocol.com/functions/auth_browser_src.ethConnect.disconnectWeb3.html).
 
 ## Summary
-The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
-
 After executing the example implementation above, you will have generated Session Signatures that allow you to request decrypting data that you have satisfied the Access Control Conditions for.
+
+The full code implementation can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/session-signatures/getSessionSigs). 
 
 <FeedbackComponent/>
