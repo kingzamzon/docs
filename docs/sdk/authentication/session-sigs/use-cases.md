@@ -14,7 +14,7 @@ Alice can create a session capability object that specifies the ability to Authe
 
 Bob can generate an `AuthSig` by delegating equal rights to Bob's session keys, and attaching the capabilities granted to him by Alice as a proof in the session object. Bob can subsequently generate a `SessionSig` that requests for Alice's Capacity Credit NFT and Lit Action IPFS CID in the `resourceAbilityRequests`.
 
-For an example of how you may delegate usage of your NFT see [here](../../authentication/session-sigs/capacity-credits.md)
+For an example of how you may delegate usage of your NFT see [here](../../authentication/session-sigs/capacity-credits)
 
 ### Letting A User Use Your PKP For A Specific Lit Action
 
