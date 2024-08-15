@@ -16,7 +16,7 @@ While session keys and their signatures facilitate ongoing communication during 
 
 An `AuthSig` is an [ERC-5573](https://eips.ethereum.org/EIPS/eip-5573) Sign-In with Ethereum Capabilities message. It specifies the authorized Lit Resources and Lit Abilities of the session.
 
-The `AuthSig` allows Lit nodes to verify your authorization to perform requested actions, such as decrypting data, signing transactions with a PKP, or transferring PKP ownership. When you make a request, each Lit node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. This ensures that only authorized users can perform specific actions within the Lit network. This authentication system maintains the security and integrity of the Lit network.
+The `AuthSig` allows Lit nodes to verify your authorization to perform actions like decrypting data, signing transactions with a PKP, or executing Lit Actions. When you make a request, each Lit node checks your `AuthSig` to confirm that your request aligns with the capabilities you previously defined. This ensures that only authorized users can perform specific actions within the Lit network. This authentication system maintains the security and integrity of the Lit network.
 
 For detailed explanations of this setup, please refer to our [Security Considerations](../security.md) page.
 
@@ -25,13 +25,7 @@ For detailed explanations of this setup, please refer to our [Security Considera
 
 ## Paying for Usage of the Lit Network
 
-You can facilitate payment for the Lit network within Session Signatures.
-
-The correct code implementation will depend on whether you're using the free-to-use `datil-dev` network, or one of the "paid" networks: `datil` or `datil-test`.
-
-Usage of the `datil` and `datil-test` networks require the use of [Lit Capacity Credits](../../../sdk/capacity-credits.md). Currently, Capacity Credits are paid for using the `tstLPX` token and don't require any real-world money. However, in the future you will need to pay real-world money for usage of Lit networks, and `datil` and `datil-test` are the Lit networks where this functionality is being tested and refined.
-
-To implement payments correctly, include a [`capacityDelegationAuthSig`](https://developer.litprotocol.com/sdk/capacity-credits#createcapacitydelegationauthsig) within the `capabilityAuthSigs` array when generating Session Signatures.
+You can facilitate payment for usage the Lit network within Session Signatures. You can read more about paying for usage [here](../../../sdk/capacity-credits.md), and paying using Session Signatures [here](../../../sdk/capacity-credits.md).
 
 ## Storing `SessionSigs`
 
