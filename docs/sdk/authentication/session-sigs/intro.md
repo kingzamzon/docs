@@ -25,7 +25,7 @@ For detailed explanations of this setup, please refer to our [Security Considera
 
 ### Paying for Usage of the Lit Network
 
-You can facilitate payment for usage the Lit network within Session Signatures. You can read more about paying for usage [here](../../../sdk/capacity-credits.md), and paying using Session Signatures [here](../../../sdk/capacity-credits.md).
+You can facilitate payment for usage the Lit network within Session Signatures. You can read more about paying for usage [here](../../../paying-for-lit/overview.md), and paying using Session Signatures [here](../../../paying-for-lit/using-delegated-auth-sig.md).
 
 ## Storing `SessionSigs`
 
