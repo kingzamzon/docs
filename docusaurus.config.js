@@ -159,6 +159,19 @@ const config = {
             ],
           },
           {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Terms of Service',
+                href: 'https://www.litprotocol.com/legal/terms-of-service',
+              },
+              {
+                label: 'Privacy Policy',
+                href: 'https://www.litprotocol.com/legal/privacy-policy',
+              },
+            ],
+          },
+          {
             title: 'Contact',
             items: [
               {
