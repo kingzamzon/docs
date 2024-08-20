@@ -105,5 +105,5 @@ const res = await client.executeJs({
 console.log("decrypted content sent from lit action:", res);
 ```
 
-## Decrypting an API Key From Within an Action
+## Complete Example: Decrypting an API Key From Within an Action
 The following example demonstrates how you can decrypt an API key within a Lit Action. Once decrypted, the API key can be used to perform a remote API call for a given use case. Check out the example [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/decrypt-api-key-in-action)
