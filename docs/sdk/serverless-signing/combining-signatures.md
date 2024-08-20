@@ -1,21 +1,26 @@
 import FeedbackComponent from "@site/src/pages/feedback.md";
 
-# Combine Signatures Within an Action
+# Signing within a Lit Action
 
 :::info
-Only available on the `test` network
+    Only available on the Lit networks:
+        - `datil`
+        - `datil-test`
+        - `datil-dev` 
 :::
 
 ## Overview
 
-When you sign a message with using [Lit's PKPs](https://developer.litprotocol.com/v3/sdk/serverless-signing/quick-start), signature shares are typically combined client-side to form the complete signature. The `signAndCombineEcdsa` function allows you to combine these shares within a Lit Action, meaning they will remain within the confines of each Lit node's Trusted Execution Environment (TEE) and not exposed to the end client.
+When you [sign a message with Lit](../serverless-signing/quick-start#sign-a-transaction.md), signature shares are typically combined client-side. However, the `signAndCombineEcdsa` function allows you to combine signature shares directly within a Lit Action, which is useful for performing operations where heightened security or privacy are paramount. The signature shares will remain within the confines of each Lit node's [Trusted Execution Environment (TEE)](../../resources/how-it-works#1-lit-nodes.md) without ever being exposed to the outside world. 
 
-When you call `signAndCombineEcdsa`, the signature shares are collected from each Lit node before they are combined on a single node.
+When you call the `signAndCombineEcdsa` function, signature shares are collected from each Lit node before being combined on a *single* node. The following doc will show you how you can use this functionality for arbitrary message signing, as well as how to sign a blockchain transaction using ethersJS. A full example project is linked at the bottom of this page. 
 
 ## Signing a message
 
+The following Lit Action uses `signAndCombineEcdsa` to sign the message 'hello world'. 
+
 ```js
-const code = `(async () => {
+const code = (async () => {
   // sign "hello world" and allow all the nodes to combine the signature and return it to the action.
   const utf8Encode = new TextEncoder();
   const toSign = utf8Encode.encode('Hello World');
@@ -29,9 +34,9 @@ const code = `(async () => {
     sigName,
   });
   
-  // Set the response from the action as the signature share which will not need combination on the client
+  // Set the response from the action as the signature share which will not need to be combined on the client
   Lit.Actions.setResponse({ response: JSON.stringify(signature) });
-})()`;
+})();
 
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
@@ -46,14 +51,15 @@ const res = await client.executeJs({
     }
 });
 
-console.log("response from singing in a transaction: ", res);
+console.log("response from signing in a transaction: ", res);
 ```
 
 ## Signing a Transaction
-With the built in `EthersJS` we are able to take advantage of the `serializeTxnForSigning` implementations and serialize a transaction, which is then signed, combined and then sent back to the client.
+
+The following Lit Action uses `EthersJS` to serialize and sign a transaction (combining signature shares from the Lit nodes) before sending it back to the client where it can be broadcasted to chain. 
 
 ```js
-const code = `(async () => {
+const code = (async () => {
   const sigName = "sig1";
   // example transaction
   let txn = {
@@ -81,7 +87,7 @@ const code = `(async () => {
     response: signature
   });
 })();
-`;
+;
 
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
@@ -98,6 +104,6 @@ const res = await client.executeJs({
 console.log("result from singing in a lit action", res);
 ```
 
-## Using Signatures from Within A Lit Action
+## Full Example: Signing Blockchain Transactions
 
-For an example of how you may use the signature from `signAndCombineEcdsa` from within the Lit Action see [here](./run-once.md).
+You can find a full example using the `signAndCombineEcdsa` function to sign and send a blockchain transaction on the Sepolia testnet [here](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/sign-and-combine/sign-and-combine-ecdsa).
