@@ -43,8 +43,9 @@ By default, key shares will be combined client-side. However, you also have the 
 
 You can create your first Lit Action by following this [quick start](../serverless-signing/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
 
-1. [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
-2. [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
-3. [Developer Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master): Quick examples to get you started. 
+1. [Lit Actions API docs](https://actions-docs.litprotocol.com/): An overview of all available functionality offered by Lit Actions.
+2. [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
+3. [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
+4. [Developer Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master): Quick examples to get you started. 
 
 <FeedbackComponent/>
