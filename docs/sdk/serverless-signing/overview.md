@@ -50,8 +50,25 @@ Below are a couple examples of how Lit Actions can be leveraged:
 
 You can create your first Lit Action by following this [Quick Start](../serverless-signing/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
 
-1. [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
-2. [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
-3. [DeFi Automation](https://spark.litprotocol.com/automated-portfolio-rebalancing-uniswap/): Check out this example of using Lit Actions to automate portfolio re-balancing on Uniswap.
+### Starter Examples
+
+- [Conditional signing](../serverless-signing/conditional-signing.md): Return a signature when your pre-defined conditions are met.
+- [Using fetch](../serverless-signing/fetch.md): Fetch data from other chains or off-chain sources in your Lit Action.
+- [Access control](../access-control/lit-action-conditions.md): Create Lit Action Conditions to permit decryption using off-chain data. 
+- [Importing dependencies](../serverless-signing/dependencies.md): Use external packages in your Lit Action.
+
+### Advanced Examples
+
+- [Combining signatures within a Lit Action](../serverless-signing/combining-signatures.md): Sign a message or transaction from within a Lit Action.
+- [Decrypting within a Lit Action](../serverless-signing/combining-decryption-shares.md): Decrypt data for processing within a Lit Action.
+- [Executing a Lit Action on a single node](../serverless-signing/run-once.md): Execute a Lit Action on a single node instead of across the entire network.
+- [Broadcast and collect](../serverless-signing/broadcast-and-collect.md): Execute a Lit Action on each Lit node and aggregate their responses. Useful for performing operations over the return values, such as calaculating an average or median. 
+
+### Resources
+
+- [Lit Actions API docs](https://actions-docs.litprotocol.com/): An overview of all available functionality offered by Lit Actions.
+- [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
+- [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
+- [Developer Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master): Quick examples to get you started. 
 
 <FeedbackComponent/>
