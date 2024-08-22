@@ -2,13 +2,6 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Broadcast and Collect Within an Action
 
-:::info
-    Only available on the Lit networks:
-        - `datil`
-        - `datil-test`
-        - `datil-dev` 
-:::
-
 ## Overview
 
 The `broadcastAndCollect` function let's you run an operation on every node in the Lit network, collect their responses, and aggregate them into a single data set. This is useful if you'd like to perform additional operations over their responses, such as calculating a median or average.

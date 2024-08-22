@@ -2,13 +2,6 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Decrypting within a Lit Action
 
-:::info
-    Only available on the Lit networks:
-        - `datil`
-        - `datil-test`
-        - `datil-dev` 
-:::
-
 ## Overview
 
 Decryption with Lit is typically performed client-side by an authorized user at the time of access. This process is documented [here](../access-control/quick-start.md). However, an alternative method of decryption is supported using Lit Actions. Specifically, the `decryptAndCombine` function can be used to decrypt data within a Lit Action. This is useful for performing operations over sensitive data, where the data itself remains private within the confines of each Lit node's Trusted Execution Environment (TEE). You can learn more about Lit's architecture [here](../../resources/how-it-works#sealed-and-confidential-hardware.md).

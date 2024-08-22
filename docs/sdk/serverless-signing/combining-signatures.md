@@ -2,13 +2,6 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Signing within a Lit Action
 
-:::info
-    Only available on the Lit networks:
-        - `datil`
-        - `datil-test`
-        - `datil-dev` 
-:::
-
 ## Overview
 
 When you [sign a message with Lit](../serverless-signing/quick-start#sign-a-transaction.md), signature shares are typically combined client-side. However, the `signAndCombineEcdsa` function allows you to combine signature shares directly within a Lit Action, which is useful for performing operations where heightened security or privacy are paramount. The signature shares will remain within the confines of each Lit node's [Trusted Execution Environment (TEE)](../../resources/how-it-works#1-lit-nodes.md) without ever being exposed to the outside world. 
