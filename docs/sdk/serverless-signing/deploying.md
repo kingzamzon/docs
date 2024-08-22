@@ -16,7 +16,8 @@ Before diving into the approaches for deploying a Lit Action, you should underst
 Time and size constraints are imposed on Lit Actions to prevent malicious parties from performing DoS attacks and the over consumption of resources on the Lit nodes. The current limitations for Lit Actions are:
 
 - A `30 second` time limit
-- A JSON payload size of `100MB`
+- A max size of `100MB`
+  - Code minifiers can help address code size issues
 - Memory usage (RAM) of `256MB`
 
 ##### Providing a Code String
