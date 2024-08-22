@@ -2,13 +2,6 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Decentralized Compute with Lit Actions
 
-:::info
-**STATE OF THE NETWORK**
-
-Using Lit Actions in production IS now supported on the [Datil Mainnet](../../network/networks/mainnet). Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Datil today. 
-
-:::
-
 ## Introduction
 
 Blockchains like Ethereum have smart contracts that let developers encode logic to change state. With Lit, you have the ability to encode logic that governs the signing and encryption operations that take place on the Lit network. This logic is encoded within a Lit Action: an immutable program written in JavaScript that can be assigned to a key generated on Lit and used to dictate how it is used. 
