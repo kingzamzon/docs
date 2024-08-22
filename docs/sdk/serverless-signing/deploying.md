@@ -16,7 +16,7 @@ Before diving into the approaches for deploying a Lit Action, it's important to 
   - Code minifiers can help address code size issues
 - Memory usage (RAM) of `256MB`
 
-## Choosing a Deployment Method
+## Comparing Deployment Methods
 
 ### Providing a Code String
 
@@ -45,7 +45,7 @@ However, it's important to note some potential drawbacks:
 - Propagation Time: It takes time for files uploaded to the IPFS network to propagate and become available globally. We have observed instances where a newly uploaded Lit Action was not immediately retrievable by Lit nodes due to slow IPFS propagation.
 - Additional Network Call: Each Lit node needs to make an additional network call to fetch the code from IPFS, which can increase execution time.
 
-## Providing a Code String
+## Deploying Using a Code String
 
 This method is the more straightforward of the two, as we're simply providing our Lit Action code as a string when using one of the Lit SDK methods such as [executeJs](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.ILitNodeClient.html#executeJs).
 
@@ -142,7 +142,7 @@ First we're declaring our Lit Action as a [Immediately Invoked Function Expressi
 
 Next we're calling the `executeJs` method to create a request to the Lit network to execute our Lit Action. We provide our `litActionCode` string as the `code` parameter, and when the Lit network receives our request, our `string` will be parsed and executed on each Lit node.
 
-## Uploading to IPFS
+## Deploying Using IPFS
 
 While providing a code string is generally recommended, there are scenarios where uploading your Lit Action to IPFS can be beneficial as covered above. To implement this, we pass the [IPFS Content Identifier (CID)](https://docs.ipfs.tech/quickstart/publish/#cids-explained) when calling Lit SDK methods such as [executeJs](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.ILitNodeClient.html#executeJs).
 
