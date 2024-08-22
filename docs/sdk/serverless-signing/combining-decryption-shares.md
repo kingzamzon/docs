@@ -90,7 +90,7 @@ const code = `(async () => {
   });
 
   Lit.Actions.setResponse({ response: resp });
-})();
+})();`
 
 const res = await client.executeJs({
     code,
