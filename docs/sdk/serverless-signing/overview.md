@@ -2,42 +2,73 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Decentralized Compute with Lit Actions
 
-:::info
-**STATE OF THE NETWORK**
+Lit Actions are immutable JavaScript programs that run on a decentralized Lit network. They enable powerful, blockchain-agnostic applications with built-in cryptographic capabilities like signing and encryption.
 
-Using Lit Actions in production IS now supported on the [Datil Mainnet](../../network/networks/mainnet) and [Datil Testnet](../../network/networks/testnet). Check out the [docs on migration](../../network/migration-guide) to learn how you can start building on Datil today. 
+## What Makes Lit Actions Different
 
-:::
+Lit Actions are a paradigm shift in decentralized computation, offering a flexible and powerful tool for creating sophisticated decentralized applications. Here's some of what makes them unique:
 
-## Introduction
+- **JavaScript-Based**: They're written in JavaScript, executed in a secure Deno environment, and support the importing of third-party libraries such as [ethers.js](https://github.com/ethers-io/ethers.js) and [@solana/web3.js](https://github.com/solana-labs/solana-web3.js).
+- **Blockchain Agnostic**: Unlike traditional smart contracts, Lit Actions can interact with multiple blockchains, allowing for cross-chain applications and broader interoperability.
+- **Off-Chain Capabilities**: Lit Actions can make HTTP requests and interact directly with off-chain APIs, eliminating the need for complex oracle systems.
+- **Programmable Signing**: Through integration with [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/overview.md), Lit Actions enable custom and automated, condition-based signing.
+- **Decentralized Execution**: Lit Actions run on the distributed Lit Network, ensuring high availability and resistance to censorship.
+- **Stateless but Stateful**: While Lit Actions themselves are stateless, they can interact with both on-chain and off-chain state, enabling new application designs not available using existing blockchains like Ethereum.
 
-Blockchains like Ethereum have smart contracts that let developers encode logic to change state. With Lit, you can encode logic that governs signing and encryption. 
+## Example Lit Action Implementation
 
-This logic is encoded using a Lit Action, an immutable JavaScript program that can be "assigned" to the key pairs generated on Lit and used to dictate how they are used.
+To illustrate the power and flexibility of Lit Actions, let's consider a practical example:
 
-A simple example would be a Lit Action that checks if a number is prime. To start, you would generate a [Programmable Key Pair](../../user-wallets/pkps/overview.md) and assign it to your Lit Action so that it could use it to produce a signature. This signature would only be returned if the conditions defined within your Lit Action were met. In this case, the Lit Action would verify that the input was indeed a prime number. Every Lit node would execute your program independently and provision their key share down to the requesting client. Only after more than two-thirds of these shares have been collected can the complete signature be formed. You can read more about how Lit works [here](../../resources/how-it-works.md).
+ > A Lit Action that signs a transaction only if the reported temperature for a specific area is below a defined threshold.
 
-## Features and Examples
+###### How it would work:
 
-### Features
+1. The Lit Action fetches temperature data from three different weather APIs.
+   - The choice of using three APIs is arbitrary, but demonstrates how data from multiple sources can be fetched from within a single Lit Action.
+2. It calculates the average temperature from the these sources.
+3. If the average temperature is below a predefined threshold, the Lit Action uses a [Programmable Key Pair (PKP)](../../user-wallets/pkps/overview.md) to sign a transaction that transfers tokens on a blockchain.
+4. The signed transaction can be broadcasted to the blockchain network immediately, or returned for later submission.
 
-- **[Blockchain Agnostic](../../resources/supported-chains.md)**: Lit Actions can be used to read and write data to or even between blockchains with Programmable Key Pairs
-- **Immutable**: Once a Lit Action has been published, it cannot be modified, just like a smart contract deployed on a blockchain. The [Mint/Grant/Burn](https://github.com/LIT-Protocol/js-sdk/blob/70a041a97b56ba1a75724ba2cd56952b622e8a7f/packages/contracts-sdk/src/abis/PKPNFT.ts#L376) function allows you to atomically link a PKP to an authorized set of Lit Actions, guaranteeing that a particular PKP can only ever be used to sign data from within the approved set.
-- **Off-Chain Compatibility**: You can make arbitrary HTTP requests from a Lit Action, meaning you can pull in data from off-chain sources natively, without needing to use of a third party oracle.
+###### This example showcases how Lit Actions can:
 
-### Examples
+- Interact with on and off-chain APIs/RPCs
+- Perform computations and make decisions using fetched data
+- Use PKPs for [conditional signing](./conditional-signing.md)
+
+## Use Cases
+
+Below are a couple examples of how Lit Actions can be leveraged:
+
+- **Cross-Chain DeFi:** Automate trades or manage portfolios across multiple blockchains.
+- **Decentralized Access Control**: Create dynamic, condition-based access to digital assets or data.
+- **Automated Governance**: Implement complex voting mechanisms or proposal execution across DAOs.
+- **Decentralized Oracles**: Fetch, process, and provide verified off-chain data to smart contracts.
+- **NFT Utilities**: Create dynamic NFT metadata or automate royalty distributions.
+- **Privacy-Preserving Computations**: Perform computation without exposing sensitive data.
+
+## Getting Started
+
+You can create your first Lit Action by following this [Quick Start](../serverless-signing/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
+
+### Starter Examples
 
 - [Conditional signing](../serverless-signing/conditional-signing.md): Return a signature when your pre-defined conditions are met.
 - [Using fetch](../serverless-signing/fetch.md): Fetch data from other chains or off-chain sources in your Lit Action.
 - [Access control](../access-control/lit-action-conditions.md): Create Lit Action Conditions to permit decryption using off-chain data. 
 - [Importing dependencies](../serverless-signing/dependencies.md): Use external packages in your Lit Action.
 
-## Getting Started
+### Advanced Examples
 
-You can create your first Lit Action by following this [quick start](../serverless-signing/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
+- [Combining signatures within a Lit Action](../serverless-signing/combining-signatures.md): Sign a message or transaction from within a Lit Action.
+- [Decrypting within a Lit Action](../serverless-signing/combining-decryption-shares.md): Decrypt data for processing within a Lit Action.
+- [Executing a Lit Action on a single node](../serverless-signing/run-once.md): Execute a Lit Action on a single node instead of across the entire network.
+- [Broadcast and collect](../serverless-signing/broadcast-and-collect.md): Execute a Lit Action on each Lit node and aggregate their responses. Useful for performing operations over the return values, such as calculating an average or median. 
 
-1. [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
-2. [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
-3. [DeFi Automation](https://spark.litprotocol.com/automated-portfolio-rebalancing-uniswap/): Check out this example of using Lit Actions to automate portfolio rebalancing on Uniswap.
+### Resources
+
+- [Lit Actions API docs](https://actions-docs.litprotocol.com/): An overview of all available functionality offered by Lit Actions.
+- [GetLit CLI](../../tools/getlit-cli.md): The GetLitCLI simplifies the Lit Action development process.
+- [Event Listener](../../tools/event-listener.md): Use the Lit Event Listener to create event-based triggers for Lit Actions.
+- [Developer Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master): Quick examples to get you started. 
 
 <FeedbackComponent/>

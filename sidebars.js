@@ -350,6 +350,7 @@ const sidebars = {
           collapsed: true,
           items: [
             'sdk/serverless-signing/quick-start',
+            'sdk/serverless-signing/deploying',
             {
               type: 'category',
               label: 'Advanced Topics',
