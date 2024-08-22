@@ -99,4 +99,4 @@ console.log("result from singing in a lit action", res);
 
 ## Complete Example: Signing Blockchain Transactions
 
-You can find a full example using the `signAndCombineEcdsa` function to sign and send a blockchain transaction on the Sepolia testnet [here](https://github.com/LIT-Protocol/developer-guides-code/tree/wyatt/sign-and-combine/sign-and-combine-ecdsa).
+You can find a full example using the `signAndCombineEcdsa` function to sign and send a blockchain transaction on Lit's Yellowstone rollup [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/sign-and-combine-ecdsa/nodejs).
