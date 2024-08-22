@@ -53,7 +53,7 @@ const code = `
     // will be sent by all nodes, even though only a single node did the computation
     Lit.Actions.setResponse(res);
 })()
-
+`;
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
 });
