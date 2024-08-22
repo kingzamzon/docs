@@ -20,7 +20,7 @@ When you call this function, the responses from each node will be grouped togeth
 The following Lit Action uses `broadcastAndCollect` to fetch the forecast using the weather.gov API before combining the responses from each Lit node into a single array. 
 
 ```js
-const code = (async () => {
+const code = `(async () => {
   const url = "https://api.weather.gov/gridpoints/TOP/31,80/forecast";
   const resp = await fetch(url).then((response) => response.json());
   const temp = resp.properties.periods[0].temperature;
