@@ -86,6 +86,6 @@ When using `runOnce` you might want to set the result of the `runOnce` execution
 In the event all responses are the same then the strategy will not be relevant.
 :::
 
-For information on using the `signAndCombineEcdsa` function see [here](./combining-signatures.md).
+For information on using the `signAndCombineEcdsa` function go [here](./combining-signatures.md).
 
 For information on using the `getRpcUrl` function see [here](./get-rpc-url.md).
