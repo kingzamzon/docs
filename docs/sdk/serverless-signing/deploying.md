@@ -1,6 +1,6 @@
-# Uploading Your Lit Action
+# Deploying Your Lit Action
 
-Lit Actions are powerful JavaScript programs that run on a Lit network. This guide covers the two processes for providing your Lit Action code to the Lit network. For more info on what a Lit Action is, go [here](./overview.md.). For a guide on getting started with Lit Actions, go [here](./quick-start.md).
+Lit Actions are powerful JavaScript programs that run on a Lit network. This guide covers the two approaches to deploying your Lit Action to Lit. For more info on what a Lit Action is, go [here](./overview.md). For a guide on getting started with Lit Actions, go [here](./quick-start.md).
 
 In order for the Lit nodes to be able to run your Lit Action, they need access to it's code. There are two methods of providing your code to the Lit network for execution:
 
@@ -9,12 +9,27 @@ In order for the Lit nodes to be able to run your Lit Action, they need access t
 
 ## Choosing a Method
 
+Before diving into the approaches for deploying a Lit Action, you should understand the following constraints:
+
+### Lit Action Constraints
+
+Time and size constraints are imposed on Lit Actions to prevent malicious parties from performing DoS attacks and the over consumption of resources on the Lit nodes. The current limitations for Lit Actions are:
+
+- A `30 second` time limit
+- A JSON payload size of `100MB`
+- Memory usage (RAM) of `256MB`
+
 ##### Providing a Code String
 
 Generally, providing your Lit Action code as a code string is the recommended method for the following reasons:
 
 - **Direct Supply**: Your code is supplied directly to each Lit node, eliminating any potential network latency or availability issues caused by fetching your code from the IPFS network.
 - **Reliability**: It removes the dependency on the IPFS network, ensuring your Lit Action is always available for execution.
+
+However, it's important to note some potential drawbacks:
+
+- **Increased Network Usage**: Because the entire Lit Action code must be sent with each request, this can lead to higher network usage and potentially slower overall execution times.
+- **Transparency** Depending on where/how you make your source code available to your users, users may find it challenging to review and verify the exact code their [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/overview.md) are interacting with.
 
 ##### Uploading to IPFS
 
@@ -219,7 +234,7 @@ When the Lit network receives our request, each Lit node will make a request to 
 
 ## A Note on Immutability
 
-One of the features of smart contracts on Ethereum is the immutability they can offer. For most contracts, you know that the code that lives as a specific address can never be changed, and you don't have to worry about the underlying code being swapped out for some malicious implementation. The same security guarantee can be made when using Lit Actions.
+One of the features of smart contracts on Ethereum is the immutability they can offer. For most contracts, you know that the code that lives at a specific address can never be changed, and you don't have to worry about the underlying code being swapped out for some malicious implementation. The same security guarantee can be made when using Lit Actions.
 
 If you upload your Lit Action code to IPFS, it's easy to reason about how this immutability is achieved. Because IPFS uses content-based addressing, i.e. the Content Identifier (CID) of your Lit Action is directly derived from its content, any change to the code, no matter how small, results in a completely different CID. This means, like Ethereum smart contract addresses, your users can check and verify the IPFS CID that's being used when making requests to the Lit network.
 

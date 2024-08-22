@@ -26,14 +26,14 @@ To illustrate the power and flexibility of Lit Actions, let's consider a practic
 1. The Lit Action fetches temperature data from three different weather APIs.
    - The choice of using three APIs is arbitrary, but demonstrates how data from multiple sources can be fetched from within a single Lit Action.
 2. It calculates the average temperature from the these sources.
-3. If the average temperature is below a predefined threshold, the Lit Action uses a Programmable Key Pair (PKP) to sign a transaction that transfers tokens on a blockchain.
+3. If the average temperature is below a predefined threshold, the Lit Action uses a [Programmable Key Pair (PKP)](../../user-wallets/pkps/overview.md) to sign a transaction that transfers tokens on a blockchain.
 4. The signed transaction can be broadcasted to the blockchain network immediately, or returned for later submission.
 
 ###### This example showcases how Lit Actions can:
 
 - Interact with on and off-chain APIs/RPCs
 - Perform computations and make decisions using fetched data
-- Use PKPs for conditional signing
+- Use PKPs for [conditional signing](./conditional-signing.md)
 
 ## Use Cases
 
@@ -62,7 +62,7 @@ You can create your first Lit Action by following this [Quick Start](../serverle
 - [Combining signatures within a Lit Action](../serverless-signing/combining-signatures.md): Sign a message or transaction from within a Lit Action.
 - [Decrypting within a Lit Action](../serverless-signing/combining-decryption-shares.md): Decrypt data for processing within a Lit Action.
 - [Executing a Lit Action on a single node](../serverless-signing/run-once.md): Execute a Lit Action on a single node instead of across the entire network.
-- [Broadcast and collect](../serverless-signing/broadcast-and-collect.md): Execute a Lit Action on each Lit node and aggregate their responses. Useful for performing operations over the return values, such as calaculating an average or median. 
+- [Broadcast and collect](../serverless-signing/broadcast-and-collect.md): Execute a Lit Action on each Lit node and aggregate their responses. Useful for performing operations over the return values, such as calculating an average or median. 
 
 ### Resources
 
