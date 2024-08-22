@@ -80,7 +80,7 @@ const code = `(async () => {
     response: signature
   });
 })();
-;
+`;
 
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
