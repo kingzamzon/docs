@@ -29,7 +29,7 @@ const code = `(async () => {
   
   // Set the response from the action as the signature share which will not need to be combined on the client
   Lit.Actions.setResponse({ response: JSON.stringify(signature) });
-})();
+})();`
 
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
