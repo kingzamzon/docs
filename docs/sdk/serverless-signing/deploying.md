@@ -7,20 +7,18 @@ In order for the Lit nodes to be able to run your Lit Action, they need access t
 1. Providing a Code String
 2. Uploading to IPFS
 
-## Choosing a Method
+## Lit Action Constraints
 
-Before diving into the approaches for deploying a Lit Action, you should understand the following constraints:
-
-### Lit Action Constraints
-
-Time and size constraints are imposed on Lit Actions to prevent malicious parties from performing DoS attacks and the over consumption of resources on the Lit nodes. The current limitations for Lit Actions are:
+Before diving into the approaches for deploying a Lit Action, it's important to understand the constraints that in place to prevent malicious parties from performing DoS attacks, and the over consumption of resources on the Lit nodes. The following are the time and size constraints that are imposed on Lit Actions:
 
 - A `30 second` time limit
 - A max size of `100MB`
   - Code minifiers can help address code size issues
 - Memory usage (RAM) of `256MB`
 
-##### Providing a Code String
+## Choosing a Deployment Method
+
+### Providing a Code String
 
 Generally, providing your Lit Action code as a code string is the recommended method for the following reasons:
 
@@ -32,7 +30,7 @@ However, it's important to note some potential drawbacks:
 - **Increased Network Usage**: Because the entire Lit Action code must be sent with each request, this can lead to higher network usage and potentially slower overall execution times.
 - **Transparency** Depending on where/how you make your source code available to your users, users may find it challenging to review and verify the exact code their [Programmable Key Pairs (PKPs)](../../user-wallets/pkps/overview.md) are interacting with.
 
-##### Uploading to IPFS
+### Uploading to IPFS
 
 While not generally recommended for most use cases, uploading your Lit Action to IPFS can be beneficial in certain scenarios:
 
