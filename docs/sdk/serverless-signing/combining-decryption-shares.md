@@ -54,7 +54,7 @@ The first step is to encrypt your data. The encryption operation will be perform
 ```
 Let's break this down. The first step was creating your Access Control Condition (ACC), which is used to specify who or under what conditions your data should be able to be decrypted.
 
-The second step was actually encrypting the static content (string, file, zip, etc...) using the `encryptString` function. This returns a ciphertext and dataToEncryptHash. The ciphertext, dataToEncryptHash, chain data, and any other metadata (such as your accessControlConditions) should be stored on your storage provider of choice. A solid choice is IPFS. 
+The second step was actually encrypting the static content (string, file, zip, etc...) using the `encryptString` function. This returns a `ciphertext` and `dataToEncryptHash`. The `ciphertext`, `dataToEncryptHash`, chain data, and any other metadata (such as your `accessControlConditions`) should be stored on your storage provider of choice. A solid choice is IPFS. 
 
 ## Using IPFS CID as an Access Control Parameter
 For this example, you can set your Access Control parameter as `currentActionIpfsId` which can be accomplished using the snippet below. This will mean that only a specific Lit Action (based on the IPFS CID where it has been deployed) will be able to decrypt your data. No other party will ever have access. This is useful for situations where you want to restrict access to sensitive information, like an API key, so that it can only be decrypted by a specific Lit Action.
