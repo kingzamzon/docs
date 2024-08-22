@@ -13,7 +13,7 @@ When you call the `signAndCombineEcdsa` function, signature shares are collected
 The following Lit Action uses `signAndCombineEcdsa` to sign the message 'hello world'. 
 
 ```js
-const code = (async () => {
+const code = `(async () => {
   // sign "hello world" and allow all the nodes to combine the signature and return it to the action.
   const utf8Encode = new TextEncoder();
   const toSign = utf8Encode.encode('Hello World');
