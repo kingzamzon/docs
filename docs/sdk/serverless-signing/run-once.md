@@ -8,7 +8,7 @@ Typically, when a Lit Action is called it is executed across every Lit node in p
 
 The `runOnce` function takes another function as a parameter and a deterministic algorithm is used to select the Lit node that it will be executed on. The selected node will run the function and broadcast the result to all of the other Lit nodes.
 
-The following doc will provide an example of using the `runOnce` function to send a signed Ethereum transaction to chain. 
+The following code example uses the `runOnce` function to send a signed Ethereum transaction to chain. 
 
 ## Using a Single Node to Send a Transaction
 
