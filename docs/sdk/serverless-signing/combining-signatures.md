@@ -52,7 +52,7 @@ console.log("response from signing in a transaction: ", res);
 The following Lit Action uses `ethers.js` to serialize and sign a transaction (combining signature shares from the Lit nodes) before sending it back to the client where it can be broadcasted to chain. 
 
 ```js
-const code = (async () => {
+const code = `(async () => {
   const sigName = "sig1";
   // example transaction
   let txn = {
