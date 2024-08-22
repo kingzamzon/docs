@@ -34,7 +34,7 @@ const code = `(async () => {
   const median = temperatures.sort()[Math.floor(temperatures.length / 2)];
   Lit.Actions.setResponse({response: median});
 })();
-;
+`;
 
 const client = new LitNodeClient({
     litNetwork: "datil-dev",
