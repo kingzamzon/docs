@@ -6,7 +6,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 When you [sign a message with Lit](../serverless-signing/quick-start#sign-a-transaction.md), signature shares are typically combined client-side. However, the `signAndCombineEcdsa` function allows you to combine signature shares directly within a Lit Action, which is useful for performing operations where heightened security or privacy are paramount. The signature shares will remain within the confines of each Lit node's [Trusted Execution Environment (TEE)](../../resources/how-it-works#1-lit-nodes.md) without ever being exposed to the outside world. 
 
-When you call the `signAndCombineEcdsa` function, signature shares are collected from each Lit node before being combined on a *single* node. The following doc will show you how you can use this functionality for arbitrary message signing, as well as how to sign a blockchain transaction using ethersJS. A complete example project is linked at the bottom of this page. 
+When you call the `signAndCombineEcdsa` function, signature shares are collected from each Lit node before being combined on a *single* node. The following code example will show how you can use this functionality for arbitrary message signing, as well as how to sign a blockchain transaction using ethers.js. A complete code example is linked at the bottom of this page. 
 
 ## Signing a message
 
