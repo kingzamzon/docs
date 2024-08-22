@@ -80,7 +80,7 @@ We can now use the `ciphertext` and `dataToEncryptHash` that we got earlier duri
 In the below example we set the `authSig` to `null` as a way to tell the Lit Action runtime to use the `authSig` which was provided to the node when you call `executeJs` which returns `sessionSigs`. If you wish you may provide a different Auth Signature if the one provided from the session is not relevant to your use case. You can learn more about authentication and creating session signatures using these [docs](../authentication/session-sigs/intro.md).
 
 ```js
-const code = (async () => {
+const code = `(async () => {
   const resp = await Lit.Actions.decryptAndCombine({
     accessControlConditions,
     ciphertext,
