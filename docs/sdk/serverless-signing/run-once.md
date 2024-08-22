@@ -17,7 +17,7 @@ The value returned from the function provided to `runOnce` must return a value w
 :::
 
 ```js
-const code = 
+const code = `
 (async () => {
     const sigName = "sig1";
     // example transaction
