@@ -6,7 +6,7 @@ import TabItem from '@theme/TabItem';
 # Conditional Signing
 
 ## Overview
-Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs.
+Lit Actions inherit the powerful condition checking ability that Lit Protocol utilizes for [access control](../access-control/intro). You can easily check on or off-chain conditions inside of Lit Actions to generate proofs and condition-based transaction automations
 
 The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do.
 
@@ -14,7 +14,7 @@ The below example will check if the user has at least 1 Wei on Ethereum, only re
 
 - Knowlege of [SessionSigs](../authentication/session-sigs/intro)
 - Knowledge of how to [generate an AuthSig](../migrations/6.0.0.md#generate-an-authsig)
-- Basic understanding of [serverless signing](../serverless-signing/quick-start)
+- Basic understanding of [Lit Actions](../serverless-signing/quick-start)
 
 ## Complete Code Example
 The complete code example is available in the [Lit Developer Guides Code Repository](https://github.com/LIT-Protocol/developer-guides-code/tree/master/conditional-signing). There is both a browser and Node.js implementation of the code.
@@ -56,5 +56,10 @@ const litActionCode = `
 })();
 `;
 ```
+
+## Summary
+This guide demonstrates how to use Lit Actions to conditionally sign a message or transaction.
+
+If you'd like to learn more about Lit Actions, check out the [Lit Actions SDK](https://actions-docs.litprotocol.com/), or our Advanced uses of Lit Actions [here](https://developer.litprotocol.com/category/advanced-topics-1).
 
 <FeedbackComponent/>
