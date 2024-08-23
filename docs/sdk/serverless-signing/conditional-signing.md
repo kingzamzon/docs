@@ -5,123 +5,55 @@ import TabItem from '@theme/TabItem';
 
 # Conditional Signing
 
-## Prerequisites
-
-- Familiarity with JavaScript
-- Basic understanding of [serverless signing](../serverless-signing/quick-start.md)
-
 ## Overview
-Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs. This system can be used to uphold the integrity of data on the open web, in its function as a decentralized notary.
+Lit Actions inherit the powerful condition checking that Lit Protocol utilizes for Access Control. This means that you can easily check any on-chain condition inside a Lit Action, which can be useful for generating proofs.
 
 The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do.
 
+## Prerequisites
+
+- Knowlege of [SessionSigs](../authentication/session-sigs/intro)
+- Knowledge of how to [generate an AuthSig](../migrations/6.0.0.md#generate-an-authsig)
+- Basic understanding of [serverless signing](../serverless-signing/quick-start)
+
+## Complete Code Example
+The complete code example is available in the [Lit Developer Guides Code Repository](https://github.com/LIT-Protocol/developer-guides-code/tree/master/conditional-signing). There is both a browser and Node.js implementation of the code.
+
+### Example Lit Action
+
+The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do. It uses the [`checkConditions`](https://actions-docs.litprotocol.com/#checkconditions) function from the [Lit Actions SDK](https://actions-docs.litprotocol.com/). This performs a conditional check on the user's Ethereum balance, checking the balance of the wallet address that signed the Sign-in With Ethereum (EIP-4361)[https://eips.ethereum.org/EIPS/eip-4361] when creating the `AuthSig`, which is passed in as an argument to the Lit Action. The boolean returned will be used to determine whether the wallet will be used to sign `dataToSign` or not. 
+
 :::note
-`toSign` data is required to be in 32 byte format. 
-
-The `ethers.utils.arrayify(ethers.utils.keccak256(...)` can be used to convert the `toSign` data to the correct format.
+The `toSign` data is required to be an array of 8-bit integers. An example of this is shown below:
+```dataToSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),```
 :::
-
-Installed the latest client on `datil-dev`
-
-```bash
-yarn install @lit-protocol/lit-node-client
-```
-
-Set up the Lit Action code to be run on the Lit nodes.
 
 ```jsx
 const litActionCode = `
-const go = async () => {
-  // test an access control condition
-  const testResult = await Lit.Actions.checkConditions({conditions, authSig, chain})
+(async () => {
+  try {
+    // test an access control condition
+    const testResult = await Lit.Actions.checkConditions({
+      conditions,
+      authSig,
+      chain,
+    });
 
-  console.log('testResult', testResult)
+    if (!testResult) {
+      LitActions.setResponse({ response: "address does not have 1 or more Wei on Ethereum Mainnet" });
+      return;
+    }
 
-  // only sign if the access condition is true
-  if (!testResult){
-    return;
+    const sigShare = await LitActions.signEcdsa({
+      toSign: dataToSign,
+      publicKey,
+      sigName: "sig",
+    });
+  } catch (error) {
+    LitActions.setResponse({ response: error.message });
   }
-
-  const message = new Uint8Array(
-    await crypto.subtle.digest('SHA-256', new TextEncoder().encode('Hello world'))
-  );
-  // this is the string "Hello World" for testing, hashed with sha-256 above.
-  const toSign = message;
-  // this requests a signature share from the Lit Node
-  // the signature share will be automatically returned in the HTTP response from the node
-  const sigShare = await LitActions.signEcdsa({ toSign, publicKey: "0x02e5896d70c1bc4b4844458748fe0f936c7919d7968341e391fb6d82c258192e64", sigName: "sig1" });
-};
-
-
-
-go();
+})();
 `;
-```
-
-Obtain an AuthSig
-
-This AuthSig is used for the conditional check in our Lit Action. The address of the key that signed the message to produce this AuthSig will be used as the `:userAddress` when the Lit Action checks that the balance is greater than 1 Wei.
-
-```jsx
-// you need an AuthSig to auth with the nodes
-// normally you would obtain an AuthSig by calling LitJsSdk.checkAndSignAuthMessage({chain})
-
-const authSig = {
-  sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
-  derivedVia: "web3.eth.personal.sign",
-  signedMessage:
-    "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
-  address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
-};
-
-```
-
-Obtain a [SessionSigs](../../sdk/authentication/session-sigs/get-session-sigs) to be used for authenticating with the Lit network. Without a `SessionSigs`, you will not be able to make requests to the network.
-
-Run the Lit Action code on the Lit nodes:
-
-```jsx
-
-const runLitAction = async () => {
-
-const litNodeClient = new LitJsSdk.LitNodeClient({
-    litNetwork: "datil-dev",
-  });
-
-await litNodeClient.connect();
-
-const signatures =await litNodeClient.executeJs({
-    code: litActionCode,
-    sessionSigs,
-    jsParams: {
-      conditions: [
-        {
-          conditionType: "evmBasic",
-          contractAddress: "",
-          standardContractType: "",
-          chain: "ethereum",
-          method: "eth_getBalance",
-          parameters: [":userAddress", "latest"],
-          returnValueTest: {
-            comparator: ">=",
-            value: "1",
-          },
-        },
-      ],
-      authSig: {
-        sig: "0x2bdede6164f56a601fc17a8a78327d28b54e87cf3fa20373fca1d73b804566736d76efe2dd79a4627870a50e66e1a9050ca333b6f98d9415d8bca424980611ca1c",
-        derivedVia: "web3.eth.personal.sign",
-        signedMessage:
-          "localhost wants you to sign in with your Ethereum account:\n0x9D1a5EC58232A894eBFcB5e466E3075b23101B89\n\nThis is a key for Partiful\n\nURI: https://localhost/login\nVersion: 1\nChain ID: 1\nNonce: 1LF00rraLO4f7ZSIt\nIssued At: 2022-06-03T05:59:09.959Z",
-        address: "0x9D1a5EC58232A894eBFcB5e466E3075b23101B89",
-      },
-      chain: "ethereum",
-    },
-  });
-  console.log("signatures: ", signatures);
-};
-
-runLitAction();
 ```
 
 <FeedbackComponent/>
