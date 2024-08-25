@@ -396,7 +396,7 @@ Once you have minted a Capacity Credits NFT, you can delegate usage of it to the
 const { capacityDelegationAuthSig } =
   await litNodeClient.createCapacityDelegationAuthSig({
     uses: '1',
-    signer: wallet,
+    dAppOwnerWallet: wallet,
     capacityTokenId: capacityTokenIdStr,
     delegateeAddresses: [secondWalletPKPInfo.ethAddress],
   });
