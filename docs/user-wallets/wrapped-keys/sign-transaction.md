@@ -377,7 +377,12 @@ If `broadcast` is set to `true`, then the signed transaction will be broadcasted
 
 If `network` is set to `solana`, then the return value of `signTransactionWithEncryptedKey` will be `Promise<string>` where the `string` is the signed transaction.
 
-If `broadcast` is set to `true`, then the signed transaction will be submitted to `chain`, but `signTransactionWithEncryptedKey` will still return the signed transaction and **not** the transaction hash.
+If `broadcast` is set to `true`, then the signed transaction will be submitted to `chain`, but `signTransactionWithEncryptedKey` will still return the signed transaction and **not** the transaction hash. To view the status of or confirm the transaction, you can do:
+
+```ts
+const status = await solanaConnection.getSignatureStatus(signedTx); // { context: { apiVersion: '2.0.5', slot: 321490377 }, value: { confirmationStatus: 'confirmed', confirmations: 0, err: null, slot: 321490377, status: { Ok: null } } }
+const confirmation = await solanaConnection.confirmTransaction(signedTx); // { context: { slot: 321490379 }, value: { err: null } }
+```
 
 To get the transaction hash or receipt from the broadcasted signed transaction, you can do the following using the [@solana/web3.js](https://github.com/solana-labs/solana-web3.js) SDK:
 

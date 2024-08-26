@@ -17,6 +17,7 @@ The below example will check if the user has at least 1 Wei on Ethereum, only re
 - Basic understanding of [Lit Actions](../serverless-signing/quick-start)
 
 ## Complete Code Example
+
 The complete code example is available in the [Lit Developer Guides Code Repository](https://github.com/LIT-Protocol/developer-guides-code/tree/master/conditional-signing). There is both a browser and Node.js implementation of the code.
 
 ### Example Lit Action
@@ -60,6 +61,6 @@ const litActionCode = `
 ## Summary
 This guide demonstrates how to use Lit Actions to conditionally sign a message or transaction.
 
-If you'd like to learn more about Lit Actions, check out the [Lit Actions SDK](https://actions-docs.litprotocol.com/), or our [Advanced Uses](https://developer.litprotocol.com/category/advanced-topics-1) of Lit Actions
+If you'd like to learn more about Lit Actions, check out the [Lit Actions SDK](https://actions-docs.litprotocol.com/), or our [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) section on Lit Actions.
 
 <FeedbackComponent/>
