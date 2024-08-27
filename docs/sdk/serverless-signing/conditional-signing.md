@@ -29,6 +29,7 @@ The `toSign` data is required to be an array of 8-bit integers. An example of th
 
 ```ts
 dataToSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),
+```
 :::
 
 ```jsx
