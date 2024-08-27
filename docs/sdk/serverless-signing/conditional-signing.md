@@ -27,7 +27,8 @@ The below example will check if the user has at least 1 Wei on Ethereum, only re
 :::note
 The `toSign` data is required to be an array of 8-bit integers. An example of this is shown below:
 
-```dataToSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),```
+```ts
+dataToSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),
 :::
 
 ```jsx
