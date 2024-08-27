@@ -22,7 +22,7 @@ The complete code example is available in the [Lit Developer Guides Code Reposit
 
 ### Example Lit Action
 
-The following Lit Action uses `signAndCombineEcdsa` to combine the signatures created by each share signing the `toSign` variable, which is a transaction hash. We then serialize the transaction and sign it using `ethers.js`.
+The following Lit Action uses `signAndCombineEcdsa` to combine the signatures created by each share signing the `toSign` variable, which is the provided hash of a serialized transaction. We then serialize the transaction and sign it using `ethers.js`.
 
 ```jsx
 const litActionCode = `
