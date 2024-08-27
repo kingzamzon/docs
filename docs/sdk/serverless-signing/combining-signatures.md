@@ -22,7 +22,7 @@ The complete code example is available in the [Lit Developer Guides Code Reposit
 
 ### Example Lit Action
 
-The following Lit Action uses `signAndCombineEcdsa` to combine the signatures created by each share signing the `toSign` variable, which is a transaction hash. We then serialize the transaction and sign it using `ethers.js`.
+The following Lit Action uses `signAndCombineEcdsa` to combine the signatures created by each share signing the `toSign` variable, which is the provided hash of a serialized transaction. We then serialize the transaction and sign it using `ethers.js`.
 
 ```jsx
 const litActionCode = `
@@ -67,7 +67,7 @@ const litActionCode = `
 ```
 
 ## Summary
-This guide demonstrates how to combine PKP signature shares, and how to used the combined shares to sign a message or transaction within a Lit Action.
+This guide demonstrates how to combine PKP signature shares, and submit a signed transaction all within a Lit Action.
 
 If you'd like to learn more about Lit Actions, check out the [Lit Actions SDK](https://actions-docs.litprotocol.com/), or our [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) section on Lit Actions.
 
