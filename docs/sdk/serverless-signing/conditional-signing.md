@@ -30,6 +30,10 @@ The `toSign` data is required to be an array of 8-bit integers. An example of th
 ```dataToSign: ethers.utils.arrayify(ethers.utils.keccak256([1, 2, 3, 4, 5])),```
 :::
 
+:::info
+In the below code example, `sigShare` is a magic value within a Lit Action that will be automatically returned for you.
+:::
+
 ```jsx
 const litActionCode = `
 (async () => {

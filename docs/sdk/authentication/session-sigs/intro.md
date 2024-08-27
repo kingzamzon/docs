@@ -39,9 +39,7 @@ A `storageProvider` needs to specified when creating an instance of the `LitNode
 
 ```javascript
 import { LocalStorage } from "node-localstorage";
-```
 
-```javascript
 litNodeClient = new LitNodeClient({
     litNetwork: LitNetwork.DatilDev,
     // This storageProvider object can be omitted if executing in a browser
