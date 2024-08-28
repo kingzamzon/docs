@@ -168,6 +168,8 @@ To execute the Lit Action, you'll need to pass in the `sessionSigs` and `code` p
 
 If you'd like to use the IPFS method mentioned previously, you would instead use `ipfsId` instead of `code: litActionCode`, and the `ipfsId` would be the IPFS CID of the Lit Action code.
 
+More details on the `executeJs` method can be found [here](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.JsonExecutionSdkParams.html).
+
 <details>
 <summary>Click here to see how this is done</summary>
 <p>
@@ -187,6 +189,6 @@ const response = await litNodeClient.executeJs({
 
 # Learn More
 
-By now you should have successfully written a and executed a Lit Action. If you’d like to learn more about what’s possible with Lit Actions, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) section.
+By now you should have successfully written and executed a Lit Action. If you’d like to learn more about what’s possible with Lit Actions, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) section.
 
 <FeedbackComponent/>
