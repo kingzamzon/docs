@@ -30,7 +30,7 @@ You should use **at least Node v19.9.0** for
 - **crypto** support.
 - **webcrypto** library support if targeting `web`.
 
-If you're just getting started with Lit, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an envionment containing the necessary packages to get started with Lit.
+If you're just getting started with Lit or development in general, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an environment for getting started with the Lit SDK.
 
 For Lit Actions specifically, you'll also be needing these packages:
 
@@ -69,7 +69,7 @@ Below will introduce a very basic setup of how to go from an empty file, to an i
 
 ### Connecting to the Lit Network
 
-Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network. We will also be initializing an Ethereum wallet using the `ETHEREUM_PRIVATE_KEY` environment variable. This is needed in generating session signatures.
+Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network. We will also be initializing an Ethereum wallet using the `ETHEREUM_PRIVATE_KEY` environment variable. This will be needed in generating session signatures.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -147,7 +147,7 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
 
 ## Defining the Lit Action
 
-There are two ways to define a Lit Action. You can either define the code inline, or you can use IPFS to store the code. In this example, we'll use the inline method. If you'd like to use the IPFS method, you would instead use `ipfsId` instead of `litActionCode`, and the `ipfsId` would be the IPFS CID of the Lit Action code.
+There are two ways to define a Lit Action. You can either define the code inline, or you can use IPFS to store the code. In this example, we'll use the inline method.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -169,6 +169,8 @@ const litActionCode = `(() => {
 ## Executing the Lit Action
 
 To execute the Lit Action, you'll need to pass in the `sessionSigs` and `code` parameters. The `jsParams` parameter is optional, and can be used to pass in parameters to the Lit Action. 
+
+If you'd like to use the IPFS method mentioned previously, you would instead use `ipfsId` instead of `code: litActionCode`, and the `ipfsId` would be the IPFS CID of the Lit Action code.
 
 <details>
 <summary>Click here to see how this is done</summary>
