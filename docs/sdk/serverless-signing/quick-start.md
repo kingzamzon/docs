@@ -7,9 +7,9 @@ import TabItem from '@theme/TabItem';
 
 ## Start Here
 
-This guide will walk you through setting up a connection to the Lit network, defining a Lit Action, and executing the Lit Action. The code snippets can be complied and run to successfully execute the Lit Action, as long as an Ethereum wallet is initialized using the `ETHEREUM_PRIVATE_KEY` environment variable.
+This guide will walk you through setting up a connection to the Lit network, defining a Lit Action, and executing the Lit Action. The code snippets can be compiled and run to successfully execute the Lit Action, as long as an Ethereum wallet is initialized using the `ETHEREUM_PRIVATE_KEY` environment variable.
 
-If you're instead looking to learn more about the concept of Lit Actions, check out the our [Overview](./overview).
+If you're instead looking to learn more about the concept of Lit Actions, check out our [Overview](./overview).
 
 This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/testnets#datil-dev) which is designed for application developers aiming to get familiar with the Lit SDK. Payment is not required on this network, and therefore the code is less complex. For those wanting to develop using Lit for production-ready applications, the [Datil-test](../../connecting-to-a-lit-network/testnets#datil-test) Network is recommended. More on Lit networks can be found [here](../../network/networks/testnet.md).
 
@@ -30,7 +30,7 @@ You should use **at least Node v19.9.0** for
 
 If you're just getting started with Lit or development in general, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an environment for getting started with the Lit SDK.
 
-For Lit Actions specifically, you'll also be needing these packages:
+For Lit Actions specifically, you'llalso need these packages:
 
 <Tabs
 defaultValue="npm"
