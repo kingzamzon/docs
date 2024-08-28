@@ -7,11 +7,9 @@ import TabItem from '@theme/TabItem';
 
 ## Start Here
 
-Blockchains like Ethereum have smart contracts that let developers encode logic to change that state. As a key management network, Lit provides a method that allows developers to encode logic that dictates signing.
-
-Lit Actions are JavaScript functions that can be used read and write data across blockchains, web2 platforms, and the rest of the web3 world. You can use Lit Actions to generate signatures when your specified on or off-chain conditions are met, fetch data from off-chain platforms, and manage permissions for PKPs.
-
 This guide will walk you through setting up a connection to the Lit network, defining a Lit Action, and executing the Lit Action. The code snippets can be complied and run to successfully execute the Lit Action, as long as an Ethereum wallet is initialized using the `ETHEREUM_PRIVATE_KEY` environment variable.
+
+If you're instead looking to learn more about the concept of Lit Actions, check out the our [Overview](./overview).
 
 This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/testnets#datil-dev) which is designed for application developers aiming to get familiar with the Lit SDK. Payment is not required on this network, and therefore the code is less complex. For those wanting to develop using Lit for production-ready applications, the [Datil-test](../../connecting-to-a-lit-network/testnets#datil-test) Network is recommended. More on Lit networks can be found [here](../../network/networks/testnet.md).
 
@@ -63,9 +61,7 @@ ethers@v5
 </TabItem>
 </Tabs>
 
-## Running Lit Actions
-
-Below will introduce a very basic setup of how to go from an empty file, to an implementation of a Lit Action that can be run on the Lit network.
+## Walkthrough
 
 ### Connecting to the Lit Network
 
