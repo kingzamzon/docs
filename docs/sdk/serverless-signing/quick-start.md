@@ -15,539 +15,161 @@ In the following guide, we will write a simple Lit Action that requests a signat
 
 This guide uses Lit's [Datil Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
 
-For developers looking to explore beyond the basics, check out Advanced Topics. 
-
-# Steps
+For developers looking to explore beyond the basics, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) for more developed uses of Lit Actions.
 
 ## Install and Import the Lit SDK
 
-Ensure you have the following requirements in place:
+To get started with Lit Actions and the Lit SDK, you'll need to have the following:
 
 1. Operating System: Linux, Mac OS, or Windows.
 2. Development Environment: You'll need an Integrated Development Environment (IDE) installed. We recommend Visual Studio Code.
-3. Languages: The Lit JS SDK supports JavaScript. Make sure you have the appropriate language environment set up.
+3. Languages: The Lit SDK supports JavaScript. Make sure you have the appropriate language environment set up.
 4. Internet Connection: A stable internet connection is required for installation, updates, and interacting with the Lit nodes.
 
-Install the `@lit-protocol/lit-node-client` package, which can be used in both browser and Node environments:
-
-```jsx
-yarn add @lit-protocol/lit-node-client
-```
-
-Use the **Lit JS SDK**:
-
-```jsx
-import * as LitJsSdk from "@lit-protocol/lit-node-client";
-```
-
-:::note
-You should use **at least Node v19.9.0** for
+You should use **at least Node v19.9.0** for 
 - **crypto** support.
 - **webcrypto** library support if targeting `web`.
-:::
 
-### Client-Side Usage
+If you're just getting started with Lit, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an envionment containing the necessary packages to get started with Lit.
 
-Within a file (in the Lit example repos it will likely be called `lit.js`), set up your Lit object.
+For Lit Actions specifically, you'll also be needing these packages:
 
-`client.connect()` will return a promise that resolves when you are connected to the Lit Network.
+<Tabs
+defaultValue="npm"
+values={[
+{label: 'npm', value: 'npm'},
+{label: 'yarn', value: 'yarn'},
+]}>
+<TabItem value="npm">
 
-```jsx
-import { LitNetwork } from "@lit-protocol/constants";
-
-const client = new LitJsSdk.LitNodeClient({
-  litNetwork: LitNetwork.Datil,
-});
-
-await client.connect();
+```bash
+npm install @lit-protocol/lit-node-client \
+`@lit-protocol/constants` \
+`@lit-protocol/auth-helpers` \
+`@lit-protocol/contracts-sdk`
 ```
 
-:::note
-To avoid errors from Lit nodes due to stale `sessionSigs`, make sure to clear the local storage for `sessionSigs` before reconnecting or restarting the client. One way to do this is to disconnect the client first and then reconnect.
-:::
+</TabItem>
 
-The client listens to network state, and those listeners will keep your client running until you explicitly disconnect from the Lit network. To stop the client listeners and allow the browser to disconnect gracefully, call:
+<TabItem value="yarn">
 
-```jsx
-await client.disconnect();
+```bash
+yarn add @lit-protocol/lit-node-client \
+`@lit-protocol/constants` \
+`@lit-protocol/auth-helpers` \
+`@lit-protocol/contracts-sdk`
 ```
 
-### Server-Side Usage
+</TabItem>
+</Tabs>
 
-In this example stub, the litNodeClient is stored in a global variable `app.locals.litNodeClient` so that it can be used throughout the server. `app.locals` is provided by **[Express](https://expressjs.com/)** for this purpose. You may have to use what your own server framework provides for this purpose, instead.
+## Running Lit Actions
 
-:::note
-Keep in mind that in the server-side implementation, the client class is named LitNodeClientNodeJs.
-:::
+Below will introduce a very basic setup of how to go from an empty file, to an implementation of a Lit Action that can be run on the Lit network.
 
-`app.locals.litNodeClient.connect()` returns a promise that resolves when you are connected to the Lit network.
+### Connecting to the Lit Network
 
-```jsx
-import { LitNetwork } from "@lit-protocol/constants";
+Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network.
 
-app.locals.litNodeClient = new LitJsSdk.LitNodeClientNodeJs({
-  alertWhenUnauthorized: false,
-  litNetwork: LitNetwork.Datil,
-});
-await app.locals.litNodeClient.connect();
-```
+<details>
+<summary>Click here to see how this is done</summary>
+<p>
 
-The litNodeClient listens to network state, and those listeners will keep your Node.js process running until you explicitly disconnect from the Lit network. To stop the litNodeClient listeners and allow node to exit gracefully, call: 
-
-```jsx
-await app.locals.litNodeClient.disconnect();
-```
-
-## Install the Required Packages
-
-```jsx
-yarn add @lit-protocol/contracts-sdk
-yarn add @lit-protocol/lit-auth-client
-yarn add @lit-protocol/auth-helpers
-```
-
-### Set up a controller wallet
-
-To initialize a LitContracts client you need an Ethereum Signer. This can be a standard Ethereum wallet (ethers) or a PKP (more info on the latter [here](../../user-wallets/pkps/advanced-topics/auth-methods/add-remove-auth-methods)). Here, we're going to use a standard Ethereum wallet.
-
-:::warning
-You'll need to use ethers.js v5 with the Lit SDK. The Lit SDK is not compatible with ethers.js v6 or higher.
-:::
-
-### Initialize the `contracts-sdk`
-
-```jsx
-import { LitContracts } from '@lit-protocol/contracts-sdk';
-import { LitNetwork } from "@lit-protocol/constants";
-
-const contractClient = new LitContracts({
-  signer: wallet,
-  network: LitNetwork.Datil,
-});
-
-await contractClient.connect();
-```
-
-:::note
-
-You’ll need to ensure you have some test tokens to pay for gas fees. You can claim test tokens from our verified [faucet](https://chronicle-yellowstone-faucet.getlit.dev/).
-
-:::
-
-## Authenticate with the Lit Network
-In order to interact with the nodes in the Lit Network, you will need to generate and present signatures. You can do this by generating a 'Session Sig'. Any signature compliant with EIP-4361 (also known as Sign in with Ethereum (SIWE)) cam be used for this. 
-
-### Obtaining a `SessionSigs` in the browser
-
-Using the Lit SDK and the methods `createSiweMessageWithRecaps` and `generateAuthSig` from the `@lit-protocol/auth-helpers` package, we can create a `SessionSigs` by signing a SIWE message using a private key stored in a browser wallet like MetaMask:
-
-```jsx
+```ts
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
-import { LitNetwork } from "@lit-protocol/constants";
-import {
-  LitAbility,
-  LitAccessControlConditionResource,
-  generateAuthSig,
-  createSiweMessageWithRecaps 
-  } from "@lit-protocol/auth-helpers";
+import { LitNetwork, LIT_RPC } from "@lit-protocol/constants";
 import * as ethers from "ethers";
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-await provider.send("eth_requestAccounts", []);
-const ethersSigner = provider.getSigner();
-
 const litNodeClient = new LitNodeClient({
-    litNetwork: LitNetwork.Datil,
-  });
+  litNetwork: LitNetwork.DatilDev,
+  debug: false
+});
 await litNodeClient.connect();
 
-const sessionSigs = await litNodeClient.getSessionSigs({
+const ethersWallet = new ethers.Wallet(
+  process.env.ETHEREUM_PRIVATE_KEY, // Replace with your private key
+  new ethers.providers.JsonRpcProvider(LIT_RPC.CHRONICLE_YELLOWSTONE)
+);
+```
+
+</p>
+</details>
+
+### Generating Session Signatures
+
+Session signatures are vital to authentication on the Lit network. They also are required for giving your session the ability to execute Lit Actions. Please note that there is more than one way to generate session signatures, and that those methods can be found on their dedicated pages in the [Session Signatures](../authentication/session-sigs/intro) section.
+
+<details>
+<summary>Click here to see how this is done</summary>
+<p>
+
+```ts
+const sessionSignatures = await litNodeClient.getSessionSigs({
   chain: "ethereum",
-  expiration: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(), // 24 hours
+  expiration: new Date(Date.now() + 1000 * 60 * 10).toISOString(), // 10 minutes
   resourceAbilityRequests: [
     {
       resource: new LitActionResource("*"),
       ability: LitAbility.LitActionExecution,
     },
   ],
-  authNeededCallback: async ({ resourceAbilityRequests, expiration, uri }) => {
-    const toSign = await createSiweMessageWithRecaps({
+  authNeededCallback: async ({
+    uri,
+    expiration,
+    resourceAbilityRequests,
+  }) => {
+    const toSign = await createSiweMessage({
       uri,
       expiration,
       resources: resourceAbilityRequests,
-      walletAddress: await ethersSigner.getAddress(),
+      walletAddress: await ethersWallet.getAddress(),
       nonce: await litNodeClient.getLatestBlockhash(),
       litNodeClient,
     });
 
     return await generateAuthSig({
-      signer: ethersSigner,
+      signer: ethersWallet,
       toSign,
     });
   },
 });
 ```
 
-:::note
-Be sure to use the latest blockhash from the `litNodeClient` as the nonce. You can get it from the `litNodeClient.getLatestBlockhash()`.
-:::
+</p>
+</details>
 
-### Obtaining a `Session Signature` on the server-side
+## Defining the Lit Action
 
-If you want to obtain an `Session Signature` on the server-side, you can instantiate an `ethers.Signer` to sign a SIWE message, which will produce a signature that can be used in an `Session Signature` object.
+There are two ways to define a Lit Action. You can either define the code inline, or you can use IPFS to store the code. In this example, we'll use the inline method. If you'd like to use the IPFS method, you would instead use `ipfsId` instead of `litActionCode`, and the `ipfsId` would be the IPFS CID of the Lit Action code.
 
-:::note
-The nonce should be the latest Ethereum blockhash returned by the nodes during the handshake
-:::
+<details>
+<summary>Click here to see how this is done</summary>
+<p>
 
-```jsx
-const LitJsSdk = require('@lit-protocol/lit-node-client-nodejs');
-const { ethers } = require("ethers");
-const siwe = require('siwe');
-
-let nonce = await litNodeClient.getLatestBlockhash();
-
-// Initialize the signer
-const wallet = new ethers.Wallet('<Your private key>');
-const address = ethers.getAddress(await wallet.getAddress());
-
-// Craft the SIWE message
-const domain = 'localhost';
-const origin = 'https://localhost/login';
-const statement =
-  'This is a test statement.  You can put anything you want here.';
-    
-// expiration time in ISO 8601 format.  This is 7 days in the future, calculated in milliseconds
-const expirationTime = new Date(
-  Date.now() + 1000 * 60 * 60 * 24 * 7 * 10000
-).toISOString();
-
-const siweMessage = new siwe.SiweMessage({
-  domain,
-  address: address,
-  statement,
-  uri: origin,
-  version: '1',
-  chainId: 1,
-  nonce,
-  expirationTime,
-});
-const messageToSign = siweMessage.prepareMessage();
-  
-// Sign the message and format the authSig
-const signature = await wallet.signMessage(messageToSign);
-
-const authSig = {
- sig: signature,
- derivedVia: 'web3.eth.personal.sign',
- signedMessage: messageToSign,
- address: address,
-};
-
-console.log(authSig);
-
-// Form the authNeededCallback to create a session with
-// the wallet signature.
-const authNeededCallback = async (params) => {
- const response = await client.signSessionKey({
-   statement: params.statement,
-   authMethods: [
-     {
-       authMethodType: 1,
-       // use the authSig created above to authenticate
-       // allowing the pkp to sign on behalf.
-       accessToken: JSON.stringify(authSig),
-     },
-   ],
-   pkpPublicKey: `<your pkp public key>`,
-   expiration: params.expiration,
-   resources: params.resources,
-   chainId: 1,
- });
- return response.authSig;
-};
-
-// Set resources to allow for signing of any message.
-const resourceAbilities = [
- {
-   resource: new LitActionResource('*'),
-   ability: LitAbility.PKPSigning,
- },
-];
-// Get the session key for the session signing request
-// will be accessed from local storage or created just in time.
-const sessionKeyPair = client.getSessionKey();
-
-// Request a session with the callback to sign
-// with an EOA wallet from the custom auth needed callback created above.
-const sessionSigs = await client.getSessionSigs({
-   chain: "ethereum",
-   expiration:  new Date(Date.now() + 60_000 * 60).toISOString(),
-   resourceAbilityRequests: resourceAbilities,
-   authNeededCallback,
-});
+```ts
+const litActionCode = `(() => {
+  if (magicNumber >= 42) {
+      LitActions.setResponse({ response:"The number is greater than or equal to 42!" });
+  } else {
+      LitActions.setResponse({ response: "The number is less than 42!" });
+  }
+})();`;
 ```
 
-## Mint a PKP and Add Permitted Scopes
-Now that we have installed all of the required packages and authenticated with the Lit nodes we will mint a PKP and set its permitted scopes using the `contracts-sdk`.
+</p>
+</details>
 
-Permitted scopes are a crucial part of defining the capabilities of each authentication method you use. They determine what actions a given authentication method can perform with the PKP. For instance, the `SignAnything` scope allows an auth method to sign any data, while the `PersonalSign` scope restricts it to signing messages using the EIP-191 scheme.
+## Executing the Lit Action
 
-You can also set scopes: `[]` which will mean that the auth method can only be used for authentication, but not authorization. This means that the auth method can be used to prove that the user is who they say they are, but cannot be used to sign transactions or messages. You can read more about Auth Method scopes [here](https://v6-api-doc-lit-js-sdk.vercel.app/interfaces/types_src.MintWithAuthParams.html#scopes).
+To execute the Lit Action, you'll need to pass in the `sessionSigs` and `code` parameters. The `jsParams` parameter is optional, and can be used to pass in parameters to the Lit Action. 
 
-The following code block demonstrates how to mint a PKP with specific permitted scopes:
-
-:::note
-The PKP NFT represents root ownership of the key pair. The NFT owner can grant other users (via a wallet address) or Lit Actions the ability to use the PKP to sign transactions or assign additional authentication methods.
-:::
-
-```jsx
-import { AuthMethodScope, AuthMethodType } from '@lit-protocol/constants';
-
-const authMethod = {
-  authMethodType: AuthMethodType.EthWallet,
-  accessToken: JSON.stringify(authSig),
-};
-
-const mintInfo = await contractClient.mintWithAuth({
-  authMethod: authMethod,
-  scopes: [
-        // AuthMethodScope.NoPermissions,
-        AuthMethodScope.SignAnything, 
-        AuthMethodScope.PersonalSign
-    ],
-});
-
-// output:
-{
-  pkp: {
-      tokenId: string;
-      publicKey: string;
-      ethAddress: string;
-  };
-  tx: ethers.ContractReceipt;
-}
-```
-
-You should now have successfully minted a PKP! You can verify that the PKP has the necessary permissions for signing by calling the following function:
-
-```jsx
-import { LitAuthClient } from '@lit-protocol/lit-auth-client';
-
-const authId = await LitAuthClient.getAuthIdByAuthMethod(authMethod);
-const scopes = await contractClient.pkpPermissionsContract.read.getPermittedAuthMethodScopes(
-  mintInfo.pkp.tokenId,
-  AuthMethodType.EthWallet,
-  authId,
-  3
-);
-
-const signAnythingScope = scopes[1];
-const personalSignScope = scopes[2];
-```
-
-Additional Demos: 
-
-1. **[Minting a PKP with an auth method and permitted scopes (Easy)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-2-easy.mjs)**
-2. **[Minting a PKP with an auth method and permitted scopes (Advanced)](https://github.com/LIT-Protocol/js-sdk/blob/feat/SDK-V3/e2e-nodejs/group-contracts/test-contracts-write-mint-a-pkp-and-set-scope-1-advanced.mjs)**
-3. **[Minting a PKP using social login](../../user-wallets/pkps/minting/via-social.md)**
-
-## Mint Capacity Credits and Delegate Usage
-
-In order to execute a transaction with Lit, you’ll need to reserve capacity on the network using Capacity Credits. These allow holders to reserve a set number of requests (requests per second) over a desired period of time (i.e. one week). You can mint a Capacity Credit NFT using the `contracts-sdk` in a couple of easy steps. 
-
-The first step is to initialize a signer. This should be a wallet controlled by your application and the same wallet you’ll use to mint the Capacity Credit NFT:
-
-```jsx
-import { LitNetwork } from "@lit-protocol/constants";
-
-const walletWithCapacityCredit = new Wallet("<your private key or mnemonic>");
-
-let contractClient = new LitContracts({
-  signer: dAppOwnerWallet,
-  network: LitNetwork.Datil,
-});
-
-await contractClient.connect();
-```
-
-After you’ve set your wallet, your next step is to mint the NFT:
-
-```jsx
-// this identifier will be used in delegation requests. 
-const { capacityTokenIdStr } = await contractClient.mintCapacityCreditsNFT({
-  requestsPerKilosecond: 80,
-  // requestsPerDay: 14400,
-  // requestsPerSecond: 10,
-  daysUntilUTCMidnightExpiration: 2,
-});
-```
-
-In the above example, we are configuring 2 properties:
-
-- `requestsPerDay` - How many requests can be sent in a 24 hour period.
-- `daysUntilUTCMidnightExpiration` - The number of days until the nft will expire. expiration will occur at `UTC Midnight` of the day specified.
-
-Once you mint your NFT you will be able to send X many requests per day where X is the number specified in `requestsPerDay`. Once the `Capacity Credit` is minted the `tokenId` can be used in delegation requests.
-
-### Delegate usage to your PKP
-
-Once you have minted a Capacity Credits NFT, you can delegate usage of it to the PKP we minted earlier. This will allow that PKP to make requests to the Lit network.
-
-```jsx
-const { capacityDelegationAuthSig } =
-  await litNodeClient.createCapacityDelegationAuthSig({
-    uses: '1',
-    signer: wallet,
-    capacityTokenId: capacityTokenIdStr,
-    delegateeAddresses: [secondWalletPKPInfo.ethAddress],
-  });
-```
-
-To delegate your Rate Limit NFT there are 4 properties to configure:
-
-- `uses` - How many times the delegation may be used
-- `dAppOwnerWallet` - The owner of the wallet as an `ethers Wallet instance`
-- `capacityTokenId` - The `token identifier` of the Rate Limit NFT
-- `delegateeAddresses` - The wallet addresses which will be delegated to
-
-:::note
-The `delegateeAddress` parameter is optional. If omitted, anyone can use your `capacityDelegationAuthSig` to use your app without restrictions. In this case, you can utilize other restrictions like the `uses` param to limit the amount of usage by your users.
-:::
-
-### Using a delegated `AuthSig`  from a backend
-
-If using a `mainnet` in order to keep the wallet which holds the `Capacity Credit NFT` secure it is recommended to call `createCapacityDelegationAuthSig` from `LitNodeClient` in a backend context. There are a few recommended web servers you can use in order to host an api endpoint which can return the `capacityDelegationAuthSig` . Some links are provided below to help get started:
-
-- [ExpressJS](https://www.npmjs.com/package/express)
-- [Node HTTP server](https://nodejs.org/api/http.html#http)
-
-### Generating a Session Signature from the Capacity Credit delegation
-We can use the Capacity Credit delegation to generate a Session Signature for the PKP:
-
-```jsx
-    const pkpAuthNeededCallback = async ({
-      expiration,
-      resources,
-      resourceAbilityRequests,
-    }) => {
-      // -- validate
-      if (!expiration) {
-        throw new Error('expiration is required');
-      }
-
-      if (!resources) {
-        throw new Error('resources is required');
-      }
-
-      if (!resourceAbilityRequests) {
-        throw new Error('resourceAbilityRequests is required');
-      }
-
-      const response = await litNodeClient.signSessionKey({
-        statement: 'Some custom statement.',
-        authMethods: [secondWalletControllerAuthMethod],  // authMethods for signing the sessionSigs
-        pkpPublicKey: secondWalletPKPInfo.publicKey,  // public key of the wallet which is delegated
-        expiration: expiration,
-        resources: resources,
-        chainId: 1,
-
-        // optional (this would use normal siwe lib, without it, it would use lit-siwe)
-        resourceAbilityRequests: resourceAbilityRequests,
-      });
-
-      console.log('response:', response);
-
-      return response.authSig;
-  };
-
-  const pkpSessionSigs = await litNodeClient.getSessionSigs({
-    pkpPublicKey: secondWalletPKPInfo.publicKey,   // public key of the wallet which is delegated
-    expiration: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(), // 24 hours
-    chain: 'ethereum',
-    resourceAbilityRequests: [
-      {
-        resource: new LitPKPResource('*'),
-        ability: LitAbility.PKPSigning,
-      },
-    ],
-    authNeededCallback: pkpAuthNeededCallback,
-    capacityDelegationAuthSig, // here is where we add the delegation to our session request
-  });
-  
-  console.log("generated session with delegation ", pkpSessionSigs);
-
-  const res = await litNodeClient.executeJs({
-    sessionSigs: pkpSessionSigs,
-    code: `(async () => {
-        const sigShare = await LitActions.signEcdsa({
-          toSign: dataToSign,
-          publicKey,
-          sigName: "sig",
-        });
-      })();`,
-    authMethods: [],
-    jsParams: {     // parameters to js function above
-      dataToSign: ethers.utils.arrayify(
-        ethers.utils.keccak256([1, 2, 3, 4, 5])
-      ),
-      publicKey: secondWalletPKPInfo.publicKey,
-    },
-  });
-
-  console.log("signature result ", res);
-```
-
-## Sign a Transaction
-
-### Lit Action Signing
-
-To sign a Lit Action with your PKP, we'll use the `litNodeClient` to call the `executeJs` parameter.
-
-:::note
-
-`toSign` data is required to be in 32 byte format. The  `ethers.utils.arrayify(ethers.utils.keccak256(...)` method can be used to convert the `toSign` data to the correct format.
-
-:::
-
-You can set up the Lit Action code to be run on the Lit nodes like so:
-
-```jsx
-const litActionCode = `
-    const go = async () => {
-    // The params toSign, publicKey, sigName are passed from the jsParams fields and are available here
-    const sigShare = await Lit.Actions.signEcdsa({ toSign, publicKey, sigName });
-    };
-
-    go();
-`;
-
-const signatures = await litNodeClient.executeJs({
+```ts
+const response = await litNodeClient.executeJs({
+  sessionSigs: sessionSignatures,
   code: litActionCode,
-  sessionSigs,
   jsParams: {
-    toSign: [84, 104, 105, 115, 32, 109, 101, 115, 115, 97, 103, 101, 32, 105, 115, 32, 101, 120, 97, 99, 116, 108, 121, 32, 51, 50, 32, 98, 121, 116, 101, 115],
-    publicKey: mintInfo.pkp.publicKey,
-    sigName: "sig1",
-  },
-});
-
-console.log("signatures: ", signatures);
-```
-
-You can also use the `ipfsId` param if you’d prefer to store your Lit Action code on IPFS. 
-
-The ipfs ID: `QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm` contains the same code as the "litActionCode" variable above. You can check out the full code [here](https://ipfs.litgateway.com/ipfs/QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm).
-
-```jsx
-const signatures = await litNodeClient.executeJs({
-  ipfsId: "QmRwN9GKHvCn4Vk7biqtr6adjXMs7PzzYPCzNCRjPFiDjm",
-  sessionSigs,
-  jsParams: {
-    toSign: [84, 104, 105, 115, 32, 109, 101, 115, 115, 97, 103, 101, 32, 105, 115, 32, 101, 120, 97, 99, 116, 108, 121, 32, 51, 50, 32, 98, 121, 116, 101, 115],
-    publicKey: mintInfo.pkp.publicKey,
-    sigName: "sig1",
-  },
+    magicNumber: 43,
+  }
 });
 ```
 
