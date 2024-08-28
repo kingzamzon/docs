@@ -11,9 +11,9 @@ Blockchains like Ethereum have smart contracts that let developers encode logic 
 
 Lit Actions are JavaScript functions that can be used read and write data across blockchains, web2 platforms, and the rest of the web3 world. You can use Lit Actions to generate signatures when your specified on or off-chain conditions are met, fetch data from off-chain platforms, and manage permissions for PKPs.
 
-In the following guide, we will write a simple Lit Action that requests a signature from the Lit nodes and signs the message "Hello World".
+This guide will walk you through setting up a connection to the Lit network, defining a Lit Action, and executing the Lit Action. The code snippets can be complied and run to successfully execute the Lit Action, as long as an Ethereum wallet is initialized using the `ETHEREUM_PRIVATE_KEY` environment variable.
 
-This guide uses Lit's [Datil Network](../../network/networks/mainnet.md), the Mainnet Beta, which is designed for application developers aiming to build **production-ready** applications. For those developing in a test environment, the Datil-test Network is recommended. More on Lit networks [here](../../network/networks/testnet.md).
+This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/testnets#datil-dev) which is designed for application developers aiming to get familiar with the Lit SDK. Payment is not required on this network, and therefore the code is less complex. For those wanting to develop using Lit for production-ready applications, the [Datil-test](../../connecting-to-a-lit-network/testnets#datil-test) Network is recommended. More on Lit networks can be found [here](../../network/networks/testnet.md).
 
 For developers looking to explore beyond the basics, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) for more developed uses of Lit Actions.
 
@@ -44,9 +44,9 @@ values={[
 
 ```bash
 npm install @lit-protocol/lit-node-client \
-`@lit-protocol/constants` \
-`@lit-protocol/auth-helpers` \
-`@lit-protocol/contracts-sdk`
+@lit-protocol/constants \
+@lit-protocol/auth-helpers \
+ethers@v5
 ```
 
 </TabItem>
@@ -55,9 +55,9 @@ npm install @lit-protocol/lit-node-client \
 
 ```bash
 yarn add @lit-protocol/lit-node-client \
-`@lit-protocol/constants` \
-`@lit-protocol/auth-helpers` \
-`@lit-protocol/contracts-sdk`
+@lit-protocol/constants \
+@lit-protocol/auth-helpers \
+ethers@v5
 ```
 
 </TabItem>
@@ -69,7 +69,7 @@ Below will introduce a very basic setup of how to go from an empty file, to an i
 
 ### Connecting to the Lit Network
 
-Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network.
+Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network. We will also be initializing an Ethereum wallet using the `ETHEREUM_PRIVATE_KEY` environment variable. This is needed in generating session signatures.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -104,6 +104,13 @@ Session signatures are vital to authentication on the Lit network. They also are
 <p>
 
 ```ts
+import {
+  LitAbility,
+  LitActionResource,
+  createSiweMessage,
+  generateAuthSig,
+} from "@lit-protocol/auth-helpers";
+
 const sessionSignatures = await litNodeClient.getSessionSigs({
   chain: "ethereum",
   expiration: new Date(Date.now() + 1000 * 60 * 10).toISOString(), // 10 minutes
@@ -163,6 +170,10 @@ const litActionCode = `(() => {
 
 To execute the Lit Action, you'll need to pass in the `sessionSigs` and `code` parameters. The `jsParams` parameter is optional, and can be used to pass in parameters to the Lit Action. 
 
+<details>
+<summary>Click here to see how this is done</summary>
+<p>
+
 ```ts
 const response = await litNodeClient.executeJs({
   sessionSigs: sessionSignatures,
@@ -173,13 +184,11 @@ const response = await litNodeClient.executeJs({
 });
 ```
 
+</p>
+</details>
+
 # Learn More
 
-By now you should have successfully written a Lit Action, minted a PKP, and used it to sign a message with a Lit Action. If you’d like to learn more about what’s possible with Lit Actions, please follow the links below:
-
-1. [Conditional Signatures](../serverless-signing/conditional-signing.md).
-2. [Fetching Off-Chain Data](../serverless-signing/fetch.md).
-3. [Using Dependencies](../serverless-signing/dependencies.md).
-4. [Creating Blockchain Transactions](../serverless-signing/processing-validation.md).
+By now you should have successfully written a and executed a Lit Action. If you’d like to learn more about what’s possible with Lit Actions, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) section.
 
 <FeedbackComponent/>
