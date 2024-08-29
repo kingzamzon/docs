@@ -22,6 +22,8 @@ The complete code example is available in the [Lit Developer Guides Code Reposit
 
 ### Example Lit Action
 
+This function performs a condition check on the authenticated user's Ethereum balance (the user who signed the Sign-in With Ethereum [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) message to create the `AuthSig`), returning a boolean. This is then used to determine whether or not the PKP will sign `dataToSign` or not.
+
 The below example will check if the user has at least 1 Wei on Ethereum, only returning a signature if they do. It uses the [`checkConditions`](https://actions-docs.litprotocol.com/#checkconditions) function from the [Lit Actions SDK](https://actions-docs.litprotocol.com/). This performs a conditional check on the user's Ethereum balance, checking the balance of the wallet address that signed the Sign-in With Ethereum [EIP-4361](https://eips.ethereum.org/EIPS/eip-4361) when creating the `AuthSig`, which is passed in as an argument to the Lit Action. The boolean returned will be used to determine whether the wallet will be used to sign `dataToSign` or not. 
 
 :::note

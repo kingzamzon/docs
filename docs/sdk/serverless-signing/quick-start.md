@@ -7,11 +7,11 @@ import TabItem from '@theme/TabItem';
 
 ## Start Here
 
-This guide will walk you through setting up a connection to the Lit network, defining a Lit Action, and executing the Lit Action. The code snippets can be compiled and run to successfully execute the Lit Action, as long as an Ethereum wallet is initialized using the `ETHEREUM_PRIVATE_KEY` environment variable.
+This guide will walk you through the process of creating and executing your first Lit Action. The steps include connecting to the Lit network, writing and deploying your Lit Action code, and finally executing the Lit Action. You can use the provided code snippets to execute this on your own machine.
 
-If you're instead looking to learn more about the concept of Lit Actions, check out our [Overview](./overview).
+If you're instead looking to learn more about how Lit Actions work, check out the [Overview](./overview) page.
 
-This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/testnets#datil-dev) which is designed for application developers aiming to get familiar with the Lit SDK. Payment is not required on this network, and therefore the code is less complex. For those wanting to develop using Lit for production-ready applications, the [Datil-test](../../connecting-to-a-lit-network/testnets#datil-test) Network is recommended. More on Lit networks can be found [here](../../network/networks/testnet.md).
+This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/testnets#datil-dev) which is designed for application developers aiming to get familiar with the Lit SDK. Payment is not required on this network, and therefore the code is less complex. For those aiming to build production-ready applications, the [Datil-test Network](../../connecting-to-a-lit-network/testnets#datil-test) is recommended. Once ready, these applications can then be deployed on [Datil](../../connecting-to-a-lit-network/mainnets#datil), the Lit production network. To see the available Lit networks, check out [this page](../../connecting-to-a-lit-network/connecting).
 
 For developers looking to explore beyond the basics, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) for more developed uses of Lit Actions.
 
@@ -30,7 +30,7 @@ You should use **at least Node v19.9.0** for
 
 If you're just getting started with Lit or development in general, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an environment for getting started with the Lit SDK.
 
-For Lit Actions specifically, you'llalso need these packages:
+For Lit Actions specifically, you'll also need these packages:
 
 <Tabs
 defaultValue="npm"
@@ -65,7 +65,9 @@ ethers@v5
 
 ### Connecting to the Lit Network
 
-Running a Lit Action requires you to connect to the Lit network. This can be done by creating a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will connect to the Lit network and allow you to interact with the network. We will also be initializing an Ethereum wallet using the `ETHEREUM_PRIVATE_KEY` environment variable. This will be needed in generating session signatures.
+Running a Lit Action requires an active connection to the Lit network. This can be done by initializing a [LitNodeClient](https://v6-api-doc-lit-js-sdk.vercel.app/classes/lit_node_client_src.LitNodeClient.html) instance, which will establish a connection to the Lit nodes.
+
+We will also be initializing an Ethereum wallet using the `ETHEREUM_PRIVATE_KEY` environment variable, which is required for generating session signatures in this example.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -93,7 +95,7 @@ const ethersWallet = new ethers.Wallet(
 
 ### Generating Session Signatures
 
-Session signatures are vital to authentication on the Lit network. They also are required for giving your session the ability to execute Lit Actions. Please note that there is more than one way to generate session signatures, and that those methods can be found on their dedicated pages in the [Session Signatures](../authentication/session-sigs/intro) section.
+Session signatures are used to authenticate and maintain an active connection to the nodes in the Lit network. They are required when executing a Lit Action or any other functionality (i.e. signing) with Lit. There is more than one way to generate session signatures, and that those methods can be found on their dedicated pages in the [Session Signatures](../authentication/session-sigs/intro) section.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -141,9 +143,9 @@ const sessionSignatures = await litNodeClient.getSessionSigs({
 </p>
 </details>
 
-## Defining the Lit Action
+## Storing the Lit Action
 
-There are two ways to define a Lit Action. You can either define the code inline, or you can use IPFS to store the code. In this example, we'll use the inline method.
+There are two ways to store a Lit Action. You can either write the code inline, or you can use IPFS to store the code. In this example, we'll use the inline method.
 
 <details>
 <summary>Click here to see how this is done</summary>
@@ -164,7 +166,7 @@ const litActionCode = `(() => {
 
 ## Executing the Lit Action
 
-To execute the Lit Action, you'll need to pass in the `sessionSigs` and `code` parameters. The `jsParams` parameter is optional, and can be used to pass in parameters to the Lit Action. 
+To execute the Lit Action, we use the `executeJs` function. You'll need to pass in the `sessionSigs` and `code` parameters. The `jsParams` parameter is optional, and can be used to pass in parameters to the Lit Action. 
 
 If you'd like to use the IPFS method mentioned previously, you would instead use `ipfsId` instead of `code: litActionCode`, and the `ipfsId` would be the IPFS CID of the Lit Action code.
 

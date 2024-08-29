@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 When [signing a transaction](../serverless-signing/quick-start#sign-a-transaction.md) with Lit, signature shares are typically combined client-side. However, the `signAndCombineEcdsa` function allows you to combine signature shares directly within a Lit Action, which is useful for when you want to make use of the signed data within your Lit Action e.g. submitting a signed transaction. The signature shares will remain within the confines of each Lit node's [Trusted Execution Environment (TEE)](../../resources/how-it-works#1-lit-nodes.md) without ever being exposed to the outside world. 
 
-When you call the `signAndCombineEcdsa` function, signature shares are collected from each Lit node before being combined on a *single* node. The following code example will show how you can use this functionality for signing a blockchain transaction using ethers.js.
+When you call the `signAndCombineEcdsa` function, signature shares are collected from each Lit node before being combined on a *single* node. The following example demonstrates how you can use this functionality to sign a blockchain transaction using ethers.js
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ The complete code example is available in the [Lit Developer Guides Code Reposit
 
 ### Example Lit Action
 
-The following Lit Action uses `signAndCombineEcdsa` to combine the signatures created by each share signing the `toSign` variable, which is the provided hash of a serialized transaction. We then serialize the transaction and sign it using `ethers.js`.
+The following Lit Action uses `signAndCombineEcdsa` to combine partial signatures provided by each Lit node, each of which signs a share of the `toSign` variable—this variable contains the hash of the serialized transaction. After combining these shares into a complete signature, we use `ethers.js` to serialize the transaction again, this time including the signature, to finalize it for submission.
 
 ```jsx
 const litActionCode = `
