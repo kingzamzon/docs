@@ -146,7 +146,7 @@ There are two ways to store a Lit Action. You can either write the code inline, 
 <summary>Click here to see how this is done</summary>
 <p>
 
-```ts
+```jsx
 const _litActionCode = async () => {
   if (magicNumber >= 42) {
       LitActions.setResponse({ response:"The number is greater than or equal to 42!" });
