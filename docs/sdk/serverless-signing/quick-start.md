@@ -15,22 +15,9 @@ This guide uses Lit's [Datil-dev Network](../../connecting-to-a-lit-network/test
 
 For developers looking to explore beyond the basics, check out the [Advanced Topics](https://developer.litprotocol.com/category/advanced-topics-1) for more developed uses of Lit Actions.
 
-## Install and Import the Lit SDK
+## Installing the Lit SDK
 
-To get started with Lit Actions and the Lit SDK, you'll need to have the following:
-
-1. Operating System: Linux, Mac OS, or Windows.
-2. Development Environment: You'll need an Integrated Development Environment (IDE) installed. We recommend Visual Studio Code.
-3. Languages: The Lit SDK supports JavaScript. Make sure you have the appropriate language environment set up.
-4. Internet Connection: A stable internet connection is required for installation, updates, and interacting with the Lit nodes.
-
-You should use **at least Node v19.9.0** for 
-- **crypto** support.
-- **webcrypto** library support if targeting `web`.
-
-If you're just getting started with Lit or development in general, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an environment for getting started with the Lit SDK.
-
-For Lit Actions specifically, you'll also need these packages:
+To get started with Lit Actions and the Lit SDK, you'll need to install these packages:
 
 <Tabs
 defaultValue="npm"
@@ -60,6 +47,14 @@ ethers@v5
 
 </TabItem>
 </Tabs>
+
+If you're just getting started with Lit or development in general, we recommend taking a look at our [Starter Guides](https://github.com/LIT-Protocol/developer-guides-code/tree/master/starter-guides). These guides provide an environment for getting started with the Lit SDK.
+
+:::info
+You should use **at least Node v19.9.0** for 
+- **crypto** support.
+- **webcrypto** library support if targeting `web`.
+:::
 
 ## Walkthrough
 
