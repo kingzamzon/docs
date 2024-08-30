@@ -25,8 +25,7 @@ The complete code example is available in the [Lit Developer Guides Code Reposit
 The following Lit Action uses `signAndCombineEcdsa` to combine partial signatures provided by each Lit node, each of which signs a share of the `toSign` variable — this variable contains the hash of the serialized transaction. After combining these shares into a complete signature, we use `ethers.js` to serialize the transaction again, this time including the signature, to finalize it for submission.
 
 ```jsx
-const litActionCode = `
-(async () => {
+const _litActionCode = async () =>  {
   const signature = await Lit.Actions.signAndCombineEcdsa({
     toSign,
     publicKey,
@@ -62,8 +61,9 @@ const litActionCode = `
   );
 
   Lit.Actions.setResponse({ response });
-})();
-`
+};
+
+const litActionCode = `(${_litActionCode.toString()})();`;
 ```
 
 ## Summary
