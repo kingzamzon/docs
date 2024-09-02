@@ -4,7 +4,7 @@ export default function AddRollupButton() {
   const addNetwork = () => {
     const params = [
       {
-        chainId: '175188',
+        chainId: '0x2AC54',
         chainName: 'Chronicle Yellowstone - Lit Protocol Testnet',
         nativeCurrency: {
           name: 'Lit Protocol - Chronicle Yellowstone Testnet Token (tstLPX)',
