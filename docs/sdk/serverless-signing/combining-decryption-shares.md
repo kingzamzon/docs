@@ -2,48 +2,73 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Decrypting within a Lit Action
 
+
 ## Overview
 
-Decryption with Lit is typically performed client-side by an authorized user at the time of access. This process is documented [here](../access-control/quick-start.md). However, an alternative method of decryption is supported using Lit Actions. Specifically, the `decryptAndCombine` function can be used to decrypt data within a Lit Action. This is useful for performing operations over sensitive data, where the data itself remains private within the confines of each Lit node's Trusted Execution Environment (TEE). You can learn more about Lit's architecture [here](../../resources/how-it-works#sealed-and-confidential-hardware.md).
+Decryption with Lit can be performed client-side by an authorized user, but it can also be performed within a Lit Action.
 
-When you call `decryptAndCombine`, each Lit node's decryption shares are collected and combined on a single node and used to decrypt the given content.
+Lit Actions have two methods for decrypting data: `decryptToSingleNode` and `decryptAndCombine`. The former reduces the execution scope of the Lit Action to a single node and decypts the data there. The latter collects each Lit node's decryption share, combines them, and then decrypts the data.
 
-The following doc will provide a complete walkthrough of using `decryptAndCombine`. We'll start by encrypting a string client-side before using a Lit Action to decrypt it. At the bottom of the page you'll find a complete example that demonstrates how you can use this functionality to decrypt an API key and perform a remote API call from within an Action. 
+When `decryptToSingleNode` is used, the execution scope being reduced to a single Lit node means that any behavior that requires multiple nodes (i.e. console logs, `signAndCombineEcdsa`, etc...) will encounter a timeout error.
 
-# Encrypting content
-The first step is to encrypt your data. The encryption operation will be performed client-side *outside* of your Lit Action using the `LitNodeClient`:
+Using decryption within a Lit Action is useful for performing operations over sensitive data, where the data itself remains private within the confines of each Lit node's Trusted Execution Environment (TEE). You can learn more about Lit's architecture [here](../../resources/how-it-works#sealed-and-confidential-hardware.md).
 
-```js
- const chain = 'ethereum';
- const accessControlConditions = [
-    {
-      contractAddress: '',
-      standardContractType: '',
-      chain,
-      method: 'eth_getBalance',
-      parameters: [':userAddress', 'latest'],
-      returnValueTest: {
-        comparator: '>=',
-        value: '0',
-      },
-    },
-  ];
-  const message = 'Hello world';
-  const client = new LitNodeClient({
-    litNetwork: "datil-dev"
-  });
-  await client.connect();
-  const { ciphertext, dataToEncryptHash } = await LitJsSdk.encryptString(
-    {
+The below example will demonstrate encrypting an API key client-side, decrypting it within a Lit Action, and using the decrypted API key to query the blocknumber on Base.
+
+## Prerequsites
+- Knowledge of [SessionSigs](../authentication/session-sigs/intro)
+- Basic understanding of [Lit Actions](../serverless-signing/quick-start)
+- Intermediate understanding of Lit [Encryption and Decryption](../access-control/quick-start)
+
+## Complete Code Example
+The complete code example is available in the [Lit Developer Guides Code Repository](https://github.com/LIT-Protocol/developer-guides-code/tree/master/decrypt-api-key-in-action/nodejs).
+
+### Example Lit Action
+
+The `decryptAndCombine` function uses the `accessControlConditions` to specify who and under what conditions the data can be decrypted. The `ciphertext` and `dataToEncryptHash` are the encrypted data and the hash of the data that was encrypted.
+
+We set the `authSig` to null as a way to tell the Lit Action runtime to use the `authSig` which was provided to the node when you call `executeJs`. It will use the AuthSig within the session signatures. 
+
+```tsx
+const _litActionCode = async () => {
+  try {
+    const apiKey = await Lit.Actions.decryptAndCombine({
       accessControlConditions,
-      sessionSigs: {}, // your session
-      chain,
-      dataToEncrypt: message,
-    },
-    client
-  );
+      ciphertext,
+      dataToEncryptHash,
+      authSig: null,
+      chain: "ethereum",
+    });
 
-  console.log("cipher text:", ciphertext, "hash:", dataToEncryptHash);
+    const fullUrl = url + apiKey;
+
+    const resp = await fetch(fullUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        jsonrpc: "2.0",
+        id: 1,
+        method: "eth_blockNumber",
+        params: [],
+      }),
+    });
+
+    let data = await resp.json();
+
+    if (data.result) {
+      data.result = parseInt(data.result, 16);
+    }
+
+    Lit.Actions.setResponse({ response: JSON.stringify(data) });
+  } catch (e) {
+    Lit.Actions.setResponse({ response: e.message });
+  }
+};
+
+export const litActionCode = `(${_litActionCode.toString()})();`;
+
 ```
 Let's break this down. The first step was creating your Access Control Condition (ACC), which is used to specify who or under what conditions your data should be able to be decrypted.
 
