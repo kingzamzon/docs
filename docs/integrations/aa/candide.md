@@ -1,5 +1,3 @@
-# Candide
-
 # Recover a Safe Account with Google using AbstractionKit
 
 This is the second of two guides that demonstrate how to recover a Safe smart wallet using a Google account. The first guide focuses on adding the recovery method, while this guide focuses on executing the actual recovery process. We recommend starting with guide number one which can be found [here](https://docs.candide.dev/wallet/guides/recovery-with-google-using-lit/).
