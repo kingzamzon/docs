@@ -450,6 +450,7 @@ const sidebars = {
                 'integrations/aa/alchemy-account-kit',
                 'integrations/aa/pimlico',
                 'integrations/aa/openfort',
+                'integrations/aa/candide',
               ],
             },
             {
