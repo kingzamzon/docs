@@ -1,6 +1,6 @@
 # Candide
 
-# Recover a Safe Account with Google using AbstractionKit (Guide 2/2)
+# Recover a Safe Account with Google using AbstractionKit
 
 This is the second of two guides on how to recovery a Safe Account using Google. In the first guide, we show the steps on how to add the recovery method. We recommend starting with the first guide [here](https://docs.candide.dev/wallet/guides/recovery-with-google-using-lit/).
 
@@ -58,11 +58,11 @@ JSON_RPC_NODE_PROVIDER= // Get an RPC from a Node provider
 ```jsx
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
 import { LitAuthClient, GoogleProvider } from "@lit-protocol/lit-auth-client";
-import { ProviderType } from "@lit-protocol/constants";
+import { ProviderType, LitNetwork } from "@lit-protocol/constants";
 
 const initalizeClientsAndProvider = async () => {
   const litNodeClient = new LitNodeClient({
-    litNetwork: "datil-dev",
+    litNetwork: LitNetwork.DatilDev,
     debug: true,
   });
   await litNodeClient.connect();
