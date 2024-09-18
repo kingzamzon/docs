@@ -1,9 +1,11 @@
+# Candide
+
 # Recover a Safe Account with Google using AbstractionKit (Guide 2/2)
 
-This is the second of two guides on how to recovery a Safe Account using Google. In the first guide, we show the steps on how to add the recovery method. We recommend starting with the first guide here.
+This is the second of two guides on how to recovery a Safe Account using Google. In the first guide, we show the steps on how to add the recovery method. We recommend starting with the first guide [here](https://docs.candide.dev/wallet/guides/recovery-with-google-using-lit/).
 
 ## What is AbstractionKit?
-AbstractionKit is a Typescript Library to easily build on Account Abstraction, with first class support for Safe Accounts. One of their usecases is to enable users to add recovery methods as a backup in case their use their main signer.
+AbstractionKit is a Typescript Library to easily build on Account Abstraction, with first class support for Safe Accounts. One of their use cases is to enable users to add recovery methods as a backup in case their use their main signer.
 
 To leverage the full potential of Account Abstraction, you can combine Lit with AbstractionKit to enable email / social recovery experience, while using a Smart Account as the smart wallet to sponsor gas for users, batch transactions, and more.
 
@@ -254,9 +256,9 @@ console.log(userOpReceiptResultRecovery);
 ```
 
 ### Finalize the Recovery
-After the grace period is over, you can finilize the recovery
+After the grace period is over, you can finalize the recovery
 
-#### Prepare the Finilization UserOp
+#### Prepare the Finalization UserOp
 ```jsx
 const finalizeRecoveryMetaTx = srm.createFinalizeRecoveryMetaTransaction(
     smartAccount.accountAddress
