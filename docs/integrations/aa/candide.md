@@ -2,12 +2,12 @@
 
 # Recover a Safe Account with Google using AbstractionKit
 
-This is the second of two guides on how to recovery a Safe Account using Google. In the first guide, we show the steps on how to add the recovery method. We recommend starting with the first guide [here](https://docs.candide.dev/wallet/guides/recovery-with-google-using-lit/).
+This is the second of two guides that demonstrate how to recover a Safe smart wallet using a Google account. The first guide focuses on adding the recovery method, while this guide focuses on executing the actual recovery process. We recommend starting with guide number one which can be found [here](https://docs.candide.dev/wallet/guides/recovery-with-google-using-lit/).
 
 ## What is AbstractionKit?
-AbstractionKit is a Typescript Library to easily build on Account Abstraction, with first class support for Safe Accounts. One of their use cases is to enable users to add recovery methods as a backup in case their use their main signer.
+AbstractionKit is a Typescript Library that enables developers to easily build on Account Abstraction, with first class support for Safe Accounts. One of the unique use cases enabled by AbstractionKit is the ability for users to add a recovery method(s) as a backup to their account in the case that they lose access to their main signing key.
 
-To leverage the full potential of Account Abstraction, you can combine Lit with AbstractionKit to enable email / social recovery experience, while using a Smart Account as the smart wallet to sponsor gas for users, batch transactions, and more.
+You can combine Lit with AbstractionKit to enable a powerful social recovery experience for your users while using Smart Accounts for gas sponsorship, transaction batching, and more.
 
 ### Relevant Links
 For additional information during this guide:
@@ -15,7 +15,6 @@ For additional information during this guide:
 - [How on-chain guardian recovery works](https://docs.candide.dev/wallet/plugins/recovery-with-guardians/)
 - [Guardian Recovery SDK Reference](https://docs.candide.dev/blog/making-accounts-recoverable/)
 - [Simple Recovery example on GitHub](https://github.com/candidelabs/abstractionkit/tree/experimental/examples/SafeAccountExamples/SocialRecovery)
-- [Lit Documentation Website](https://developer.litprotocol.com/)
 
 ### Complete Code Example
 If you would like to see the complete code example, you can find it [here](https://github.com/LIT-Protocol/lit-candide).
@@ -320,6 +319,6 @@ const userOperationReceiptResultRecovery = await sendUserOperationResponseRecove
 
 console.log(userOperationReceiptResultRecovery);
 ```
-That's it! You've successfully added a Guardian capable of recovering an account with a Google Account using Lit.
+That's it! You've successfully recovered an account with a Google Account using Lit.
 
 Find here the complete [doc page for Account Recovery](https://docs.candide.dev/wallet/plugins/recovery-with-guardians/).
