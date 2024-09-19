@@ -221,10 +221,6 @@ const sidebars = {
                 {
                   type: 'category',
                   label: 'Advanced Topics',
-                  link: {
-                    type: 'doc',
-                    id: 'user-wallets/pkps/advanced-topics/overview',
-                  },
                   collapsed: true,
                   items: [
                     {
@@ -453,8 +449,8 @@ const sidebars = {
                 {
                   type: 'doc',
                   id: 'integrations/aa/candide',
-                  label: 'Candide'
-                }
+                  label: 'Candide',
+                },
               ],
             },
             {
