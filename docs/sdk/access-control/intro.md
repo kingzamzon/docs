@@ -56,7 +56,7 @@ Lit supports the use of both on and [off-chain data](../access-control/lit-actio
 You can get started with encryption following this [quick start](../access-control/quick-start.md) guide. Below, you'll find some additional resources and example implementations:
 
 1. [Storing Private Data on ComposeDB](../../integrations/storage/ceramic-example.md)
-2. [Encrypting Data on Arweave Using Lit and Irys](../../integrations/storage/irys.md) 
+2. [Encrypting Onchain Storage Using Lit and Irys](../../integrations/storage/irys.md) 
 3. [Basic EVM Conditions](../access-control/evm/basic-examples)
 4. [Access Control Using Off-Chain Inputs](../access-control/lit-action-conditions)
 
