@@ -319,6 +319,16 @@ const sidebars = {
                 },
                 {
                   type: 'category',
+                  label: 'Solana',
+                  collapsed: true,
+                  link: {
+                    type: 'doc',
+                    id: 'sdk/access-control/solana/overview',
+                  },
+                  items: ['sdk/access-control/solana/siws-access-control'],
+                },
+                {
+                  type: 'category',
                   label: 'Other Chains',
                   collapsed: true,
                   items: [
