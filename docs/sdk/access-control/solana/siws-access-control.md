@@ -20,7 +20,7 @@ The following diagram depicts the flow of authenticating SIWS messages using Lit
 ![SIWS Authentication Flow](../../../../static/img/siws-diagram.png)
 
 :::note
-The full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser).
+A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser).
 :::
 
 ## Writing the Lit Action
@@ -212,3 +212,25 @@ We then simply return the result of the Access Control Condition check, which is
 ```js
 return LitActions.setResponse({ response: result });
 ```
+
+## Summary
+
+This guide demonstrates implementing Sign-in With Solana (SIWS) authentication using Lit Actions and Access Control Conditions.
+
+By leveraging Phantom's SIWS specification, we've created a secure method to verify Solana wallet ownership and authorize specific public keys.
+
+Key takeaways from this implementation are that the Lit Action:
+
+- Reconstructs and verifies the SIWS message, ensuring the integrity of the signed data.
+- Allows for custom validation of SIWS message properties to meet specific application requirements.
+- Integrates Lit Access Control Conditions to perform custom authorization checks.
+
+The SIWS authentication flow demonstrated in this guide can be combined with other Lit Protocol features to enable powerful functionality:
+
+- **Encrypted Data Access**: Restrict [decryption](../../../sdk/access-control/intro) of sensitive information to specific Solana wallet owners.
+- **Secure Session Management**: Generate [Session Signatures](../../authentication/session-sigs/get-lit-action-session-sigs) only for specific authenticated users.
+- **Authorized PKP Signing**: Leverage [PKP Signing](../../../user-wallets/pkps/quick-start#sign-a-transaction) to ensure only authenticated users can sign data and transactions with a specific PKP.
+
+:::note
+A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser).
+:::
