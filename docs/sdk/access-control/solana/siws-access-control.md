@@ -2,7 +2,7 @@
 
 As covered in the [overview](./overview.md), the Lit nodes currently have limited built-in support for authenticating signed Solana messages. They support deriving the Solana public key from signed data, but they do **not** perform any validation on what was signed. This means that any data signed by a specific Solana wallet will be accepted, which opens the door for signature malleability and replay attacks.
 
-This guide covers how to implement Sign-in With Solana (SIWS) authentication to provide access control using Lit Actions and Phantom's [SIWS specification](https://github.com/phantom/sign-in-with-solana/tree/main).
+This guide covers how to implement Sign-in With Solana (SIWS) authentication to provide access control using Lit Actions and Phantom's [SIWS specification](https://github.com/phantom/sign-in-with-solana/tree/main) allowing you to permit access to content encrypted with Lit to users on Solana.
 
 ## Prerequisites
 
