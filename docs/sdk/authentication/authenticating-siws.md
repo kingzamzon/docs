@@ -26,7 +26,7 @@ The following diagram depicts the flow of authenticating SIWS messages using Lit
 ![SIWS Authentication Flow](../../../static/img/siws-authentication.png)
 
 :::info
-A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-authentication/siws-authentication/browser).
+A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/siws-authentication/browser).
 :::
 
 ## Writing the Lit Action
