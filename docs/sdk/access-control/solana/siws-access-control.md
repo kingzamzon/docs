@@ -1,6 +1,6 @@
 # Sign-in With Solana Access Control
 
-This guide builds on the [SIWS Authentication](../../authentication/authenticating-siws.md) guide to show how to use Lit Actions to implement access control for Solana wallets authenticated using SIWS.
+This guide builds on the [Sign-in With Solana Authentication](../../authentication/authenticating-siws.md) guide to show how to use Lit Actions to implement access control for Solana wallets authenticated using SIWS.
 
 We combine the SIWS authentication with Lit Access Control Conditions to demonstrate how to control access to to an app based on the user's Solana public key.
 
@@ -29,7 +29,7 @@ The Lit Action used for this example does the following:
 
 1. Parses the raw SIWS message values
 2. Builds the SIWS message according to the SIWS specification
-3. Derives a Solana public key from the user's signature using the built SIWS message
+3. Validates that the provided Solana signature is valid for the SIWS message
 4. Compares the derived public key against the public key specified in the Lit Access Control Conditions
 5. Returns the result of the comparison
 

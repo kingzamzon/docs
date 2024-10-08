@@ -35,7 +35,7 @@ The Lit Action used for this example does the following:
 
 1. Parses the raw SIWS message values
 2. Builds the SIWS message according to the SIWS specification
-3. Derives a Solana public key from the user's signature using the built SIWS message
+3. Validates that the provided Solana signature is valid for the SIWS message
 4. Returns the authenticated Solana public key
 
 :::info
