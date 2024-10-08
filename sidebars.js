@@ -162,6 +162,7 @@ const sidebars = {
           label: 'Authentication',
           collapsed: true,
           items: [
+            'sdk/authentication/security',
             {
               type: 'category',
               label: 'Session Signatures',
@@ -174,13 +175,21 @@ const sidebars = {
                 'sdk/authentication/session-sigs/resources-and-abilities',
                 'sdk/authentication/session-sigs/capability-objects',
                 'sdk/capacity-credits',
-                'sdk/authentication/session-sigs/get-session-sigs',
-                'sdk/authentication/session-sigs/get-pkp-session-sigs',
-                'sdk/authentication/session-sigs/get-lit-action-session-sigs',
+                {
+                  type: 'category',
+                  label: 'Generating Session Signatures',
+                  collapsed: true,
+                  items: [
+                    'sdk/authentication/session-sigs/get-session-sigs',
+                    'sdk/authentication/session-sigs/get-pkp-session-sigs',
+                    'sdk/authentication/session-sigs/get-lit-action-session-sigs',
+                    'sdk/authentication/session-sigs/siws-pkp-session-sigs',
+                  ],
+                },
                 'sdk/authentication/session-sigs/usage',
               ],
             },
-            'sdk/authentication/security',
+            'sdk/authentication/authenticating-siws',
           ],
         },
         {
@@ -321,20 +330,16 @@ const sidebars = {
                   type: 'category',
                   label: 'Solana',
                   collapsed: true,
-                  link: {
-                    type: 'doc',
-                    id: 'sdk/access-control/solana/overview',
-                  },
-                  items: ['sdk/access-control/solana/siws-access-control'],
+                  items: [
+                    'sdk/access-control/solana/siws-access-control',
+                    'sdk/access-control/solana/sol-rpc-conditions',
+                  ],
                 },
                 {
                   type: 'category',
                   label: 'Other Chains',
                   collapsed: true,
-                  items: [
-                    'sdk/access-control/other-chains/sol-rpc-conditions',
-                    'sdk/access-control/other-chains/cosmos-conditions',
-                  ],
+                  items: ['sdk/access-control/other-chains/cosmos-conditions'],
                 },
                 {
                   type: 'category',

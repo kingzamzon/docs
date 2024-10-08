@@ -12,7 +12,7 @@ This guide covers how to authenticate SIWS messages using a Lit Action and the [
 
 ## Prerequisites
 
-Before continuing with this guide, make sure you have an understanding of the following:
+Before continuing with this guide, make sure you have the following:
 
 - An understanding of [Lit Actions](../serverless-signing/overview) and how they work
 - A basic understanding of Phantom's [SIWS specification](https://github.com/phantom/sign-in-with-solana/tree/main)
@@ -166,11 +166,11 @@ Lit.Actions.setResponse({ response: siwsInput.address });
 
 This guide demonstrates implementing Sign-in With Solana (SIWS) authentication using Lit Actions.
 
-By implementing Phantom's SIWS specification, we have established a robust and secure method for verifying Solana wallet ownership. This authentication mechanism can be extended to authorize specific Solana public keys for various operations within the Lit ecosystem, such as:
+By implementing Phantom's SIWS specification, we have established a robust and secure method for verifying Solana wallet ownership. This authentication mechanism can be extended to authorize specific Solana public keys for various operations using Lit, such as:
 
-- Accessing and decrypting data that has been encrypted using Lit Protocol
-- Creating [Session Signatures](../authentication/session-sigs/siws-pkp-session-sigs.md) for temporary, scoped permissions
-- Restricting PKP (Programmable Key Pair) Signing capabilities to authenticated users only
+- **Encrypted Data Access**: Restrict [decryption](../../sdk/access-control/intro) of sensitive information to specific Solana wallet owners.
+- **Secure Session Management**: Generate [Session Signatures](../../sdk/authentication/session-sigs/get-lit-action-session-sigs) only for specific authenticated users.
+- **Authorized PKP Signing**: Leverage [PKP Signing](../../user-wallets/pkps/quick-start#sign-a-transaction) to ensure only authenticated users can sign data and transactions with a specific PKP.
 
 Key takeaways from this implementation are that the Lit Action:
 
