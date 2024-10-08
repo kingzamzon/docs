@@ -2,7 +2,7 @@
 
 Deriving a Solana public key (aka. address) from a signed message works slightly differently than when using Lit to authenticate signed messages on EVM chains.
 
-Currently the Lit nodes support deriving an address from a Sign-in With Ethereum Message (EIP-5573), while also validating what was signed using the [EIP-5573 specification](https://eips.ethereum.org/EIPS/eip-5573) (eg. the signed message hasn't expired and has the correct format).
+Currently the Lit nodes support deriving an address from a Sign-in With Ethereum Message (EIP-5573), while also validating what was signed using the [EIP-5573 specification](https://eips.ethereum.org/EIPS/eip-5573) (e.g. the signed message hasn't expired and has the correct format).
 
 However, the Lit nodes built-in support for authenticating signed Solana messages is limited to just deriving the Solana public key from the signed data, but they do **not** perform any validation on the what was signed. This means that any data signed by a specific Solana wallet will be accepted, which opens the door for signature malleability and replay attacks.
 
