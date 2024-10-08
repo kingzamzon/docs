@@ -20,7 +20,7 @@ The following diagram depicts the flow of authenticating SIWS messages and then 
 ![SIWS Access Control Flow](../../../../static/img/siws-accs.png)
 
 :::info
-A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-access-control/browser).
+A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/tree/master/siws-accs/browser).
 :::
 
 ## Writing the Lit Action
@@ -35,7 +35,7 @@ The Lit Action used for this example does the following:
 
 For steps 1 - 3, we reuse the SIWS authentication logic from the [SIWS Authentication](../../authentication/authenticating-siws#parsing-and-re-building-the-siws-message) guide, so this guide will pick up from step 4.
 
-:::note
+:::info
 The full implementation of this Lit Action can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser/src/litActionSiws.ts).
 :::
 
@@ -118,7 +118,7 @@ Key takeaways from this implementation are that the Lit Action:
 - Allows for custom validation of SIWS message properties to meet specific application requirements.
 - Integrates Lit Access Control Conditions to perform custom authorization checks.
 
-:::note
+:::info
 A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser).
 :::
 
