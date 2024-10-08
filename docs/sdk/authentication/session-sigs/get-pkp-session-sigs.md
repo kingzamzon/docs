@@ -6,7 +6,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Generating SessionSigs Using a PKP
+# Using a PKP
 
 This guide covers the `getPkpSessionSigs` function from the Lit SDK. For an overview of what Session Signatures are and how they are to be used, please go [here](./intro).
 
