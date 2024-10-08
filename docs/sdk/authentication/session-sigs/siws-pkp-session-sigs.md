@@ -87,8 +87,8 @@ The Lit Action used for this example does the following:
 
 For steps 1 - 3, we reuse the SIWS authentication logic from the [SIWS Authentication](../../authentication/authenticating-siws#parsing-and-re-building-the-siws-message) guide, so this guide will pick up from step 4.
 
-:::note
-The full implementation of this Lit Action can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-accs/browser/src/litActionSiws.ts).
+:::info
+The full implementation of this Lit Action can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-session-sigs/browser/src/litActionSessionSigs.ts).
 :::
 
 ### Checking if the Solana Public Key is Authorized
@@ -137,6 +137,6 @@ Key takeaways from this implementation are:
 - The Lit Action checks if the authenticated Solana public key is authorized to use the PKP by querying the Lit PKP permissions smart contract.
 - Upon successful authorization, the Lit Action signals the Lit network to generate Session Signatures for the PKP.
 
-:::note
+:::info
 A full implementation of this code example can be found [here](https://github.com/LIT-Protocol/developer-guides-code/blob/master/siws-session-sigs/browser).
 :::
