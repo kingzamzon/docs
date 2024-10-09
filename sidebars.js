@@ -332,6 +332,7 @@ const sidebars = {
                   collapsed: true,
                   items: [
                     'sdk/access-control/solana/siws-access-control',
+                    'sdk/access-control/solana/siws-encryption',
                     'sdk/access-control/solana/sol-rpc-conditions',
                   ],
                 },
