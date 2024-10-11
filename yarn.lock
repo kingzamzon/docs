@@ -2285,37 +2285,37 @@
   dependencies:
     ajv "^8.12.0"
 
-"@lit-protocol/auth-helpers@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@lit-protocol/auth-helpers/-/auth-helpers-5.0.0.tgz"
-  integrity sha512-uiTUwhxyzUe7h57i4KhJjL96XP0PcxSufpBq2Z2XjEzWD3ns6ruyy7fWpB7wseR0ePzW3kegEz8fuzhl/HtTfQ==
+"@lit-protocol/auth-helpers@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@lit-protocol/auth-helpers/-/auth-helpers-5.1.0.tgz"
+  integrity sha512-rd+5TTpIZ1kjpsRKckihlpa43uKUa5HTdvxcO18maPuRW2cMJq/qfR8IY+JT9ji/wiet3LL/6395ULny28Bq6g==
   dependencies:
     siwe "^2.0.5"
     siwe-recap "0.0.2-alpha.0"
 
-"@lit-protocol/constants@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@lit-protocol/constants/-/constants-5.0.0.tgz"
-  integrity sha512-6zVezFFD/1DhcJn+0xsvEnV4Grpy6GFM3klD3TZInvue10WYJsrSqSfagNraaemfMwf1DDOpdC8jG2J/4Rl78g==
+"@lit-protocol/constants@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@lit-protocol/constants/-/constants-5.1.0.tgz"
+  integrity sha512-TB5QDY16OIrRyJ4UMMMrr0zZ+n64gnoi0+7hmXJZbvcEous0LODnPcuddIvPr8luaRDnAlmS8fzsDOnX0dDo9g==
   dependencies:
     "@ethersproject/abstract-provider" "5.7.0"
     "@lit-protocol/accs-schemas" "0.0.7"
-    "@lit-protocol/auth-helpers" "5.0.0"
-    "@lit-protocol/types" "5.0.0"
+    "@lit-protocol/auth-helpers" "5.1.0"
+    "@lit-protocol/types" "5.1.0"
     ethers "^5.7.1"
     jszip "^3.10.1"
     siwe "^2.0.5"
     siwe-recap "0.0.2-alpha.0"
     tslib "^2.3.0"
 
-"@lit-protocol/types@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@lit-protocol/types/-/types-5.0.0.tgz"
-  integrity sha512-6r4LCxEe0QiZxFWYQHkTRwedypcEm98kcvBdiGmaoPj8pnbHtjuGOAveG9HumAUvs85rd8psmVh9cl3yLFQYkw==
+"@lit-protocol/types@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/@lit-protocol/types/-/types-5.1.0.tgz"
+  integrity sha512-VundTuMZZ5bRKeG5sWaX0e33H8BAka94XHYKTGXWJ81XmU0WBJ7YO+WDCeHsyix/SM9246klVzd8dwQsGcDzZw==
   dependencies:
     "@ethersproject/abstract-provider" "5.7.0"
     "@lit-protocol/accs-schemas" "0.0.7"
-    "@lit-protocol/auth-helpers" "5.0.0"
+    "@lit-protocol/auth-helpers" "5.1.0"
     ethers "^5.7.1"
     jszip "^3.10.1"
     siwe "^2.0.5"
@@ -2358,9 +2358,9 @@
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
 "@noble/hashes@^1.1.2":
-  version "1.3.2"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.2.tgz"
-  integrity sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.5.0.tgz"
+  integrity sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2424,13 +2424,13 @@
     p-map "^4.0.0"
     webpack-sources "^3.2.2"
 
-"@spruceid/siwe-parser@*":
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/@spruceid/siwe-parser/-/siwe-parser-2.0.2.tgz"
-  integrity sha512-9WuA0ios2537cWYu39MMeH0O2KdrMKgKlOBUTWRTXQjCYu5B+mHCA0JkCbFaJ/0EjxoVIcYCXIW/DoPEpw+PqA==
+"@spruceid/siwe-parser@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.npmjs.org/@spruceid/siwe-parser/-/siwe-parser-2.1.2.tgz"
+  integrity sha512-d/r3S1LwJyMaRAKQ0awmo9whfXeE88Qt00vRj91q5uv5ATtWIQEGJ67Yr5eSZw5zp1/fZCXZYuEckt8lSkereQ==
   dependencies:
     "@noble/hashes" "^1.1.2"
-    apg-js "^4.1.1"
+    apg-js "^4.3.0"
     uri-js "^4.4.1"
     valid-url "^1.0.9"
 
@@ -3238,10 +3238,10 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apg-js@^4.1.1:
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/apg-js/-/apg-js-4.2.1.tgz"
-  integrity sha512-S3unf9jb9XrhmZYC27L5yits1p/+HqN6lksrkqKEv1U0Ytu+ENkIkOMV5+iutFjBaY9JTUCDQFS1svHsy3uNZA==
+apg-js@^4.3.0:
+  version "4.4.0"
+  resolved "https://registry.npmjs.org/apg-js/-/apg-js-4.4.0.tgz"
+  integrity sha512-fefmXFknJmtgtNEXfPwZKYkMFX4Fyeyz+fNF6JWp87biGOPslJbCBVU158zvKRZfHBKnJDy8CMM40oLFGkXT8Q==
 
 arg@^5.0.0:
   version "5.0.2"
@@ -5071,6 +5071,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"
@@ -8235,11 +8240,11 @@ siwe-recap@0.0.2-alpha.0:
     siwe "^2.1.4"
 
 siwe@^2.0.5, siwe@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.npmjs.org/siwe/-/siwe-2.1.4.tgz"
-  integrity sha512-Dke1Qqa3mgiLm3vjqw/+SQ7dl8WV/Pfk3AlQBF94cBFydTYhztngqYrikzE3X5UTsJ6565dfVbQptszsuYZNYg==
+  version "2.3.2"
+  resolved "https://registry.npmjs.org/siwe/-/siwe-2.3.2.tgz"
+  integrity sha512-aSf+6+Latyttbj5nMu6GF3doMfv2UYj83hhwZgUF20ky6fTS83uVhkQABdIVnEuS8y1bBdk7p6ltb9SmlhTTlA==
   dependencies:
-    "@spruceid/siwe-parser" "*"
+    "@spruceid/siwe-parser" "^2.1.2"
     "@stablelib/random" "^1.0.1"
     uri-js "^4.4.1"
     valid-url "^1.0.9"
