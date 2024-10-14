@@ -32,6 +32,8 @@ defaultValue="SingleSignature"
 values={[
 {label: "Single Signature", value: "SingleSignature"},
 {label: 'Multi Signature', value: 'MultiSignature'},
+{label: '1-of-1 Multi Signature', value: '1of1MultiSignature'},
+{label: 'Collaborative', value: 'collaborative'},
 ]}>
 <TabItem value="SingleSignature">
 
@@ -237,6 +239,252 @@ return await broadcastTransaction(txHex);
 ```
 
 </TabItem>
+
+<TabItem value="1of1MultiSignature">
+
+```tsx
+import * as bitcoin from "bitcoinjs-lib";
+import elliptic from "elliptic";
+import mempoolJS from "@mempool/mempool.js";
+
+const EC = elliptic.ec;
+bitcoin.initEccLib(ecc);
+
+const network = bitcoin.networks.bitcoin;
+const pubKeyBuffer_1 = Buffer.from(PKP_PUBLIC_KEY_1, "hex");
+const pubKeyBuffer_2 = Buffer.from(PKP_PUBLIC_KEY_2, "hex");
+
+const redeemScript = bitcoin.script.compile([
+    bitcoin.opcodes.OP_1,
+    pubKeyBuffer_1,
+    pubKeyBuffer_2,
+    bitcoin.opcodes.OP_2,
+    bitcoin.opcodes.OP_CHECKMULTISIG,
+]);
+
+const p2shPayment = bitcoin.payments.p2sh({
+    redeem: { output: redeemScript },
+    network: network,
+});
+
+const { bitcoin: { addresses, transactions } } = mempoolJS({
+    hostname: "mempool.space",
+    network: "mainnet",
+});
+
+const addressUtxos = await addresses.getAddressTxsUtxo({
+    address: p2shPayment.address!,
+});
+
+if (addressUtxos.length === 0) {
+    console.log("No UTXOs found for address:", p2shPayment.address);
+    return;
+}
+
+const utxo = addressUtxos[0];
+console.log("✅ UTXO information fetched:", utxo);
+
+const psbt = new bitcoin.Psbt({ network });
+
+const utxoRawTx = await transactions.getTxHex({ txid: utxo.txid });
+
+psbt.addInput({
+    hash: utxo.txid,
+    index: utxo.vout,
+    nonWitnessUtxo: Buffer.from(utxoRawTx, "hex"),
+    redeemScript: redeemScript,
+});
+
+const fee = 1000;
+const amountToSend = utxo.value - fee;
+
+psbt.addOutput({
+    address: BTC_DESTINATION_ADDRESS,
+    value: BigInt(amountToSend),
+});
+
+//@ts-ignore
+const tx = psbt.__CACHE.__TX.clone();
+const sighash = tx.hashForSignature(
+    0,
+    redeemScript,
+    bitcoin.Transaction.SIGHASH_ALL
+);
+
+const litActionResponse = await litNodeClient.executeJs({
+  code: litActionCode,
+  sessionSigs,
+  jsParams: {
+    publicKey: PKP_PUBLIC_KEY_1,
+    toSign: Buffer.from(sighash, "hex"),
+  },
+});
+
+const signatureWithHashType = convertSignature(
+    litActionResponse1.signatures.btcSignature
+);
+
+psbt.updateInput(0, {
+    finalScriptSig: bitcoin.script.compile([
+    bitcoin.opcodes.OP_0,
+    signatureWithHashType,
+    redeemScript,
+    ]),
+});
+
+const txHex = psbt.extractTransaction().toHex();
+return await broadcastTransaction(txHex);
+```
+</TabItem>
+
+<TabItem value='collaborative'>
+
+```tsx
+const network = bitcoin.networks.bitcoin;
+const pubKeyBuffer_1 = Buffer.from(PKP_PUBLIC_KEY_1, "hex");
+const pubKeyBuffer_2 = Buffer.from(PKP_PUBLIC_KEY_2, "hex");
+const redeemScript1 = bitcoin.script.compile([
+    pubKeyBuffer_1,
+    bitcoin.opcodes.OP_CHECKSIG,
+]);
+
+const redeemScript2 = bitcoin.script.compile([
+    pubKeyBuffer_2,
+    bitcoin.opcodes.OP_CHECKSIG,
+]);
+
+const p2shPayment1 = bitcoin.payments.p2sh({
+    redeem: { output: redeemScript1 },
+    network: network,
+});
+
+const p2shPayment2 = bitcoin.payments.p2sh({
+    redeem: { output: redeemScript2 },
+    network: network,
+});
+
+const {
+    bitcoin: { addresses, transactions },
+} = mempoolJS({
+    hostname: "mempool.space",
+    network: "mainnet",
+});
+
+const address1Utxos = await addresses.getAddressTxsUtxo({
+    address: p2shPayment1.address!,
+});
+
+if (address1Utxos.length === 0) {
+    console.log("No UTXOs found for address:", p2shPayment1.address);
+    return;
+}
+
+const utxo1 = address1Utxos[0];
+console.log("✅ UTXO 1 information fetched:", utxo1);
+
+const address2Utxos = await addresses.getAddressTxsUtxo({
+    address: p2shPayment2.address!,
+});
+
+if (address2Utxos.length === 0) {
+    console.log("No UTXOs found for address:", p2shPayment2.address);
+    return;
+}
+
+const utxo2 = address2Utxos[0];
+
+const fee = 1000; // Adjust the fee as needed
+
+const utxoValue1 = utxo1.value;
+const utxoValue2 = utxo2.value;
+const totalInputValue = utxoValue1 + utxoValue2;
+const amountToSend = totalInputValue - fee;
+
+const psbt = new bitcoin.Psbt({ network });
+
+const utxo1RawTx = await transactions.getTxHex({ txid: utxo1.txid });
+const utxo2RawTx = await transactions.getTxHex({ txid: utxo2.txid });
+
+psbt.addInput({
+    hash: utxo1.txid,
+    index: utxo1.vout,
+    nonWitnessUtxo: Buffer.from(utxo1RawTx, "hex"),
+    redeemScript: redeemScript1,
+});
+
+psbt.addInput({
+    hash: utxo2.txid,
+    index: utxo2.vout,
+    nonWitnessUtxo: Buffer.from(utxo2RawTx, "hex"),
+    redeemScript: redeemScript2,
+});
+
+psbt.addOutput({
+    address: BTC_DESTINATION_ADDRESS,
+    value: BigInt(amountToSend),
+});
+
+//@ts-ignore
+const tx = psbt.__CACHE.__TX.clone();
+const sighash1 = tx.hashForSignature(
+    0,
+    redeemScript1,
+    bitcoin.Transaction.SIGHASH_ALL
+);
+
+const sighash2 = tx.hashForSignature(
+    1,
+    redeemScript2,
+    bitcoin.Transaction.SIGHASH_ALL
+);
+
+const litActionResponse1 = await litNodeClient.executeJs({
+    code: litActionCode,
+    sessionSigs,
+    jsParams: {
+    publicKey: PKP_PUBLIC_KEY_1,
+    toSign: Buffer.from(sighash1, "hex"),
+    },
+});
+
+const litActionResponse2 = await litNodeClient.executeJs({
+    code: litActionCode,
+    sessionSigs,
+    jsParams: {
+    publicKey: PKP_PUBLIC_KEY_2,
+    toSign: Buffer.from(sighash2, "hex"),
+    },
+});
+
+const signatureWithHashType1 = convertSignature(
+    litActionResponse1.signatures.btcSignature
+);
+
+const signatureWithHashType2 = convertSignature(
+    litActionResponse2.signatures.btcSignature
+);
+
+psbt.updateInput(0, {
+    finalScriptSig: bitcoin.script.compile([
+    signatureWithHashType1,
+    redeemScript1,
+    ]),
+});
+
+psbt.updateInput(1, {
+    finalScriptSig: bitcoin.script.compile([
+    signatureWithHashType2,
+    redeemScript2,
+    ]),
+});
+
+const txHex = psbt.extractTransaction().toHex();
+return await broadcastTransaction(txHex);
+
+```
+
+</TabItem>
+
 </Tabs>
 
 ### Formatting the Signature
