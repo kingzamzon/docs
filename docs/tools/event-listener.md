@@ -2,7 +2,7 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Event Listener
 
-:::note
+:::warning
 
 The Lit Event Listener tool is currently **incompatible** with the latest version of the Lit SDK and must be updated before it can be used by developers building on any of the Lit ['Datil' networks](../connecting-to-a-lit-network/connecting.md). These updates are planned and the community will be notified as soon as they've been completed. 
 
