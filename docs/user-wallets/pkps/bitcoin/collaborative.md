@@ -1,4 +1,4 @@
-# Collaborative Multi Signature P2SH Transaction
+# Collaborative Multi Signature
 
 ## Signing with the PKP
 

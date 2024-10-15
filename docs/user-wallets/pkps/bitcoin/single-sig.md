@@ -1,6 +1,27 @@
-# Single Signature P2SH Transaction
+# Single Signature
+
+This guide is the simplest example of PKP signing a P2SH transaction, demonstrating a PKP signing a Bitcoin transaction with a single signature.
+
+## Prerequisites
+
+This section defines the necessary code prerequisites for the example in this guide. Before using this example, please **ensure the P2SH Bitcoin address derived from your PKP public key(s) has at least one UTXO**. This example will take the first UTXO of your PKP and send it to the provided destination address. The example will not run if you do not, because the PKP will not have any UTXOs to spend.
+
+### Lit-Specific
+- [LitNodeClient](link tb)
+- [Session Signatures](../../../sdk/authentication/session-sigs/intro.md)
+- Ownership of a [PKP](../../overview.md)
+    - The PKP must be owned by the Ethereum wallet used to generate the Session Signatures 
+
+### Custom Functions for This Example
+- [`convertSignature`](./overview.md#formatting-the-signature): Converts the signature from the standard ECDSA format to a Bitcoin DER format
+- [`broadcastTransaction`](./overview.md#broadcasting-the-transaction): Broadcasts the transaction to the Bitcoin blockchain
+- [`litActionCode`](./overview.md#signing-within-a-lit-action): The Lit Action code that will be executed to sign the transaction
 
 ## Signing with the PKP
+
+After setting up the prerequisites, the `singleSig` function can be used to sign a Bitcoin transaction.
+
+For an understanding of the steps involved in this example, visit the [Overview Diagram](./overview.md#high-level-overview)
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";

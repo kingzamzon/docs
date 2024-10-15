@@ -21,9 +21,11 @@ Before continuing with this guide, make sure you have the following:
 
 Through specific preparation of the Bitcoin transaction, we can use a PKP to sign a Bitcoin transaction. 
 
-diagram here
+![High Level Overview Diagram](../../../../static/img/BTC.png)
 
 ### Signing Within a Lit Action
+
+The following code snippet shows the `litActionCode` that will be executed to sign the transaction. It signs the data in the `toSign` variable and returns the ECDSA signature with the name `btcSignature`.
 
 ```tsx
 // @ts-nocheck

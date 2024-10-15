@@ -1,4 +1,4 @@
-# 1-of-1 Multi Signature P2SH Transaction
+# 1-of-1 Multi Signature
 
 ## Signing with the PKP
 

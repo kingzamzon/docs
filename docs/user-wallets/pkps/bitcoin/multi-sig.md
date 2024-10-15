@@ -1,4 +1,22 @@
-# Multi Signature P2SH Transaction
+# Multi Signature
+
+## Prerequisites
+This section defines the prerequisites for signing Bitcoin transactions using a PKP. Before using these
+
+### Lit-Specific
+- [LitNodeClient](link tb)
+- [Session Signatures](../../../sdk/authentication/session-sigs/intro.md)
+- Ownership of multiple [PKPs](../../overview.md)
+    - The PKP must be owned by the Ethereum wallet used to generate the Session Signatures 
+
+### Custom Functions for This Example
+- [`convertSignature`](./overview.md#formatting-the-signature): Converts the signature from the standard ECDSA format to a Bitcoin DER format
+- [`broadcastTransaction`](./overview.md#broadcasting-the-transaction): Broadcasts the transaction to the Bitcoin blockchain
+- [`litActionCode`](./overview.md#signing-within-a-lit-action): The Lit Action code that will be executed to sign the transaction
+
+## Signing with the PKP
+
+After setting up the prerequisites, the `singleSig` function can be used to sign a Bitcoin transaction.
 
 ## Signing with the PKP
 
