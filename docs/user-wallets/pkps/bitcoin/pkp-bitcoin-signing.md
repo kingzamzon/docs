@@ -31,7 +31,11 @@ diagram here
 <p>
 
 ```tsx
+import elliptic from "elliptic";
+import * as bip66 from "bip66";
+
 function convertSignature(litSignature: any) {
+    const EC = elliptic.ec;
     let r = Buffer.from(litSignature.r, "hex");
     let s = Buffer.from(litSignature.s, "hex");
     let rBN = new BN(r);
@@ -127,11 +131,10 @@ values={[
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
-import elliptic from "elliptic";
+import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
 
 async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey: string, destinationAddress: string) {
-    const EC = elliptic.ec;
     bitcoin.initEccLib(ecc);
 
     const network = bitcoin.networks.bitcoin;
@@ -221,11 +224,10 @@ async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubl
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
-import elliptic from "elliptic";
+import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
 
 async function multiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey1: string, pkpPublicKey2: string, destinationAddress: string) {
-    const EC = elliptic.ec;
     bitcoin.initEccLib(ecc);
 
     const network = bitcoin.networks.bitcoin;
@@ -334,11 +336,10 @@ async function multiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubli
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
-import elliptic from "elliptic";
+import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
 
-async function 1of1MultiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey1: string, pkpPublicKey2: string, destinationAddress: string) {
-    const EC = elliptic.ec;
+async function oneOfOneMultiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey1: string, pkpPublicKey2: string, destinationAddress: string) {
     bitcoin.initEccLib(ecc);
 
     const network = bitcoin.networks.bitcoin;
@@ -432,11 +433,10 @@ async function 1of1MultiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpP
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
-import elliptic from "elliptic";
+import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
 
 async function collaborativeMultiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey1: string, pkpPublicKey2: string, destinationAddress: string) {
-    const EC = elliptic.ec;
     bitcoin.initEccLib(ecc);
 
     const network = bitcoin.networks.bitcoin;
