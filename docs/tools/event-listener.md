@@ -2,6 +2,16 @@ import FeedbackComponent from "@site/src/pages/feedback.md";
 
 # Event Listener
 
+:::warning
+
+The Lit Event Listener tool is currently **incompatible** with the latest version of the Lit SDK and must be updated before it can be used by developers building on any of the Lit ['Datil' networks](../connecting-to-a-lit-network/connecting.md). These updates are planned and the community will be notified as soon as they've been completed. 
+
+If you're new to Lit Actions and are looking for a place to start, please consult the [quick start](../sdk/serverless-signing/quick-start.md) guide.
+
+If you have a support request or would like to stay up to date with the latest updates, please join Lit's [Ecosystem Builders channel](https://t.me/+aa73FAF9Vp82ZjJh) on Telegram.
+
+:::
+
  <iframe width="640" 
          height="480" 
          src="https://www.youtube.com/embed/gcT8Bp5oepo" 
