@@ -258,8 +258,9 @@ const sidebars = {
                       collapsed: true,
                       items: ['user-wallets/pkps/claimable-keys/usage'],
                     },
-                    { type: 'category',
-                      label: "Signing Bitcoin Transactions",
+                    { 
+                      type: 'category',
+                      label: 'Signing Bitcoin Transactions',
                       link: {
                         type: 'doc',
                         id: 'user-wallets/pkps/bitcoin/overview',
