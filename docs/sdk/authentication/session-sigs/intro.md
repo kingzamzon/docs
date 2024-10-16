@@ -52,7 +52,18 @@ litNodeClient = new LitNodeClient({
 If an instance of `LocalStorage` is not provided as the `storageProvider`, a new session keypair will be generated each time the code runs instead of reusing previously generated signatures and keys.
 
 #### Manually Generating Session Keys
-The session keypair can also be generated with the `generateSessionKeyPair()` function. Doing this enables you to pass the generated session keypair as the optional `sessionKey` parameter when generating Session Signatures.
+
+In addition to the automatic generation of session key pairs, you can manually generate a session key pair using the `generateSessionKeyPair()` function. This provides greater control over session management, especially in environments where custom handling of keys is necessary, such as server-side applications.
+
+When a session keypair is manually generated, it includes both a public key and a private key (using the [Ed25519](https://ed25519.cr.yp.to/) algorithm). These key pairs are tied to the user’s device, ensuring that the session remains secure and unique to that environment.
+
+Note:
+
+- In a browser environment, the session key is automatically stored in local storage (lit-session-key) for later use, allowing persistent sessions without needing to regenerate the key each time.
+
+- In a Node.js or similar environment, you need to specify a custom `storageProvider` to store and retrieve the session keys. Without this, a new keypair will be generated each time the session is initialised.
+
+If no session key is provided, the SDK will automatically generate a new one. However, manually generating and managing session keys provides more control, especially if you want to cache or persist them securely across different environments.
 
 ### Resources you can Request
 
