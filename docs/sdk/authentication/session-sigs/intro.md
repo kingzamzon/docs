@@ -55,7 +55,7 @@ If an instance of `LocalStorage` is not provided as the `storageProvider`, a new
 
 In addition to the automatic generation of session key pairs, you can manually generate a session key pair using the `generateSessionKeyPair()` function. This provides greater control over session management, especially in environments where custom handling of keys is necessary, such as server-side applications.
 
-When a session keypair is generated, it includes both a public key and a private key (using the [Ed25519](https://ed25519.cr.yp.to/) algorithm). These key pairs are tied to the user’s device, ensuring that the session remains secure and unique to that environment.
+When a session keypair is generated, it includes both a public key and a private key (using the [Ed25519](https://ed25519.cr.yp.to/) algorithm). These key pairs are unique to the user’s device, ensuring that the session remains secure to that environment.
 
 ## Note:
 
