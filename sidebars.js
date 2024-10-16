@@ -44,11 +44,27 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting Started',
-      collapsed: true,
+      collapsed: false,
       items: [
         'intro/overview',
         'intro/what-is-lit-protocol',
         'resources/how-it-works',
+        {
+          type: 'category',
+          label: 'Making Your First Request',
+          collapsed: true,
+          link: {
+            type: 'doc',
+            id: 'intro/first-request/overview',
+          },
+          items: [
+            'intro/first-request/connecting-to-lit',
+            'intro/first-request/generating-session-sigs',
+            'intro/first-request/installing-sdk',
+            'intro/first-request/making-first-decryption',
+            'intro/first-request/making-first-signing',
+          ],
+        },
       ],
     },
     {
