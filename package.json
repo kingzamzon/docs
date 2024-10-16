@@ -48,5 +48,8 @@
   "devDependencies": {
     "dotenv": "^16.0.3",
     "husky": "^7.0.4"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
