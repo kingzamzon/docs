@@ -57,9 +57,9 @@ In addition to the automatic generation of session key pairs, you can manually g
 
 When a session keypair is generated, it includes both a public key and a private key (using the [Ed25519](https://ed25519.cr.yp.to/) algorithm). These key pairs are tied to the user’s device, ensuring that the session remains secure and unique to that environment.
 
-Note:
+## Note:
 
-- In a browser environment, the session key is automatically stored in local storage (lit-session-key) for later use, allowing persistent sessions without needing to regenerate the key each time.
+- In a browser environment, the session key is automatically stored in local storage `lit-session-key` for later use, allowing persistent sessions without needing to regenerate the key each time.
 
 - In a Node.js or similar environment, you need to specify a custom `storageProvider` to store and retrieve the session keys. Without this, a new keypair will be generated each time the session is initialised.
 
