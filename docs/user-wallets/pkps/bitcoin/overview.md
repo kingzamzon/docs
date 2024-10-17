@@ -80,18 +80,18 @@ Once we have the ECDSA signature from successfully signing with a PKP, we need t
 
 #### `convertSignature` Overview
 
-1. Extract the r and s values from the btcSignature, covnvert them from a hexadecimal string to a Buffer.
-2. Create an instance of the secp256k1 elliptic curve, which is the elliptic curve used in Bitcoin's public key cryptography.
-3. Extract the number of points, or the order (n), on the elliptic curve.
-4. Implement low-S normalization, which ensures that s is less than half of the order. Bitcoin requires this operation to prevent transaction malleability.
-5. Convert the r and s values from a BigNumber into a 32-byte Buffer in big-endian order. This is done so next we can ensure the positivity of the r and s values.
-6. We ensure positivity of the r and s values using the ensurePositive helper function. This function:
+1. Extract the `r` and `s` values from the `btcSignature`, covnvert them from a hexadecimal string to a Buffer.
+2. Create an instance of the secp256k1 [elliptic curve](https://en.wikipedia.org/wiki/Elliptic-curve_cryptography), which is the elliptic curve used in Bitcoin's public key cryptography.
+3. Extract the number of points, or the order (`n`), on the elliptic curve.
+4. Implement low-S normalization, which ensures that `s` is less than half of the order. Bitcoin requires this operation to prevent transaction malleability.
+5. Convert the `r` and `s` values from a BigNumber into a 32-byte Buffer in big-endian order. This is done so next we can ensure the positivity of the `r` and `s` values.
+6. We ensure positivity of the `r` and `s` values using the `ensurePositive` helper function. This function:
   - Checks if the most significant bit (MSB) of the first byte is set (i.e. the number is negative).
   - If so, we construct a new buffer one byte longer than the original.
-  - We then prepend 0x00 to ensure the Buffer is positive.
+  - We then prepend `0x00` to ensure the Buffer is positive.
   - The original buffer is copied into the new buffer starting at index 1. This ensures that only the MSB has changed.
   - If the MSB was not set from the beginning, we can return the original buffer.
-7. After ensuring positivity of the r and s values, we can format the signature for the transaction. This involves encoding using the BIP66 (Bitcoin Improvement Proposal 66), which is a standard for encoding ECDSA signatures in Bitcoin. It defines a strict DER (Distinguished Encoding Rules) encoding.
+7. After ensuring positivity of the `r` and `s` values, we can format the signature for the transaction. This involves encoding using the BIP66 (Bitcoin Improvement Proposal 66), which is a standard for encoding ECDSA signatures in Bitcoin. It defines a strict DER (Distinguished Encoding Rules) encoding.
 8. Append the Bitcoin-formatted signature with the hash type `SIGHASH_ALL`. Bitcoin requires that the hash type used during signing be appended to the signature. This informs the network how the transaction was hashed and what parts of it are covered by the signature.
 
 <details>
@@ -202,4 +202,4 @@ const broadcastTransaction = async (txHex: string, broadcastUrl: string) => {
 
 If you're interested in learning how to use PKPs to sign Legacy P2PKH (Pay-to-Public-Key-Hash) Bitcoin transactions, we recommend checking out our detailed [blog post](https://spark.litprotocol.com/programming-bitcoin/) and exploring our [code example](https://github.com/LIT-Protocol/developer-guides-code/tree/master/btc-trigger/nodejs).
 
-We plan to develop additional contemporary Bitcoin guides in the future. We recommend regularly checking our blog for these upcoming resources.
+We hope to develop additional contemporary Bitcoin guides in the future (i.e. P2TR). We recommend regularly checking our blog for the most relevant updates.
