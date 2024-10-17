@@ -29,7 +29,13 @@ Our docs currently have four different examples of using PKPs to sign Bitcoin [P
 
 Through specific preparation of the Bitcoin transaction, we can use a PKP to sign a Bitcoin transaction. 
 
-![High Level Overview Diagram](../../../../static/img/BTC.png)
+A higher-level overview of the process can be understood from the diagram below.
+![High Level Overview Diagram](../../../../static/img/BTC-Overview.png)
+
+## Detailed Overview
+
+A more technical overview of the process can be understood from the swimlane below.
+![BTC Swimlane](../../../../static/img/BTC-Swimlane.png)
 
 ### Signing Within a Lit Action
 

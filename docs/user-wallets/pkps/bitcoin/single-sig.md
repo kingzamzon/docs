@@ -2,7 +2,7 @@
 
 This guide provides a simple example of using a PKP (Programmable Key Pair) to sign a P2SH (Pay-to-Script-Hash) Bitcoin transaction with a single signature.
 
-You can see a result of this example [here](https://mempool.space/tx/9314f7390f57870816366e75d4e42ffe4cc0e78656f8916c47ecfeea55f3098e).
+You can find a result of this example [here](https://mempool.space/tx/9314f7390f57870816366e75d4e42ffe4cc0e78656f8916c47ecfeea55f3098e).
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Please make sure the P2SH Bitcoin address derived from your PKP public key has a
 
 After setting up the prerequisites, the `singleSig` function can be used to sign a Bitcoin transaction.
 
-For an understanding of the steps involved in this example, visit the [High-Level Overview Diagram](./overview.md#high-level-overview).
+For an understanding of the steps involved in this example, visit the [Detailed Overview Diagram](./overview.md#detailed-overview).
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
@@ -55,7 +55,6 @@ async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubl
     const addressUtxos = await addresses.getAddressTxsUtxo({
         address: p2shPayment.address!,
     });
-
     console.log("P2SH Address:", p2shPayment.address);
 
     if (addressUtxos.length === 0) {

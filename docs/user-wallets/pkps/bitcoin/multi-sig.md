@@ -1,8 +1,8 @@
 # Multi Signature
 
-This guide provides a simple example of using two PKPs (Programmable Key Pair) to sign a P2SH (Pay-to-Script-Hash) Bitcoin transaction with multiple signatures.
+This guide provides a simple example of using two PKPs (Programmable Key Pairs) to sign a P2SH (Pay-to-Script-Hash) Bitcoin transaction with multiple signatures.
 
-You can see a result of this example [here](https://mempool.space/tx/fcbcffd572a792cd8c5ae76a165c262f097151437e00696cf6f81921368cb840).
+You can find a result of this example [here](https://mempool.space/tx/fcbcffd572a792cd8c5ae76a165c262f097151437e00696cf6f81921368cb840).
 
 ## Prerequisites
 
@@ -23,14 +23,15 @@ Please make sure the P2SH Bitcoin address derived from your PKP public keys has 
 
 After setting up the prerequisites, the `multiSig` function can be used to sign a Bitcoin transaction.
 
-In this example, we create the transaction and derived Bitcoin address using both PKPs and require the transaction to be individually signed by both PKPs.
+In this example, we create the transaction and derived Bitcoin address using both PKPs, and also require the transaction to be signed by both PKPs.
 
-For an understanding of the steps involved in this example, visit the [High-Level Overview Diagram](./overview.md#high-level-overview).
+For an understanding of the steps involved in this example, visit the [Detailed Overview Diagram](./overview.md#detailed-overview).
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
 import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
 bitcoin.initEccLib(ecc);
 
@@ -51,7 +52,6 @@ async function multiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubli
         redeem: { output: redeemScript },
         network: network,
     });
-
     console.log("P2SH Address:", p2shPayment.address);
 
     const { bitcoin: { addresses, transactions } } = mempoolJS({
@@ -137,6 +137,6 @@ async function multiSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubli
 
 ## Summary 
 
-In this guide, you learned how to use PKPs (Programmable Key Pair) to sign a Bitcoin transaction with a multi signature in a P2SH (Pay-to-Script-Hash) context.
+In this guide, you learned how to use PKPs (Programmable Key Pairs) to sign a Bitcoin transaction with a multi signature in a P2SH (Pay-to-Script-Hash) context.
 
 If you'd like to see other methods of using PKPs to sign Bitcoin transactions, check out our examples listed [here](./overview.md#p2sh-examples).

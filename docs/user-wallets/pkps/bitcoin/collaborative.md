@@ -1,13 +1,13 @@
 # Collaborative Multi Signature
 
-This guide provides a simple example of using two PKPs (Programmable Key Pair) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction where both PKPs individually provide a UTXO for the transaction.
+This guide provides a simple example of using two PKPs (Programmable Key Pairs) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction where both PKPs individually provide a UTXO for the transaction.
 
-You can see a result of this example [here](https://mempool.space/tx/c02ff1ce0df50a01dcac99dbbda4065376ecb7196eed3254772caab7af733a6d). 
+You can find a result of this example [here](https://mempool.space/tx/c02ff1ce0df50a01dcac99dbbda4065376ecb7196eed3254772caab7af733a6d). 
 
 ## Prerequisites
 
 ### UTXO Availability
-Please make sure that each P2SH Bitcoin address derived from your PKP public keys has at least one UTXO (Unspent Transaction Output). If you don't know the Bitcoin addresses derived from your individual PKP public keys, you can run this example and the derived P2SH addresses will be output to the console. The example will use the first UTXO on each of your derived PKP addresses to send funds to the specified destination address. If there are no UTXOs, the PKPs will have no funds to spend, and the example will not run.
+Please make sure that each P2SH Bitcoin address derived from your PKP public keys has at least one UTXO (Unspent Transaction Output). If you don't know the Bitcoin addresses derived from your PKP public keys, you can run this example and the derived P2SH addresses will be output to the console. The example will use the first UTXO on each of your derived PKP addresses to send funds to the specified destination address. If there are no UTXOs, the PKPs will have no funds to spend, and the example will not run.
 
 ### Lit-Specific Requirements
 - [LitNodeClient](../../../sdk/authentication/session-sigs/get-session-sigs.md#initializing-a-litnodeclient): Used to initialize connection with the Lit network.
@@ -23,15 +23,16 @@ Please make sure that each P2SH Bitcoin address derived from your PKP public key
 
 After setting up the prerequisites, the `collaborativeMultiSig` function can be used to sign a Bitcoin transaction.
 
-In this example, we have both PKPs perform a single signature on their UTXO, then taking the sum of the UTXOs value as the amount sent to the destination address.
+In this example, each PKP individually signs the transaction input corresponding to their UTXO, transferring it to the specified destination address. The PSBT is then updated with these signatures and finalized, resulting in a single transaction that consolidates all inputs and sends the total amount to the destination address.
 
-For an understanding of the steps involved in this example, visit the [High-Level Overview Diagram](./overview.md#high-level-overview).
+For an understanding of the steps involved in this example, visit the [Detailed Overview Diagram](./overview.md#detailed-overview).
 
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
 import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
 bitcoin.initEccLib(ecc);
 
@@ -60,7 +61,7 @@ async function collaborativeMultiSig(litNodeClient: LitNodeClient, sessionSigs: 
         redeem: { output: redeemScript2 },
         network: network,
     });
-    console.log("P2SH Address 2:", p2shPayment1.address);
+    console.log("P2SH Address 2:", p2shPayment2.address);
 
     const {
         bitcoin: { addresses, transactions },
@@ -183,6 +184,6 @@ async function collaborativeMultiSig(litNodeClient: LitNodeClient, sessionSigs: 
 
 ## Summary
 
-In this guide, you learned how to use PKPs (Programmable Key Pair) to sign a Bitcoin transaction with a collaborative multi signature in a P2SH (Pay-to-Script-Hash) context.
+In this guide, you learned how to use PKPs (Programmable Key Pairs) to sign a Bitcoin transaction with a collaborative multi signature in a P2SH (Pay-to-Script-Hash) context.
 
 If you'd like to see other methods of using PKPs to sign Bitcoin transactions, check out our examples listed [here](./overview.md#p2sh-examples).

@@ -1,8 +1,8 @@
 # 1-of-1 Multi Signature
 
-This guide provides a simple example of using two PKPs (Programmable Key Pair) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction only requiring one signature from either of the PKPs.
+This guide provides a simple example of using two PKPs (Programmable Key Pairs) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction only requiring one signature from either of the PKPs.
 
-You can see a result of this example [here](https://mempool.space/tx/24fe5ff20e474f6ae47de3beaa01d619527ef2963b354fb7bf7f1d9cffb86f80). 
+You can find a result of this example [here](https://mempool.space/tx/24fe5ff20e474f6ae47de3beaa01d619527ef2963b354fb7bf7f1d9cffb86f80). 
 
 ## Prerequisites
 
@@ -25,12 +25,13 @@ After setting up the prerequisites, the `oneOfOneMultiSig` function can be used 
 
 In this example, we create the transaction and derived Bitcoin address using both PKPs, but only require the signature from the first PKP. Using the second PKP in the Lit Action execution will produce the same successful transaction.
 
-For an understanding of the steps involved in this example, visit the [High-Level Overview Diagram](./overview.md#high-level-overview).
+For an understanding of the steps involved in this example, visit the [Detailed Overview Diagram](./overview.md#detailed-overview).
 
 ```tsx
 import * as bitcoin from "bitcoinjs-lib";
 import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
+import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
 bitcoin.initEccLib(ecc);
 
@@ -60,7 +61,6 @@ async function oneOfOneMultiSig(litNodeClient: LitNodeClient, sessionSigs: any, 
     const addressUtxos = await addresses.getAddressTxsUtxo({
         address: p2shPayment.address!,
     });
-
     console.log("P2SH Address:", p2shPayment.address);
 
     if (addressUtxos.length === 0) {
@@ -123,6 +123,6 @@ async function oneOfOneMultiSig(litNodeClient: LitNodeClient, sessionSigs: any, 
 
 ## Summary
 
-In this guide, you learned how to use a PKP (Programmable Key Pair) to sign a Bitcoin transaction with a 1-of-1 multi signature in a P2SH (Pay-to-Script-Hash) context.
+In this guide, you learned how to use a PKP (Programmable Key Pairs) to sign a Bitcoin transaction with a 1-of-1 multi signature in a P2SH (Pay-to-Script-Hash) context.
 
 If you'd like to see other methods of using PKPs to sign Bitcoin transactions, check out our examples listed [here](./overview.md#p2sh-examples).
