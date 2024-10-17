@@ -29,9 +29,9 @@ import * as ecc from "tiny-secp256k1";
 import mempoolJS from "@mempool/mempool.js";
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
-async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey: string, destinationAddress: string, broadcastUrl: string) {
-    bitcoin.initEccLib(ecc);
+bitcoin.initEccLib(ecc);
 
+async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey: string, destinationAddress: string, broadcastUrl: string) {
     const network = bitcoin.networks.bitcoin;
     const pubKeyBuffer = Buffer.from(pkpPublicKey, "hex");
 
@@ -60,9 +60,7 @@ async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubl
     }
 
     const utxo = addressUtxos[0];
-
     const psbt = new bitcoin.Psbt({ network });
-
     const utxoRawTx = await transactions.getTxHex({ txid: utxo.txid });
 
     psbt.addInput({
