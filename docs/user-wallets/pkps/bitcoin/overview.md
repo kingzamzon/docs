@@ -9,6 +9,13 @@ The Lit nodes support PKP signing using the [ECDSA (Elliptic Curve Digital Signa
 
 Due to the unique nature of PKPs—where the full private key cannot be reconstructed—we must prepare the Bitcoin transaction so that it only requires the PKP's signature before signing it. Additionally, after obtaining the PKP signature, we need to convert it from the standard ECDSA format to Bitcoin's DER (Distinguished Encoding Rules) format before finalizing and broadcasting the transaction.
 
+## Prerequisites
+
+Before continuing with this guide, make sure you have the following:
+
+- An understanding of [Lit Actions](../../../sdk/serverless-signing/overview.md) and how they work.
+- A basic understanding of Bitcoin transactions, specifically [PSBTs (Partially Signed Bitcoin Transactions)](https://en.bitcoin.it/wiki/BIP_0174) and [Bitcoin Scripts](https://en.bitcoin.it/wiki/Script).
+
 ## P2SH Examples
 
 Our docs currently have four different examples of using PKPs to sign Bitcoin [P2SH (Pay-to-Script-Hash)](https://river.com/learn/terms/p/p2sh/) transactions:
@@ -17,13 +24,6 @@ Our docs currently have four different examples of using PKPs to sign Bitcoin [P
 - [Multi Signature](./multi-sig.md):  Signing a transaction that requires multiple signatures.
 - [1-of-1 Multi Signature](./1of1-multi-sig.md): A special case of multi-signature transactions requiring only one signature.
 - [Collaborative](./collaborative.md): Combining multiple [UTXOs (Unspent Transaction Outputs)](https://en.wikipedia.org/wiki/Unspent_transaction_output#:~:text=In%20cryptocurrencies%2C%20an%20unspent%20transaction,be%20spent%20by%20a%20recipient.) from multiple PKPs into a single transaction.
-
-## Prerequisites
-
-Before continuing with this guide, make sure you have the following:
-
-- An understanding of [Lit Actions](../../../sdk/serverless-signing/overview.md) and how they work.
-- A basic understanding of Bitcoin transactions, specifically [PSBTs (Partially Signed Bitcoin Transactions)](https://en.bitcoin.it/wiki/BIP_0174) and [Bitcoin Scripts](https://en.bitcoin.it/wiki/Script).
 
 ## High Level Overview
 
@@ -155,7 +155,7 @@ function convertSignature(litSignature: any) {
 
 ### Broadcasting the Transaction
 
-Once the transaction is fully signed and formatted, it needs to be broadcasted to the Bitcoin network. You can use [mempoolJS](https://www.npmjs.com/package/@mempool/mempool.js), a JavaScript client library for the Mempool API, to broadcast the transaction. Alternatively, you can use a third-party service or the [bitcoin-cli](https://developer.bitcoin.org/reference/rpc/sendrawtransaction.html) to broadcast the transaction hex directly. In this example, we use `mempoolJS` within the `broadcastTransaction` helper function.
+Once the transaction is fully signed and formatted, it needs to be broadcasted to the Bitcoin blockchain. You can use [mempoolJS](https://www.npmjs.com/package/@mempool/mempool.js), a JavaScript client library for the Mempool API, to broadcast the transaction. Alternatively, you can use a third-party service or the [bitcoin-cli](https://developer.bitcoin.org/reference/rpc/sendrawtransaction.html) to broadcast the transaction hex directly. In this example, we use `mempoolJS` within the `broadcastTransaction` helper function.
 
 #### `broadcastTransaction` Overview
 1. Send the HTTP request to the endpoint.
