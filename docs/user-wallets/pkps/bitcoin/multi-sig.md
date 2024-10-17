@@ -2,6 +2,8 @@
 
 This guide provides a simple example of using two PKPs (Programmable Key Pair) to sign a P2SH (Pay-to-Script-Hash) Bitcoin transaction with multiple signatures.
 
+You can see a result of this example [here](https://mempool.space/tx/fcbcffd572a792cd8c5ae76a165c262f097151437e00696cf6f81921368cb840).
+
 ## Prerequisites
 
 ### UTXO Availability

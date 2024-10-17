@@ -2,6 +2,8 @@
 
 This guide provides a simple example of using two PKPs (Programmable Key Pair) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction only requiring one signature from either of the PKPs.
 
+You can see a result of this example [here](https://mempool.space/tx/24fe5ff20e474f6ae47de3beaa01d619527ef2963b354fb7bf7f1d9cffb86f80). 
+
 ## Prerequisites
 
 ### UTXO Availability

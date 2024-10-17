@@ -2,6 +2,8 @@
 
 This guide provides a simple example of using two PKPs (Programmable Key Pair) to create a P2SH (Pay-to-Script-Hash) Bitcoin transaction where both PKPs individually provide a UTXO for the transaction.
 
+You can see a result of this example [here](https://mempool.space/tx/c02ff1ce0df50a01dcac99dbbda4065376ecb7196eed3254772caab7af733a6d). 
+
 ## Prerequisites
 
 ### UTXO Availability
