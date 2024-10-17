@@ -171,9 +171,9 @@ Once the transaction is fully signed and formatted, it needs to be broadcasted t
 ```tsx
 import fetch from "node-fetch";
 
-const broadcastTransaction = async (txHex: string, broadcastUrl: string) => {
+const broadcastTransaction = async (txHex: string) => {
     try {
-    const response = await fetch(broadcastUrl, {
+    const response = await fetch("https://mempool.space/api/tx", {
         method: "POST",
         headers: {
         "Content-Type": "text/plain",

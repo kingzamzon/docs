@@ -5,7 +5,7 @@ This guide provides a simple example of using a PKP (Programmable Key Pair) to s
 ## Prerequisites
 
 ### UTXO Availability
-Please make sure the P2SH Bitcoin address derived from your PKP public key has at least one UTXO (Unspent Transaction Output). The example will use the first UTXO on your address to send funds to the specified destination address. If there are no UTXOs, the PKP will have no funds to spend, and the example will not run.
+Please make sure the P2SH Bitcoin address derived from your PKP public key has at least one UTXO (Unspent Transaction Output). If you don't know the Bitcoin address derived from your PKP public key, you can run this example and the derived P2SH address will be output to the console. The example will use the first UTXO on your address to send funds to the specified destination address. If there are no UTXOs, the PKP will have no funds to spend, and the example will not run.
 
 ### Lit-Specific Requirements
 - [LitNodeClient](../../../sdk/authentication/session-sigs/get-session-sigs.md#initializing-a-litnodeclient): Used to initialize connection with the Lit network.
@@ -31,7 +31,7 @@ import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
 bitcoin.initEccLib(ecc);
 
-async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey: string, destinationAddress: string, broadcastUrl: string) {
+async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPublicKey: string, destinationAddress: string) {
     const network = bitcoin.networks.bitcoin;
     const pubKeyBuffer = Buffer.from(pkpPublicKey, "hex");
 
@@ -53,6 +53,8 @@ async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubl
     const addressUtxos = await addresses.getAddressTxsUtxo({
         address: p2shPayment.address!,
     });
+
+    console.log("P2SH Address:", p2shPayment.address);
 
     if (addressUtxos.length === 0) {
         console.log("No UTXOs found for address:", p2shPayment.address);
@@ -107,7 +109,7 @@ async function singleSig(litNodeClient: LitNodeClient, sessionSigs: any, pkpPubl
     });
 
     const txHex = psbt.extractTransaction().toHex();
-    return await broadcastTransaction(txHex, broadcastUrl);
+    return await broadcastTransaction(txHex);
 }
 ```
 
