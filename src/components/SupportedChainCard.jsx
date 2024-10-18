@@ -52,6 +52,7 @@ const BlockchainCard = ({ chainName, symbol, chainId, litIdentifier }) => (
 export default function SupportedBlockchainsSection({ title, className }) {
   const chains = React.useMemo(() => {
     return Object.entries(LIT_CHAINS)
+      .filter(([key]) => key !== 'hushedNorthstar')
       .sort(([keyA], [keyB]) =>
         keyA.toLowerCase().localeCompare(keyB.toLowerCase())
       )
